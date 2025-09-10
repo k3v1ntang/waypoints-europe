@@ -542,21 +542,25 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - [x] Initialize Vite React project
 - [x] Configure environment variables (VITE_MAPBOX_TOKEN)
 - [x] Install dependencies (mapbox-gl, vite-plugin-pwa)
-- [ ] Configure vite.config.js with PWA settings
+- [x] Configure vite.config.js with PWA settings
 
-### Core Development
+### Core Development  
+- [x] Build Map component with Mapbox integration
+- [x] Implement full-page map display
+- [x] Test cross-platform compatibility (iPhone, iPad, desktop)
+- [x] Configure PWA manifest and service worker
+- [x] Test PWA installation and standalone mode
 - [ ] Create POI data structure (pois.json)
-- [ ] Build Map component with Mapbox integration
 - [ ] Implement POI markers with click handlers
 - [ ] Create POIPopup component with image carousel
 - [ ] Test basic functionality
 
 ### PWA Features
-- [ ] Configure web app manifest
-- [ ] Test service worker registration
-- [ ] Implement offline caching strategy
-- [ ] Test PWA installation on mobile devices
-- [ ] Verify offline functionality
+- [x] Configure web app manifest
+- [x] Test service worker registration  
+- [x] Implement offline caching strategy
+- [x] Test PWA installation on mobile devices
+- [x] Verify offline functionality
 
 ### Travel Preparation
 - [ ] Add actual Europe destinations to POI data

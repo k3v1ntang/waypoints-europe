@@ -3,7 +3,10 @@
     "allow": [
       "Bash(npm install)",
       "Bash(npm install:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "WebFetch(domain:docs.mapbox.com)",
+      "WebFetch(domain:vite.dev)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

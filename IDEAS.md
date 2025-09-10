@@ -231,6 +231,63 @@ JSON File → In-Memory Editing → Local Storage → Database
 - **Weather APIs** for visit planning
 - **Translation APIs** for international POI descriptions
 
+## User Interface Design Vision
+
+### Layout & Navigation
+**Full-Page Map Interface:**
+- **Map Display**: Full viewport map (no sidebars or panels)
+- **Default View**: Europe overview showing all travel cities
+- **Clean Interface**: Minimal UI elements overlaying the map
+
+### Primary Navigation
+**Hamburger Menu (Top-Left Overlay):**
+- **Location**: Fixed position over map, top-left corner
+- **Trigger**: Click/tap to reveal city selection menu
+- **Menu Content**: List of 6 travel cities
+  - Munich, Germany
+  - Helsinki, Finland  
+  - Tallinn, Estonia
+  - Stockholm, Sweden
+  - Copenhagen, Denmark
+  - Billund, Denmark
+
+### Interaction Flow
+**City Selection Workflow:**
+1. **Default State**: Europe overview with all city markers visible
+2. **Menu Access**: User taps hamburger menu
+3. **City Selection**: User selects a city from the list
+4. **Map Transition**: Smooth zoom/pan to selected city
+5. **POI Display**: City POIs become visible at appropriate zoom level
+6. **Menu Collapse**: Menu automatically closes after selection
+
+### Design Principles
+- **Simplicity**: Minimal interface elements, focus on the map
+- **Touch-First**: Optimized for iPhone/iPad finger navigation
+- **One-handed Use**: Critical controls accessible with thumb
+- **Travel-Focused**: Quick access to cities, easy POI discovery
+
+## Future Improvements & Reminders
+
+### 🎨 App Icon Design (TODO)
+**Current**: Simple blue "W" placeholder icons  
+**Future**: Create professional travel-themed app icons
+
+**Icon Requirements:**
+- `public/pwa-192x192.png` (192x192px)
+- `public/pwa-512x512.png` (512x512px)  
+- `public/apple-touch-icon.png` (180x180px)
+
+**Design Ideas:**
+- Map pin with European landmarks
+- Compass rose with travel theme
+- Airplane/suitcase travel iconography
+- Clean, recognizable on small screens
+
+**Tools for Creation:**
+- Figma, Adobe Illustrator, or Canva
+- Export as PNG with transparent/solid backgrounds
+- Test visibility on both light and dark home screens
+
 ---
 
 *These ideas can be implemented incrementally as the core POC proves successful during the Europe trip.*
