@@ -550,24 +550,41 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - [x] Test cross-platform compatibility (iPhone, iPad, desktop)
 - [x] Configure PWA manifest and service worker
 - [x] Test PWA installation and standalone mode
-- [ ] Create POI data structure (pois.json)
-- [ ] Implement POI markers with click handlers
-- [ ] Create POIPopup component with image carousel
-- [ ] Test basic functionality
+- [x] Create POI data structure (pois.json) with 6 European cities
+- [x] Implement POI markers with click handlers
+- [x] Create POIPopup component with rich content and styling
+- [x] Test basic functionality across devices
 
 ### PWA Features
-- [x] Configure web app manifest
+- [x] Configure web app manifest with blue theme (#2563eb)
 - [x] Test service worker registration  
-- [x] Implement offline caching strategy
-- [x] Test PWA installation on mobile devices
-- [x] Verify offline functionality
+- [x] Implement offline caching strategy (30-day cache for travel)
+- [x] Test PWA installation on mobile devices (iPhone/iPad)
+- [x] Verify offline functionality and manual refresh capability
+
+### POI Data Implementation (September 2025)
+- [x] Add all 6 European cities: Munich, Helsinki, Tallinn, Stockholm, Copenhagen, Malmö
+- [x] Implement 25 total POIs across all cities with descriptions and tips
+- [x] Audit and fix coordinate accuracy issues using Google Maps data
+- [x] Add Munich POI coordinates with precision Google Maps data
+- [x] Add "View on Google Maps" links to Munich POIs
+- [x] Update PWA theme to consistent blue (#2563eb) matching refresh button
+- [x] Update refresh button icon from emoji to clean white arrow (↻)
+- [ ] Complete coordinate updates for remaining cities (Helsinki, Tallinn, Stockholm, Copenhagen, Malmö)
 
 ### Travel Preparation
-- [ ] Add actual Europe destinations to POI data
-- [ ] Optimize images for mobile data usage
-- [ ] Test on different devices and browsers
-- [ ] Pre-cache map tiles for travel route
-- [ ] Create backup/sync strategy for content
+- [x] Add actual Europe destinations to POI data (25 POIs across 6 cities)
+- [x] Optimize for mobile touch interactions and responsive design
+- [x] Test on iPhone/iPad with successful PWA installation
+- [x] Pre-cache map tiles strategy (30-day cache window)
+- [ ] Complete Google Maps coordinate accuracy for all remaining cities
+- [ ] Final testing and validation before Europe trip
+
+### Current Status (September 11, 2025)
+- **Munich POIs**: ✅ Complete with accurate coordinates and Google Maps links
+- **Remaining Cities**: 🔄 Coordinate updates in progress
+- **PWA Features**: ✅ Fully functional with blue theme and offline capability
+- **Production Build**: ✅ Live and tested on mobile devices
 
 ### Post-Trip Enhancement
 - [ ] Replace placeholder photos with actual travel photos

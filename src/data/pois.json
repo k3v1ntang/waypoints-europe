@@ -1,0 +1,339 @@
+{
+  "cities": [
+    {
+      "id": "munich",
+      "name": "Munich (MUC)",
+      "country": "Germany",
+      "countryCode": "DE",
+      "centerCoordinates": [11.5820, 48.1351],
+      "pois": [
+        {
+          "id": "munich-marienplatz",
+          "name": "Marienplatz",
+          "coordinates": [11.5754485, 48.1373932],
+          "category": "landmark",
+          "description": "Munich's central square and heart of the city since 1158. Dominated by the New Town Hall with its famous Glockenspiel, this historic meeting place serves as the starting point for exploring Munich's old town.",
+          "tips": "See the Glockenspiel at new town hall clock @17:00",
+          "googleMapsUrl": "https://maps.google.com/?cid=16317814669314446971&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "munich-viktualienmarkt",
+          "name": "Viktualienmarkt",
+          "coordinates": [11.5760761, 48.1353899],
+          "category": "food",
+          "description": "Munich's most famous gourmet food market with over 140 vendors selling fresh produce, specialties, and delicacies. Features the city's most central beer garden where all six Munich breweries serve in rotation.",
+          "tips": "Daily food market with gourmet specialties and beer garden",
+          "googleMapsUrl": "https://maps.google.com/?cid=74772572163980675&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "munich-glockenbachviertel", 
+          "name": "Glockenbachviertel",
+          "coordinates": [11.5689144, 48.1265524],
+          "category": "culture",
+          "description": "Munich's historic LGBT district and vibrant nightlife hub. This trendy neighborhood around Müllerstraße has been a gathering place for the gay community since the 1920s and features rainbow traffic lights.",
+          "tips": "Gay district",
+          "googleMapsUrl": "https://maps.google.com/?cid=17214784537254708958&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "2-3 hours"
+        },
+        {
+          "id": "munich-st-peter-church",
+          "name": "St. Peter Church",
+          "coordinates": [11.5756044, 48.1366805],
+          "category": "landmark",
+          "description": "Munich's oldest parish church dating back to the 12th century. The 92-meter tower 'Alter Peter' offers spectacular panoramic views of the city and Alps from its 56-meter viewing platform.",
+          "tips": "Munich's oldest church - climb \"Alter Peter\" tower for city views (300+ steps)",
+          "googleMapsUrl": "https://maps.google.com/?cid=12579101524591160423&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "munich-karlsplatz",
+          "name": "Karlsplatz (Stachus)",
+          "coordinates": [11.5660209, 48.1392462],
+          "category": "practical",
+          "description": "Major transportation hub and western gateway to Munich's pedestrian zone. Features the historic 14th-century Karlstor gate, underground shopping mall, and serves as the starting point for city center exploration.",
+          "tips": "Major square with Karlstor gate and shopping mall below",
+          "googleMapsUrl": "https://maps.google.com/?cid=5986232855190454813&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "30 minutes"
+        },
+        {
+          "id": "munich-frauenkirche",
+          "name": "Frauenkirche",
+          "coordinates": [11.5730126, 48.1386649],
+          "category": "landmark",
+          "description": "Munich's iconic cathedral and most famous landmark with distinctive twin green-domed towers. Built 1468-1488, it features the legendary 'Devil's Footprint' - a black mark at the entrance linked to architectural trickery.",
+          "tips": "Cathedral with twin towers - Munich's most famous landmark with \"Devil's Footprint\"",
+          "googleMapsUrl": "https://maps.google.com/?cid=12598930065456986&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1 hour"
+        }
+      ]
+    },
+    {
+      "id": "helsinki",
+      "name": "Helsinki (HEL)",
+      "country": "Finland",
+      "countryCode": "FI",
+      "centerCoordinates": [24.9384, 60.1699],
+      "pois": [
+        {
+          "id": "helsinki-old-market-hall",
+          "name": "Old Market Hall",
+          "coordinates": [24.9495, 60.1673],
+          "category": "food",
+          "description": "Historic 1889 market hall filled with Finnish delicacies, local vendors, and authentic Nordic cuisine. A foodie paradise showcasing traditional Finnish flavors and modern culinary innovations.",
+          "tips": "Seen from Phil on Netflix",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "helsinki-esplanadi",
+          "name": "Esplanadi",
+          "coordinates": [24.9441, 60.1674],
+          "category": "culture",
+          "description": "Helsinki's most famous pedestrian boulevard stretching from Market Square to Swedish Theatre. Tree-lined promenade perfect for strolling, people-watching, and outdoor concerts in summer.",
+          "tips": "Pedestrian boulevard",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "helsinki-sibelius-monument",
+          "name": "Sibelius Monument",
+          "coordinates": [24.9125, 60.1817],
+          "category": "landmark",
+          "description": "Striking abstract sculpture dedicated to Finnish composer Jean Sibelius. Made of welded steel pipes creating a wave-like formation that produces sound when wind passes through.",
+          "tips": "Take the tram",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1 hour"
+        }
+      ]
+    },
+    {
+      "id": "tallinn",
+      "name": "Tallinn (TLL)",
+      "country": "Estonia",
+      "countryCode": "EE",
+      "centerCoordinates": [24.7536, 59.4370],
+      "pois": [
+        {
+          "id": "tallinn-hotel-viru-kgb",
+          "name": "Hotel Viru & KGB Museum",
+          "coordinates": [24.7539, 59.4332],
+          "category": "culture",
+          "description": "Soviet-era tourist hotel with a secret KGB museum on the 23rd floor. Once the tallest building in Estonia, this hotel was used by the KGB to monitor foreign visitors during the Soviet occupation.",
+          "tips": "rs,p784 - Soviet-era tourist hotel",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "tallinn-kgb-prison-cells",
+          "name": "KGB Prison Cells",
+          "coordinates": [24.7453, 59.4361],
+          "category": "culture",
+          "description": "Former KGB prison cells preserved as a museum showcasing the dark history of Soviet occupation. Experience the harsh reality of political imprisonment during Estonia's Soviet era.",
+          "tips": "rs,p784",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "tallinn-depeche-mode-baar",
+          "name": "Depeche Mode Baar",
+          "coordinates": [24.7459, 59.4372],
+          "category": "culture",
+          "description": "Unique themed bar dedicated to the British electronic band Depeche Mode. A cult destination for fans featuring band memorabilia, themed cocktails, and regular tribute nights.",
+          "tips": "Carved Stone Museum",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "tallinn-patkuli-viewing-platform",
+          "name": "Patkuli Viewing Platform",
+          "coordinates": [24.7375, 59.4416],
+          "category": "landmark",
+          "description": "Scenic viewing platform offering panoramic views over Tallinn's medieval Old Town, red-tiled rooftops, and the Baltic Sea. One of the best photo spots in the city.",
+          "tips": "Best views over Old Town and Baltic Sea",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "30-45 minutes"
+        },
+        {
+          "id": "tallinn-alexander-nevsky-cathedral",
+          "name": "Alexander Nevsky Cathedral",
+          "coordinates": [24.7387, 59.4364],
+          "category": "landmark",
+          "description": "Striking Russian Orthodox cathedral built in 1900 during the Russian Empire period. Famous for its onion domes and elaborate interior, representing Russian influence in Estonian history.",
+          "tips": "Russian Orthodox",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "45 minutes"
+        },
+        {
+          "id": "tallinn-kiek-in-de-kok",
+          "name": "Kiek in de Kök Museum and Bastion Tunnels",
+          "coordinates": [24.7373, 59.4345],
+          "category": "culture",
+          "description": "Medieval defense tower and underground bastion tunnels system. The name means 'Peek into the Kitchen' as soldiers could see into houses below. Includes fascinating WWII tunnel network.",
+          "tips": "Medieval tower with underground tunnels",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "2-3 hours"
+        },
+        {
+          "id": "tallinn-fat-margaret",
+          "name": "Fat Margaret",
+          "coordinates": [24.7453, 59.4441],
+          "category": "landmark",
+          "description": "Massive 16th-century cannon tower guarding Tallinn's harbor entrance. Now houses the Estonian Maritime Museum with exhibits on naval history and maritime traditions.",
+          "tips": "Historic cannon tower at harbor entrance",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        }
+      ]
+    },
+    {
+      "id": "stockholm",
+      "name": "Stockholm (ARN)",
+      "country": "Sweden",
+      "countryCode": "SE",
+      "centerCoordinates": [18.0686, 59.3293],
+      "pois": [
+        {
+          "id": "stockholm-gamla-stan",
+          "name": "Gamla Stan",
+          "coordinates": [18.0710, 59.3251],
+          "category": "landmark",
+          "description": "Stockholm's historic Old Town island, one of the largest and best-preserved medieval city centers in Europe. Featuring cobblestone streets, colorful 17th-18th century buildings, and the Royal Palace.",
+          "tips": "Historic Old Town island - explore cobblestone streets and colorful buildings",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "2-3 hours"
+        },
+        {
+          "id": "stockholm-skansen",
+          "name": "Skansen",
+          "coordinates": [18.1025, 59.3260],
+          "category": "culture",
+          "description": "World's first open-air folk museum and zoo, showcasing Swedish history and culture through historic buildings, traditional crafts, and Nordic animals including bears, wolves, and reindeer.",
+          "tips": "Open-air folk museum with historic buildings and Nordic animals",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "3-4 hours"
+        },
+        {
+          "id": "stockholm-vasa-museum",
+          "name": "Vasa Museum",
+          "coordinates": [18.0916, 59.3280],
+          "category": "culture",
+          "description": "Maritime museum housing the 17th-century warship Vasa, which sank on its maiden voyage in 1628 and was salvaged 333 years later. The ship is 95% original and remarkably well-preserved.",
+          "tips": "See the remarkably preserved 17th-century warship that sank on maiden voyage",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "2-3 hours"
+        },
+        {
+          "id": "stockholm-fotografiska",
+          "name": "Anton Corbijn | Fotografiska Stockholm",
+          "coordinates": [18.0841, 59.3165],
+          "category": "culture",
+          "description": "Contemporary photography museum featuring world-class exhibitions. The Anton Corbijn exhibition showcases iconic portraits of musicians and celebrities by the renowned Dutch photographer.",
+          "tips": "Contemporary photography museum - check current exhibitions and Anton Corbijn showcase",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        }
+      ]
+    },
+    {
+      "id": "copenhagen",
+      "name": "Copenhagen (CPH)",
+      "country": "Denmark", 
+      "countryCode": "DK",
+      "centerCoordinates": [12.5683, 55.6761],
+      "pois": [
+        {
+          "id": "copenhagen-little-mermaid",
+          "name": "Little Mermaid sculpture",
+          "coordinates": [12.5992, 55.6930],
+          "category": "landmark",
+          "description": "Iconic bronze statue inspired by Hans Christian Andersen's fairy tale, created by sculptor Edvard Eriksen in 1913. Despite being smaller than expected, it's one of Copenhagen's most famous symbols.",
+          "tips": "Small but iconic statue - best photos from the rocks nearby",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "30-45 minutes"
+        },
+        {
+          "id": "copenhagen-tivoli-gardens",
+          "name": "Tivoli Gardens",
+          "coordinates": [12.5681, 55.6736],
+          "category": "culture",
+          "description": "Historic amusement park opened in 1843, one of the world's oldest operating amusement parks. Features beautiful gardens, vintage rides, concerts, and seasonal decorations that inspired Walt Disney.",
+          "tips": "Amusement park since 1843 - check seasonal opening hours and evening light displays",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "3-4 hours"
+        },
+        {
+          "id": "copenhagen-stroget",
+          "name": "Strøget",
+          "coordinates": [12.5707, 55.6783],
+          "category": "culture",
+          "description": "Europe's first and longest fully pedestrianized shopping street, stretching 1.1km through Copenhagen's city center. Created in 1962, it connects major squares and features shops, cafes, and street performers.",
+          "tips": "Europe's first fully pedestrianized street - great for shopping and people watching",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "copenhagen-round-tower",
+          "name": "Round Tower",
+          "coordinates": [12.5751, 55.6814],
+          "category": "landmark",
+          "description": "17th-century astronomical observatory tower built in 1642 by King Christian IV. Features a unique spiral ramp instead of stairs, leading to panoramic city views and a functioning observatory.",
+          "tips": "17th-century observatory with spiral ramp - check observatory open hours for stargazing",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        }
+      ]
+    },
+    {
+      "id": "malmo",
+      "name": "Malmö (MMX)",
+      "country": "Sweden",
+      "countryCode": "SE", 
+      "centerCoordinates": [13.0007, 55.6050],
+      "pois": [
+        {
+          "id": "malmo-turning-torso",
+          "name": "Turning Torso",
+          "coordinates": [12.9767, 55.6132],
+          "category": "landmark",
+          "description": "Neo-futurist architectural marvel designed by Santiago Calatrava, completed in 2005. At 190 meters tall, it's the tallest building in Scandinavia, with a distinctive twisted design rotating 90 degrees from base to top.",
+          "tips": "Tallest building in Scandinavia with twisted architecture - visible from Copenhagen across the Öresund Bridge",
+          "photos": [],
+          "visitStatus": "planned", 
+          "estimatedDuration": "1 hour"
+        }
+      ]
+    }
+  ]
+}

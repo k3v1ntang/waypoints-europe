@@ -12,8 +12,8 @@ export default defineConfig({
         name: 'Waypoints Europe',
         short_name: 'Waypoints',
         description: 'Your European Travel Companion',
-        theme_color: '#000000',
-        background_color: '#ffffff',
+        theme_color: '#2563eb',
+        background_color: '#2563eb',
         display: 'standalone',
         orientation: 'portrait-primary',
         start_url: '/',
@@ -36,7 +36,7 @@ export default defineConfig({
         ]
       },
       workbox: {
-        // Cache Mapbox tiles for offline use
+        // Cache Mapbox tiles for offline use during travel
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/api\.mapbox\.com/,
@@ -44,8 +44,8 @@ export default defineConfig({
             options: {
               cacheName: 'mapbox-cache',
               expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 24 * 60 * 60 // 24 hours
+                maxEntries: 100, // Increased for more tile coverage
+                maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days - covers full Europe trip
               }
             }
           }

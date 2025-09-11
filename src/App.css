@@ -14,3 +14,56 @@ body, html {
   padding: 0;
   height: 100%;
 }
+
+/* Mobile-optimized popup styles */
+.mobile-poi-popup .mapboxgl-popup-content {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Style all popup close buttons */
+.mapboxgl-popup-close-button {
+  width: 20px !important;
+  height: 20px !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  right: 8px !important;
+  top: 2px !important;
+  border-radius: 0 !important;
+  background-color: white !important;
+  color: black !important;
+  border: none !important;
+  line-height: 20px !important;
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mapboxgl-popup-close-button:hover {
+  background-color: #f3f4f6 !important;
+  color: black !important;
+}
+
+/* Improve popup tip (arrow) */
+.mobile-poi-popup .mapboxgl-popup-tip {
+  border-top-color: white;
+  border-width: 8px;
+}
+
+/* Touch-friendly scrolling for popup content */
+.mobile-poi-popup .mapboxgl-popup-content {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text selection on markers for better touch UX */
+.poi-marker {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
