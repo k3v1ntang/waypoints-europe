@@ -6,7 +6,10 @@
       "Bash(npm run dev:*)",
       "WebFetch(domain:docs.mapbox.com)",
       "WebFetch(domain:vite.dev)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "WebSearch",
+      "Bash(npm run preview:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []
