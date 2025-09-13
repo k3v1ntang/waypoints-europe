@@ -220,10 +220,11 @@
         {
           "id": "tallinn-hotel-viru-kgb",
           "name": "Hotel Viru & KGB Museum",
-          "coordinates": [24.7539, 59.4332],
+          "coordinates": [24.7534737, 59.4366062],
           "category": "culture",
           "description": "Soviet-era tourist hotel with a secret KGB museum on the 23rd floor. Once the tallest building in Estonia, this hotel was used by the KGB to monitor foreign visitors during the Soviet occupation.",
           "tips": "rs,p784 - Soviet-era tourist hotel",
+          "googleMapsUrl": "https://maps.app.goo.gl/km7x1VEQf8q9sCkk8?g_st=ipc",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
@@ -231,10 +232,11 @@
         {
           "id": "tallinn-kgb-prison-cells",
           "name": "KGB Prison Cells",
-          "coordinates": [24.7453, 59.4361],
+          "coordinates": [24.7474744, 59.4407311],
           "category": "culture",
           "description": "Former KGB prison cells preserved as a museum showcasing the dark history of Soviet occupation. Experience the harsh reality of political imprisonment during Estonia's Soviet era.",
           "tips": "rs,p784",
+          "googleMapsUrl": "https://maps.app.goo.gl/DA6YvLM4c1yr5ELx6?g_st=ipc",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
@@ -242,10 +244,23 @@
         {
           "id": "tallinn-depeche-mode-baar",
           "name": "Depeche Mode Baar",
-          "coordinates": [24.7459, 59.4372],
+          "coordinates": [24.7439538, 59.4375343],
           "category": "culture",
           "description": "Unique themed bar dedicated to the British electronic band Depeche Mode. A cult destination for fans featuring band memorabilia, themed cocktails, and regular tribute nights.",
           "tips": "Carved Stone Museum",
+          "googleMapsUrl": "https://maps.app.goo.gl/93AQ2wU5yHwB7cJv6?g_st=ipc",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "tallinn-carved-stone-museum",
+          "name": "Carved Stone Museum",
+          "coordinates": [24.7412552, 59.4348093],
+          "category": "culture",
+          "description": "",
+          "tips": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/hS7ejrsTAwFuMgKBA?g_st=ipc",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
@@ -253,10 +268,11 @@
         {
           "id": "tallinn-patkuli-viewing-platform",
           "name": "Patkuli Viewing Platform",
-          "coordinates": [24.7375, 59.4416],
+          "coordinates": [24.7410855, 59.4389883],
           "category": "landmark",
           "description": "Scenic viewing platform offering panoramic views over Tallinn's medieval Old Town, red-tiled rooftops, and the Baltic Sea. One of the best photo spots in the city.",
           "tips": "Best views over Old Town and Baltic Sea",
+          "googleMapsUrl": "https://maps.app.goo.gl/7gZ31gCppjfJtY3h8?g_st=ipc",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "30-45 minutes"
@@ -264,10 +280,11 @@
         {
           "id": "tallinn-alexander-nevsky-cathedral",
           "name": "Alexander Nevsky Cathedral",
-          "coordinates": [24.7387, 59.4364],
+          "coordinates": [24.73899, 59.4362267],
           "category": "landmark",
           "description": "Striking Russian Orthodox cathedral built in 1900 during the Russian Empire period. Famous for its onion domes and elaborate interior, representing Russian influence in Estonian history.",
           "tips": "Russian Orthodox",
+          "googleMapsUrl": "https://maps.app.goo.gl/Pam9m29rWcy77wKu5?g_st=ipc",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "45 minutes"
@@ -275,10 +292,11 @@
         {
           "id": "tallinn-kiek-in-de-kok",
           "name": "Kiek in de Kök Museum and Bastion Tunnels",
-          "coordinates": [24.7373, 59.4345],
+          "coordinates": [24.7407135, 59.4346895],
           "category": "culture",
           "description": "Medieval defense tower and underground bastion tunnels system. The name means 'Peek into the Kitchen' as soldiers could see into houses below. Includes fascinating WWII tunnel network.",
           "tips": "Medieval tower with underground tunnels",
+          "googleMapsUrl": "https://maps.app.goo.gl/aUqa32t1AaGRvUSu6?g_st=ipc",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "2-3 hours"
@@ -286,10 +304,11 @@
         {
           "id": "tallinn-fat-margaret",
           "name": "Fat Margaret",
-          "coordinates": [24.7453, 59.4441],
+          "coordinates": [24.7490878, 59.442611],
           "category": "landmark",
           "description": "Massive 16th-century cannon tower guarding Tallinn's harbor entrance. Now houses the Estonian Maritime Museum with exhibits on naval history and maritime traditions.",
           "tips": "Historic cannon tower at harbor entrance",
+          "googleMapsUrl": "https://maps.app.goo.gl/zgN8oJN3qQa9tsfx8?g_st=ipc",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
@@ -306,10 +325,11 @@
         {
           "id": "stockholm-gamla-stan",
           "name": "Gamla Stan",
-          "coordinates": [18.0710, 59.3251],
+          "coordinates": [18.0603883, 59.324987],
           "category": "landmark",
           "description": "Stockholm's historic Old Town island, one of the largest and best-preserved medieval city centers in Europe. Featuring cobblestone streets, colorful 17th-18th century buildings, and the Royal Palace.",
           "tips": "Historic Old Town island - explore cobblestone streets and colorful buildings",
+          "googleMapsUrl": "https://maps.app.goo.gl/N1o4aSVZxjeHxASDA",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "2-3 hours"
@@ -317,10 +337,11 @@
         {
           "id": "stockholm-skansen",
           "name": "Skansen",
-          "coordinates": [18.1025, 59.3260],
+          "coordinates": [18.10299, 59.3255026],
           "category": "culture",
           "description": "World's first open-air folk museum and zoo, showcasing Swedish history and culture through historic buildings, traditional crafts, and Nordic animals including bears, wolves, and reindeer.",
-          "tips": "Open-air folk museum with historic buildings and Nordic animals",
+          "tips": "rs,p584",
+          "googleMapsUrl": "https://maps.app.goo.gl/hzcygcgp25gRpRq19",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "3-4 hours"
@@ -328,10 +349,11 @@
         {
           "id": "stockholm-vasa-museum",
           "name": "Vasa Museum",
-          "coordinates": [18.0916, 59.3280],
+          "coordinates": [18.0888215, 59.328026],
           "category": "culture",
-          "description": "Maritime museum housing the 17th-century warship Vasa, which sank on its maiden voyage in 1628 and was salvaged 333 years later. The ship is 95% original and remarkably well-preserved.",
-          "tips": "See the remarkably preserved 17th-century warship that sank on maiden voyage",
+          "description": "Maritime museum housing the 17th-century warship Vasa, which sank on its maiden voyage in 1628 and was salvaged 333 years later. The ship is 95% original and remarkably well-preserved. Watch the film, take free guided tour. Audiobook tour available",
+          "tips": "rs,p586",
+          "googleMapsUrl": "https://maps.app.goo.gl/uCGBs3QVe8eheBoG6",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "2-3 hours"
@@ -339,10 +361,11 @@
         {
           "id": "stockholm-fotografiska",
           "name": "Anton Corbijn | Fotografiska Stockholm",
-          "coordinates": [18.0841, 59.3165],
+          "coordinates": [18.082252, 59.3179646],
           "category": "culture",
           "description": "Contemporary photography museum featuring world-class exhibitions. The Anton Corbijn exhibition showcases iconic portraits of musicians and celebrities by the renowned Dutch photographer.",
-          "tips": "Contemporary photography museum - check current exhibitions and Anton Corbijn showcase",
+          "tips": "rs,p594 - Check the exhibit date!!",
+          "googleMapsUrl": "https://maps.app.goo.gl/krsXpM7MiCheaiTBA",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
@@ -358,33 +381,60 @@
       "pois": [
         {
           "id": "copenhagen-little-mermaid",
-          "name": "Little Mermaid sculpture",
-          "coordinates": [12.5992, 55.6930],
+          "name": "The Little Mermaid",
+          "coordinates": [12.59928, 55.69286],
           "category": "landmark",
           "description": "Iconic bronze statue inspired by Hans Christian Andersen's fairy tale, created by sculptor Edvard Eriksen in 1913. Despite being smaller than expected, it's one of Copenhagen's most famous symbols.",
           "tips": "Small but iconic statue - best photos from the rocks nearby",
+          "googleMapsUrl": "https://maps.app.goo.gl/g8VD9gNTFnfKVTxR9",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "30-45 minutes"
         },
         {
-          "id": "copenhagen-tivoli-gardens",
-          "name": "Tivoli Gardens",
-          "coordinates": [12.5681, 55.6736],
-          "category": "culture",
-          "description": "Historic amusement park opened in 1843, one of the world's oldest operating amusement parks. Features beautiful gardens, vintage rides, concerts, and seasonal decorations that inspired Walt Disney.",
-          "tips": "Amusement park since 1843 - check seasonal opening hours and evening light displays",
-          "photos": [],
-          "visitStatus": "planned",
-          "estimatedDuration": "3-4 hours"
-        },
-        {
           "id": "copenhagen-stroget",
           "name": "Strøget",
-          "coordinates": [12.5707, 55.6783],
+          "coordinates": [12.5774366, 55.6786719],
           "category": "culture",
-          "description": "Europe's first and longest fully pedestrianized shopping street, stretching 1.1km through Copenhagen's city center. Created in 1962, it connects major squares and features shops, cafes, and street performers.",
+          "description": "Pedestrian street - Europe's first fully pedestrianized streets",
           "tips": "Europe's first fully pedestrianized street - great for shopping and people watching",
+          "googleMapsUrl": "https://maps.app.goo.gl/qarUJG81u1yp4Z1ZA",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "copenhagen-city-hall",
+          "name": "Rådhuspladsen - City Hall",
+          "coordinates": [12.57016, 55.67528],
+          "category": "landmark",
+          "description": "Copenhagen's historic city hall and central square, a major gathering place and tourist hub in the heart of the city.",
+          "tips": "rs.p77.p, climb the tower, clock opposite to info desk",
+          "googleMapsUrl": "https://maps.app.goo.gl/G51SXXpYj5FkVQDZ7",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "copenhagen-christiansborg-palace",
+          "name": "Christiansborg Palace",
+          "coordinates": [12.58034, 55.67655],
+          "category": "landmark",
+          "description": "Historic palace complex that houses the Danish Parliament, Supreme Court, and Prime Minister's Office, with beautiful royal reception rooms.",
+          "tips": "rs, p83",
+          "googleMapsUrl": "https://maps.app.goo.gl/yVJQWuhx1P9sQmrcA",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "2-3 hours"
+        },
+        {
+          "id": "copenhagen-royal-library",
+          "name": "Det Kgl. Bibliotek, The Royal Library",
+          "coordinates": [12.58265, 55.67339],
+          "category": "culture",
+          "description": "\"Black Diamond\"",
+          "tips": "rs,p88",
+          "googleMapsUrl": "https://maps.app.goo.gl/Bp3VkKaqgMjSK6gz8",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
@@ -392,13 +442,86 @@
         {
           "id": "copenhagen-round-tower",
           "name": "Round Tower",
-          "coordinates": [12.5751, 55.6814],
+          "coordinates": [12.57573, 55.68134],
           "category": "landmark",
-          "description": "17th-century astronomical observatory tower built in 1642 by King Christian IV. Features a unique spiral ramp instead of stairs, leading to panoramic city views and a functioning observatory.",
-          "tips": "17th-century observatory with spiral ramp - check observatory open hours for stargazing",
+          "description": "Observatory, Check the observatory open hour",
+          "tips": "rs,p88",
+          "googleMapsUrl": "https://maps.app.goo.gl/mtYcKoPAtVRDFJne7",
           "photos": [],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "copenhagen-tivoli-gardens",
+          "name": "Tivoli Gardens",
+          "coordinates": [12.56814, 55.67368],
+          "category": "culture",
+          "description": "Historic amusement park opened in 1843, one of the world's oldest operating amusement parks. Features beautiful gardens, vintage rides, concerts, and seasonal decorations that inspired Walt Disney.",
+          "tips": "RS.P75",
+          "googleMapsUrl": "https://maps.app.goo.gl/8JbhfJdFGx5mqs997",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "3-4 hours"
+        },
+        {
+          "id": "copenhagen-amalienborg-palace",
+          "name": "Amalienborg Palace",
+          "coordinates": [12.59302, 55.68405],
+          "category": "landmark",
+          "description": "Where the king lives, changing of the guard at noon",
+          "tips": "rs,p89",
+          "googleMapsUrl": "https://maps.app.goo.gl/6AyATeWaLgy5nt4E8",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "copenhagen-church-our-saviour",
+          "name": "Church of Our Saviour",
+          "coordinates": [12.59421, 55.67293],
+          "category": "landmark",
+          "description": "Spiral spire",
+          "tips": "rs,p98",
+          "googleMapsUrl": "https://maps.app.goo.gl/pYd8rgqaseTAAH77A",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1 hour"
+        },
+        {
+          "id": "copenhagen-fisketorvet-pool",
+          "name": "Open water swimming pool Fisketorvet",
+          "coordinates": [12.56357, 55.66268],
+          "category": "culture",
+          "description": "Harbour bath",
+          "tips": "rs,p106",
+          "googleMapsUrl": "https://maps.app.goo.gl/mBXwWE82PqDFpBN3A",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "copenhagen-islands-brygge",
+          "name": "Islands Brygge Havnepark",
+          "coordinates": [12.57881, 55.66816],
+          "category": "culture",
+          "description": "Harbour bath",
+          "tips": "rs,p106",
+          "googleMapsUrl": "https://maps.app.goo.gl/mJPrSdZbUVVepXp59",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "1-2 hours"
+        },
+        {
+          "id": "copenhagen-open-air-museum",
+          "name": "The Open Air Museum",
+          "coordinates": [12.49014, 55.78567],
+          "category": "culture",
+          "description": "Historic Danish village recreation showcasing traditional Danish life and architecture from different periods.",
+          "tips": "rs,p107",
+          "googleMapsUrl": "https://maps.app.goo.gl/VvsQydDf2iKdkMLM9",
+          "photos": [],
+          "visitStatus": "planned",
+          "estimatedDuration": "2-3 hours"
         }
       ]
     },
@@ -412,10 +535,11 @@
         {
           "id": "malmo-turning-torso",
           "name": "Turning Torso",
-          "coordinates": [12.9767, 55.6132],
+          "coordinates": [12.9766806, 55.6132075],
           "category": "landmark",
           "description": "Neo-futurist architectural marvel designed by Santiago Calatrava, completed in 2005. At 190 meters tall, it's the tallest building in Scandinavia, with a distinctive twisted design rotating 90 degrees from base to top.",
           "tips": "Tallest building in Scandinavia with twisted architecture - visible from Copenhagen across the Öresund Bridge",
+          "googleMapsUrl": "https://maps.app.goo.gl/Noe5gYxnNxjfPJsW6",
           "photos": [],
           "visitStatus": "planned", 
           "estimatedDuration": "1 hour"
