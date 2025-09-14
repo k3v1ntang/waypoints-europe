@@ -5,89 +5,127 @@
       "name": "Munich (MUC)",
       "country": "Germany",
       "countryCode": "DE",
-      "centerCoordinates": [11.5820, 48.1351],
+      "centerCoordinates": [
+        11.582,
+        48.1351
+      ],
       "pois": [
         {
           "id": "munich-marienplatz",
           "name": "Marienplatz",
-          "coordinates": [11.5754485, 48.1373932],
+          "coordinates": [
+            11.5754485,
+            48.1373932
+          ],
           "category": "landmark",
-          "description": "Munich's central square and heart of the city since 1158. Dominated by the New Town Hall with its famous Glockenspiel, this historic meeting place serves as the starting point for exploring Munich's old town.",
-          "notes": "See the Glockenspiel at new town hall clock @17:00",
+          "description": "Munich's central square and heart of the city since 1158. Dominated by the New Town Hall with its famous Glockenspiel.",
+          "notes": "Glockenspiel at new town hall clock @17:00",
           "googleMapsUrl": "https://maps.google.com/?cid=16317814669314446971&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "munich-viktualienmarkt",
           "name": "Viktualienmarkt",
-          "coordinates": [11.5760761, 48.1353899],
+          "coordinates": [
+            11.5760761,
+            48.1353899
+          ],
           "category": "food",
-          "description": "Munich's most famous gourmet food market with over 140 vendors selling fresh produce, specialties, and delicacies. Features the city's most central beer garden where all six Munich breweries serve in rotation.",
+          "description": "Munich's most famous gourmet food market. Features the city's most central beer garden where all six Munich breweries serve in rotation.",
           "notes": "Daily food market with gourmet specialties and beer garden",
           "googleMapsUrl": "https://maps.google.com/?cid=74772572163980675&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
-          "id": "munich-glockenbachviertel", 
+          "id": "munich-glockenbachviertel",
           "name": "Glockenbachviertel",
-          "coordinates": [11.5689144, 48.1265524],
+          "coordinates": [
+            11.5689144,
+            48.1265524
+          ],
           "category": "culture",
-          "description": "Munich's historic LGBT district and vibrant nightlife hub. This trendy neighborhood around Müllerstraße has been a gathering place for the gay community since the 1920s and features rainbow traffic lights.",
+          "description": "Munich's historic LGBT district and vibrant nightlife hub - a gathering place for the gay community since the 1920s and features rainbow traffic lights.",
           "notes": "Gay district",
           "googleMapsUrl": "https://maps.google.com/?cid=17214784537254708958&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "2-3 hours"
         },
         {
           "id": "munich-st-peter-church",
           "name": "St. Peter Church",
-          "coordinates": [11.5756044, 48.1366805],
+          "coordinates": [
+            11.5756044,
+            48.1366805
+          ],
           "category": "landmark",
           "description": "Munich's oldest parish church dating back to the 12th century. The 92-meter tower 'Alter Peter' offers spectacular panoramic views of the city and Alps from its 56-meter viewing platform.",
-          "notes": "Munich's oldest church - climb \"Alter Peter\" tower for city views (300+ steps)",
+          "notes": "Climb \"Alter Peter\" tower for city views (300+ steps)",
           "googleMapsUrl": "https://maps.google.com/?cid=12579101524591160423&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "munich-karlsplatz",
           "name": "Karlsplatz (Stachus)",
-          "coordinates": [11.5660209, 48.1392462],
+          "coordinates": [
+            11.5660209,
+            48.1392462
+          ],
           "category": "practical",
-          "description": "Major transportation hub and western gateway to Munich's pedestrian zone. Features the historic 14th-century Karlstor gate, underground shopping mall, and serves as the starting point for city center exploration.",
+          "description": "Major transportation hub and western gateway to Munich's pedestrian zone. Features the historic 14th-century Karlstor gate, underground shopping mall.",
           "notes": "Major square with Karlstor gate and shopping mall below",
           "googleMapsUrl": "https://maps.google.com/?cid=5986232855190454813&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "30 minutes"
         },
         {
           "id": "munich-frauenkirche",
           "name": "Frauenkirche",
-          "coordinates": [11.5730126, 48.1386649],
+          "coordinates": [
+            11.5730126,
+            48.1386649
+          ],
           "category": "landmark",
           "description": "Munich's iconic cathedral and most famous landmark with distinctive twin green-domed towers. Built 1468-1488, it features the legendary 'Devil's Footprint' - a black mark at the entrance linked to architectural trickery.",
-          "notes": "Cathedral with twin towers - Munich's most famous landmark with \"Devil's Footprint\"",
+          "notes": "Munich's most famous landmark with \"Devil's Footprint\"",
           "googleMapsUrl": "https://maps.google.com/?cid=12598930065456986&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1 hour"
         },
         {
           "id": "munich-aloft-hotel",
           "name": "Aloft Munich",
-          "coordinates": [11.5588983, 48.1392677],
+          "coordinates": [
+            11.5588983,
+            48.1392677
+          ],
           "category": "hotel",
-          "description": "Modern hotel located near Munich Central Station, offering contemporary accommodations with easy access to the city center and major attractions.",
+          "description": "Near Munich Central Station",
           "notes": "Address: Bayerstraße 37, Munich, Germany 80335 - Phone: +49 89-5402370",
           "googleMapsUrl": "https://maps.app.goo.gl/nkZdiaoqJ2QSD3ASA",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "booked",
           "estimatedDuration": "accommodation"
         }
@@ -98,137 +136,195 @@
       "name": "Helsinki (HEL)",
       "country": "Finland",
       "countryCode": "FI",
-      "centerCoordinates": [24.9384, 60.1699],
+      "centerCoordinates": [
+        24.9384,
+        60.1699
+      ],
       "pois": [
         {
           "id": "helsinki-old-market-hall",
           "name": "Old Market Hall (Vanha kauppahalli)",
-          "coordinates": [24.9528226, 60.1662146],
+          "coordinates": [
+            24.9528226,
+            60.1662146
+          ],
           "category": "food",
           "description": "Historic indoor market hall, great for trying local foods like Karelian Pie.",
           "notes": "Seen from Phil on Netflix",
           "googleMapsUrl": "https://maps.app.goo.gl/rDT392jiWLmAHZq69",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "helsinki-sibelius-monument",
           "name": "Sibelius Monument Vallikallio",
-          "coordinates": [24.913429, 60.1820451],
+          "coordinates": [
+            24.913429,
+            60.1820451
+          ],
           "category": "landmark",
           "description": "Abstract monument dedicated to Finnish composer Jean Sibelius, located in Sibelius Park.",
           "notes": "rs,p731",
           "googleMapsUrl": "https://maps.app.goo.gl/bJgz7JWUAb1idEg99",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1 hour"
         },
         {
           "id": "helsinki-market-square",
           "name": "Kauppatori - Market Square",
-          "coordinates": [24.9541698, 60.1677083],
+          "coordinates": [
+            24.9541698,
+            60.1677083
+          ],
           "category": "culture",
           "description": "Helsinki's main outdoor market square, located at the South Harbour. A hub for food stalls and ferries.",
           "notes": "rs,p731",
           "googleMapsUrl": "https://maps.app.goo.gl/GwVVFPTTwwcy1Xnw7",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "helsinki-oodi-library",
           "name": "Helsinki Central Library Oodi",
-          "coordinates": [24.9379191, 60.1736833],
+          "coordinates": [
+            24.9379191,
+            60.1736833
+          ],
           "category": "culture",
           "description": "A stunning example of modern architecture and a vibrant public space.",
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/hLLbNeM7j2j1YJse9",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "helsinki-senate-square",
           "name": "Senate Square (Senaatintori)",
-          "coordinates": [24.9522867, 60.1694794],
+          "coordinates": [
+            24.9522867,
+            60.1694794
+          ],
           "category": "landmark",
           "description": "A unique architectural square featuring Helsinki Cathedral and other neoclassical buildings.",
           "notes": "rs,p713",
           "googleMapsUrl": "https://maps.app.goo.gl/iaJLSvxFbwfTqUJ7A",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1 hour"
         },
         {
           "id": "helsinki-kamppi-chapel",
           "name": "Kamppi Chapel (Chapel of Silence)",
-          "coordinates": [24.9353421, 60.1697131],
+          "coordinates": [
+            24.9353421,
+            60.1697131
+          ],
           "category": "landmark",
           "description": "A serene wooden chapel located in a busy commercial area, offering a quiet retreat.",
           "notes": "rs,p730",
           "googleMapsUrl": "https://maps.app.goo.gl/vrhEDPSDZMvRT2Qg8",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "30 minutes"
         },
         {
           "id": "helsinki-temppeliaukio-rock-church",
           "name": "Temppeliaukio Church (Rock Church)",
-          "coordinates": [24.9252647, 60.1730122],
+          "coordinates": [
+            24.9252647,
+            60.1730122
+          ],
           "category": "landmark",
           "description": "A Lutheran church built directly into solid rock, famous for its unique architecture and acoustics.",
           "notes": "rs,p731",
           "googleMapsUrl": "https://maps.app.goo.gl/JajobCKdFrgj1hhK7",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1 hour"
         },
         {
           "id": "helsinki-esplanadi",
           "name": "Esplanadi",
-          "coordinates": [24.9450346, 60.1674841],
+          "coordinates": [
+            24.9450346,
+            60.1674841
+          ],
           "category": "culture",
           "description": "A beautiful pedestrian boulevard and urban park in the heart of Helsinki.",
           "notes": "Pedestrian boulevard",
           "googleMapsUrl": "https://maps.app.goo.gl/FEpsMDAh54Pt17Ws5",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "helsinki-design-district",
           "name": "Design District",
-          "coordinates": [24.9370194, 60.1642385],
+          "coordinates": [
+            24.9370194,
+            60.1642385
+          ],
           "category": "culture",
           "description": "A neighborhood filled with design and antique shops, fashion stores, museums, and galleries. (Link points to the Design Museum as a central starting point)",
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/EwUuHFEstV3fbqXY9",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "2-3 hours"
         },
         {
           "id": "helsinki-suomenlinna",
           "name": "Suomenlinna",
-          "coordinates": [24.9832491, 60.1468551],
+          "coordinates": [
+            24.9832491,
+            60.1468551
+          ],
           "category": "landmark",
           "description": "An 18th-century sea fortress and UNESCO World Heritage site spread across a group of islands. (Link points to the main ferry arrival pier)",
           "notes": "Fortress island",
           "googleMapsUrl": "https://maps.app.goo.gl/nAVeSVTEJHHj5x3r5",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "3-4 hours"
         },
         {
           "id": "helsinki-hotel-u14",
           "name": "Hotel U14, Autograph Collection",
-          "coordinates": [24.9486334, 60.1649695],
+          "coordinates": [
+            24.9486334,
+            60.1649695
+          ],
           "category": "hotel",
           "description": "Boutique hotel part of Marriott's Autograph Collection, located in the heart of Helsinki with unique design and personalized service.",
           "notes": "Address: Unioninkatu 14, Helsinki, Finland 00130 - Phone: +35 829 3141414",
           "googleMapsUrl": "https://maps.app.goo.gl/yGR7QQMFpH5wNR3cA",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "booked",
           "estimatedDuration": "accommodation"
         }
@@ -239,101 +335,144 @@
       "name": "Tallinn (TLL)",
       "country": "Estonia",
       "countryCode": "EE",
-      "centerCoordinates": [24.7536, 59.4370],
+      "centerCoordinates": [
+        24.7536,
+        59.437
+      ],
       "pois": [
         {
           "id": "tallinn-hotel-viru-kgb",
           "name": "Hotel Viru & KGB Museum",
-          "coordinates": [24.7534737, 59.4366062],
+          "coordinates": [
+            24.7534737,
+            59.4366062
+          ],
           "category": "culture",
           "description": "Soviet-era tourist hotel with a secret KGB museum on the 23rd floor. Once the tallest building in Estonia, this hotel was used by the KGB to monitor foreign visitors during the Soviet occupation.",
           "notes": "rs,p784 - Soviet-era tourist hotel",
           "googleMapsUrl": "https://maps.app.goo.gl/km7x1VEQf8q9sCkk8?g_st=ipc",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "tallinn-kgb-prison-cells",
           "name": "KGB Prison Cells",
-          "coordinates": [24.7474744, 59.4407311],
+          "coordinates": [
+            24.7474744,
+            59.4407311
+          ],
           "category": "culture",
           "description": "Former KGB prison cells preserved as a museum showcasing the dark history of Soviet occupation. Experience the harsh reality of political imprisonment during Estonia's Soviet era.",
           "notes": "rs,p784",
           "googleMapsUrl": "https://maps.app.goo.gl/DA6YvLM4c1yr5ELx6?g_st=ipc",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "tallinn-depeche-mode-baar",
           "name": "Depeche Mode Baar",
-          "coordinates": [24.7439538, 59.4375343],
+          "coordinates": [
+            24.7439538,
+            59.4375343
+          ],
           "category": "culture",
           "description": "Unique themed bar dedicated to the British electronic band Depeche Mode. A cult destination for fans featuring band memorabilia, themed cocktails, and regular tribute nights.",
           "notes": "Carved Stone Museum",
           "googleMapsUrl": "https://maps.app.goo.gl/93AQ2wU5yHwB7cJv6?g_st=ipc",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "tallinn-carved-stone-museum",
           "name": "Carved Stone Museum",
-          "coordinates": [24.7412552, 59.4348093],
+          "coordinates": [
+            24.7412552,
+            59.4348093
+          ],
           "category": "culture",
           "description": "",
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/hS7ejrsTAwFuMgKBA?g_st=ipc",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "tallinn-patkuli-viewing-platform",
           "name": "Patkuli Viewing Platform",
-          "coordinates": [24.7410855, 59.4389883],
+          "coordinates": [
+            24.7410855,
+            59.4389883
+          ],
           "category": "landmark",
           "description": "Scenic viewing platform offering panoramic views over Tallinn's medieval Old Town, red-tiled rooftops, and the Baltic Sea. One of the best photo spots in the city.",
           "notes": "Best views over Old Town and Baltic Sea",
           "googleMapsUrl": "https://maps.app.goo.gl/7gZ31gCppjfJtY3h8?g_st=ipc",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "30-45 minutes"
         },
         {
           "id": "tallinn-alexander-nevsky-cathedral",
           "name": "Alexander Nevsky Cathedral",
-          "coordinates": [24.739097, 59.4358533],
+          "coordinates": [
+            24.739097,
+            59.4358533
+          ],
           "category": "landmark",
           "description": "Striking Russian Orthodox cathedral built in 1900 during the Russian Empire period. Famous for its onion domes and elaborate interior, representing Russian influence in Estonian history.",
           "notes": "Russian Orthodox",
           "googleMapsUrl": "https://maps.app.goo.gl/Pam9m29rWcy77wKu5?g_st=ipc",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "45 minutes"
         },
         {
           "id": "tallinn-kiek-in-de-kok",
           "name": "Kiek in de Kök Museum and Bastion Tunnels",
-          "coordinates": [24.7407135, 59.4346895],
+          "coordinates": [
+            24.7407135,
+            59.4346895
+          ],
           "category": "culture",
           "description": "Medieval defense tower and underground bastion tunnels system. The name means 'Peek into the Kitchen' as soldiers could see into houses below. Includes fascinating WWII tunnel network.",
           "notes": "Medieval tower with underground tunnels",
           "googleMapsUrl": "https://maps.app.goo.gl/aUqa32t1AaGRvUSu6?g_st=ipc",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "2-3 hours"
         },
         {
           "id": "tallinn-fat-margaret",
           "name": "Fat Margaret",
-          "coordinates": [24.7490878, 59.442611],
+          "coordinates": [
+            24.7490878,
+            59.442611
+          ],
           "category": "landmark",
           "description": "Massive 16th-century cannon tower guarding Tallinn's harbor entrance. Now houses the Estonian Maritime Museum with exhibits on naval history and maritime traditions.",
           "notes": "Historic cannon tower at harbor entrance",
           "googleMapsUrl": "https://maps.app.goo.gl/zgN8oJN3qQa9tsfx8?g_st=ipc",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         }
@@ -344,65 +483,93 @@
       "name": "Stockholm (ARN)",
       "country": "Sweden",
       "countryCode": "SE",
-      "centerCoordinates": [18.0686, 59.3293],
+      "centerCoordinates": [
+        18.0686,
+        59.3293
+      ],
       "pois": [
         {
           "id": "stockholm-gamla-stan",
           "name": "Gamla Stan",
-          "coordinates": [18.0718675, 59.3256954],
+          "coordinates": [
+            18.0718675,
+            59.3256954
+          ],
           "category": "landmark",
           "description": "Stockholm's historic Old Town island, one of the largest and best-preserved medieval city centers in Europe. Featuring cobblestone streets, colorful 17th-18th century buildings, and the Royal Palace.",
           "notes": "Historic Old Town island - explore cobblestone streets and colorful buildings",
           "googleMapsUrl": "https://maps.app.goo.gl/N1o4aSVZxjeHxASDA",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "2-3 hours"
         },
         {
           "id": "stockholm-skansen",
           "name": "Skansen",
-          "coordinates": [18.1025, 59.3260],
+          "coordinates": [
+            18.1025,
+            59.326
+          ],
           "category": "culture",
           "description": "World's first open-air folk museum and zoo, showcasing Swedish history and culture through historic buildings, traditional crafts, and Nordic animals including bears, wolves, and reindeer.",
           "notes": "rs,p584",
           "googleMapsUrl": "https://maps.app.goo.gl/hzcygcgp25gRpRq19",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "3-4 hours"
         },
         {
           "id": "stockholm-vasa-museum",
           "name": "Vasa Museum",
-          "coordinates": [18.0916, 59.3280],
+          "coordinates": [
+            18.0916,
+            59.328
+          ],
           "category": "culture",
           "description": "Maritime museum housing the 17th-century warship Vasa, which sank on its maiden voyage in 1628 and was salvaged 333 years later. The ship is 95% original and remarkably well-preserved. Watch the film, take free guided tour. Audiobook tour available",
           "notes": "rs,p586",
           "googleMapsUrl": "https://maps.app.goo.gl/uCGBs3QVe8eheBoG6",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "2-3 hours"
         },
         {
           "id": "stockholm-fotografiska",
           "name": "Anton Corbijn | Fotografiska Stockholm",
-          "coordinates": [18.0845, 59.3181],
+          "coordinates": [
+            18.0845,
+            59.3181
+          ],
           "category": "culture",
           "description": "Contemporary photography museum featuring world-class exhibitions. The Anton Corbijn exhibition showcases iconic portraits of musicians and celebrities by the renowned Dutch photographer.",
           "notes": "rs,p594 - Check the exhibit date!!",
           "googleMapsUrl": "https://maps.app.goo.gl/krsXpM7MiCheaiTBA",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "stockholm-sheraton-hotel",
           "name": "Sheraton Stockholm Hotel",
-          "coordinates": [18.0590408, 59.3290754],
+          "coordinates": [
+            18.0590408,
+            59.3290754
+          ],
           "category": "hotel",
           "description": "Premium hotel located on Södermalm island with stunning views of Stockholm's Old Town and waterfront. Perfect location for exploring the city.",
           "notes": "Address: Tegelbacken 6, 101 23 Stockholm, Sweden 10123 - Phone: +4684123400",
           "googleMapsUrl": "https://maps.app.goo.gl/p2DwGtkK9rYMv9368",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "booked",
           "estimatedDuration": "accommodation"
         }
@@ -411,163 +578,231 @@
     {
       "id": "copenhagen",
       "name": "Copenhagen (CPH)",
-      "country": "Denmark", 
+      "country": "Denmark",
       "countryCode": "DK",
-      "centerCoordinates": [12.5683, 55.6761],
+      "centerCoordinates": [
+        12.5683,
+        55.6761
+      ],
       "pois": [
         {
           "id": "copenhagen-little-mermaid",
           "name": "The Little Mermaid",
-          "coordinates": [12.59928, 55.69286],
+          "coordinates": [
+            12.59928,
+            55.69286
+          ],
           "category": "landmark",
           "description": "Iconic bronze statue inspired by Hans Christian Andersen's fairy tale, created by sculptor Edvard Eriksen in 1913. Despite being smaller than expected, it's one of Copenhagen's most famous symbols.",
           "notes": "Small but iconic statue - best photos from the rocks nearby",
           "googleMapsUrl": "https://maps.app.goo.gl/g8VD9gNTFnfKVTxR9",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "30-45 minutes"
         },
         {
           "id": "copenhagen-stroget",
           "name": "Strøget",
-          "coordinates": [12.5774366, 55.6786719],
+          "coordinates": [
+            12.5774366,
+            55.6786719
+          ],
           "category": "culture",
           "description": "Pedestrian street - Europe's first fully pedestrianized streets",
           "notes": "Europe's first fully pedestrianized street - great for shopping and people watching",
           "googleMapsUrl": "https://maps.app.goo.gl/qarUJG81u1yp4Z1ZA",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "copenhagen-city-hall",
           "name": "Rådhuspladsen - City Hall",
-          "coordinates": [12.57016, 55.67528],
+          "coordinates": [
+            12.57016,
+            55.67528
+          ],
           "category": "landmark",
           "description": "Copenhagen's historic city hall and central square, a major gathering place and tourist hub in the heart of the city.",
           "notes": "rs.p77.p, climb the tower, clock opposite to info desk",
           "googleMapsUrl": "https://maps.app.goo.gl/G51SXXpYj5FkVQDZ7",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "copenhagen-christiansborg-palace",
           "name": "Christiansborg Palace",
-          "coordinates": [12.58034, 55.67655],
+          "coordinates": [
+            12.58034,
+            55.67655
+          ],
           "category": "landmark",
           "description": "Historic palace complex that houses the Danish Parliament, Supreme Court, and Prime Minister's Office, with beautiful royal reception rooms.",
           "notes": "rs, p83",
           "googleMapsUrl": "https://maps.app.goo.gl/yVJQWuhx1P9sQmrcA",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "2-3 hours"
         },
         {
           "id": "copenhagen-royal-library",
           "name": "Det Kgl. Bibliotek, The Royal Library",
-          "coordinates": [12.58265, 55.67339],
+          "coordinates": [
+            12.58265,
+            55.67339
+          ],
           "category": "culture",
           "description": "\"Black Diamond\"",
           "notes": "rs,p88",
           "googleMapsUrl": "https://maps.app.goo.gl/Bp3VkKaqgMjSK6gz8",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "copenhagen-round-tower",
           "name": "Round Tower",
-          "coordinates": [12.57573, 55.68134],
+          "coordinates": [
+            12.57573,
+            55.68134
+          ],
           "category": "landmark",
           "description": "Observatory, Check the observatory open hour",
           "notes": "rs,p88",
           "googleMapsUrl": "https://maps.app.goo.gl/mtYcKoPAtVRDFJne7",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "copenhagen-tivoli-gardens",
           "name": "Tivoli Gardens",
-          "coordinates": [12.56814, 55.67368],
+          "coordinates": [
+            12.56814,
+            55.67368
+          ],
           "category": "culture",
           "description": "Historic amusement park opened in 1843, one of the world's oldest operating amusement parks. Features beautiful gardens, vintage rides, concerts, and seasonal decorations that inspired Walt Disney.",
           "notes": "RS.P75",
           "googleMapsUrl": "https://maps.app.goo.gl/8JbhfJdFGx5mqs997",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "3-4 hours"
         },
         {
           "id": "copenhagen-amalienborg-palace",
           "name": "Amalienborg Palace",
-          "coordinates": [12.59302, 55.68405],
+          "coordinates": [
+            12.59302,
+            55.68405
+          ],
           "category": "landmark",
           "description": "Where the king lives, changing of the guard at noon",
           "notes": "rs,p89",
           "googleMapsUrl": "https://maps.app.goo.gl/6AyATeWaLgy5nt4E8",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "copenhagen-church-our-saviour",
           "name": "Church of Our Saviour",
-          "coordinates": [12.59421, 55.67293],
+          "coordinates": [
+            12.59421,
+            55.67293
+          ],
           "category": "landmark",
           "description": "Spiral spire",
           "notes": "rs,p98",
           "googleMapsUrl": "https://maps.app.goo.gl/pYd8rgqaseTAAH77A",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1 hour"
         },
         {
           "id": "copenhagen-fisketorvet-pool",
           "name": "Open water swimming pool Fisketorvet",
-          "coordinates": [12.56357, 55.66268],
+          "coordinates": [
+            12.56357,
+            55.66268
+          ],
           "category": "culture",
           "description": "Harbour bath",
           "notes": "rs,p106",
           "googleMapsUrl": "https://maps.app.goo.gl/mBXwWE82PqDFpBN3A",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "copenhagen-islands-brygge",
           "name": "Islands Brygge Havnepark",
-          "coordinates": [12.57881, 55.66816],
+          "coordinates": [
+            12.57881,
+            55.66816
+          ],
           "category": "culture",
           "description": "Harbour bath",
           "notes": "rs,p106",
           "googleMapsUrl": "https://maps.app.goo.gl/mJPrSdZbUVVepXp59",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "1-2 hours"
         },
         {
           "id": "copenhagen-open-air-museum",
           "name": "The Open Air Museum",
-          "coordinates": [12.49014, 55.78567],
+          "coordinates": [
+            12.49014,
+            55.78567
+          ],
           "category": "culture",
           "description": "Historic Danish village recreation showcasing traditional Danish life and architecture from different periods.",
           "notes": "rs,p107",
           "googleMapsUrl": "https://maps.app.goo.gl/VvsQydDf2iKdkMLM9",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "planned",
           "estimatedDuration": "2-3 hours"
         },
         {
           "id": "copenhagen-residence-inn",
           "name": "Residence Inn Copenhagen Nordhavn",
-          "coordinates": [12.5981343, 55.7073923],
+          "coordinates": [
+            12.5981343,
+            55.7073923
+          ],
           "category": "hotel",
           "description": "Extended-stay hotel in the modern Nordhavn district with apartment-style suites, perfect for longer stays with kitchen facilities and spacious accommodations.",
           "notes": "Address: Tallinngade 12, Copenhagen, Denmark 2150 - Phone: +4530308124",
           "googleMapsUrl": "https://maps.app.goo.gl/XghNPWQiQAAjwP6d9",
-          "photos": [],
+          "photos": [
+
+          ],
           "visitStatus": "booked",
           "estimatedDuration": "accommodation"
         }
@@ -577,19 +812,27 @@
       "id": "malmo",
       "name": "Malmö (MMX)",
       "country": "Sweden",
-      "countryCode": "SE", 
-      "centerCoordinates": [13.0007, 55.6050],
+      "countryCode": "SE",
+      "centerCoordinates": [
+        13.0007,
+        55.605
+      ],
       "pois": [
         {
           "id": "malmo-turning-torso",
           "name": "Turning Torso",
-          "coordinates": [12.9766806, 55.6132075],
+          "coordinates": [
+            12.9766806,
+            55.6132075
+          ],
           "category": "landmark",
           "description": "Neo-futurist architectural marvel designed by Santiago Calatrava, completed in 2005. At 190 meters tall, it's the tallest building in Scandinavia, with a distinctive twisted design rotating 90 degrees from base to top.",
           "notes": "Tallest building in Scandinavia with twisted architecture - visible from Copenhagen across the Öresund Bridge",
           "googleMapsUrl": "https://maps.app.goo.gl/Noe5gYxnNxjfPJsW6",
-          "photos": [],
-          "visitStatus": "planned", 
+          "photos": [
+
+          ],
+          "visitStatus": "planned",
           "estimatedDuration": "1 hour"
         }
       ]
