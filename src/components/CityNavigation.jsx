@@ -36,6 +36,7 @@ const CityNavigation = ({ onCitySelect, currentCity = null }) => {
     };
   }, [isOpen]);
 
+
   const handleCityClick = (city) => {
     setIsOpen(false);
     if (onCitySelect) {
@@ -84,7 +85,6 @@ const CityNavigation = ({ onCitySelect, currentCity = null }) => {
           minHeight: '44px', // Touch-friendly minimum size
           transition: 'all 0.2s ease',
           transform: isOpen ? 'scale(0.98)' : 'scale(1)',
-          userSelect: 'none',
           ':hover': {
             boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2)'
           }
@@ -96,7 +96,7 @@ const CityNavigation = ({ onCitySelect, currentCity = null }) => {
           e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
         }}
       >
-        <span style={{ flex: 1, textAlign: 'left', userSelect: 'none' }}>
+        <span style={{ flex: 1, textAlign: 'left' }}>
           {displayName}
         </span>
         {/* Modern chevron with rotation animation */}

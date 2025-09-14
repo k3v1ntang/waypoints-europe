@@ -173,7 +173,7 @@ const Map = () => {
             '#dc2626', // Red for hotels
             '#2563eb'  // Blue for POIs
           ],
-          'circle-radius': 10,
+          'circle-radius': 9,
           'circle-stroke-width': 3,
           'circle-stroke-color': '#ffffff'
         }

@@ -613,7 +613,8 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - **iPhone Compatibility**: ✅ Safe area handling for attribution visibility
 - **Map Clustering**: ✅ Professional Mapbox clustering with color-coded density indicators
 - **Hotel Integration**: ✅ 4 hotels with distinct red markers and Google Maps integration
-- **Navigation UX**: ✅ Text selection prevention for clean button interactions
+- **Navigation UX**: ✅ Clean navigation interface with proper mobile optimization
+- **Marker Optimization**: ✅ Reduced marker size to 9px for better mobile screen utilization
 
 ### Post-Trip Enhancement
 - [ ] Replace placeholder photos with actual travel photos
