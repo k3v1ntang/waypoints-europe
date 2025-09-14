@@ -586,6 +586,7 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - [x] Remove popup close buttons for cleaner mobile UX
 - [x] Optimize "All Cities" dropdown text for single-line display
 - [x] Align city navigation with Mapbox controls positioning
+- [x] Fix iPhone safe area handling for Mapbox attribution visibility
 
 ### Travel Preparation
 - [x] Add actual Europe destinations to POI data (33 POIs across 6 cities)
@@ -609,6 +610,7 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - **Modern UI**: ✅ Professional city navigation and map controls implemented
 - **Geolocation**: ✅ Current location tracking with direction indicator
 - **User Experience**: ✅ Clean popups, optimized text, aligned controls
+- **iPhone Compatibility**: ✅ Safe area handling for attribution visibility
 
 ### Post-Trip Enhancement
 - [ ] Replace placeholder photos with actual travel photos

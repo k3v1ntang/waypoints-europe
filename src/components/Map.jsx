@@ -153,7 +153,8 @@ const Map = () => {
           right: 0,
           bottom: 0,
           height: '100vh', 
-          width: '100vw'
+          width: '100vw',
+          paddingBottom: 'env(safe-area-inset-bottom)'
         }} 
       />
       

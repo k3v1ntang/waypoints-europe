@@ -28,6 +28,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  /* iPhone safe area handling */
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 h1 {
@@ -65,4 +67,15 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* iPhone safe area handling for Mapbox */
+.mapboxgl-ctrl-bottom-left,
+.mapboxgl-ctrl-bottom-right {
+  margin-bottom: env(safe-area-inset-bottom) !important;
+}
+
+/* Ensure map container respects safe areas */
+.mapboxgl-map {
+  padding-bottom: env(safe-area-inset-bottom);
 }
