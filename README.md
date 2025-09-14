@@ -1,12 +1,34 @@
-# React + Vite
+# Waypoints Europe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Progressive Web App for exploring European travel destinations with an interactive map interface.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interactive Map**: Explore points of interest across European cities
+- **Progressive Web App**: Install on mobile devices for native-like experience
+- **Offline Support**: Access your travel guide without internet connection
+- **Mobile Optimized**: Touch-friendly interface designed for travel
+- **City Navigation**: Browse locations across Munich, Helsinki, Stockholm, Copenhagen, and more
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 18 with Vite
+- Mapbox GL JS for interactive maps
+- Progressive Web App capabilities
+- Modern JavaScript (ES6+)
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Set up your Mapbox access token in `.env`
+4. Run development server: `npm run dev`
+5. Build for production: `npm run build`
+
+## Development
+
+Built with modern web technologies and best practices for performance and user experience. The app uses service workers for offline functionality and follows PWA standards for cross-platform compatibility.
+
+## License
+
+MIT
