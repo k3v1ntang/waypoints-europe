@@ -2,42 +2,52 @@ import { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import poisData from '../data/pois.json';
+import CityNavigation from './CityNavigation.jsx';
 
 const Map = () => {
   const mapContainerRef = useRef();
   const mapRef = useRef();
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
-  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [currentCity, setCurrentCity] = useState(null);
 
-  // Monitor online status
-  useEffect(() => {
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
+  // Function to handle city selection and zoom
+  const handleCitySelect = (city) => {
+    setCurrentCity(city);
     
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
+    if (!mapRef.current) return;
     
-    return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
-  }, []);
-
-  // Manual refresh function
-  const refreshMaps = async () => {
-    if (!isOnline) return;
-    
-    setIsRefreshing(true);
-    try {
-      // Clear Mapbox cache
-      const cache = await caches.open('mapbox-cache');
-      await cache.delete('https://api.mapbox.com');
+    if (city === null) {
+      // Show all cities - zoom out to Europe view
+      mapRef.current.flyTo({
+        center: [15.0, 54.0], // Europe center
+        zoom: 4,
+        duration: 1500,
+        essential: true
+      });
+    } else {
+      // Calculate bounds for the selected city's POIs
+      const coordinates = city.pois.map(poi => poi.coordinates);
       
-      // Reload the page to fetch fresh tiles
-      window.location.reload();
-    } catch (error) {
-      console.error('Failed to refresh maps:', error);
-      setIsRefreshing(false);
+      if (coordinates.length === 0) return;
+      
+      if (coordinates.length === 1) {
+        // Single POI - center and zoom in
+        mapRef.current.flyTo({
+          center: coordinates[0],
+          zoom: 14,
+          duration: 1500,
+          essential: true
+        });
+      } else {
+        // Multiple POIs - fit bounds to show all
+        const bounds = new mapboxgl.LngLatBounds();
+        coordinates.forEach(coord => bounds.extend(coord));
+        
+        mapRef.current.fitBounds(bounds, {
+          padding: { top: 80, bottom: 50, left: 50, right: 50 },
+          duration: 1500,
+          essential: true
+        });
+      }
     }
   };
   
@@ -54,6 +64,9 @@ const Map = () => {
       zoom: 4, // Appropriate zoom to see Munich to Helsinki range
       style: 'mapbox://styles/mapbox/streets-v12'
     });
+
+    // Add navigation controls (zoom + compass) to top-right corner
+    map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
     // Wait for map to load, then add POI markers
     map.on('load', () => {
@@ -132,32 +145,11 @@ const Map = () => {
         }} 
       />
       
-      {/* Manual refresh button - only shows when online */}
-      {isOnline && (
-        <button
-          onClick={refreshMaps}
-          disabled={isRefreshing}
-          style={{
-            position: 'absolute',
-            top: '16px',
-            right: '16px',
-            backgroundColor: '#2563eb',
-            color: 'white',
-            border: 'none',
-            borderRadius: '8px',
-            padding: '12px 16px',
-            fontSize: '14px',
-            fontWeight: '500',
-            cursor: isRefreshing ? 'not-allowed' : 'pointer',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-            zIndex: 1000,
-            opacity: isRefreshing ? 0.7 : 1,
-            transition: 'opacity 0.2s ease'
-          }}
-        >
-          {isRefreshing ? '↻ Updating...' : '↻ Refresh Maps'}
-        </button>
-      )}
+      {/* City Navigation Dropdown */}
+      <CityNavigation 
+        onCitySelect={handleCitySelect}
+        currentCity={currentCity}
+      />
     </>
   );
 };

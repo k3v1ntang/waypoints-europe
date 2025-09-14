@@ -570,21 +570,38 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - [x] Add "View on Google Maps" links to Munich POIs
 - [x] Update PWA theme to consistent blue (#2563eb) matching refresh button
 - [x] Update refresh button icon from emoji to clean white arrow (↻)
-- [ ] Complete coordinate updates for remaining cities (Helsinki, Tallinn, Stockholm, Copenhagen, Malmö)
+- [x] Complete coordinate updates for remaining cities (Helsinki, Tallinn, Stockholm, Copenhagen, Malmö)
+
+### Modern UI Implementation (September 2025)
+- [x] Remove refresh button and clean up unnecessary code
+- [x] Create modern city navigation dropdown component with 2025 UX best practices
+- [x] Implement top-left positioned "Waypoints" dropdown with airport codes
+- [x] Add smooth city selection and map zoom functionality
+- [x] Integrate Mapbox NavigationControl with zoom in/out and compass buttons
+- [x] Position navigation controls in top-right corner following industry standards
+- [x] Implement click-outside-to-close and touch-friendly interactions
+- [x] Add country flag icons and POI count indicators to dropdown
 
 ### Travel Preparation
-- [x] Add actual Europe destinations to POI data (25 POIs across 6 cities)
+- [x] Add actual Europe destinations to POI data (33 POIs across 6 cities)
 - [x] Optimize for mobile touch interactions and responsive design
 - [x] Test on iPhone/iPad with successful PWA installation
 - [x] Pre-cache map tiles strategy (30-day cache window)
-- [ ] Complete Google Maps coordinate accuracy for all remaining cities
-- [ ] Final testing and validation before Europe trip
+- [x] Complete Google Maps coordinate accuracy for all cities with precision positioning
+- [x] Troubleshoot and fix Stockholm coordinate alignment issues
+- [x] Final testing and validation before Europe trip
 
-### Current Status (September 11, 2025)
-- **Munich POIs**: ✅ Complete with accurate coordinates and Google Maps links
-- **Remaining Cities**: 🔄 Coordinate updates in progress
+### Current Status (September 13, 2025)
+- **All Cities**: ✅ Complete with accurate coordinates and Google Maps links
+- **Stockholm**: ✅ Precision-corrected coordinates with perfect marker alignment
+- **Copenhagen**: ✅ Expanded to 12 POIs with comprehensive travel information
+- **Tallinn**: ✅ 8 POIs with updated coordinates and new Carved Stone Museum
+- **Helsinki**: ✅ 8 POIs with Google Maps integration maintained
+- **Malmö**: ✅ Updated Turning Torso coordinates
+- **Munich**: ✅ Complete with accurate coordinates and Google Maps links
 - **PWA Features**: ✅ Fully functional with blue theme and offline capability
 - **Production Build**: ✅ Live and tested on mobile devices
+- **Modern UI**: ✅ Professional city navigation and map controls implemented
 
 ### Post-Trip Enhancement
 - [ ] Replace placeholder photos with actual travel photos
@@ -592,12 +609,20 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - [ ] Add more POIs discovered during travel
 - [ ] Implement user feedback and improvements
 
-### Notes
+### Technical Architecture
+- **Theme Configuration**: `src/config/theme.js` - Centralized color scheme and component styling
+- **Primary Color**: `#2563eb` (professional blue) - documented in theme config for consistency
+- **Navigation Component**: `src/components/CityNavigation.jsx` - Modern dropdown with 2025 UX patterns
+- **Map Controls**: Integrated Mapbox NavigationControl for zoom/compass functionality
+- **Coordinate Format**: `[longitude, latitude]` for Mapbox GL JS compatibility
+
+### Development Notes
 - **Environment variable**: `VITE_MAPBOX_TOKEN` (not `REACT_APP_MAPBOX_TOKEN`)
 - **Target**: Europe trip for real-world testing
 - **Focus**: Offline-first, mobile-friendly, professional appearance
 - **Deployment**: Can be deployed to Vercel, Netlify, or GitHub Pages
 - **Future**: Easy migration path to Electron for desktop features if needed
+- **UI Framework**: Following 2025 mobile-first design patterns with touch-friendly interactions
 
 ---
 

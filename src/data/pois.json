@@ -325,7 +325,7 @@
         {
           "id": "stockholm-gamla-stan",
           "name": "Gamla Stan",
-          "coordinates": [18.0603883, 59.324987],
+          "coordinates": [18.0718675, 59.3256954],
           "category": "landmark",
           "description": "Stockholm's historic Old Town island, one of the largest and best-preserved medieval city centers in Europe. Featuring cobblestone streets, colorful 17th-18th century buildings, and the Royal Palace.",
           "tips": "Historic Old Town island - explore cobblestone streets and colorful buildings",
@@ -337,7 +337,7 @@
         {
           "id": "stockholm-skansen",
           "name": "Skansen",
-          "coordinates": [18.10299, 59.3255026],
+          "coordinates": [18.1025, 59.3260],
           "category": "culture",
           "description": "World's first open-air folk museum and zoo, showcasing Swedish history and culture through historic buildings, traditional crafts, and Nordic animals including bears, wolves, and reindeer.",
           "tips": "rs,p584",
@@ -349,7 +349,7 @@
         {
           "id": "stockholm-vasa-museum",
           "name": "Vasa Museum",
-          "coordinates": [18.0888215, 59.328026],
+          "coordinates": [18.0916, 59.3280],
           "category": "culture",
           "description": "Maritime museum housing the 17th-century warship Vasa, which sank on its maiden voyage in 1628 and was salvaged 333 years later. The ship is 95% original and remarkably well-preserved. Watch the film, take free guided tour. Audiobook tour available",
           "tips": "rs,p586",
@@ -361,7 +361,7 @@
         {
           "id": "stockholm-fotografiska",
           "name": "Anton Corbijn | Fotografiska Stockholm",
-          "coordinates": [18.082252, 59.3179646],
+          "coordinates": [18.0845, 59.3181],
           "category": "culture",
           "description": "Contemporary photography museum featuring world-class exhibitions. The Anton Corbijn exhibition showcases iconic portraits of musicians and celebrities by the renowned Dutch photographer.",
           "tips": "rs,p594 - Check the exhibit date!!",
