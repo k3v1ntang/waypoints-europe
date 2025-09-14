@@ -43,8 +43,13 @@ const CityNavigation = ({ onCitySelect, currentCity = null }) => {
     }
   };
 
-  // Sort cities alphabetically for predictable navigation (UX best practice)
-  const sortedCities = [...poisData.cities].sort((a, b) => a.name.localeCompare(b.name));
+  // Sort cities by travel itinerary order
+  const itineraryOrder = ['munich', 'helsinki', 'tallinn', 'stockholm', 'copenhagen', 'malmo'];
+  const sortedCities = [...poisData.cities].sort((a, b) => {
+    const indexA = itineraryOrder.indexOf(a.id);
+    const indexB = itineraryOrder.indexOf(b.id);
+    return indexA - indexB;
+  });
 
   const displayName = currentCity ? currentCity.name.split(' (')[0] : 'Waypoints';
 
