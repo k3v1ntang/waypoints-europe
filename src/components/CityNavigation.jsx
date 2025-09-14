@@ -53,8 +53,8 @@ const CityNavigation = ({ onCitySelect, currentCity = null }) => {
       ref={dropdownRef}
       style={{
         position: 'absolute',
-        top: '20px',
-        left: '20px',
+        top: '10px',
+        left: '10px',
         zIndex: 1000,
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
       }}
@@ -170,7 +170,7 @@ const CityNavigation = ({ onCitySelect, currentCity = null }) => {
                   color: !currentCity ? 'rgba(255,255,255,0.8)' : '#6b7280',
                   marginTop: '2px'
                 }}>
-                  View complete Europe map
+                  View complete map
                 </div>
               </div>
             </div>

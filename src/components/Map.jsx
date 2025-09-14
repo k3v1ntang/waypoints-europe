@@ -66,7 +66,19 @@ const Map = () => {
     });
 
     // Add navigation controls (zoom + compass) to top-right corner
-    map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+    const nav = new mapboxgl.NavigationControl();
+    map.addControl(nav, 'top-right');
+    
+    // Add geolocation control for current location tracking
+    const geolocate = new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true, // Enable live tracking for travel
+      showUserHeading: true   // Show direction user is facing
+    });
+    map.addControl(geolocate, 'top-right');
+    
 
     // Wait for map to load, then add POI markers
     map.on('load', () => {
@@ -89,7 +101,7 @@ const Map = () => {
           // Create popup with POI information - follows 2025 mobile UX best practices
           const popup = new mapboxgl.Popup({
             offset: 25,
-            closeButton: true,
+            closeButton: false,
             closeOnClick: true  // Enable click-away to close for better mobile UX
           }).setHTML(`
             <div style="max-width: 250px;">
