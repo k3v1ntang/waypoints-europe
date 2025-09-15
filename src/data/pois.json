@@ -143,7 +143,7 @@
       "pois": [
         {
           "id": "helsinki-old-market-hall",
-          "name": "Old Market Hall (Vanha kauppahalli)",
+          "name": "Vanha kauppahalli - Old Market Hall",
           "coordinates": [
             24.9528226,
             60.1662146
@@ -184,7 +184,7 @@
           ],
           "category": "culture",
           "description": "Helsinki's main outdoor market square, located at the South Harbour. A hub for food stalls and ferries.",
-          "notes": "rs,p731",
+          "notes": "rs,p709",
           "googleMapsUrl": "https://maps.app.goo.gl/GwVVFPTTwwcy1Xnw7",
           "photos": [
 
@@ -194,7 +194,7 @@
         },
         {
           "id": "helsinki-oodi-library",
-          "name": "Helsinki Central Library Oodi",
+          "name": "Oodi - Helsinki Central Library",
           "coordinates": [
             24.9379191,
             60.1736833
@@ -211,7 +211,7 @@
         },
         {
           "id": "helsinki-senate-square",
-          "name": "Senate Square (Senaatintori)",
+          "name": "Senaatintori - Senate Square",
           "coordinates": [
             24.9522867,
             60.1694794
@@ -228,7 +228,7 @@
         },
         {
           "id": "helsinki-kamppi-chapel",
-          "name": "Kamppi Chapel (Chapel of Silence)",
+          "name": "Kamppi Chapel - Chapel of Silence",
           "coordinates": [
             24.9353421,
             60.1697131
@@ -245,7 +245,7 @@
         },
         {
           "id": "helsinki-temppeliaukio-rock-church",
-          "name": "Temppeliaukio Church (Rock Church)",
+          "name": "Temppeliaukio Church - Rock Church",
           "coordinates": [
             24.9252647,
             60.1730122
@@ -593,7 +593,7 @@
             55.69286
           ],
           "category": "landmark",
-          "description": "Iconic bronze statue inspired by Hans Christian Andersen's fairy tale, created by sculptor Edvard Eriksen in 1913. Despite being smaller than expected, it's one of Copenhagen's most famous symbols.",
+          "description": "Bronze statue inspired by Hans Christian Andersen's fairy tale, created by sculptor Edvard Eriksen in 1913. Despite being smaller than expected, it's one of Copenhagen's most famous symbols.",
           "notes": "Small but iconic statue - best photos from the rocks nearby",
           "googleMapsUrl": "https://maps.app.goo.gl/g8VD9gNTFnfKVTxR9",
           "photos": [
@@ -628,7 +628,7 @@
           ],
           "category": "landmark",
           "description": "Copenhagen's historic city hall and central square, a major gathering place and tourist hub in the heart of the city.",
-          "notes": "rs.p77.p, climb the tower, clock opposite to info desk",
+          "notes": "rs.p77 - climb the tower, check the clock opposite to info desk",
           "googleMapsUrl": "https://maps.app.goo.gl/G51SXXpYj5FkVQDZ7",
           "photos": [
 
@@ -655,13 +655,13 @@
         },
         {
           "id": "copenhagen-royal-library",
-          "name": "Det Kgl. Bibliotek, The Royal Library",
+          "name": "Det Kgl. Bibliotek - The Royal Library",
           "coordinates": [
             12.58265,
             55.67339
           ],
           "category": "culture",
-          "description": "\"Black Diamond\"",
+          "description": "Nick name: \"Black Diamond\"",
           "notes": "rs,p88",
           "googleMapsUrl": "https://maps.app.goo.gl/Bp3VkKaqgMjSK6gz8",
           "photos": [
@@ -678,8 +678,8 @@
             55.68134
           ],
           "category": "landmark",
-          "description": "Observatory, Check the observatory open hour",
-          "notes": "rs,p88",
+          "description": "",
+          "notes": "rs,p88 - Observatory, Check the open hour",
           "googleMapsUrl": "https://maps.app.goo.gl/mtYcKoPAtVRDFJne7",
           "photos": [
 
@@ -696,7 +696,7 @@
           ],
           "category": "culture",
           "description": "Historic amusement park opened in 1843, one of the world's oldest operating amusement parks. Features beautiful gardens, vintage rides, concerts, and seasonal decorations that inspired Walt Disney.",
-          "notes": "RS.P75",
+          "notes": "rs,p75",
           "googleMapsUrl": "https://maps.app.goo.gl/8JbhfJdFGx5mqs997",
           "photos": [
 
@@ -712,8 +712,8 @@
             55.68405
           ],
           "category": "landmark",
-          "description": "Where the king lives, changing of the guard at noon",
-          "notes": "rs,p89",
+          "description": "The palace where the king lives",
+          "notes": "rs,p89 - changing of the guard at noon",
           "googleMapsUrl": "https://maps.app.goo.gl/6AyATeWaLgy5nt4E8",
           "photos": [
 
@@ -740,7 +740,7 @@
         },
         {
           "id": "copenhagen-fisketorvet-pool",
-          "name": "Open water swimming pool Fisketorvet",
+          "name": "Fisketorvet - Open Water Swimming Pool",
           "coordinates": [
             12.56357,
             55.66268
