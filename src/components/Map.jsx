@@ -3,15 +3,72 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import poisData from '../data/pois.json';
 import CityNavigation from './CityNavigation.jsx';
+import WalkingTourControls from './WalkingTourControls.jsx';
 
 const Map = () => {
   const mapContainerRef = useRef();
   const mapRef = useRef();
   const [currentCity, setCurrentCity] = useState(null);
+  const [selectedTour, setSelectedTour] = useState(null);
+
+  // Helper function to find POI coordinates by ID
+  const findPOICoordinates = (poiId, cityId) => {
+    const city = poisData.cities.find(c => c.id === cityId);
+    if (!city) return null;
+    const poi = city.pois.find(p => p.id === poiId);
+    return poi ? poi.coordinates : null;
+  };
+
+  // Function to handle walking tour selection
+  const handleTourSelect = (tour) => {
+    setSelectedTour(tour);
+
+    if (!mapRef.current) return;
+
+    if (tour) {
+      // Create direct lines between POIs in sequence
+      const coordinates = tour.poiSequence
+        .map(poiId => findPOICoordinates(poiId, currentCity.id))
+        .filter(coord => coord !== null);
+
+      if (coordinates.length >= 2) {
+        // Add or update the tour route source
+        if (mapRef.current.getSource('walking-tour-line')) {
+          mapRef.current.getSource('walking-tour-line').setData({
+            type: 'Feature',
+            geometry: {
+              type: 'LineString',
+              coordinates: coordinates
+            }
+          });
+        }
+
+        // Fit bounds to show the entire tour
+        const bounds = new mapboxgl.LngLatBounds();
+        coordinates.forEach(coord => bounds.extend(coord));
+        mapRef.current.fitBounds(bounds, {
+          padding: { top: 120, bottom: 50, left: 50, right: 50 },
+          duration: 1500
+        });
+      }
+    } else {
+      // Clear tour route
+      if (mapRef.current.getSource('walking-tour-line')) {
+        mapRef.current.getSource('walking-tour-line').setData({
+          type: 'Feature',
+          geometry: {
+            type: 'LineString',
+            coordinates: []
+          }
+        });
+      }
+    }
+  };
 
   // Function to handle city selection and zoom
   const handleCitySelect = (city) => {
     setCurrentCity(city);
+    setSelectedTour(null); // Clear any selected tour when changing cities
     
     if (!mapRef.current) return;
     
@@ -179,6 +236,34 @@ const Map = () => {
         }
       });
 
+      // Add walking tour line source (initially empty)
+      map.addSource('walking-tour-line', {
+        type: 'geojson',
+        data: {
+          type: 'Feature',
+          geometry: {
+            type: 'LineString',
+            coordinates: []
+          }
+        }
+      });
+
+      // Add walking tour line layer
+      map.addLayer({
+        id: 'walking-route',
+        type: 'line',
+        source: 'walking-tour-line',
+        layout: {
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        paint: {
+          'line-color': '#2563eb', // Blue theme color
+          'line-width': 3,
+          'line-dasharray': [2, 2] // Dashed pattern
+        }
+      });
+
       // Handle cluster clicks - zoom in
       map.on('click', 'clusters', (e) => {
         const features = map.queryRenderedFeatures(e.point, {
@@ -199,7 +284,22 @@ const Map = () => {
       map.on('click', 'unclustered-point', (e) => {
         const coordinates = e.features[0].geometry.coordinates.slice();
         const properties = e.features[0].properties;
-        
+
+        // Check if this POI is part of the current walking tour
+        let tourInfo = '';
+        if (selectedTour && selectedTour.poiSequence.includes(properties.id)) {
+          const stepNumber = selectedTour.poiSequence.indexOf(properties.id) + 1;
+          const totalSteps = selectedTour.poiSequence.length;
+          tourInfo = `
+            <div style="background: #ecfdf5; border: 1px solid #059669; padding: 8px; border-radius: 4px; margin-top: 8px;">
+              <strong style="color: #059669;">🚶‍♂️ Walking Tour:</strong>
+              <p style="margin: 4px 0 0 0; font-size: 13px; color: #065f46;">
+                Stop ${stepNumber} of ${totalSteps} - ${selectedTour.name}
+              </p>
+            </div>
+          `;
+        }
+
         // Create popup content
         const popup = new mapboxgl.Popup({
           offset: 25,
@@ -210,6 +310,7 @@ const Map = () => {
           <div style="max-width: 250px;">
             <h3 style="margin: 0 0 8px 0; color: #1f2937;">${properties.name}</h3>
             <p style="margin: 0 0 8px 0; font-size: 14px; color: #4b5563;">${properties.description}</p>
+            ${tourInfo}
             <div style="background: #f3f4f6; padding: 8px; border-radius: 4px; margin-top: 8px;">
               <strong style="color: #059669;">📝 Note:</strong>
               <p style="margin: 4px 0 0 0; font-size: 13px; color: #374151;">${properties.notes}</p>
@@ -270,9 +371,16 @@ const Map = () => {
       />
       
       {/* City Navigation Dropdown */}
-      <CityNavigation 
+      <CityNavigation
         onCitySelect={handleCitySelect}
         currentCity={currentCity}
+      />
+
+      {/* Walking Tour Controls */}
+      <WalkingTourControls
+        currentCity={currentCity}
+        onTourSelect={handleTourSelect}
+        selectedTour={selectedTour}
       />
     </>
   );

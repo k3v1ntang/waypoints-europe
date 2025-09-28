@@ -837,5 +837,24 @@
         }
       ]
     }
-  ]
+  ],
+  "walkingTours": {
+    "munich": [
+      {
+        "id": "munich-historic-center",
+        "name": "Historic Munich Center",
+        "description": "Explore Munich's medieval heart from Karlsplatz through the historic center to the famous beer garden",
+        "difficulty": "easy",
+        "estimatedTime": "3-4 hours",
+        "distance": "2.5 km",
+        "poiSequence": [
+          "munich-karlsplatz",
+          "munich-frauenkirche",
+          "munich-marienplatz",
+          "munich-st-peter-church",
+          "munich-viktualienmarkt"
+        ]
+      }
+    ]
+  }
 }
