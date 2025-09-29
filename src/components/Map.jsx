@@ -109,6 +109,40 @@ const Map = () => {
   };
   
   useEffect(() => {
+    // Add event delegation for popup toggle buttons
+    const handleToggleClick = (event) => {
+      const button = event.target;
+      if (!button.classList.contains('popup-toggle-btn')) return;
+
+      const popupId = button.dataset.popupId;
+      const fullDescription = button.dataset.fullDescription;
+      const textElement = document.getElementById(`${popupId}-text`);
+
+      if (!textElement) return;
+
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+      if (isExpanded) {
+        // Collapse - show truncated text
+        const shortDescription = fullDescription.length > 120
+          ? fullDescription.substring(0, 120) + '...'
+          : fullDescription;
+        textElement.textContent = shortDescription;
+        button.textContent = 'Read More';
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', `Read more about ${button.dataset.poiName}`);
+      } else {
+        // Expand - show full text
+        textElement.textContent = fullDescription;
+        button.textContent = 'Read Less';
+        button.setAttribute('aria-expanded', 'true');
+        button.setAttribute('aria-label', `Read less about ${button.dataset.poiName}`);
+      }
+    };
+
+    // Add event listener to document for event delegation
+    document.addEventListener('click', handleToggleClick);
+
     // ❓ CONCEPT: Prevent duplicate map initialization
     // 💰 COST IMPACT: Each map initialization = 1 API call
     if (mapRef.current) return;
@@ -300,20 +334,45 @@ const Map = () => {
           `;
         }
 
-        // Create popup content
+        // Handle long descriptions with progressive disclosure
+        const description = properties.description || '';
+        const isLongDescription = description.length > 120;
+        const shortDescription = isLongDescription ? description.substring(0, 120) + '...' : description;
+
+        // Generate unique ID for this popup
+        const popupId = `popup-${properties.id}-${Date.now()}`;
+
+        // Create popup content with expandable description
         const popup = new mapboxgl.Popup({
           offset: 25,
           closeButton: false,
-          closeOnClick: true
+          closeOnClick: true,
+          maxWidth: 'none' // Let CSS handle responsive width
         }).setLngLat(coordinates)
         .setHTML(`
-          <div style="max-width: 250px;">
-            <h3 style="margin: 0 0 8px 0; color: #1f2937;">${properties.name}</h3>
-            <p style="margin: 0 0 8px 0; font-size: 14px; color: #4b5563;">${properties.description}</p>
+          <div style="max-width: min(300px, 90vw); max-height: min(400px, 60vh); overflow-y: auto; padding: 8px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); background: white; -webkit-overflow-scrolling: touch;">
+            <h3 style="margin: 0 0 8px 0; color: #1f2937; font-size: 16px; line-height: 1.3;">${properties.name}</h3>
+            <div id="${popupId}-description" style="margin: 0 0 8px 0; font-size: 14px; color: #4b5563; line-height: 1.4;">
+              <span id="${popupId}-text">${shortDescription}</span>
+              ${isLongDescription ? `
+                <button
+                  id="${popupId}-toggle"
+                  class="popup-toggle-btn"
+                  data-popup-id="${popupId}"
+                  data-full-description="${description.replace(/"/g, '&quot;')}"
+                  data-poi-name="${properties.name}"
+                  style="color: #2563eb; background: none; border: none; cursor: pointer; font-size: 13px; text-decoration: underline; padding: 0; margin-left: 4px;"
+                  aria-label="Read more about ${properties.name}"
+                  aria-expanded="false"
+                >
+                  Read More
+                </button>
+              ` : ''}
+            </div>
             ${tourInfo}
             <div style="background: #f3f4f6; padding: 8px; border-radius: 4px; margin-top: 8px;">
               <strong style="color: #059669;">📝 Note:</strong>
-              <p style="margin: 4px 0 0 0; font-size: 13px; color: #374151;">${properties.notes}</p>
+              <p style="margin: 4px 0 0 0; font-size: 13px; color: #374151; line-height: 1.3;">${properties.notes}</p>
             </div>
             ${properties.googleMapsUrl ? `<div style="margin-top: 8px;">
               <a href="${properties.googleMapsUrl}" target="_blank" style="color: #2563eb; text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 4px;">
@@ -351,6 +410,8 @@ const Map = () => {
         mapRef.current.remove();
         mapRef.current = null;
       }
+      // Clean up event listener
+      document.removeEventListener('click', handleToggleClick);
     };
   }, []);
   
