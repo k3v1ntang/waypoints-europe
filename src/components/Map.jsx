@@ -365,11 +365,23 @@ const Map = () => {
         // Generate unique ID for this popup
         const popupId = `popup-${properties.id}-${Date.now()}`;
 
-        // Create popup content with expandable description
+        // Mapbox best practice: Center POI on screen before showing popup
+        // Animate map to center the POI with padding for popup visibility
+        map.flyTo({
+          center: coordinates,
+          zoom: Math.max(map.getZoom(), 14), // Ensure minimum zoom for readability
+          padding: { bottom: 250, top: 50, left: 20, right: 20 }, // Space for popup and UI elements
+          duration: 800, // Smooth animation
+          essential: true // Don't skip animation for accessibility
+        });
+
+        // Create popup with Mapbox mobile best practices
         const popup = new mapboxgl.Popup({
-          offset: 25,
-          closeButton: false,
+          anchor: 'center', // Center anchor for optimal mobile positioning
+          offset: [0, -10], // Slight upward offset for visual balance
+          closeButton: false, // Clean mobile UX without close button
           closeOnClick: true,
+          closeOnMove: false, // Don't close when map moves during animation
           maxWidth: 'none' // Let CSS handle responsive width
         }).setLngLat(coordinates)
         .setHTML(`
@@ -445,13 +457,13 @@ const Map = () => {
     <>
       <div 
         ref={mapContainerRef} 
-        style={{ 
+        style={{
           position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          height: '100vh', 
+          height: '100dvh', // modern dynamic viewport height (fallback: 100vh)
           width: '100vw',
           paddingBottom: 'env(safe-area-inset-bottom)'
         }} 
