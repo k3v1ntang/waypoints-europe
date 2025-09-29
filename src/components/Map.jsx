@@ -134,6 +134,7 @@ const Map = () => {
 
       const popupId = button.dataset.popupId;
       const fullDescription = button.dataset.fullDescription;
+      const hasTourNotes = button.dataset.hasTourNotes === 'true';
       const textElement = document.getElementById(`${popupId}-text`);
 
       if (!textElement) return;
@@ -141,20 +142,17 @@ const Map = () => {
       const isExpanded = button.getAttribute('aria-expanded') === 'true';
 
       if (isExpanded) {
-        // Collapse - show truncated text
-        const shortDescription = fullDescription.length > 120
-          ? fullDescription.substring(0, 120) + '...'
-          : fullDescription;
-        textElement.textContent = shortDescription;
-        button.textContent = 'Read More';
+        // Collapse - restore original display text
+        textElement.textContent = button.dataset.originalText;
+        button.textContent = 'Discover More';
         button.setAttribute('aria-expanded', 'false');
-        button.setAttribute('aria-label', `Read more about ${button.dataset.poiName}`);
+        button.setAttribute('aria-label', `Discover more about ${button.dataset.poiName}`);
       } else {
         // Expand - show full text
         textElement.textContent = fullDescription;
-        button.textContent = 'Read Less';
+        button.textContent = 'Show Less';
         button.setAttribute('aria-expanded', 'true');
-        button.setAttribute('aria-label', `Read less about ${button.dataset.poiName}`);
+        button.setAttribute('aria-label', `Show less about ${button.dataset.poiName}`);
       }
     };
 
@@ -352,10 +350,17 @@ const Map = () => {
           `;
         }
 
-        // Handle long descriptions with progressive disclosure
+        // Handle progressive disclosure - prioritize walking tour notes
         const description = properties.description || '';
-        const isLongDescription = description.length > 120;
-        const shortDescription = isLongDescription ? description.substring(0, 120) + '...' : description;
+        const walkingTourNotes = properties.walkingTourNotes || '';
+        const hasDiscoverMore = walkingTourNotes.length > 0 || description.length > 120;
+
+        // For display: show full description if no walking tour notes, otherwise keep it short
+        const displayDescription = walkingTourNotes.length > 0 ? description :
+          (description.length > 120 ? description.substring(0, 120) + '...' : description);
+
+        // Content for "Discover More" - walking tour notes take priority
+        const discoverContent = walkingTourNotes.length > 0 ? walkingTourNotes : description;
 
         // Generate unique ID for this popup
         const popupId = `popup-${properties.id}-${Date.now()}`;
@@ -371,19 +376,22 @@ const Map = () => {
           <div style="max-width: min(300px, 90vw); max-height: min(400px, 60vh); overflow-y: auto; padding: 8px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); background: white; -webkit-overflow-scrolling: touch;">
             <h3 style="margin: 0 0 8px 0; color: #1f2937; font-size: 16px; line-height: 1.3;">${properties.name}</h3>
             <div id="${popupId}-description" style="margin: 0 0 8px 0; font-size: 14px; color: #4b5563; line-height: 1.4;">
-              <span id="${popupId}-text">${shortDescription}</span>
-              ${isLongDescription ? `
+              <span id="${popupId}-text">${displayDescription}</span>
+              ${hasDiscoverMore ? `
                 <button
                   id="${popupId}-toggle"
                   class="popup-toggle-btn"
                   data-popup-id="${popupId}"
-                  data-full-description="${description.replace(/"/g, '&quot;')}"
+                  data-full-description="${discoverContent.replace(/"/g, '&quot;')}"
+                  data-has-tour-notes="${walkingTourNotes.length > 0}"
                   data-poi-name="${properties.name}"
+                  data-original-text="${displayDescription.replace(/"/g, '&quot;')}"
+                  data-poi-description="${description.replace(/"/g, '&quot;')}"
                   style="color: #2563eb; background: none; border: none; cursor: pointer; font-size: 13px; text-decoration: underline; padding: 0; margin-left: 4px;"
-                  aria-label="Read more about ${properties.name}"
+                  aria-label="Discover more about ${properties.name}"
                   aria-expanded="false"
                 >
-                  Read More
+                  Discover More
                 </button>
               ` : ''}
             </div>
