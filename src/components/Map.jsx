@@ -3,13 +3,16 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import poisData from '../data/pois.json';
 import CityNavigation from './CityNavigation.jsx';
-import WalkingTourControls from './WalkingTourControls.jsx';
+import BottomSheet from './BottomSheet.jsx';
+import FloatingActionButton from './FloatingActionButton.jsx';
+import WalkingTourBottomSheet from './WalkingTourBottomSheet.jsx';
 
 const Map = () => {
   const mapContainerRef = useRef();
   const mapRef = useRef();
   const [currentCity, setCurrentCity] = useState(null);
   const [selectedTour, setSelectedTour] = useState(null);
+  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
 
   // Helper function to find POI coordinates by ID
   const findPOICoordinates = (poiId, cityId) => {
@@ -22,6 +25,9 @@ const Map = () => {
   // Function to handle walking tour selection
   const handleTourSelect = (tour) => {
     setSelectedTour(tour);
+
+    // Close bottom sheet when tour is selected/deselected
+    setIsBottomSheetOpen(false);
 
     if (!mapRef.current) return;
 
@@ -63,6 +69,18 @@ const Map = () => {
         });
       }
     }
+  };
+
+  // Function to handle FAB click
+  const handleFABClick = () => {
+    setIsBottomSheetOpen(true);
+  };
+
+  // Get available tours count for FAB badge
+  const getToursCount = () => {
+    if (!currentCity || !poisData.walkingTours) return 0;
+    const tours = poisData.walkingTours[currentCity.id] || [];
+    return tours.length;
   };
 
   // Function to handle city selection and zoom
@@ -437,12 +455,26 @@ const Map = () => {
         currentCity={currentCity}
       />
 
-      {/* Walking Tour Controls */}
-      <WalkingTourControls
-        currentCity={currentCity}
-        onTourSelect={handleTourSelect}
-        selectedTour={selectedTour}
+      {/* Floating Action Button for Walking Tours */}
+      <FloatingActionButton
+        onClick={handleFABClick}
+        icon="🚶‍♂️"
+        label="Walking Tours"
+        badge={getToursCount() > 0 ? getToursCount() : null}
       />
+
+      {/* Walking Tours Bottom Sheet */}
+      <BottomSheet
+        isOpen={isBottomSheetOpen}
+        onClose={() => setIsBottomSheetOpen(false)}
+        title="Walking Tours"
+      >
+        <WalkingTourBottomSheet
+          currentCity={currentCity}
+          onTourSelect={handleTourSelect}
+          selectedTour={selectedTour}
+        />
+      </BottomSheet>
     </>
   );
 };
