@@ -606,7 +606,10 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - [x] Add custom ImageLightbox component with touch gestures
 - [x] Research and evaluate modern lightbox solutions
 - [x] Document decision to migrate to Yet Another React Lightbox
-- [ ] Replace custom ImageLightbox with YARL implementation
+- [x] Replace custom ImageLightbox with YARL implementation
+- [x] Update walking tour map to always show (no route activation required)
+- [x] Test mobile touch gestures and pinch-to-zoom on iPhone
+- [x] Verify background scroll prevention works correctly
 
 ### Current Status (September 29, 2025)
 - **All Cities**: ✅ Complete with accurate coordinates and Google Maps links
@@ -628,7 +631,7 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - **Marker Optimization**: ✅ Reduced marker size to 9px for better mobile screen utilization
 - **POI Labels**: ✅ Dynamic labels with zoom-based visibility and smart positioning
 - **Walking Tours**: ✅ Copenhagen City Walk with route visualization and POI filtering
-- **Image Lightbox**: 🔄 Migrating from custom implementation to YARL for better mobile UX
+- **Image Lightbox**: ✅ Migrated to Yet Another React Lightbox with professional mobile UX
 
 ### Post-Trip Enhancement
 - [ ] Replace placeholder photos with actual travel photos
