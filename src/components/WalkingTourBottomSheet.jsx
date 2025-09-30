@@ -152,8 +152,8 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
               </span>
             </div>
 
-            {/* Walking Tour Map - Only for Copenhagen tours */}
-            {selectedTour?.id === tour.id && currentCity.id === 'copenhagen' && tour.id === 'copenhagen-city-walk' && (
+            {/* Walking Tour Map - Always show for Copenhagen City Walk */}
+            {currentCity.id === 'copenhagen' && tour.id === 'copenhagen-city-walk' && (
               <div style={{
                 marginTop: '16px',
                 padding: '12px',

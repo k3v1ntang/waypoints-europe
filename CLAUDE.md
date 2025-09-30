@@ -597,10 +597,21 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - [x] Troubleshoot and fix Stockholm coordinate alignment issues
 - [x] Final testing and validation before Europe trip
 
-### Current Status (September 13, 2025)
+### Walking Tour Features (September 29, 2025)
+- [x] Implement POI visibility filtering system (`always` vs `walkingTour` modes)
+- [x] Add zoom-responsive POI labels with collision detection
+- [x] Create Copenhagen City Walk tour with route visualization
+- [x] Add walking tour map image (`/public/maps/copenhagen-city-walk.jpg`)
+- [x] Implement "Show Route" / "Hide Route" toggle buttons
+- [x] Add custom ImageLightbox component with touch gestures
+- [x] Research and evaluate modern lightbox solutions
+- [x] Document decision to migrate to Yet Another React Lightbox
+- [ ] Replace custom ImageLightbox with YARL implementation
+
+### Current Status (September 29, 2025)
 - **All Cities**: ✅ Complete with accurate coordinates and Google Maps links
 - **Stockholm**: ✅ Precision-corrected coordinates with perfect marker alignment
-- **Copenhagen**: ✅ Expanded to 12 POIs with comprehensive travel information
+- **Copenhagen**: ✅ Expanded to 17 POIs with comprehensive travel information
 - **Tallinn**: ✅ 8 POIs with updated coordinates and new Carved Stone Museum
 - **Helsinki**: ✅ 8 POIs with Google Maps integration maintained
 - **Malmö**: ✅ Updated Turning Torso coordinates
@@ -615,6 +626,9 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - **Hotel Integration**: ✅ 4 hotels with distinct red markers and Google Maps integration
 - **Navigation UX**: ✅ Clean navigation interface with proper mobile optimization
 - **Marker Optimization**: ✅ Reduced marker size to 9px for better mobile screen utilization
+- **POI Labels**: ✅ Dynamic labels with zoom-based visibility and smart positioning
+- **Walking Tours**: ✅ Copenhagen City Walk with route visualization and POI filtering
+- **Image Lightbox**: 🔄 Migrating from custom implementation to YARL for better mobile UX
 
 ### Post-Trip Enhancement
 - [ ] Replace placeholder photos with actual travel photos
@@ -623,11 +637,42 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - [ ] Implement user feedback and improvements
 
 ### Technical Architecture
+
+#### Core Components
 - **Theme Configuration**: `src/config/theme.js` - Centralized color scheme and component styling
 - **Primary Color**: `#2563eb` (professional blue) - documented in theme config for consistency
 - **Navigation Component**: `src/components/CityNavigation.jsx` - Modern dropdown with 2025 UX patterns
 - **Map Controls**: Integrated Mapbox NavigationControl for zoom/compass functionality
 - **Coordinate Format**: `[longitude, latitude]` for Mapbox GL JS compatibility
+
+#### Image Lightbox Implementation
+- **Library**: [Yet Another React Lightbox](https://yet-another-react-lightbox.com) v3.25.0
+- **License**: MIT (completely free for personal and commercial use)
+- **Component**: `src/components/ImageLightbox.jsx` (wrapper around YARL)
+- **Bundle Impact**: ~20-30 KB gzipped with zoom plugin
+- **Security**: Zero dependencies, no known vulnerabilities (Snyk verified)
+- **Weekly Downloads**: ~195k (most popular modern React lightbox solution)
+
+**Key Features:**
+- ✅ **Professional mobile touch support** - Pinch-to-zoom, double-tap, swipe gestures
+- ✅ **Prevents background scroll** - Built-in NoScroll module handles iOS Safari quirks
+- ✅ **Plugin architecture** - Zoom functionality via optional plugin
+- ✅ **TypeScript built-in** - Type definitions included
+- ✅ **Active maintenance** - Updated regularly (last update: 2 months ago)
+- ✅ **React 18/17/16.8+ compatible** - Modern hooks-based implementation
+- ✅ **Responsive images** - Automatic resolution switching with srcset/sizes
+
+**Why YARL over custom implementation:**
+1. **Battle-tested**: Used by 12,900+ projects, eliminating edge cases
+2. **Zero dependencies**: No supply chain security risks
+3. **Mobile-first**: Handles iOS Safari quirks, momentum scrolling, touch events properly
+4. **Maintained**: Professional team vs. custom code maintenance burden
+5. **Standards-compliant**: Follows 2025 React best practices and accessibility guidelines
+
+**Usage Pattern:**
+- Thumbnail preview in `WalkingTourBottomSheet.jsx`
+- Full-screen lightbox opens on tap with zoom capabilities
+- Integration with walking tour map images in `/public/maps/`
 
 ### Development Notes
 - **Environment variable**: `VITE_MAPBOX_TOKEN` (not `REACT_APP_MAPBOX_TOKEN`)
