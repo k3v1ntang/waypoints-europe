@@ -13,6 +13,7 @@ const Map = () => {
   const [currentCity, setCurrentCity] = useState(null);
   const [selectedTour, setSelectedTour] = useState(null);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
+  const [showWalkingTourPOIs, setShowWalkingTourPOIs] = useState(false);
 
   // Helper function to find POI coordinates by ID
   const findPOICoordinates = (poiId, cityId) => {
@@ -22,9 +23,24 @@ const Map = () => {
     return poi ? poi.coordinates : null;
   };
 
+  // Function to filter POIs based on visibility settings
+  const shouldShowPOI = (poi) => {
+    const visibility = poi.visibility || 'always'; // Default to 'always' for POIs without visibility field
+
+    switch (visibility) {
+      case 'always':
+        return true;
+      case 'walkingTour':
+        return showWalkingTourPOIs;
+      default:
+        return true; // Fallback to showing POI
+    }
+  };
+
   // Function to handle walking tour selection
   const handleTourSelect = (tour) => {
     setSelectedTour(tour);
+    setShowWalkingTourPOIs(tour !== null); // Show walking tour POIs when a tour is selected
 
     // Close bottom sheet when tour is selected/deselected
     setIsBottomSheetOpen(false);
@@ -69,6 +85,39 @@ const Map = () => {
         });
       }
     }
+  };
+
+  // Function to update POI visibility on the map
+  const updatePOIVisibility = () => {
+    if (!mapRef.current || !mapRef.current.getSource('pois')) return;
+
+    // Create filtered GeoJSON data based on current visibility settings
+    const geojsonData = {
+      type: 'FeatureCollection',
+      features: []
+    };
+
+    poisData.cities.forEach(city => {
+      city.pois.forEach(poi => {
+        if (shouldShowPOI(poi)) {
+          geojsonData.features.push({
+            type: 'Feature',
+            properties: {
+              ...poi,
+              cityName: city.name,
+              isHotel: poi.category === 'hotel'
+            },
+            geometry: {
+              type: 'Point',
+              coordinates: poi.coordinates
+            }
+          });
+        }
+      });
+    });
+
+    // Update the data source
+    mapRef.current.getSource('pois').setData(geojsonData);
   };
 
   // Function to handle FAB click
@@ -125,7 +174,12 @@ const Map = () => {
       }
     }
   };
-  
+
+  // Effect to update POI visibility when walking tour mode changes
+  useEffect(() => {
+    updatePOIVisibility();
+  }, [showWalkingTourPOIs]); // eslint-disable-line react-hooks/exhaustive-deps
+
   useEffect(() => {
     // Add event delegation for popup toggle buttons
     const handleToggleClick = (event) => {
@@ -197,18 +251,21 @@ const Map = () => {
 
       poisData.cities.forEach(city => {
         city.pois.forEach(poi => {
-          geojsonData.features.push({
-            type: 'Feature',
-            properties: {
-              ...poi,
-              cityName: city.name,
-              isHotel: poi.category === 'hotel'
-            },
-            geometry: {
-              type: 'Point',
-              coordinates: poi.coordinates
-            }
-          });
+          // Apply visibility filtering - initially showWalkingTourPOIs is false
+          if (shouldShowPOI(poi)) {
+            geojsonData.features.push({
+              type: 'Feature',
+              properties: {
+                ...poi,
+                cityName: city.name,
+                isHotel: poi.category === 'hotel'
+              },
+              geometry: {
+                type: 'Point',
+                coordinates: poi.coordinates
+              }
+            });
+          }
         });
       });
 
@@ -283,6 +340,51 @@ const Map = () => {
           'circle-radius': 9,
           'circle-stroke-width': 3,
           'circle-stroke-color': '#ffffff'
+        }
+      });
+
+      // Add POI labels with mobile optimization and variable anchor positioning
+      map.addLayer({
+        id: 'poi-labels',
+        type: 'symbol',
+        source: 'pois',
+        filter: ['!', ['has', 'point_count']], // Only show labels for unclustered points
+        layout: {
+          'text-field': ['get', 'name'],
+          'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+          'text-size': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            10, 0,    // Hidden at zoom level 10 and below
+            12, 11,   // Small text at zoom 12
+            14, 13,   // Medium text at zoom 14
+            16, 15    // Larger text at zoom 16+
+          ],
+          'text-variable-anchor': [
+            'top', 'bottom', 'left', 'right',
+            'top-left', 'top-right', 'bottom-left', 'bottom-right'
+          ],
+          'text-radial-offset': 1.2, // Offset from marker center
+          'text-justify': 'auto',
+          'text-allow-overlap': false,
+          'text-ignore-placement': false,
+          'symbol-spacing': 250, // Minimum distance between repeated labels
+          'text-max-width': 8,   // Maximum text width in ems
+          'text-padding': 4      // Padding around text for collision detection
+        },
+        paint: {
+          'text-color': '#1f2937',
+          'text-halo-color': '#ffffff',
+          'text-halo-width': 1.5,
+          'text-opacity': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            10, 0,    // Invisible at zoom 10 and below
+            11, 0.6,  // Fade in at zoom 11
+            12, 1     // Fully visible at zoom 12+
+          ]
         }
       });
 

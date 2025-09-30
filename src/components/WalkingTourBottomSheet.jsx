@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import poisData from '../data/pois.json';
+import ImageLightbox from './ImageLightbox';
 
 const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => {
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   // Get walking tours for current city
   const getAvailableTours = () => {
     if (!currentCity || !poisData.walkingTours) return [];
@@ -64,26 +67,10 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
               borderRadius: '12px',
               padding: '16px',
               backgroundColor: selectedTour?.id === tour.id ? '#eff6ff' : 'white',
-              cursor: 'pointer',
               transition: 'all 0.2s ease',
               boxShadow: selectedTour?.id === tour.id
                 ? '0 4px 12px rgba(37, 99, 235, 0.15)'
                 : '0 2px 4px rgba(0, 0, 0, 0.05)'
-            }}
-            onClick={() => {
-              onTourSelect(selectedTour?.id === tour.id ? null : tour);
-            }}
-            onMouseEnter={(e) => {
-              if (selectedTour?.id !== tour.id) {
-                e.target.style.backgroundColor = '#f9fafb';
-                e.target.style.borderColor = '#d1d5db';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (selectedTour?.id !== tour.id) {
-                e.target.style.backgroundColor = 'white';
-                e.target.style.borderColor = '#e5e7eb';
-              }
             }}
           >
             {/* Tour Header */}
@@ -102,18 +89,38 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
                 alignItems: 'center',
                 gap: '8px'
               }}>
-                {selectedTour?.id === tour.id ? '✅' : '🗺️'} {tour.name}
+                🗺️ {tour.name}
               </h4>
-              <div style={{
-                backgroundColor: selectedTour?.id === tour.id ? '#2563eb' : '#6b7280',
-                color: 'white',
-                fontSize: '12px',
-                fontWeight: '500',
-                padding: '4px 8px',
-                borderRadius: '12px'
-              }}>
-                {tour.difficulty}
-              </div>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onTourSelect(selectedTour?.id === tour.id ? null : tour);
+                }}
+                style={{
+                  backgroundColor: selectedTour?.id === tour.id ? '#dc2626' : '#2563eb',
+                  color: 'white',
+                  fontSize: '12px',
+                  fontWeight: '600',
+                  padding: '8px 12px',
+                  borderRadius: '8px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.opacity = '0.9';
+                  e.target.style.transform = 'scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.opacity = '1';
+                  e.target.style.transform = 'scale(1)';
+                }}
+              >
+                {selectedTour?.id === tour.id ? '✕ Hide Route' : '📍 Show Route'}
+              </button>
             </div>
 
             {/* Tour Description */}
@@ -145,52 +152,103 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
               </span>
             </div>
 
-            {/* Action Hint */}
-            {selectedTour?.id === tour.id && (
+            {/* Walking Tour Map - Only for Copenhagen tours */}
+            {selectedTour?.id === tour.id && currentCity.id === 'copenhagen' && tour.id === 'copenhagen-city-walk' && (
               <div style={{
-                marginTop: '12px',
-                padding: '8px 12px',
-                backgroundColor: '#f0f9ff',
-                border: '1px solid #bae6fd',
-                borderRadius: '6px',
-                fontSize: '12px',
-                color: '#0369a1',
-                fontWeight: '500'
+                marginTop: '16px',
+                padding: '12px',
+                backgroundColor: '#f8fafc',
+                border: '1px solid #e2e8f0',
+                borderRadius: '8px'
               }}>
-                ✨ Route is now visible on the map! Tap again to hide.
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  marginBottom: '8px'
+                }}>
+                  <h5 style={{
+                    margin: 0,
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    color: '#475569',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px'
+                  }}>
+                    🗺️ Walking Tour Map
+                  </h5>
+                  <span style={{
+                    fontSize: '11px',
+                    color: '#64748b',
+                    fontStyle: 'italic'
+                  }}>
+                    Tap to view full size
+                  </span>
+                </div>
+
+                <div
+                  onClick={() => setIsLightboxOpen(true)}
+                  style={{
+                    width: '100%',
+                    height: '120px',
+                    borderRadius: '6px',
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    border: '1px solid #e2e8f0',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = 'scale(1.02)';
+                    e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = 'scale(1)';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                >
+                  <img
+                    src="/maps/copenhagen-city-walk.jpg"
+                    alt="Copenhagen City Walk Map"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'center'
+                    }}
+                  />
+                  <div style={{
+                    position: 'absolute',
+                    top: '8px',
+                    right: '8px',
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                    color: 'white',
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    fontSize: '12px',
+                    fontWeight: '500',
+                    backdropFilter: 'blur(4px)'
+                  }}>
+                    🔍 View Map
+                  </div>
+                </div>
               </div>
             )}
+
           </div>
         ))}
       </div>
 
-      {/* Clear Selection Button */}
-      {selectedTour && (
-        <button
-          onClick={() => onTourSelect(null)}
-          style={{
-            width: '100%',
-            marginTop: '20px',
-            padding: '12px',
-            backgroundColor: '#fef2f2',
-            border: '1px solid #fecaca',
-            borderRadius: '8px',
-            color: '#dc2626',
-            fontSize: '14px',
-            fontWeight: '500',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = '#fee2e2';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = '#fef2f2';
-          }}
-        >
-          ✕ Clear Walking Tour
-        </button>
-      )}
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        isOpen={isLightboxOpen}
+        onClose={() => setIsLightboxOpen(false)}
+        imageSrc="/maps/copenhagen-city-walk.jpg"
+        imageAlt="Copenhagen City Walk Map - Detailed walking tour route with numbered stops"
+        title="Copenhagen City Walk Map"
+      />
     </div>
   );
 };

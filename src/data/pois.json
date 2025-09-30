@@ -593,6 +593,7 @@
             55.69286
           ],
           "category": "landmark",
+          "visibility": "always",
           "description": "Bronze statue inspired by Hans Christian Andersen's fairy tale, created by sculptor Edvard Eriksen in 1913. Despite being smaller than expected, it's one of Copenhagen's most famous symbols.",
           "walkingTourNotes": "The Little Mermaid statue was a gift to Copenhagen in 1909 from brewing magnate Carl Jacobsen. Inspired by a ballet performance of Andersen's story, Jacobsen hired young sculptor Edvard Eriksen to immortalize the mermaid. Eriksen used his wife Eline as the model. The statue sat unappreciated for 40 years until Danny Kaye sang 'Wonderful Copenhagen' in the 1952 movie 'Hans Christian Andersen', and the tourist board decided to use the mermaid as a marketing symbol for the city.",
           "notes": "Small but iconic statue - best photos from the rocks nearby",
@@ -611,6 +612,7 @@
             55.6786719
           ],
           "category": "culture",
+          "visibility": "walkingTour",
           "description": "Pedestrian street - Europe's first fully pedestrianized streets",
           "walkingTourNotes": "Finished in 1962, Copenhagen's experimental, tremendously successful, and much-copied pedestrian shopping mall is a string of lively streets and squares that bunny-hop through the old town from City Hall to the Nyhavn quarter, a 20-minute stroll. This was Europe's first great public pedestrian street.",
           "notes": "Europe's first fully pedestrianized street - great for shopping and people watching",
@@ -629,6 +631,7 @@
             55.67528
           ],
           "category": "landmark",
+          "visibility": "always",
           "description": "Copenhagen's historic city hall and central square, a major gathering place and tourist hub in the heart of the city.",
           "walkingTourNotes": "For 700 years, Copenhagen was contained within its city walls, and this square was its fortified west end. By the mid-1800s, 140,000 people were packed inside. The overcrowding led to hygiene problems and a cholera outbreak that killed 5,000. The formidable town walls survive today only in echoes—a circular series of roads and remnants of moats, which are now people-friendly city lakes. Rådhuspladsen is where the city gathers to celebrate.",
           "notes": "rs.p77 - climb the tower, check the clock opposite to info desk",
@@ -647,6 +650,7 @@
             55.67655
           ],
           "category": "landmark",
+          "visibility": "walkingTour",
           "description": "Historic palace complex that houses the Danish Parliament, Supreme Court, and Prime Minister's Office, with beautiful royal reception rooms.",
           "walkingTourNotes": "You're stepping onto Slotsholmen ('Castle Island'), the easy-to-defend birthplace of Copenhagen in the 12th century. This is Denmark's power island, with the Folketinget (Danish parliament), Supreme Court, Ministry of Finance, and the historic Børsen stock exchange. The seat of Danish government today is considered the birthplace of Copenhagen, dominated by the royal palace complex with its distinctive 'three crowns' spire.",
           "notes": "rs, p83",
@@ -665,6 +669,7 @@
             55.67339
           ],
           "category": "culture",
+          "visibility": "always",
           "description": "Nick name: \"Black Diamond\"",
           "notes": "rs,p88",
           "googleMapsUrl": "https://maps.app.goo.gl/Bp3VkKaqgMjSK6gz8",
@@ -682,6 +687,7 @@
             55.68134
           ],
           "category": "landmark",
+          "visibility": "walkingTour",
           "description": "",
           "notes": "rs,p88 - Observatory, Check the open hour",
           "googleMapsUrl": "https://maps.app.goo.gl/mtYcKoPAtVRDFJne7",
@@ -699,6 +705,7 @@
             55.67368
           ],
           "category": "culture",
+          "visibility": "always",
           "description": "Historic amusement park opened in 1843, one of the world's oldest operating amusement parks. Features beautiful gardens, vintage rides, concerts, and seasonal decorations that inspired Walt Disney.",
           "walkingTourNotes": "Tivoli Gardens was founded in 1843 when magazine publisher Georg Carstensen convinced the king to build a pleasure garden outside the walls of crowded Copenhagen. The king believed happy people would care less about fighting for democracy. Tivoli became Europe's first great public amusement park and later inspired Walt Disney when he visited in the 1950s.",
           "notes": "rs,p75",
@@ -717,6 +724,7 @@
             55.68405
           ],
           "category": "landmark",
+          "visibility": "always",
           "description": "The palace where the king lives",
           "walkingTourNotes": "Queen Margrethe II, who abdicated the throne in 2024, lives in the mansion to your immediate left as you enter the square from the harborside. The mansion across the street is where her son, King Frederik X, lives with his wife Queen Mary—an Australian businesswoman—and their four children. The guards change daily at noon. The equestrian statue of Frederik V is a reminder that this square was the centerpiece of a planned town he envisioned in 1750.",
           "notes": "rs,p89 - changing of the guard at noon",
@@ -735,6 +743,7 @@
             55.67293
           ],
           "category": "landmark",
+          "visibility": "always",
           "description": "Spiral spire",
           "notes": "rs,p98",
           "googleMapsUrl": "https://maps.app.goo.gl/pYd8rgqaseTAAH77A",
@@ -752,6 +761,7 @@
             55.66268
           ],
           "category": "culture",
+          "visibility": "always",
           "description": "Harbour bath",
           "notes": "rs,p106",
           "googleMapsUrl": "https://maps.app.goo.gl/mBXwWE82PqDFpBN3A",
@@ -769,6 +779,7 @@
             55.66816
           ],
           "category": "culture",
+          "visibility": "always",
           "description": "Harbour bath",
           "notes": "rs,p106",
           "googleMapsUrl": "https://maps.app.goo.gl/mJPrSdZbUVVepXp59",
@@ -786,6 +797,7 @@
             55.78567
           ],
           "category": "culture",
+          "visibility": "always",
           "description": "Historic Danish village recreation showcasing traditional Danish life and architecture from different periods.",
           "notes": "rs,p107",
           "googleMapsUrl": "https://maps.app.goo.gl/VvsQydDf2iKdkMLM9",
@@ -803,6 +815,7 @@
             55.7073923
           ],
           "category": "hotel",
+          "visibility": "always",
           "description": "Extended-stay hotel in the modern Nordhavn district with apartment-style suites, perfect for longer stays with kitchen facilities and spacious accommodations.",
           "notes": "Address: Tallinngade 12, Copenhagen, Denmark 2150 - Phone: +4530308124",
           "googleMapsUrl": "https://maps.app.goo.gl/XghNPWQiQAAjwP6d9",
@@ -820,6 +833,7 @@
             55.67580
           ],
           "category": "landmark",
+          "visibility": "walkingTour",
           "description": "Historic red-brick stock exchange with distinctive dragon-tail spire and three crowns, representing Denmark's commercial ambitions.",
           "walkingTourNotes": "The eye-catching red-brick stock exchange was inspired by the Dutch Renaissance. Built to promote the mercantile ambitions of Denmark in the 1600s, it was the 'World Trade Center' of Scandinavia. Its dragon-tail spire with three crowns represents the Danish aspiration to rule a united Scandinavia—or at least be its commercial capital.",
           "notes": "Not open to tourists - exterior viewing only",
@@ -836,6 +850,7 @@
             55.67936
           ],
           "category": "landmark",
+          "visibility": "walkingTour",
           "description": "Copenhagen's main cathedral with Neoclassical Greek temple facade and Thorvaldsen's masterpiece sculptures of the 12 apostles.",
           "walkingTourNotes": "The church burned down in the 1807 British bombardment during the Napoleonic Wars. Rebuilt in Neoclassical style, the cathedral's facade looks like a Greek temple. The interior features the 12 apostles clad in classical robes—masterpieces by the great Danish sculptor Bertel Thorvaldsen. They lead to a statue of the Risen Christ, standing where Zeus would have been.",
           "notes": "Free entry - see Thorvaldsen's apostle sculptures",
@@ -852,6 +867,7 @@
             55.67934
           ],
           "category": "landmark",
+          "visibility": "always",
           "description": "Iconic canal lined with colorful 17th-century townhouses, restaurants, and historic sailing ships. Hans Christian Andersen lived here.",
           "walkingTourNotes": "Established in the 1670s along with Kongens Nytorv, Nyhavn ('New Harbor') is a recently gentrified sailors' quarter. The canal is filled with glamorous old sailboats of all sizes—Copenhagen's ever-changing boat museum. Hans Christian Andersen lived and wrote his first stories here in the red double-gabled building at #20.",
           "notes": "Perfect for canal-side dining and people watching",
@@ -868,6 +884,7 @@
             55.68035
           ],
           "category": "landmark",
+          "visibility": "walkingTour",
           "description": "Grand baroque square with Royal Theater, luxury hotels, and equestrian statue of Christian V. Major Metro station and cultural center.",
           "walkingTourNotes": "The 'King's New Square' is home to the Royal Theater, French embassy, and Hotel d'Angleterre where VIPs and pop stars stay. The equestrian statue of Christian V celebrates the king who made this square the city's geographical and cultural center. In past winters, this was a popular ice-skating rink.",
           "notes": "Metro hub and luxury shopping area",
