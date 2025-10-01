@@ -611,14 +611,24 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - [x] Test mobile touch gestures and pinch-to-zoom on iPhone
 - [x] Verify background scroll prevention works correctly
 
-### Current Status (September 29, 2025)
+### Data Cleanup & Code Review (September 30, 2025)
+- [x] Remove deprecated `visitStatus` and `estimatedDuration` fields from all 58 POIs
+- [x] Remove `estimatedDuration` display logic from Map.jsx popup rendering
+- [x] Comprehensive codebase review for core functionality
+- [x] Validate POI data consistency across all 6 cities
+- [x] Document code quality improvements and recommendations in IDEAS.md
+- [x] Update Copenhagen Travel Guide markdown formatting (bold Visibility fields)
+
+### Current Status (September 30, 2025)
 - **All Cities**: ✅ Complete with accurate coordinates and Google Maps links
+- **POI Count**: ✅ 58 total POIs (Munich: 7, Helsinki: 11, Tallinn: 8, Stockholm: 5, Copenhagen: 26, Malmö: 1)
+- **Data Structure**: ✅ Clean JSON with deprecated fields removed
 - **Stockholm**: ✅ Precision-corrected coordinates with perfect marker alignment
-- **Copenhagen**: ✅ Expanded to 17 POIs with comprehensive travel information
+- **Copenhagen**: ✅ 26 POIs with comprehensive travel information and walking tour
 - **Tallinn**: ✅ 8 POIs with updated coordinates and new Carved Stone Museum
-- **Helsinki**: ✅ 8 POIs with Google Maps integration maintained
+- **Helsinki**: ✅ 11 POIs with Google Maps integration maintained
 - **Malmö**: ✅ Updated Turning Torso coordinates
-- **Munich**: ✅ Complete with accurate coordinates and Google Maps links
+- **Munich**: ✅ 7 POIs with accurate coordinates and Google Maps links
 - **PWA Features**: ✅ Fully functional with blue theme and offline capability
 - **Production Build**: ✅ Live and tested on mobile devices
 - **Modern UI**: ✅ Professional city navigation and map controls implemented
@@ -630,8 +640,9 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - **Navigation UX**: ✅ Clean navigation interface with proper mobile optimization
 - **Marker Optimization**: ✅ Reduced marker size to 9px for better mobile screen utilization
 - **POI Labels**: ✅ Dynamic labels with zoom-based visibility and smart positioning
-- **Walking Tours**: ✅ Copenhagen City Walk with route visualization and POI filtering
+- **Walking Tours**: ✅ Copenhagen City Walk (22 POIs) + Munich Historic Center (5 POIs)
 - **Image Lightbox**: ✅ Migrated to Yet Another React Lightbox with professional mobile UX
+- **Code Quality**: ✅ Production-ready with documented improvement suggestions
 
 ### Post-Trip Enhancement
 - [ ] Replace placeholder photos with actual travel photos

@@ -21,11 +21,7 @@
           "description": "Munich's central square and heart of the city since 1158. Dominated by the New Town Hall with its famous Glockenspiel, this magnificent Gothic Revival building was constructed between 1867 and 1909. The Glockenspiel performs daily at 11am and 12pm (also at 5pm from March to October), featuring 43 bells and 32 life-sized figures that reenact historical Bavarian events. The square has been the focal point of Munich since the Middle Ages, serving as a marketplace and center of public life. Today it remains the heart of the pedestrian zone and a must-visit destination for tourists exploring Munich's rich history and culture.",
           "notes": "Glockenspiel at new town hall clock @17:00",
           "googleMapsUrl": "https://maps.google.com/?cid=16317814669314446971&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         },
         {
           "id": "munich-viktualienmarkt",
@@ -38,11 +34,7 @@
           "description": "Munich's most famous gourmet food market. Features the city's most central beer garden where all six Munich breweries serve in rotation.",
           "notes": "Daily food market with gourmet specialties and beer garden",
           "googleMapsUrl": "https://maps.google.com/?cid=74772572163980675&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         },
         {
           "id": "munich-glockenbachviertel",
@@ -55,11 +47,7 @@
           "description": "Munich's historic LGBT district and vibrant nightlife hub - a gathering place for the gay community since the 1920s and features rainbow traffic lights.",
           "notes": "Gay district",
           "googleMapsUrl": "https://maps.google.com/?cid=17214784537254708958&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "2-3 hours"
+          "photos": []
         },
         {
           "id": "munich-st-peter-church",
@@ -72,11 +60,7 @@
           "description": "Munich's oldest parish church dating back to the 12th century. The 92-meter tower 'Alter Peter' offers spectacular panoramic views of the city and Alps from its 56-meter viewing platform.",
           "notes": "Climb \"Alter Peter\" tower for city views (300+ steps)",
           "googleMapsUrl": "https://maps.google.com/?cid=12579101524591160423&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         },
         {
           "id": "munich-karlsplatz",
@@ -89,11 +73,7 @@
           "description": "Major transportation hub and western gateway to Munich's pedestrian zone. Features the historic 14th-century Karlstor gate, underground shopping mall.",
           "notes": "Major square with Karlstor gate and shopping mall below",
           "googleMapsUrl": "https://maps.google.com/?cid=5986232855190454813&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "30 minutes"
+          "photos": []
         },
         {
           "id": "munich-frauenkirche",
@@ -106,11 +86,7 @@
           "description": "Munich's iconic cathedral and most famous landmark with distinctive twin green-domed towers. Built 1468-1488, it features the legendary 'Devil's Footprint' - a black mark at the entrance linked to architectural trickery.",
           "notes": "Munich's most famous landmark with \"Devil's Footprint\"",
           "googleMapsUrl": "https://maps.google.com/?cid=12598930065456986&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1 hour"
+          "photos": []
         },
         {
           "id": "munich-aloft-hotel",
@@ -123,11 +99,7 @@
           "description": "Near Munich Central Station",
           "notes": "Address: Bayerstraße 37, Munich, Germany 80335 - Phone: +49 89-5402370",
           "googleMapsUrl": "https://maps.app.goo.gl/nkZdiaoqJ2QSD3ASA",
-          "photos": [
-
-          ],
-          "visitStatus": "booked",
-          "estimatedDuration": "accommodation"
+          "photos": []
         }
       ]
     },
@@ -152,11 +124,7 @@
           "description": "Historic indoor market hall, great for trying local foods like Karelian Pie.",
           "notes": "Seen from Phil on Netflix",
           "googleMapsUrl": "https://maps.app.goo.gl/rDT392jiWLmAHZq69",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         },
         {
           "id": "helsinki-sibelius-monument",
@@ -169,11 +137,7 @@
           "description": "Abstract monument dedicated to Finnish composer Jean Sibelius, located in Sibelius Park.",
           "notes": "rs,p731",
           "googleMapsUrl": "https://maps.app.goo.gl/bJgz7JWUAb1idEg99",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1 hour"
+          "photos": []
         },
         {
           "id": "helsinki-market-square",
@@ -186,11 +150,7 @@
           "description": "Helsinki's main outdoor market square, located at the South Harbour. A hub for food stalls and ferries.",
           "notes": "rs,p709",
           "googleMapsUrl": "https://maps.app.goo.gl/GwVVFPTTwwcy1Xnw7",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         },
         {
           "id": "helsinki-oodi-library",
@@ -203,11 +163,7 @@
           "description": "A stunning example of modern architecture and a vibrant public space.",
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/hLLbNeM7j2j1YJse9",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         },
         {
           "id": "helsinki-senate-square",
@@ -220,11 +176,7 @@
           "description": "A unique architectural square featuring Helsinki Cathedral and other neoclassical buildings.",
           "notes": "rs,p713",
           "googleMapsUrl": "https://maps.app.goo.gl/iaJLSvxFbwfTqUJ7A",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1 hour"
+          "photos": []
         },
         {
           "id": "helsinki-kamppi-chapel",
@@ -237,11 +189,7 @@
           "description": "A serene wooden chapel located in a busy commercial area, offering a quiet retreat.",
           "notes": "rs,p730",
           "googleMapsUrl": "https://maps.app.goo.gl/vrhEDPSDZMvRT2Qg8",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "30 minutes"
+          "photos": []
         },
         {
           "id": "helsinki-temppeliaukio-rock-church",
@@ -254,11 +202,7 @@
           "description": "A Lutheran church built directly into solid rock, famous for its unique architecture and acoustics.",
           "notes": "rs,p731",
           "googleMapsUrl": "https://maps.app.goo.gl/JajobCKdFrgj1hhK7",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1 hour"
+          "photos": []
         },
         {
           "id": "helsinki-esplanadi",
@@ -271,11 +215,7 @@
           "description": "A beautiful pedestrian boulevard and urban park in the heart of Helsinki.",
           "notes": "Pedestrian boulevard",
           "googleMapsUrl": "https://maps.app.goo.gl/FEpsMDAh54Pt17Ws5",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         },
         {
           "id": "helsinki-design-district",
@@ -288,11 +228,7 @@
           "description": "A neighborhood filled with design and antique shops, fashion stores, museums, and galleries. (Link points to the Design Museum as a central starting point)",
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/EwUuHFEstV3fbqXY9",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "2-3 hours"
+          "photos": []
         },
         {
           "id": "helsinki-suomenlinna",
@@ -305,11 +241,7 @@
           "description": "An 18th-century sea fortress and UNESCO World Heritage site spread across a group of islands. (Link points to the main ferry arrival pier)",
           "notes": "Fortress island",
           "googleMapsUrl": "https://maps.app.goo.gl/nAVeSVTEJHHj5x3r5",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "3-4 hours"
+          "photos": []
         },
         {
           "id": "helsinki-hotel-u14",
@@ -322,11 +254,7 @@
           "description": "Boutique hotel part of Marriott's Autograph Collection, located in the heart of Helsinki with unique design and personalized service.",
           "notes": "Address: Unioninkatu 14, Helsinki, Finland 00130 - Phone: +35 829 3141414",
           "googleMapsUrl": "https://maps.app.goo.gl/yGR7QQMFpH5wNR3cA",
-          "photos": [
-
-          ],
-          "visitStatus": "booked",
-          "estimatedDuration": "accommodation"
+          "photos": []
         }
       ]
     },
@@ -351,11 +279,7 @@
           "description": "Soviet-era tourist hotel with a secret KGB museum on the 23rd floor. Once the tallest building in Estonia, this hotel was used by the KGB to monitor foreign visitors during the Soviet occupation.",
           "notes": "rs,p784 - Soviet-era tourist hotel",
           "googleMapsUrl": "https://maps.app.goo.gl/km7x1VEQf8q9sCkk8?g_st=ipc",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         },
         {
           "id": "tallinn-kgb-prison-cells",
@@ -368,11 +292,7 @@
           "description": "Former KGB prison cells preserved as a museum showcasing the dark history of Soviet occupation. Experience the harsh reality of political imprisonment during Estonia's Soviet era.",
           "notes": "rs,p784",
           "googleMapsUrl": "https://maps.app.goo.gl/DA6YvLM4c1yr5ELx6?g_st=ipc",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         },
         {
           "id": "tallinn-depeche-mode-baar",
@@ -385,11 +305,7 @@
           "description": "Unique themed bar dedicated to the British electronic band Depeche Mode. A cult destination for fans featuring band memorabilia, themed cocktails, and regular tribute nights.",
           "notes": "Carved Stone Museum",
           "googleMapsUrl": "https://maps.app.goo.gl/93AQ2wU5yHwB7cJv6?g_st=ipc",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         },
         {
           "id": "tallinn-carved-stone-museum",
@@ -402,11 +318,7 @@
           "description": "",
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/hS7ejrsTAwFuMgKBA?g_st=ipc",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         },
         {
           "id": "tallinn-patkuli-viewing-platform",
@@ -419,11 +331,7 @@
           "description": "Scenic viewing platform offering panoramic views over Tallinn's medieval Old Town, red-tiled rooftops, and the Baltic Sea. One of the best photo spots in the city.",
           "notes": "Best views over Old Town and Baltic Sea",
           "googleMapsUrl": "https://maps.app.goo.gl/7gZ31gCppjfJtY3h8?g_st=ipc",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "30-45 minutes"
+          "photos": []
         },
         {
           "id": "tallinn-alexander-nevsky-cathedral",
@@ -436,11 +344,7 @@
           "description": "Striking Russian Orthodox cathedral built in 1900 during the Russian Empire period. Famous for its onion domes and elaborate interior, representing Russian influence in Estonian history.",
           "notes": "Russian Orthodox",
           "googleMapsUrl": "https://maps.app.goo.gl/Pam9m29rWcy77wKu5?g_st=ipc",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "45 minutes"
+          "photos": []
         },
         {
           "id": "tallinn-kiek-in-de-kok",
@@ -453,11 +357,7 @@
           "description": "Medieval defense tower and underground bastion tunnels system. The name means 'Peek into the Kitchen' as soldiers could see into houses below. Includes fascinating WWII tunnel network.",
           "notes": "Medieval tower with underground tunnels",
           "googleMapsUrl": "https://maps.app.goo.gl/aUqa32t1AaGRvUSu6?g_st=ipc",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "2-3 hours"
+          "photos": []
         },
         {
           "id": "tallinn-fat-margaret",
@@ -470,11 +370,7 @@
           "description": "Massive 16th-century cannon tower guarding Tallinn's harbor entrance. Now houses the Estonian Maritime Museum with exhibits on naval history and maritime traditions.",
           "notes": "Historic cannon tower at harbor entrance",
           "googleMapsUrl": "https://maps.app.goo.gl/zgN8oJN3qQa9tsfx8?g_st=ipc",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         }
       ]
     },
@@ -499,11 +395,7 @@
           "description": "Stockholm's historic Old Town island, one of the largest and best-preserved medieval city centers in Europe. Featuring cobblestone streets, colorful 17th-18th century buildings, and the Royal Palace.",
           "notes": "Historic Old Town island - explore cobblestone streets and colorful buildings",
           "googleMapsUrl": "https://maps.app.goo.gl/N1o4aSVZxjeHxASDA",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "2-3 hours"
+          "photos": []
         },
         {
           "id": "stockholm-skansen",
@@ -516,11 +408,7 @@
           "description": "World's first open-air folk museum and zoo, showcasing Swedish history and culture through historic buildings, traditional crafts, and Nordic animals including bears, wolves, and reindeer.",
           "notes": "rs,p584",
           "googleMapsUrl": "https://maps.app.goo.gl/hzcygcgp25gRpRq19",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "3-4 hours"
+          "photos": []
         },
         {
           "id": "stockholm-vasa-museum",
@@ -533,11 +421,7 @@
           "description": "Maritime museum housing the 17th-century warship Vasa, which sank on its maiden voyage in 1628 and was salvaged 333 years later. The ship is 95% original and remarkably well-preserved. Watch the film, take free guided tour. Audiobook tour available",
           "notes": "rs,p586",
           "googleMapsUrl": "https://maps.app.goo.gl/uCGBs3QVe8eheBoG6",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "2-3 hours"
+          "photos": []
         },
         {
           "id": "stockholm-fotografiska",
@@ -550,11 +434,7 @@
           "description": "Contemporary photography museum featuring world-class exhibitions. The Anton Corbijn exhibition showcases iconic portraits of musicians and celebrities by the renowned Dutch photographer.",
           "notes": "rs,p594 - Check the exhibit date!!",
           "googleMapsUrl": "https://maps.app.goo.gl/krsXpM7MiCheaiTBA",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         },
         {
           "id": "stockholm-sheraton-hotel",
@@ -567,11 +447,7 @@
           "description": "Premium hotel located on Södermalm island with stunning views of Stockholm's Old Town and waterfront. Perfect location for exploring the city.",
           "notes": "Address: Tegelbacken 6, 101 23 Stockholm, Sweden 10123 - Phone: +4684123400",
           "googleMapsUrl": "https://maps.app.goo.gl/p2DwGtkK9rYMv9368",
-          "photos": [
-
-          ],
-          "visitStatus": "booked",
-          "estimatedDuration": "accommodation"
+          "photos": []
         }
       ]
     },
@@ -586,44 +462,6 @@
       ],
       "pois": [
         {
-          "id": "copenhagen-little-mermaid",
-          "name": "The Little Mermaid",
-          "coordinates": [
-            12.59928,
-            55.69286
-          ],
-          "category": "landmark",
-          "visibility": "always",
-          "description": "Bronze statue inspired by Hans Christian Andersen's fairy tale, created by sculptor Edvard Eriksen in 1913. Despite being smaller than expected, it's one of Copenhagen's most famous symbols.",
-          "walkingTourNotes": "The Little Mermaid statue was a gift to Copenhagen in 1909 from brewing magnate Carl Jacobsen. Inspired by a ballet performance of Andersen's story, Jacobsen hired young sculptor Edvard Eriksen to immortalize the mermaid. Eriksen used his wife Eline as the model. The statue sat unappreciated for 40 years until Danny Kaye sang 'Wonderful Copenhagen' in the 1952 movie 'Hans Christian Andersen', and the tourist board decided to use the mermaid as a marketing symbol for the city.",
-          "notes": "Small but iconic statue - best photos from the rocks nearby",
-          "googleMapsUrl": "https://maps.app.goo.gl/g8VD9gNTFnfKVTxR9",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "30-45 minutes"
-        },
-        {
-          "id": "copenhagen-stroget",
-          "name": "Strøget",
-          "coordinates": [
-            12.5774366,
-            55.6786719
-          ],
-          "category": "culture",
-          "visibility": "walkingTour",
-          "description": "Pedestrian street - Europe's first fully pedestrianized streets",
-          "walkingTourNotes": "Finished in 1962, Copenhagen's experimental, tremendously successful, and much-copied pedestrian shopping mall is a string of lively streets and squares that bunny-hop through the old town from City Hall to the Nyhavn quarter, a 20-minute stroll. This was Europe's first great public pedestrian street.",
-          "notes": "Europe's first fully pedestrianized street - great for shopping and people watching",
-          "googleMapsUrl": "https://maps.app.goo.gl/qarUJG81u1yp4Z1ZA",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
-        },
-        {
           "id": "copenhagen-city-hall",
           "name": "Rådhuspladsen - City Hall",
           "coordinates": [
@@ -632,15 +470,169 @@
           ],
           "category": "landmark",
           "visibility": "always",
-          "description": "Copenhagen's historic city hall and central square, a major gathering place and tourist hub in the heart of the city.",
+          "description": "Copenhagen's historic city hall and central square, a major gathering place and tourist hub in the heart of the city. Dominated by the tower of the City Hall.",
           "walkingTourNotes": "For 700 years, Copenhagen was contained within its city walls, and this square was its fortified west end. By the mid-1800s, 140,000 people were packed inside. The overcrowding led to hygiene problems and a cholera outbreak that killed 5,000. The formidable town walls survive today only in echoes—a circular series of roads and remnants of moats, which are now people-friendly city lakes. Rådhuspladsen is where the city gathers to celebrate.",
           "notes": "rs.p77 - climb the tower, check the clock opposite to info desk",
           "googleMapsUrl": "https://maps.app.goo.gl/G51SXXpYj5FkVQDZ7",
-          "photos": [
-
+          "photos": []
+        },
+        {
+          "id": "copenhagen-tivoli-gardens",
+          "name": "Tivoli Gardens",
+          "coordinates": [
+            12.570259,
+            55.674289
           ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "category": "culture",
+          "visibility": "always",
+          "description": "One of the world's oldest operating amusement parks. Features beautiful gardens, vintage rides, concerts, and seasonal decorations that inspired Walt Disney.",
+          "walkingTourNotes": "Tivoli Gardens was founded in 1843 when magazine publisher Georg Carstensen convinced the king to build a pleasure garden outside the walls of crowded Copenhagen. The king believed happy people would care less about fighting for democracy. Tivoli became Europe's first great public amusement park and later inspired Walt Disney when he visited in the 1950s.",
+          "notes": "rs,p75",
+          "googleMapsUrl": "https://maps.app.goo.gl/8JbhfJdFGx5mqs997",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-vesterbrogade-weather-girls",
+          "name": "Vesterbrogade (Weather Girls)",
+          "coordinates": [
+            12.567431,
+            55.675714
+          ],
+          "category": "culture",
+          "visibility": "walkingTour",
+          "description": "The big, broad boulevard is Vesterbrogade ('Western Way'), which led to the western gate of the medieval city. Throughout Copenhagen, you'll see how the mayor's mantra, 'We will build a city not for cars but for people'—along with tax-and-regulation policies that encourage small electric cars and use of public transit and bikes—is shaping the city.",
+          "notes": "The golden weather girls (on the corner, high above Vesterbrogade) indicate the weather: on a bike (fair weather) or with an umbrella (foul).",
+          "googleMapsUrl": "",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-stroget",
+          "name": "Strøget",
+          "coordinates": [
+            12.571151,
+            55.677276
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Europe's first fully pedestrianized street, now Copenhagen's main shopping boulevard from City Hall to Nyhavn.",
+          "walkingTourNotes": "Finished in 1962, Copenhagen's experimental, tremendously successful, and much-copied pedestrian shopping mall is a string of lively streets and squares that bunny-hop through the old town from City Hall to the Nyhavn quarter, a 20-minute stroll. This was Europe's first great public pedestrian street.",
+          "notes": "Europe's first fully pedestrianized street - great for shopping and people watching",
+          "googleMapsUrl": "https://maps.app.goo.gl/qarUJG81u1yp4Z1ZA",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-st-peters-church",
+          "name": "St. Peter's Church (Sankt Petri Kirke)",
+          "coordinates": [
+            12.5674228,
+            55.6796027
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Historic brick church that served Copenhagen's German merchant community, still holding services in German today. Features a distinctive 17th-century brick funerary chapel at ground level.",
+          "walkingTourNotes": "The ground-floor funerary chapel, unusual for being built at soil level rather than below ground, houses elaborate German tombs that showcase the wealth and influence of these merchants.",
+          "notes": "Church and burial chapels open Thu-Sat 11:00-15:00. Pass funky shops in the surrounding area while exploring.",
+          "googleMapsUrl": "https://maps.app.goo.gl/n1yz9Z4BhkLgcvgv5",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-cathedral-our-lady",
+          "name": "Cathedral of Our Lady (Vor Frue Kirke)",
+          "coordinates": [
+            12.5718057,
+            55.6794409
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Copenhagen's main cathedral with Neoclassical Greek temple facade and Thorvaldsen's masterpiece sculptures of the 12 apostles.",
+          "walkingTourNotes": "The cathedral celebrates Denmark's break from the Roman Catholic Church to become Lutheran in 1536. King Christian III presided over the council meeting when they decided to break away from Rome. Because of the reforms of 1536, there's no Mary in the Cathedral of Our Lady. The church burned down in the 1807 British bombardment during the Napoleonic Wars. Rebuilt in Neoclassical style, the cathedral's facade looks like a Greek temple. The interior features the 12 apostles clad in classical robes—masterpieces by the great Danish sculptor Bertel Thorvaldsen. They lead to a statue of the Risen Christ, standing where Zeus would have been.",
+          "notes": "Free entry - see Thorvaldsen's apostle sculptures",
+          "googleMapsUrl": "https://maps.app.goo.gl/N2mY8HgX4Q5K3Pz36",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-university",
+          "name": "Copenhagen University",
+          "coordinates": [
+            12.571456,
+            55.680041
+          ],
+          "category": "culture",
+          "visibility": "walkingTour",
+          "description": "Now home to nearly 40,000 students, this university was founded by the king in the 15th century. Today tuition is free.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/CVpB7YsXHLer75oZ9",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-gammeltorv",
+          "name": "Gammeltorv",
+          "coordinates": [
+            12.572248,
+            55.678121
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Gammeltorv ('Old Square'), the town center, features the Fountain of Charity (Caritas) (early 1600s), which provided drinking water to locals since the early 1600s. Featuring a pregnant woman squirting water from her breasts next to a boy urinating, this was deemed too racy for people of the Victorian Age.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/DJ8useVPF6ymH8i3A",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-nytorv",
+          "name": "Nytorv",
+          "coordinates": [
+            12.572843,
+            55.67771
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "While Gammeltorv was the place of happiness and merriment, Nytorv ('New Square') was a place of severity and judgment. The square is Neoclassical (built mostly after the 1807 British bombardment). Look down at the pavement and read the plaque: 'Here stood the town's Kag (whipping post) until 1780.'",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/8gobggnTHNxqmWpW9",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-amagertorv",
+          "name": "Amagertorv",
+          "coordinates": [
+            12.5742328,
+            55.6785557
+          ],
+          "category": "culture",
+          "visibility": "walkingTour",
+          "description": "This square is prime real estate for talented street entertainers. Walk past the flagship Lego store (on right) to the stately brick Holy Ghost Church (Helligåndskirken). The hospital nearby is an antiques hall.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/QeZzPn1uA3EHWTYD9",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-grabroedretorv",
+          "name": "Gråbrødretorv",
+          "coordinates": [
+            12.5759959,
+            55.6797519
+          ],
+          "category": "culture",
+          "visibility": "walkingTour",
+          "description": "Surrounded by fine old buildings, this leafy and beer-stained 'Grey Friars' Square'—a monastic square until the Reformation made it a people's square—is popular for an outdoor meal or drink in the summer.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/yNEyVkXNiG7ATQw99",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-bishop-absalon-statue",
+          "name": "Bishop Absalon Statue",
+          "coordinates": [
+            12.5800008,
+            55.677975
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Looking downhill from the fountain, about halfway to the imposing palace in the distance, you'll see a great man on a horse. Walk here to view this statue of Copenhagen's founder, Bishop Absalon, shown in his Warrior Absalon getup.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/aiM81fNuC4E9TftV7",
+          "photos": []
         },
         {
           "id": "copenhagen-christiansborg-palace",
@@ -655,66 +647,80 @@
           "walkingTourNotes": "You're stepping onto Slotsholmen ('Castle Island'), the easy-to-defend birthplace of Copenhagen in the 12th century. This is Denmark's power island, with the Folketinget (Danish parliament), Supreme Court, Ministry of Finance, and the historic Børsen stock exchange. The seat of Danish government today is considered the birthplace of Copenhagen, dominated by the royal palace complex with its distinctive 'three crowns' spire.",
           "notes": "rs, p83",
           "googleMapsUrl": "https://maps.app.goo.gl/yVJQWuhx1P9sQmrcA",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "2-3 hours"
+          "photos": []
         },
         {
-          "id": "copenhagen-royal-library",
-          "name": "Det Kgl. Bibliotek - The Royal Library",
+          "id": "copenhagen-borsen",
+          "name": "Børsen - Historic Stock Exchange",
           "coordinates": [
-            12.58265,
-            55.67339
-          ],
-          "category": "culture",
-          "visibility": "always",
-          "description": "Nick name: \"Black Diamond\"",
-          "notes": "rs,p88",
-          "googleMapsUrl": "https://maps.app.goo.gl/Bp3VkKaqgMjSK6gz8",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
-        },
-        {
-          "id": "copenhagen-round-tower",
-          "name": "Round Tower",
-          "coordinates": [
-            12.57573,
-            55.68134
+            12.5835082,
+            55.6755127
           ],
           "category": "landmark",
           "visibility": "walkingTour",
-          "description": "",
-          "notes": "rs,p88 - Observatory, Check the open hour",
-          "googleMapsUrl": "https://maps.app.goo.gl/mtYcKoPAtVRDFJne7",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "description": "Historic red-brick stock exchange.",
+          "walkingTourNotes": "The eye-catching red-brick stock exchange was inspired by the Dutch Renaissance. Built to promote the mercantile ambitions of Denmark in the 1600s, it was the 'World Trade Center' of Scandinavia. Its dragon-tail spire with three crowns represents the Danish aspiration to rule a united Scandinavia—or at least be its commercial capital.",
+          "notes": "Not open to tourists - exterior viewing only",
+          "googleMapsUrl": "https://maps.app.goo.gl/8H3gNKjZk5F1Y2rw8",
+          "photos": []
         },
         {
-          "id": "copenhagen-tivoli-gardens",
-          "name": "Tivoli Gardens",
+          "id": "copenhagen-havnegade-promenade",
+          "name": "Havnegade Promenade",
           "coordinates": [
-            12.56814,
-            55.67368
+            12.5899562,
+            55.676846
           ],
           "category": "culture",
-          "visibility": "always",
-          "description": "Historic amusement park opened in 1843, one of the world's oldest operating amusement parks. Features beautiful gardens, vintage rides, concerts, and seasonal decorations that inspired Walt Disney.",
-          "walkingTourNotes": "Tivoli Gardens was founded in 1843 when magazine publisher Georg Carstensen convinced the king to build a pleasure garden outside the walls of crowded Copenhagen. The king believed happy people would care less about fighting for democracy. Tivoli became Europe's first great public amusement park and later inspired Walt Disney when he visited in the 1950s.",
-          "notes": "rs,p75",
-          "googleMapsUrl": "https://maps.app.goo.gl/8JbhfJdFGx5mqs997",
-          "photos": [
-
+          "visibility": "walkingTour",
+          "description": "The Havnegade promenade to Nyhavn is a delightful people zone with trampolines (stop for a bounce), an ice-cream-licking ambience, and harborview benches.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/yYUVeQe4fFWXgw2m9",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-kissing-bridge",
+          "name": "Inderhavnsbroen Sliding Bridge (Kissing Bridge)",
+          "coordinates": [
+            12.5947366,
+            55.6785035
           ],
-          "visitStatus": "planned",
-          "estimatedDuration": "3-4 hours"
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "From here, stroll several more blocks toward the Inderhavnsbroen sliding bridge for pedestrians and bikes. This 'kissing bridge' is called that because the two sliding, or retractable, sections 'kiss' when they come together. It links the town center with Christianshavn and makes the modern Opera House (ahead on the right, across the water) more accessible.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/ARiGxX9fdEVkEwjC6",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-nyhavn",
+          "name": "Nyhavn - New Harbor",
+          "coordinates": [
+            12.5882235,
+            55.6797705
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Iconic canal lined with colorful 17th-century townhouses, restaurants, and historic sailing ships. Hans Christian Andersen lived here.",
+          "walkingTourNotes": "Established in the 1670s along with Kongens Nytorv, Nyhavn ('New Harbor') is a recently gentrified sailors' quarter. The canal is filled with glamorous old sailboats of all sizes—Copenhagen's ever-changing boat museum. Hans Christian Andersen lived and wrote his first stories here in the red double-gabled building at #20.",
+          "notes": "Perfect for canal-side dining and people watching",
+          "googleMapsUrl": "https://maps.app.goo.gl/VK4gJ9z2QnR8xP2u9",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-kongens-nytorv",
+          "name": "Kongens Nytorv - King's New Square",
+          "coordinates": [
+            12.5830191,
+            55.6799792
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Grand baroque square with Royal Theater, luxury hotels, and equestrian statue of Christian V. Major Metro station and cultural center.",
+          "walkingTourNotes": "The 'King's New Square' is home to the Royal Theater, French embassy, and Hotel d'Angleterre where VIPs and pop stars stay. The equestrian statue of Christian V celebrates the king who made this square the city's geographical and cultural center. In past winters, this was a popular ice-skating rink.",
+          "notes": "Metro hub and luxury shopping area",
+          "googleMapsUrl": "https://maps.app.goo.gl/P8vK2R9N7bX1mY4z7",
+          "photos": []
         },
         {
           "id": "copenhagen-amalienborg-palace",
@@ -725,15 +731,55 @@
           ],
           "category": "landmark",
           "visibility": "always",
-          "description": "The palace where the king lives",
+          "description": "The palace where the king lives, with the changing of the guard at noon.",
           "walkingTourNotes": "Queen Margrethe II, who abdicated the throne in 2024, lives in the mansion to your immediate left as you enter the square from the harborside. The mansion across the street is where her son, King Frederik X, lives with his wife Queen Mary—an Australian businesswoman—and their four children. The guards change daily at noon. The equestrian statue of Frederik V is a reminder that this square was the centerpiece of a planned town he envisioned in 1750.",
           "notes": "rs,p89 - changing of the guard at noon",
           "googleMapsUrl": "https://maps.app.goo.gl/6AyATeWaLgy5nt4E8",
-          "photos": [
-
+          "photos": []
+        },
+        {
+          "id": "copenhagen-little-mermaid",
+          "name": "The Little Mermaid",
+          "coordinates": [
+            12.59928,
+            55.69286
           ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Bronze statue inspired by Hans Christian Andersen's fairy tale, created by sculptor Edvard Eriksen in 1913. Despite being smaller than expected, it's one of Copenhagen's most famous symbols.",
+          "walkingTourNotes": "Gift to Copenhagen in 1909 from brewing magnate Carl Jacobsen. Inspired by a ballet performance of Andersen's story, Jacobsen hired Eriksen to immortalize the mermaid. Eriksen used his wife Eline as the model. The statue sat unappreciated for 40 years until Danny Kaye sang 'Wonderful Copenhagen' in the 1952 movie 'Hans Christian Andersen', and the tourist board decided to use the mermaid as a marketing symbol.",
+          "notes": "Small but iconic statue - best photos from the rocks nearby",
+          "googleMapsUrl": "https://maps.app.goo.gl/g8VD9gNTFnfKVTxR9",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-round-tower",
+          "name": "Round Tower (Rundetårn)",
+          "coordinates": [
+            12.57573,
+            55.68134
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "17th-century tower with a unique spiral ramp leading to an observatory with panoramic views of Copenhagen. Built between 1637-1642 by King Christian IV as an astronomical observatory, featuring a 7.5-turn helical corridor (equestrian staircase) leading to the observation platform 34.8 meters above ground.",
+          "walkingTourNotes": "Designed by Hans van Steenwinckel the Younger, the Round Tower is part of the Trinitatis Complex which includes a chapel and the first facilities of the Copenhagen University Library founded in 1482. The unique spiral ramp was designed so horses could pull heavy astronomical equipment to the top. Today it serves as a public observation tower, astronomical observatory, and exhibition venue.",
+          "notes": "rs,p88 - Observatory, check the open hours",
+          "googleMapsUrl": "https://maps.app.goo.gl/mtYcKoPAtVRDFJne7",
+          "photos": []
+        },
+        {
+          "id": "copenhagen-royal-library",
+          "name": "Det Kgl. Bibliotek (The Royal Library)",
+          "coordinates": [
+            12.58265,
+            55.67339
+          ],
+          "category": "culture",
+          "visibility": "walkingTour",
+          "description": "Denmark's national library, nicknamed \"Black Diamond\" for its striking modern architecture with shiny black granite cladding.",
+          "notes": "rs,p88",
+          "googleMapsUrl": "https://maps.app.goo.gl/Bp3VkKaqgMjSK6gz8",
+          "photos": []
         },
         {
           "id": "copenhagen-church-our-saviour",
@@ -747,11 +793,7 @@
           "description": "Spiral spire",
           "notes": "rs,p98",
           "googleMapsUrl": "https://maps.app.goo.gl/pYd8rgqaseTAAH77A",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1 hour"
+          "photos": []
         },
         {
           "id": "copenhagen-fisketorvet-pool",
@@ -765,11 +807,7 @@
           "description": "Harbour bath",
           "notes": "rs,p106",
           "googleMapsUrl": "https://maps.app.goo.gl/mBXwWE82PqDFpBN3A",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
+          "photos": []
         },
         {
           "id": "copenhagen-islands-brygge",
@@ -783,29 +821,7 @@
           "description": "Harbour bath",
           "notes": "rs,p106",
           "googleMapsUrl": "https://maps.app.goo.gl/mJPrSdZbUVVepXp59",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
-        },
-        {
-          "id": "copenhagen-open-air-museum",
-          "name": "The Open Air Museum",
-          "coordinates": [
-            12.49014,
-            55.78567
-          ],
-          "category": "culture",
-          "visibility": "always",
-          "description": "Historic Danish village recreation showcasing traditional Danish life and architecture from different periods.",
-          "notes": "rs,p107",
-          "googleMapsUrl": "https://maps.app.goo.gl/VvsQydDf2iKdkMLM9",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "2-3 hours"
+          "photos": []
         },
         {
           "id": "copenhagen-residence-inn",
@@ -819,79 +835,7 @@
           "description": "Extended-stay hotel in the modern Nordhavn district with apartment-style suites, perfect for longer stays with kitchen facilities and spacious accommodations.",
           "notes": "Address: Tallinngade 12, Copenhagen, Denmark 2150 - Phone: +4530308124",
           "googleMapsUrl": "https://maps.app.goo.gl/XghNPWQiQAAjwP6d9",
-          "photos": [
-
-          ],
-          "visitStatus": "booked",
-          "estimatedDuration": "accommodation"
-        },
-        {
-          "id": "copenhagen-borsen",
-          "name": "Børsen - Historic Stock Exchange",
-          "coordinates": [
-            12.58212,
-            55.67580
-          ],
-          "category": "landmark",
-          "visibility": "walkingTour",
-          "description": "Historic red-brick stock exchange with distinctive dragon-tail spire and three crowns, representing Denmark's commercial ambitions.",
-          "walkingTourNotes": "The eye-catching red-brick stock exchange was inspired by the Dutch Renaissance. Built to promote the mercantile ambitions of Denmark in the 1600s, it was the 'World Trade Center' of Scandinavia. Its dragon-tail spire with three crowns represents the Danish aspiration to rule a united Scandinavia—or at least be its commercial capital.",
-          "notes": "Not open to tourists - exterior viewing only",
-          "googleMapsUrl": "https://maps.app.goo.gl/8H3gNKjZk5F1Y2rw8",
-          "photos": [],
-          "visitStatus": "planned",
-          "estimatedDuration": "30 minutes"
-        },
-        {
-          "id": "copenhagen-cathedral-our-lady",
-          "name": "Cathedral of Our Lady (Vor Frue Kirke)",
-          "coordinates": [
-            12.57142,
-            55.67936
-          ],
-          "category": "landmark",
-          "visibility": "walkingTour",
-          "description": "Copenhagen's main cathedral with Neoclassical Greek temple facade and Thorvaldsen's masterpiece sculptures of the 12 apostles.",
-          "walkingTourNotes": "The church burned down in the 1807 British bombardment during the Napoleonic Wars. Rebuilt in Neoclassical style, the cathedral's facade looks like a Greek temple. The interior features the 12 apostles clad in classical robes—masterpieces by the great Danish sculptor Bertel Thorvaldsen. They lead to a statue of the Risen Christ, standing where Zeus would have been.",
-          "notes": "Free entry - see Thorvaldsen's apostle sculptures",
-          "googleMapsUrl": "https://maps.app.goo.gl/N2mY8HgX4Q5K3Pz36",
-          "photos": [],
-          "visitStatus": "planned",
-          "estimatedDuration": "45 minutes"
-        },
-        {
-          "id": "copenhagen-nyhavn",
-          "name": "Nyhavn - New Harbor",
-          "coordinates": [
-            12.59184,
-            55.67934
-          ],
-          "category": "landmark",
-          "visibility": "always",
-          "description": "Iconic canal lined with colorful 17th-century townhouses, restaurants, and historic sailing ships. Hans Christian Andersen lived here.",
-          "walkingTourNotes": "Established in the 1670s along with Kongens Nytorv, Nyhavn ('New Harbor') is a recently gentrified sailors' quarter. The canal is filled with glamorous old sailboats of all sizes—Copenhagen's ever-changing boat museum. Hans Christian Andersen lived and wrote his first stories here in the red double-gabled building at #20.",
-          "notes": "Perfect for canal-side dining and people watching",
-          "googleMapsUrl": "https://maps.app.goo.gl/VK4gJ9z2QnR8xP2u9",
-          "photos": [],
-          "visitStatus": "planned",
-          "estimatedDuration": "1-2 hours"
-        },
-        {
-          "id": "copenhagen-kongens-nytorv",
-          "name": "Kongens Nytorv - King's New Square",
-          "coordinates": [
-            12.58738,
-            55.68035
-          ],
-          "category": "landmark",
-          "visibility": "walkingTour",
-          "description": "Grand baroque square with Royal Theater, luxury hotels, and equestrian statue of Christian V. Major Metro station and cultural center.",
-          "walkingTourNotes": "The 'King's New Square' is home to the Royal Theater, French embassy, and Hotel d'Angleterre where VIPs and pop stars stay. The equestrian statue of Christian V celebrates the king who made this square the city's geographical and cultural center. In past winters, this was a popular ice-skating rink.",
-          "notes": "Metro hub and luxury shopping area",
-          "googleMapsUrl": "https://maps.app.goo.gl/P8vK2R9N7bX1mY4z7",
-          "photos": [],
-          "visitStatus": "planned",
-          "estimatedDuration": "45 minutes"
+          "photos": []
         }
       ]
     },
@@ -916,11 +860,7 @@
           "description": "Neo-futurist architectural marvel designed by Santiago Calatrava, completed in 2005. At 190 meters tall, it's the tallest building in Scandinavia, with a distinctive twisted design rotating 90 degrees from base to top.",
           "notes": "Tallest building in Scandinavia with twisted architecture - visible from Copenhagen across the Öresund Bridge",
           "googleMapsUrl": "https://maps.app.goo.gl/Noe5gYxnNxjfPJsW6",
-          "photos": [
-
-          ],
-          "visitStatus": "planned",
-          "estimatedDuration": "1 hour"
+          "photos": []
         }
       ]
     }
@@ -954,11 +894,22 @@
         "poiSequence": [
           "copenhagen-city-hall",
           "copenhagen-tivoli-gardens",
+          "copenhagen-vesterbrogade-weather-girls",
           "copenhagen-stroget",
+          "copenhagen-st-peters-church",
+          "copenhagen-university",
           "copenhagen-cathedral-our-lady",
+          "copenhagen-gammeltorv",
+          "copenhagen-nytorv",
+          "copenhagen-amagertorv",
+          "copenhagen-grabroedretorv",
           "copenhagen-round-tower",
+          "copenhagen-bishop-absalon-statue",
           "copenhagen-christiansborg-palace",
+          "copenhagen-royal-library",
           "copenhagen-borsen",
+          "copenhagen-havnegade-promenade",
+          "copenhagen-kissing-bridge",
           "copenhagen-nyhavn",
           "copenhagen-kongens-nytorv",
           "copenhagen-amalienborg-palace",

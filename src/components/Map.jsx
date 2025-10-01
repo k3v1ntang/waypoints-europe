@@ -48,6 +48,11 @@ const Map = () => {
     if (!mapRef.current) return;
 
     if (tour) {
+      // Increase label minzoom to reduce clutter when route is active
+      if (mapRef.current.getLayer('poi-labels')) {
+        mapRef.current.setLayerZoomRange('poi-labels', 14, 22);
+      }
+
       // Create direct lines between POIs in sequence
       const coordinates = tour.poiSequence
         .map(poiId => findPOICoordinates(poiId, currentCity.id))
@@ -74,6 +79,11 @@ const Map = () => {
         });
       }
     } else {
+      // Reset label minzoom to original value when route is hidden
+      if (mapRef.current.getLayer('poi-labels')) {
+        mapRef.current.setLayerZoomRange('poi-labels', 13, 22);
+      }
+
       // Clear tour route
       if (mapRef.current.getSource('walking-tour-line')) {
         mapRef.current.getSource('walking-tour-line').setData({
@@ -405,6 +415,7 @@ const Map = () => {
         id: 'walking-route',
         type: 'line',
         source: 'walking-tour-line',
+        minzoom: 12, // Show route at medium zoom level
         layout: {
           'line-join': 'round',
           'line-cap': 'round'
@@ -520,7 +531,7 @@ const Map = () => {
               </a>
             </div>` : ''}
             <div style="margin-top: 8px; font-size: 12px; color: #6b7280;">
-              ⏱️ ${properties.estimatedDuration} • 📍 ${properties.category}
+              📍 ${properties.category}
             </div>
           </div>
         `)

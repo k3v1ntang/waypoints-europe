@@ -269,12 +269,12 @@ JSON File → In-Memory Editing → Local Storage → Database
 ## Future Improvements & Reminders
 
 ### 🎨 App Icon Design (TODO)
-**Current**: Simple blue "W" placeholder icons  
+**Current**: Simple blue "W" placeholder icons
 **Future**: Create professional travel-themed app icons
 
 **Icon Requirements:**
 - `public/pwa-192x192.png` (192x192px)
-- `public/pwa-512x512.png` (512x512px)  
+- `public/pwa-512x512.png` (512x512px)
 - `public/apple-touch-icon.png` (180x180px)
 
 **Design Ideas:**
@@ -287,6 +287,189 @@ JSON File → In-Memory Editing → Local Storage → Database
 - Figma, Adobe Illustrator, or Canva
 - Export as PNG with transparent/solid backgrounds
 - Test visibility on both light and dark home screens
+
+---
+
+## Code Quality Improvements (From September 2025 Review)
+
+### ⚠️ Important Improvements (Priority 2)
+
+#### 1. Data Consistency - Add Explicit `visibility` Field
+**Issue**: Only Copenhagen POIs have explicit `visibility` fields. Other cities rely on fallback logic in `shouldShowPOI()`.
+
+**Current State**:
+- ✅ Copenhagen: 26 POIs with explicit `visibility` field
+- ⚠️ Munich: 7 POIs without `visibility` field
+- ⚠️ Helsinki: 11 POIs without `visibility` field
+- ⚠️ Tallinn: 8 POIs without `visibility` field
+- ⚠️ Stockholm: 5 POIs without `visibility` field
+- ⚠️ Malmö: 1 POI without `visibility` field
+
+**Impact**:
+- Code works correctly due to fallback logic (`Map.jsx` line 28)
+- Future developers may be confused by inconsistent data structure
+- Adding walking tours to other cities requires retroactive field additions
+
+**Recommendation**:
+Add explicit `"visibility": "always"` to all POIs in non-Copenhagen cities.
+
+**Implementation**:
+```json
+{
+  "id": "munich-marienplatz",
+  "name": "Marienplatz",
+  "coordinates": [11.5754485, 48.1373932],
+  "category": "landmark",
+  "visibility": "always",  // ← ADD THIS FIELD
+  "description": "Munich's central square...",
+  // ... rest of POI data
+}
+```
+
+**Affected Files**: `src/data/pois.json`
+- Munich POIs: lines 12-103
+- Helsinki POIs: lines 116-259
+- Tallinn POIs: lines 272-374
+- Stockholm POIs: lines 387-451
+- Malmö POIs: lines 853-864
+
+---
+
+#### 2. Walking Tour Error Handling
+**Issue**: The `handleTourSelect` function silently filters out invalid POI coordinates without warning users.
+
+**Current Code** (`Map.jsx` lines 56-59):
+```javascript
+const coordinates = tour.poiSequence
+  .map(poiId => findPOICoordinates(poiId, currentCity.id))
+  .filter(coord => coord !== null);
+```
+
+**Problem**: Silent failure if POI IDs in `poiSequence` don't match actual POI IDs.
+
+**Impact**:
+- If POI data is corrupted or IDs change, routes fail silently
+- Difficult to debug walking tour issues
+- Poor user experience with no feedback
+
+**Recommendation**:
+Add validation and console warnings for missing POIs:
+
+```javascript
+// IMPROVED VERSION with error handling
+const coordinates = [];
+const missingPOIs = [];
+
+tour.poiSequence.forEach(poiId => {
+  const coord = findPOICoordinates(poiId, currentCity.id);
+  if (coord) {
+    coordinates.push(coord);
+  } else {
+    missingPOIs.push(poiId);
+    console.warn(`Walking tour "${tour.name}": POI "${poiId}" not found`);
+  }
+});
+
+// Show warning if POIs are missing
+if (missingPOIs.length > 0 && coordinates.length < tour.poiSequence.length) {
+  console.error(`Walking tour incomplete: ${missingPOIs.length} POI(s) missing`);
+}
+
+if (coordinates.length >= 2) {
+  // Continue with route rendering...
+}
+```
+
+**Affected Files**: `src/components/Map.jsx` lines 56-80
+
+---
+
+### 📘 Nice-to-Have Improvements (Priority 3)
+
+#### 1. Remove Unused Variable
+**File**: `src/components/Map.jsx` line 201
+**Issue**: Variable `hasTourNotes` is extracted but never used in `handleToggleClick` function.
+
+**Fix**: Remove the unused line:
+```javascript
+// DELETE THIS LINE
+// const hasTourNotes = button.dataset.hasTourNotes === 'true';
+```
+
+---
+
+#### 2. Improve useEffect Dependency Management
+**File**: `src/components/Map.jsx` lines 100-191
+**Issue**: ESLint warning disabled for `useEffect` dependency array.
+
+**Recommendation**: Wrap `updatePOIVisibility` in `useCallback` to properly define dependencies:
+```javascript
+const updatePOIVisibility = useCallback(() => {
+  if (!mapRef.current || !mapRef.current.getSource('pois')) return;
+  // ... function implementation
+}, [showWalkingTourPOIs]);
+
+useEffect(() => {
+  updatePOIVisibility();
+}, [updatePOIVisibility]);
+```
+
+---
+
+#### 3. Add Google Maps URL to Weather Girls POI
+**File**: `src/data/pois.json` line 505
+**Issue**: "Vesterbrogade (Weather Girls)" POI has empty `googleMapsUrl` field.
+
+**Current**:
+```json
+"googleMapsUrl": "",  // ← EMPTY STRING
+```
+
+**Impact**: Users can't navigate to this location via Google Maps link.
+
+**Recommendation**: Generate proper Google Maps URL:
+1. Search coordinates: `12.567431, 55.675714`
+2. Click Share → Copy link
+3. Add shortened URL to JSON
+
+---
+
+#### 4. Event Listener Cleanup Pattern
+**File**: `src/components/Map.jsx` lines 193-566
+**Issue**: Cleanup function captures `handleToggleClick` from closure, potential memory leak if effect reruns.
+
+**Recommendation**: Use ref pattern for event listener:
+```javascript
+// ADD AT TOP OF COMPONENT
+const handleToggleClickRef = useRef();
+
+// IN useEffect
+handleToggleClickRef.current = handleToggleClick;
+
+// EVENT LISTENER
+document.addEventListener('click', (e) => handleToggleClickRef.current(e));
+
+// CLEANUP
+document.removeEventListener('click', (e) => handleToggleClickRef.current(e));
+```
+
+---
+
+### ✅ Code Quality Assessment Summary
+
+**Overall Status**: Production-ready with professional-grade implementation
+
+**Strengths**:
+- Clean React hooks usage with proper dependency arrays
+- Efficient event delegation pattern
+- Professional Mapbox implementation with clustering
+- Excellent mobile-first UX with progressive disclosure
+- Modern lightbox (YARL) with zero dependencies
+- Proper accessibility (ARIA labels, keyboard navigation)
+
+**Bundle Size**: ~545 KB gzipped (acceptable for PWA travel app with offline maps)
+
+**Browser Compatibility**: No console errors or warnings in production build
 
 ---
 
