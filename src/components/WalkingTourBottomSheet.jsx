@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import poisData from '../data/pois.json';
 import ImageLightbox from './ImageLightbox';
+import GuideViewer from './GuideViewer';
 
 const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [isGuideOpen, setIsGuideOpen] = useState(false);
   // Get walking tours for current city
   const getAvailableTours = () => {
     if (!currentCity || !poisData.walkingTours) return [];
@@ -38,25 +40,6 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
 
   return (
     <div>
-      {/* City Info Header */}
-      <div style={{ marginBottom: '24px', textAlign: 'center' }}>
-        <h3 style={{
-          margin: '0 0 8px 0',
-          color: '#1f2937',
-          fontSize: '18px',
-          fontWeight: '600'
-        }}>
-          🚶‍♂️ Walking Tours in {currentCity.name}
-        </h3>
-        <p style={{
-          margin: 0,
-          color: '#6b7280',
-          fontSize: '14px'
-        }}>
-          Discover the city's highlights on foot
-        </p>
-      </div>
-
       {/* Tours List */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         {availableTours.map((tour) => (
@@ -152,7 +135,7 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
               </span>
             </div>
 
-            {/* Walking Tour Map - Always show for Copenhagen City Walk */}
+            {/* Walking Tour Resources - Always show for Copenhagen City Walk */}
             {currentCity.id === 'copenhagen' && tour.id === 'copenhagen-city-walk' && (
               <div style={{
                 marginTop: '16px',
@@ -161,78 +144,135 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
                 border: '1px solid #e2e8f0',
                 borderRadius: '8px'
               }}>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  marginBottom: '8px'
-                }}>
-                  <h5 style={{
-                    margin: 0,
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    color: '#475569',
+                {/* Walking Tour Map Section */}
+                <div style={{ marginBottom: '12px' }}>
+                  <div style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '6px'
+                    justifyContent: 'space-between',
+                    marginBottom: '8px'
                   }}>
-                    🗺️ Walking Tour Map
-                  </h5>
-                  <span style={{
-                    fontSize: '11px',
-                    color: '#64748b',
-                    fontStyle: 'italic'
-                  }}>
-                    Tap to view full size
-                  </span>
-                </div>
+                    <h5 style={{
+                      margin: 0,
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      color: '#475569',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px'
+                    }}>
+                      🗺️ Walking Tour Map
+                    </h5>
+                    <span style={{
+                      fontSize: '11px',
+                      color: '#64748b',
+                      fontStyle: 'italic'
+                    }}>
+                      Tap to view full size
+                    </span>
+                  </div>
 
-                <div
-                  onClick={() => setIsLightboxOpen(true)}
-                  style={{
-                    width: '100%',
-                    height: '120px',
-                    borderRadius: '6px',
-                    overflow: 'hidden',
-                    cursor: 'pointer',
-                    position: 'relative',
-                    border: '1px solid #e2e8f0',
-                    transition: 'all 0.2s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.transform = 'scale(1.02)';
-                    e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.transform = 'scale(1)';
-                    e.target.style.boxShadow = 'none';
-                  }}
-                >
-                  <img
-                    src="/maps/copenhagen-city-walk.jpg"
-                    alt="Copenhagen City Walk Map"
+                  <div
+                    onClick={() => setIsLightboxOpen(true)}
                     style={{
                       width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: 'center'
+                      height: '120px',
+                      borderRadius: '6px',
+                      overflow: 'hidden',
+                      cursor: 'pointer',
+                      position: 'relative',
+                      border: '1px solid #e2e8f0',
+                      transition: 'all 0.2s ease'
                     }}
-                  />
-                  <div style={{
-                    position: 'absolute',
-                    top: '8px',
-                    right: '8px',
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                    color: 'white',
-                    padding: '4px 8px',
-                    borderRadius: '4px',
-                    fontSize: '12px',
-                    fontWeight: '500',
-                    backdropFilter: 'blur(4px)'
-                  }}>
-                    🔍 View Map
+                    onMouseEnter={(e) => {
+                      e.target.style.transform = 'scale(1.02)';
+                      e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.transform = 'scale(1)';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  >
+                    <img
+                      src="/maps/copenhagen-city-walk.jpg"
+                      alt="Copenhagen City Walk Map"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: 'center'
+                      }}
+                    />
+                    <div style={{
+                      position: 'absolute',
+                      top: '8px',
+                      right: '8px',
+                      backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                      color: 'white',
+                      padding: '4px 8px',
+                      borderRadius: '4px',
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      backdropFilter: 'blur(4px)'
+                    }}>
+                      🔍 View Map
+                    </div>
                   </div>
                 </div>
+
+                {/* Full Tour Guide Link */}
+                <button
+                  onClick={() => setIsGuideOpen(true)}
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    backgroundColor: 'white',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    transition: 'all 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = '#f8fafc';
+                    e.target.style.borderColor = '#2563eb';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = 'white';
+                    e.target.style.borderColor = '#e2e8f0';
+                  }}
+                >
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}>
+                    <span style={{ fontSize: '16px' }}>📖</span>
+                    <div style={{ textAlign: 'left' }}>
+                      <div style={{
+                        fontSize: '14px',
+                        fontWeight: '600',
+                        color: '#1f2937'
+                      }}>
+                        View Full Tour Guide
+                      </div>
+                      <div style={{
+                        fontSize: '12px',
+                        color: '#6b7280'
+                      }}>
+                        Complete walking tour with detailed descriptions
+                      </div>
+                    </div>
+                  </div>
+                  <span style={{
+                    fontSize: '18px',
+                    color: '#2563eb'
+                  }}>
+                    →
+                  </span>
+                </button>
               </div>
             )}
 
@@ -249,6 +289,14 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
         imageAlt="Copenhagen City Walk Map - Detailed walking tour route with numbered stops"
         title="Copenhagen City Walk Map"
       />
+
+      {/* Guide Viewer */}
+      {isGuideOpen && (
+        <GuideViewer
+          cityId={currentCity?.id}
+          onClose={() => setIsGuideOpen(false)}
+        />
+      )}
     </div>
   );
 };
