@@ -619,6 +619,16 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - [x] Document code quality improvements and recommendations in IDEAS.md
 - [x] Update Copenhagen Travel Guide markdown formatting (bold Visibility fields)
 
+### Walking Tour Guide Viewer (September 30, 2025)
+- [x] Install markdown-to-jsx library (8 KB gzipped)
+- [x] Create GuideViewer.jsx component with full-screen modal display
+- [x] Implement markdown rendering with custom styling matching app theme
+- [x] Add "View Full Tour Guide" button to WalkingTourBottomSheet
+- [x] Create `/public/guides/copenhagen.md` with Rick Steves walking tour content
+- [x] Remove redundant "Walking Tours in Copenhagen (CPH)" header section
+- [x] Organize documentation files into `/docs/` folder for developer reference
+- [x] Standardize markdown file naming to kebab-case convention
+
 ### Current Status (September 30, 2025)
 - **All Cities**: ✅ Complete with accurate coordinates and Google Maps links
 - **POI Count**: ✅ 58 total POIs (Munich: 7, Helsinki: 11, Tallinn: 8, Stockholm: 5, Copenhagen: 26, Malmö: 1)
@@ -643,6 +653,8 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - **Walking Tours**: ✅ Copenhagen City Walk (22 POIs) + Munich Historic Center (5 POIs)
 - **Image Lightbox**: ✅ Migrated to Yet Another React Lightbox with professional mobile UX
 - **Code Quality**: ✅ Production-ready with documented improvement suggestions
+- **Guide Viewer**: ✅ In-app markdown renderer with full-screen modal display
+- **File Organization**: ✅ `/public/guides/` for app content, `/docs/` for developer reference
 
 ### Post-Trip Enhancement
 - [ ] Replace placeholder photos with actual travel photos
@@ -687,6 +699,27 @@ Before suggesting: "Use componentDidMount for lifecycle"
 - Thumbnail preview in `WalkingTourBottomSheet.jsx`
 - Full-screen lightbox opens on tap with zoom capabilities
 - Integration with walking tour map images in `/public/maps/`
+
+#### Guide Viewer Implementation
+- **Library**: [markdown-to-jsx](https://www.npmjs.com/package/markdown-to-jsx) v7.7.13
+- **License**: MIT (completely free)
+- **Component**: `src/components/GuideViewer.jsx` - Full-screen markdown renderer
+- **Bundle Impact**: ~8 KB gzipped
+- **Content Location**: `/public/guides/{cityId}.md` - User-facing walking tour guides
+- **Documentation**: `/docs/` - Developer POI reference documents (kebab-case naming)
+
+**Key Features:**
+- ✅ **Custom markdown styling** - Matches app blue theme (#2563eb)
+- ✅ **Mobile-responsive typography** - Optimized for small screens
+- ✅ **Keyboard navigation** - ESC key to close
+- ✅ **Click-outside to close** - Standard modal interaction
+- ✅ **Offline-ready** - Cached by PWA service worker
+- ✅ **Loading and error states** - Graceful fallback handling
+
+**Integration:**
+- Button in `WalkingTourBottomSheet.jsx` opens guide viewer
+- Fetches markdown content dynamically based on city ID
+- Custom styling overrides for headings, paragraphs, links, lists
 
 ### Development Notes
 - **Environment variable**: `VITE_MAPBOX_TOKEN` (not `REACT_APP_MAPBOX_TOKEN`)
