@@ -7,6 +7,31 @@
 
 This self-guided walk starts at Rådhuspladsen and heads along the pedestrian street, the Strøget, through the old city, onto the island of Slotsholmen (home of Christiansborg Palace), along the harbor promenade, and through Nyhavn, the sailors' quarter with the city's iconic canal-front houses.
 
+## Walk Stop Index
+
+1. Rådhuspladsen
+2. Tivoli Gardens
+3. Weather Girls =
+4. Strøget
+5. St. Peter's Church
+6. Cathedral of Our Lady
+7. Copenhagen University
+8. Gammeltorv & Nytorv
+9. Amagertorv
+10. Gråbrødretorv
+11. Stork Fountain Spin Tour
+12. Bishop Absalon Statue
+13. Christiansborg Palace
+14. Frederik VII Statue
+15. Børsen
+16. Havnegade Promenade
+17. Inderhavnsbroen Sliding Bridge
+18. View of Nyhavn
+19. Kongens Nytorv
+20. Hviids Vinstue
+21. Amalienborg Palace & Square
+22. The Little Mermaid
+
 ---
 
 ## 1. Rådhuspladsen (City Hall Square)
