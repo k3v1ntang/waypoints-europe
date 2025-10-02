@@ -18,6 +18,7 @@
             48.1373932
           ],
           "category": "landmark",
+          "visibility": "always",
           "description": "Munich's central square and heart of the city since 1158. Dominated by the New Town Hall with its famous Glockenspiel, this magnificent Gothic Revival building was constructed between 1867 and 1909. The Glockenspiel performs daily at 11am and 12pm (also at 5pm from March to October), featuring 43 bells and 32 life-sized figures that reenact historical Bavarian events. The square has been the focal point of Munich since the Middle Ages, serving as a marketplace and center of public life. Today it remains the heart of the pedestrian zone and a must-visit destination for tourists exploring Munich's rich history and culture.",
           "notes": "Glockenspiel at new town hall clock @17:00",
           "googleMapsUrl": "https://maps.google.com/?cid=16317814669314446971&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
@@ -31,6 +32,7 @@
             48.1353899
           ],
           "category": "food",
+          "visibility": "always",
           "description": "Munich's most famous gourmet food market. Features the city's most central beer garden where all six Munich breweries serve in rotation.",
           "notes": "Daily food market with gourmet specialties and beer garden",
           "googleMapsUrl": "https://maps.google.com/?cid=74772572163980675&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
@@ -44,6 +46,7 @@
             48.1265524
           ],
           "category": "culture",
+          "visibility": "always",
           "description": "Munich's historic LGBT district and vibrant nightlife hub - a gathering place for the gay community since the 1920s and features rainbow traffic lights.",
           "notes": "Gay district",
           "googleMapsUrl": "https://maps.google.com/?cid=17214784537254708958&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
@@ -57,6 +60,7 @@
             48.1366805
           ],
           "category": "landmark",
+          "visibility": "always",
           "description": "Munich's oldest parish church dating back to the 12th century. The 92-meter tower 'Alter Peter' offers spectacular panoramic views of the city and Alps from its 56-meter viewing platform.",
           "notes": "Climb \"Alter Peter\" tower for city views (300+ steps)",
           "googleMapsUrl": "https://maps.google.com/?cid=12579101524591160423&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
@@ -70,6 +74,7 @@
             48.1392462
           ],
           "category": "practical",
+          "visibility": "always",
           "description": "Major transportation hub and western gateway to Munich's pedestrian zone. Features the historic 14th-century Karlstor gate, underground shopping mall.",
           "notes": "Major square with Karlstor gate and shopping mall below",
           "googleMapsUrl": "https://maps.google.com/?cid=5986232855190454813&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
@@ -83,6 +88,7 @@
             48.1386649
           ],
           "category": "landmark",
+          "visibility": "always",
           "description": "Munich's iconic cathedral and most famous landmark with distinctive twin green-domed towers. Built 1468-1488, it features the legendary 'Devil's Footprint' - a black mark at the entrance linked to architectural trickery.",
           "notes": "Munich's most famous landmark with \"Devil's Footprint\"",
           "googleMapsUrl": "https://maps.google.com/?cid=12598930065456986&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ",
@@ -124,7 +130,8 @@
           "description": "Historic indoor market hall, great for trying local foods like Karelian Pie.",
           "notes": "Seen from Phil on Netflix",
           "googleMapsUrl": "https://maps.app.goo.gl/rDT392jiWLmAHZq69",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "helsinki-sibelius-monument",
@@ -137,7 +144,8 @@
           "description": "Abstract monument dedicated to Finnish composer Jean Sibelius, located in Sibelius Park.",
           "notes": "rs,p731",
           "googleMapsUrl": "https://maps.app.goo.gl/bJgz7JWUAb1idEg99",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "helsinki-market-square",
@@ -150,7 +158,8 @@
           "description": "Helsinki's main outdoor market square, located at the South Harbour. A hub for food stalls and ferries.",
           "notes": "rs,p709",
           "googleMapsUrl": "https://maps.app.goo.gl/GwVVFPTTwwcy1Xnw7",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "helsinki-oodi-library",
@@ -163,7 +172,8 @@
           "description": "A stunning example of modern architecture and a vibrant public space.",
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/hLLbNeM7j2j1YJse9",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "helsinki-senate-square",
@@ -176,7 +186,8 @@
           "description": "A unique architectural square featuring Helsinki Cathedral and other neoclassical buildings.",
           "notes": "rs,p713",
           "googleMapsUrl": "https://maps.app.goo.gl/iaJLSvxFbwfTqUJ7A",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "helsinki-kamppi-chapel",
@@ -189,7 +200,8 @@
           "description": "A serene wooden chapel located in a busy commercial area, offering a quiet retreat.",
           "notes": "rs,p730",
           "googleMapsUrl": "https://maps.app.goo.gl/vrhEDPSDZMvRT2Qg8",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "helsinki-temppeliaukio-rock-church",
@@ -202,7 +214,8 @@
           "description": "A Lutheran church built directly into solid rock, famous for its unique architecture and acoustics.",
           "notes": "rs,p731",
           "googleMapsUrl": "https://maps.app.goo.gl/JajobCKdFrgj1hhK7",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "helsinki-esplanadi",
@@ -215,7 +228,8 @@
           "description": "A beautiful pedestrian boulevard and urban park in the heart of Helsinki.",
           "notes": "Pedestrian boulevard",
           "googleMapsUrl": "https://maps.app.goo.gl/FEpsMDAh54Pt17Ws5",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "helsinki-design-district",
@@ -228,7 +242,8 @@
           "description": "A neighborhood filled with design and antique shops, fashion stores, museums, and galleries. (Link points to the Design Museum as a central starting point)",
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/EwUuHFEstV3fbqXY9",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "helsinki-suomenlinna",
@@ -241,7 +256,8 @@
           "description": "An 18th-century sea fortress and UNESCO World Heritage site spread across a group of islands. (Link points to the main ferry arrival pier)",
           "notes": "Fortress island",
           "googleMapsUrl": "https://maps.app.goo.gl/nAVeSVTEJHHj5x3r5",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "helsinki-hotel-u14",
@@ -279,7 +295,8 @@
           "description": "Soviet-era tourist hotel with a secret KGB museum on the 23rd floor. Once the tallest building in Estonia, this hotel was used by the KGB to monitor foreign visitors during the Soviet occupation.",
           "notes": "rs,p784 - Soviet-era tourist hotel",
           "googleMapsUrl": "https://maps.app.goo.gl/km7x1VEQf8q9sCkk8?g_st=ipc",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "tallinn-kgb-prison-cells",
@@ -292,7 +309,8 @@
           "description": "Former KGB prison cells preserved as a museum showcasing the dark history of Soviet occupation. Experience the harsh reality of political imprisonment during Estonia's Soviet era.",
           "notes": "rs,p784",
           "googleMapsUrl": "https://maps.app.goo.gl/DA6YvLM4c1yr5ELx6?g_st=ipc",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "tallinn-depeche-mode-baar",
@@ -305,7 +323,8 @@
           "description": "Unique themed bar dedicated to the British electronic band Depeche Mode. A cult destination for fans featuring band memorabilia, themed cocktails, and regular tribute nights.",
           "notes": "Carved Stone Museum",
           "googleMapsUrl": "https://maps.app.goo.gl/93AQ2wU5yHwB7cJv6?g_st=ipc",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "tallinn-carved-stone-museum",
@@ -318,7 +337,8 @@
           "description": "",
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/hS7ejrsTAwFuMgKBA?g_st=ipc",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "tallinn-patkuli-viewing-platform",
@@ -331,7 +351,8 @@
           "description": "Scenic viewing platform offering panoramic views over Tallinn's medieval Old Town, red-tiled rooftops, and the Baltic Sea. One of the best photo spots in the city.",
           "notes": "Best views over Old Town and Baltic Sea",
           "googleMapsUrl": "https://maps.app.goo.gl/7gZ31gCppjfJtY3h8?g_st=ipc",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "tallinn-alexander-nevsky-cathedral",
@@ -344,7 +365,8 @@
           "description": "Striking Russian Orthodox cathedral built in 1900 during the Russian Empire period. Famous for its onion domes and elaborate interior, representing Russian influence in Estonian history.",
           "notes": "Russian Orthodox",
           "googleMapsUrl": "https://maps.app.goo.gl/Pam9m29rWcy77wKu5?g_st=ipc",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "tallinn-kiek-in-de-kok",
@@ -357,7 +379,8 @@
           "description": "Medieval defense tower and underground bastion tunnels system. The name means 'Peek into the Kitchen' as soldiers could see into houses below. Includes fascinating WWII tunnel network.",
           "notes": "Medieval tower with underground tunnels",
           "googleMapsUrl": "https://maps.app.goo.gl/aUqa32t1AaGRvUSu6?g_st=ipc",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "tallinn-fat-margaret",
@@ -370,7 +393,8 @@
           "description": "Massive 16th-century cannon tower guarding Tallinn's harbor entrance. Now houses the Estonian Maritime Museum with exhibits on naval history and maritime traditions.",
           "notes": "Historic cannon tower at harbor entrance",
           "googleMapsUrl": "https://maps.app.goo.gl/zgN8oJN3qQa9tsfx8?g_st=ipc",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         }
       ]
     },
@@ -395,7 +419,8 @@
           "description": "Stockholm's historic Old Town island, one of the largest and best-preserved medieval city centers in Europe. Featuring cobblestone streets, colorful 17th-18th century buildings, and the Royal Palace.",
           "notes": "Historic Old Town island - explore cobblestone streets and colorful buildings",
           "googleMapsUrl": "https://maps.app.goo.gl/N1o4aSVZxjeHxASDA",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "stockholm-skansen",
@@ -408,7 +433,8 @@
           "description": "World's first open-air folk museum and zoo, showcasing Swedish history and culture through historic buildings, traditional crafts, and Nordic animals including bears, wolves, and reindeer.",
           "notes": "rs,p584",
           "googleMapsUrl": "https://maps.app.goo.gl/hzcygcgp25gRpRq19",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "stockholm-vasa-museum",
@@ -421,7 +447,8 @@
           "description": "Maritime museum housing the 17th-century warship Vasa, which sank on its maiden voyage in 1628 and was salvaged 333 years later. The ship is 95% original and remarkably well-preserved. Watch the film, take free guided tour. Audiobook tour available",
           "notes": "rs,p586",
           "googleMapsUrl": "https://maps.app.goo.gl/uCGBs3QVe8eheBoG6",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "stockholm-fotografiska",
@@ -434,7 +461,8 @@
           "description": "Contemporary photography museum featuring world-class exhibitions. The Anton Corbijn exhibition showcases iconic portraits of musicians and celebrities by the renowned Dutch photographer.",
           "notes": "rs,p594 - Check the exhibit date!!",
           "googleMapsUrl": "https://maps.app.goo.gl/krsXpM7MiCheaiTBA",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         },
         {
           "id": "stockholm-sheraton-hotel",
@@ -860,7 +888,8 @@
           "description": "Neo-futurist architectural marvel designed by Santiago Calatrava, completed in 2005. At 190 meters tall, it's the tallest building in Scandinavia, with a distinctive twisted design rotating 90 degrees from base to top.",
           "notes": "Tallest building in Scandinavia with twisted architecture - visible from Copenhagen across the Öresund Bridge",
           "googleMapsUrl": "https://maps.app.goo.gl/Noe5gYxnNxjfPJsW6",
-          "photos": []
+          "photos": [],
+          "visibility": "always"
         }
       ]
     }
