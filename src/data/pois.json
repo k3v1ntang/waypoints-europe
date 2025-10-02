@@ -260,6 +260,76 @@
           "visibility": "always"
         },
         {
+          "id": "helsinki-cafe-kappeli",
+          "name": "Café Kappeli",
+          "coordinates": [
+            24.951,
+            60.168
+          ],
+          "category": "food",
+          "visibility": "walkingTour",
+          "description": "Old-fashioned, gazebo-like oasis of coffee, pastry, and relaxation with Old World atmosphere. A popular hangout for local intellectuals and artists in the 19th century, today it offers romantic tourists a great cup-of-coffee memory. The bandstand in front hosts nearly daily music and dance performances in summer.",
+          "notes": "rs,p714 - Self-serve counter, salmon and soup-and-bread lunch specials",
+          "googleMapsUrl": "",
+          "photos": []
+        },
+        {
+          "id": "helsinki-iittala-arabia-aarikka",
+          "name": "Iittala, Arabia & Aarikka",
+          "coordinates": [
+            24.948,
+            60.168
+          ],
+          "category": "culture",
+          "visibility": "walkingTour",
+          "description": "Finnish design shops showcasing practical, affordable design with simple Nordic aesthetic. Iittala features classic Finnish glassware, Arabia has been a mark of quality ceramics since 1873, and Aarikka specializes in clothing, jewelry, and home goods.",
+          "notes": "rs,p715 - Pohjoisesplanadi 23-27",
+          "googleMapsUrl": "",
+          "photos": []
+        },
+        {
+          "id": "helsinki-artek-marimekko-stockmann",
+          "name": "Artek, Marimekko & Stockmann",
+          "coordinates": [
+            24.9387,
+            60.1677
+          ],
+          "category": "culture",
+          "visibility": "walkingTour",
+          "description": "Finnish design shopping area. Artek (founded 1935 by Alvar Aalto) showcases modern furniture and housewares. Marimekko, Finland's most famous export, features bold colorful fabric patterns on everything. Stockmann is the biggest, best, and oldest department store in town with a sprawling supermarket in the basement.",
+          "notes": "rs,p716 - Corner of Keskuskatu and Aleksanterinkatu",
+          "googleMapsUrl": "",
+          "photos": []
+        },
+        {
+          "id": "helsinki-three-blacksmiths",
+          "name": "Three Blacksmiths",
+          "coordinates": [
+            24.9378,
+            60.1678
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Statue from 1932 celebrating human labor and cooperation, showing the solid character of the Finnish people. The base shows surviving shrapnel damage from World War II. Stockmann's entrance facing this statue is one of the city's most popular meeting points - 'Let's meet under the clock.'",
+          "notes": "rs,p716-717 - Popular meeting spot at Stockmann clock",
+          "googleMapsUrl": "",
+          "photos": []
+        },
+        {
+          "id": "helsinki-central-train-station",
+          "name": "Central Train Station",
+          "coordinates": [
+            24.9382,
+            60.1698
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Helsinki landmark designed by Eliel Saarinen with stern figures on the facade carrying illuminated globes that seem to have stepped right out of Nordic myth. The main hall features early 20th-century architectural razzle-dazzle. Across the square is the Ateneum (Finland's national gallery) and Finnish National Theater.",
+          "notes": "rs,p717 - Check out Olivia Restaurant inside for Art Nouveau architecture",
+          "googleMapsUrl": "",
+          "photos": []
+        },
+        {
           "id": "helsinki-hotel-u14",
           "name": "Hotel U14, Autograph Collection",
           "coordinates": [
@@ -944,6 +1014,28 @@
           "copenhagen-kongens-nytorv",
           "copenhagen-amalienborg-palace",
           "copenhagen-little-mermaid"
+        ]
+      }
+    ],
+    "helsinki": [
+      {
+        "id": "helsinki-city-walk",
+        "name": "Helsinki City Walk",
+        "description": "Self-guided walk from Market Square to Oodi Library, exploring Helsinki's history and modern culture",
+        "difficulty": "easy",
+        "estimatedTime": "1.5 hours",
+        "distance": "~2 km",
+        "mapImage": "/maps/helsinki-city-walk.jpg",
+        "poiSequence": [
+          "helsinki-market-square",
+          "helsinki-senate-square",
+          "helsinki-cafe-kappeli",
+          "helsinki-iittala-arabia-aarikka",
+          "helsinki-esplanadi",
+          "helsinki-artek-marimekko-stockmann",
+          "helsinki-three-blacksmiths",
+          "helsinki-central-train-station",
+          "helsinki-oodi-library"
         ]
       }
     ]
