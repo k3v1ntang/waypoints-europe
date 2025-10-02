@@ -1038,6 +1038,23 @@
           "helsinki-oodi-library"
         ]
       }
+    ],
+    "tallinn": [
+      {
+        "id": "tallinn-walk",
+        "name": "Tallinn Walk",
+        "description": "Self-guided walk through Tallinn's lower and upper towns, exploring medieval Hanseatic heritage",
+        "difficulty": "moderate",
+        "estimatedTime": "2 hours",
+        "distance": "~3 km",
+        "mapImage": "/maps/tallinn-walk.jpg",
+        "poiSequence": [
+          "tallinn-fat-margaret",
+          "tallinn-patkuli-viewing-platform",
+          "tallinn-alexander-nevsky-cathedral",
+          "tallinn-kiek-in-de-kok"
+        ]
+      }
     ]
   }
 }
