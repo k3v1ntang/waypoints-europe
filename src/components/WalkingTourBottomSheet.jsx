@@ -6,6 +6,7 @@ import GuideViewer from './GuideViewer';
 const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
+  const [activeTour, setActiveTour] = useState(null); // Track which tour's resources are being viewed
   // Get walking tours for current city
   const getAvailableTours = () => {
     if (!currentCity || !poisData.walkingTours) return [];
@@ -135,8 +136,8 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
               </span>
             </div>
 
-            {/* Walking Tour Resources - Always show for Copenhagen City Walk */}
-            {currentCity.id === 'copenhagen' && tour.id === 'copenhagen-city-walk' && (
+            {/* Walking Tour Resources - Show if tour has mapImage */}
+            {tour.mapImage && (
               <div style={{
                 marginTop: '16px',
                 padding: '12px',
@@ -173,7 +174,10 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
                   </div>
 
                   <div
-                    onClick={() => setIsLightboxOpen(true)}
+                    onClick={() => {
+                      setActiveTour(tour);
+                      setIsLightboxOpen(true);
+                    }}
                     style={{
                       width: '100%',
                       height: '120px',
@@ -194,8 +198,8 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
                     }}
                   >
                     <img
-                      src="/maps/copenhagen-city-walk.jpg"
-                      alt="Copenhagen City Walk Map"
+                      src={tour.mapImage}
+                      alt={`${tour.name} Map`}
                       style={{
                         width: '100%',
                         height: '100%',
@@ -222,7 +226,10 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
 
                 {/* Full Tour Guide Link */}
                 <button
-                  onClick={() => setIsGuideOpen(true)}
+                  onClick={() => {
+                    setActiveTour(tour);
+                    setIsGuideOpen(true);
+                  }}
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -282,13 +289,15 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
 
 
       {/* Image Lightbox */}
-      <ImageLightbox
-        isOpen={isLightboxOpen}
-        onClose={() => setIsLightboxOpen(false)}
-        imageSrc="/maps/copenhagen-city-walk.jpg"
-        imageAlt="Copenhagen City Walk Map - Detailed walking tour route with numbered stops"
-        title="Copenhagen City Walk Map"
-      />
+      {activeTour && (
+        <ImageLightbox
+          isOpen={isLightboxOpen}
+          onClose={() => setIsLightboxOpen(false)}
+          imageSrc={activeTour.mapImage}
+          imageAlt={`${activeTour.name} Map - Detailed walking tour route with numbered stops`}
+          title={`${activeTour.name} Map`}
+        />
+      )}
 
       {/* Guide Viewer */}
       {isGuideOpen && (

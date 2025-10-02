@@ -891,6 +891,7 @@
         "difficulty": "easy",
         "estimatedTime": "2 hours",
         "distance": "~3 km",
+        "mapImage": "/maps/copenhagen-city-walk.jpg",
         "poiSequence": [
           "copenhagen-city-hall",
           "copenhagen-tivoli-gardens",
