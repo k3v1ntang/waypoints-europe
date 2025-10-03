@@ -128,7 +128,8 @@
           ],
           "category": "food",
           "description": "Historic indoor market hall, great for trying local foods like Karelian Pie.",
-          "notes": "Seen from Phil on Netflix",
+          "walkingTourNotes": "Brick-and-tan building along the harborfront offering more upscale food options than the basic outdoor market.",
+          "notes": "Featured on 'Phil' Netflix show. Located near Market Square, perfect for gourmet food shopping and local delicacies.",
           "googleMapsUrl": "https://maps.app.goo.gl/rDT392jiWLmAHZq69",
           "photos": [],
           "visibility": "always"
@@ -142,7 +143,8 @@
           ],
           "category": "landmark",
           "description": "Abstract monument dedicated to Finnish composer Jean Sibelius, located in Sibelius Park.",
-          "notes": "rs,p731",
+          "walkingTourNotes": "Monument honors Finland's most famous composer Jean Sibelius, featuring abstract organ pipe-like metal tubes that create a distinctive visual tribute to the composer's musical legacy.",
+          "notes": "Rick Steves p.731. Beautiful park setting ideal for photos. The monument's unique design makes it one of Helsinki's most photographed attractions.",
           "googleMapsUrl": "https://maps.app.goo.gl/bJgz7JWUAb1idEg99",
           "photos": [],
           "visibility": "always"
@@ -154,9 +156,10 @@
             24.9541698,
             60.1677083
           ],
-          "category": "culture",
-          "description": "Helsinki's main outdoor market square, located at the South Harbour. A hub for food stalls and ferries.",
-          "notes": "rs,p709",
+          "category": "landmark",
+          "description": "Helsinki's main outdoor market square, located at the South Harbour. A hub for food stalls and ferries. Features the Czarina's Stone obelisk, outdoor market stalls, and views of the harbor with Viking ships and the SkyWheel Helsinki Ferris wheel.",
+          "walkingTourNotes": "The Czarina's Stone obelisk was the first public monument in Helsinki, designed by Carl Ludvig Engel and erected in 1835 to celebrate the first visit by Russian Czarina Alexandra and Czar Nicholas I. The square serves as the starting point for exploring the city's grand promenade.",
+          "notes": "Explore colorful outdoor market with produce, fish, snacks, souvenirs, and crafts. Orange tents sell food, white tents sell souvenirs. Visit Old Market Hall for upscale food options. Harbor cruise boats depart from here. Rick Steves p.731.",
           "googleMapsUrl": "https://maps.app.goo.gl/GwVVFPTTwwcy1Xnw7",
           "photos": [],
           "visibility": "always"
@@ -169,8 +172,9 @@
             60.1736833
           ],
           "category": "culture",
-          "description": "A stunning example of modern architecture and a vibrant public space.",
-          "notes": "",
+          "description": "A stunning example of modern architecture and a vibrant public space. Helsinki's central library opened in 2018 to celebrate 101st birthday of Finland's independence. Swooping glass and wood building with facade covered in Finnish spruce planks, facing parliament and institutions of art, culture, and democracy.",
+          "walkingTourNotes": "Oodi (pronounced 'awdi,' meaning 'ode') represents library of the future. One-third dedicated to books, rest is creative collection of anything community might need. Opened 2018 as gift to citizens celebrating independence.",
+          "notes": "Free, daily 8:00-21:00. Loitering encouraged. Features intense chess games, sleeping zone, sewing stations, soundproof recording studios, game rooms, 3-D printer, sports gear lending (even skis), free meeting spaces. Don't miss Vera the robot. Grand central spiral staircase decorated with words describing welcome people (henpecked, chubby folk, babies, victims of war, fundamentalists, prudes, tourists—everybody). View terrace on top floor shows Kiasma Museum, parliament (1931), Helsinki Music Center, National Museum, Finlandia Hall, 1952 Olympic Stadium.",
           "googleMapsUrl": "https://maps.app.goo.gl/hLLbNeM7j2j1YJse9",
           "photos": [],
           "visibility": "always"
@@ -183,8 +187,9 @@
             60.1694794
           ],
           "category": "landmark",
-          "description": "A unique architectural square featuring Helsinki Cathedral and other neoclassical buildings.",
-          "notes": "rs,p713",
+          "description": "A unique architectural square featuring Helsinki Cathedral and other neoclassical buildings. The finest Neoclassical square in Europe, designed by Carl Ludvig Engel after the 1808 fire. Features the Lutheran Cathedral with its grand staircase, statue of Czar Alexander II, and symmetrical government buildings.",
+          "walkingTourNotes": "After Finland became a grand duchy of the Russian Empire, the czar sent German architect Carl Ludvig Engel (who had lived in St. Petersburg) to redesign the square in Neoclassical style. The square represents Helsinki's paradox: built by Russia with imported European architects in an intentionally European style. Czar Alexander II statue honors the czar who freed serfs and gave Finland more autonomy in 1863.",
+          "notes": "Cathedral staircase is popular meeting and tanning spot. Yellow Senate building houses prime minister's office. Blue-gray stone building from 1757 (Helsinki City Museum) is one of few pre-Russian buildings surviving. National Library has world's finest Slavic book collection. Café Engel at Aleksanterinkatu 26 offers lunch and coffee. Rick Steves p.713.",
           "googleMapsUrl": "https://maps.app.goo.gl/iaJLSvxFbwfTqUJ7A",
           "photos": [],
           "visibility": "always"
@@ -193,12 +198,13 @@
           "id": "helsinki-kamppi-chapel",
           "name": "Kamppi Chapel - Chapel of Silence",
           "coordinates": [
-            24.9353421,
-            60.1697131
+            24.9226601,
+            60.1730277
           ],
           "category": "landmark",
           "description": "A serene wooden chapel located in a busy commercial area, offering a quiet retreat.",
-          "notes": "rs,p730",
+          "walkingTourNotes": "Modern architectural landmark designed to provide a peaceful sanctuary in the heart of Helsinki's commercial district. The distinctive curved wood structure stands in striking contrast to its urban surroundings.",
+          "notes": "Rick Steves p.730. Free to enter. Perfect escape from city bustle. Unique contemporary Finnish design.",
           "googleMapsUrl": "https://maps.app.goo.gl/vrhEDPSDZMvRT2Qg8",
           "photos": [],
           "visibility": "always"
@@ -212,7 +218,8 @@
           ],
           "category": "landmark",
           "description": "A Lutheran church built directly into solid rock, famous for its unique architecture and acoustics.",
-          "notes": "rs,p731",
+          "walkingTourNotes": "Completed in 1969, this extraordinary church was carved directly into natural bedrock. The copper dome lets in natural light while the rough rock walls create exceptional acoustics, making it a popular concert venue.",
+          "notes": "Rick Steves p.731. One of Helsinki's most popular attractions. Excellent acoustics for concerts. Small entrance fee. Can get crowded with tour groups.",
           "googleMapsUrl": "https://maps.app.goo.gl/JajobCKdFrgj1hhK7",
           "photos": [],
           "visibility": "always"
@@ -224,9 +231,10 @@
             24.9450346,
             60.1674841
           ],
-          "category": "culture",
-          "description": "A beautiful pedestrian boulevard and urban park in the heart of Helsinki.",
-          "notes": "Pedestrian boulevard",
+          "category": "landmark",
+          "description": "A beautiful pedestrian boulevard and urban park in the heart of Helsinki. Helsinki's top shopping boulevard with a park in the middle, stretching from Market Square toward Bulevardi. Features mature linden trees, elegant hotels, high-end shops, and cultural venues.",
+          "walkingTourNotes": "Laid out in 1826 by Carl Ludvig Engel under Russian rule. The Francophile czars made the Esplanade feel like the Champs-Élysées—a bit of Paris in the north. Connected the old city (late 1700s) with new parts where neo-Renaissance stone houses would be built by late 1800s. Originally aspirational for rustic 1830s Helsinki (population only 10,000).",
+          "notes": "Admire Hotel Kämp at #29, Galleria Kämp high-end fashion mall at #31, Strindberg Café for drinks. Swedish Theater at the top was built under Russian rule for Swedish residents. Academic Bookstore at #39 designed by Alvar Aalto has Café Aalto with ageless Aalto furniture.",
           "googleMapsUrl": "https://maps.app.goo.gl/FEpsMDAh54Pt17Ws5",
           "photos": [],
           "visibility": "always"
@@ -239,8 +247,9 @@
             60.1642385
           ],
           "category": "culture",
-          "description": "A neighborhood filled with design and antique shops, fashion stores, museums, and galleries. (Link points to the Design Museum as a central starting point)",
-          "notes": "",
+          "description": "A neighborhood filled with design and antique shops, fashion stores, museums, and galleries.",
+          "walkingTourNotes": "Helsinki's creative hub showcasing Finnish design heritage and contemporary innovation. The district encompasses multiple streets filled with boutiques, studios, and cultural institutions celebrating Finnish aesthetic excellence.",
+          "notes": "Design Museum serves as central starting point. Great for shopping Finnish design, fashion, and art. Allow 2-3 hours to explore properly.",
           "googleMapsUrl": "https://maps.app.goo.gl/EwUuHFEstV3fbqXY9",
           "photos": [],
           "visibility": "always"
@@ -249,12 +258,13 @@
           "id": "helsinki-suomenlinna",
           "name": "Suomenlinna",
           "coordinates": [
-            24.9832491,
-            60.1468551
+            24.9370194,
+            60.1642385
           ],
           "category": "landmark",
-          "description": "An 18th-century sea fortress and UNESCO World Heritage site spread across a group of islands. (Link points to the main ferry arrival pier)",
-          "notes": "Fortress island",
+          "description": "An 18th-century sea fortress and UNESCO World Heritage site spread across a group of islands.",
+          "walkingTourNotes": "Built in the 18th century when Finland was part of Sweden to protect against Russian expansion. Later used by Russians after 1808, and by independent Finland after 1917. Now a living museum and residential area with museums, parks, and historic fortifications.",
+          "notes": "Fortress island accessible by ferry from Market Square. UNESCO World Heritage site. Allow half-day minimum to explore. Ferry arrives at main pier. Great for picnics and walking.",
           "googleMapsUrl": "https://maps.app.goo.gl/nAVeSVTEJHHj5x3r5",
           "photos": [],
           "visibility": "always"
@@ -263,70 +273,75 @@
           "id": "helsinki-cafe-kappeli",
           "name": "Café Kappeli",
           "coordinates": [
-            24.951,
-            60.168
+            24.9472,
+            60.1673
           ],
           "category": "food",
-          "visibility": "walkingTour",
-          "description": "Old-fashioned, gazebo-like oasis of coffee, pastry, and relaxation with Old World atmosphere. A popular hangout for local intellectuals and artists in the 19th century, today it offers romantic tourists a great cup-of-coffee memory. The bandstand in front hosts nearly daily music and dance performances in summer.",
-          "notes": "rs,p714 - Self-serve counter, salmon and soup-and-bread lunch specials",
-          "googleMapsUrl": "",
+          "visibility": "always",
+          "description": "Old-fashioned, gazebo-like café offering coffee, pastries, and relaxation in an oasis of Old World atmosphere. Located on the Esplanade's grassy median near Market Square.",
+          "walkingTourNotes": "In the 19th century, Café Kappeli was a popular hangout for local intellectuals and artists. Today it continues as a beloved Helsinki institution with its distinctive iron-and-glass structure hidden among linden trees.",
+          "notes": "Self-serve counter with sit-anywhere seating. Locals love salmon and soup-and-bread lunch specials with free seconds. Bandstand in front hosts nearly daily music and dance performances in summer. Great cup-of-coffee memory for romantic tourists.",
+          "googleMapsUrl": "https://maps.app.goo.gl/Ju5PpYKAUkJgbCxv8",
           "photos": []
         },
         {
           "id": "helsinki-iittala-arabia-aarikka",
           "name": "Iittala, Arabia & Aarikka",
           "coordinates": [
-            24.948,
-            60.168
+            24.9467,
+            60.1675
           ],
           "category": "culture",
           "visibility": "walkingTour",
-          "description": "Finnish design shops showcasing practical, affordable design with simple Nordic aesthetic. Iittala features classic Finnish glassware, Arabia has been a mark of quality ceramics since 1873, and Aarikka specializes in clothing, jewelry, and home goods.",
-          "notes": "rs,p715 - Pohjoisesplanadi 23-27",
-          "googleMapsUrl": "",
+          "description": "Cluster of beloved Finnish design shops showcasing practical, affordable Nordic aesthetic. Iittala features classic Finnish glassware, Arabia offers ceramic pieces since 1873, and Aarikka specializes in clothing, jewelry, and home goods.",
+          "walkingTourNotes": "Arabia has been recognized as a mark of quality and unpretentious class since 1873. Their ceramic pieces are considered lifelong investments in everyday luxury, with warm colors beloved in the land of long dark winters. Iittala is its sister brand with iconic glassware.",
+          "notes": "Located directly across from Café Kappeli on the Esplanade. Design is big for Finns—these shops represent the Finnish commitment to practical everyday luxury with simple Nordic aesthetic.",
+          "googleMapsUrl": "https://maps.app.goo.gl/8vF4L9bfHXm7HqS3A",
           "photos": []
         },
         {
           "id": "helsinki-artek-marimekko-stockmann",
           "name": "Artek, Marimekko & Stockmann",
           "coordinates": [
-            24.9387,
-            60.1677
+            24.9420,
+            60.1686
           ],
-          "category": "culture",
+          "category": "practical",
           "visibility": "walkingTour",
-          "description": "Finnish design shopping area. Artek (founded 1935 by Alvar Aalto) showcases modern furniture and housewares. Marimekko, Finland's most famous export, features bold colorful fabric patterns on everything. Stockmann is the biggest, best, and oldest department store in town with a sprawling supermarket in the basement.",
-          "notes": "rs,p716 - Corner of Keskuskatu and Aleksanterinkatu",
-          "googleMapsUrl": "",
+          "description": "Pedestrianized Keskuskatu street featuring Finland's most famous design and retail landmarks. Artek showcases Alvar Aalto furniture, Marimekko displays bold colorful patterns, and Stockmann is the city's biggest, best, and oldest department store.",
+          "walkingTourNotes": "Artek founded in 1935 by Alvar Aalto to showcase his practical, modern furniture and housewares designs. Marimekko became Finland's most famous fabric design export with patterns adorning everything from purses to shower curtains. Stockmann has anchored Helsinki shopping for generations.",
+          "notes": "Multiple Marimekko branches within a block. Stockmann has sprawling supermarket in basement. Located around corner from Academic Bookstore at end of Esplanade.",
+          "googleMapsUrl": "https://maps.app.goo.gl/3rK4VnH8YqPbPxYT9",
           "photos": []
         },
         {
           "id": "helsinki-three-blacksmiths",
           "name": "Three Blacksmiths",
           "coordinates": [
-            24.9378,
-            60.1678
+            24.9412,
+            60.1690
           ],
           "category": "landmark",
           "visibility": "walkingTour",
-          "description": "Statue from 1932 celebrating human labor and cooperation, showing the solid character of the Finnish people. The base shows surviving shrapnel damage from World War II. Stockmann's entrance facing this statue is one of the city's most popular meeting points - 'Let's meet under the clock.'",
-          "notes": "rs,p716-717 - Popular meeting spot at Stockmann clock",
-          "googleMapsUrl": "",
+          "description": "1932 statue at the corner of Keskuskatu and Aleksanterinkatu celebrating human labor and cooperation, showing the solid character of Finnish people. Bears surviving shrapnel damage from WWII.",
+          "walkingTourNotes": "Most interpretations say it celebrates human labor and cooperation. Shrapnel damage on base from WWII when Russia invaded Finland (1939-1940 Winter War, 1941-1944 Continuation War) to reclaim their lost buffer zone. Finland held fast and emerged with freedom and relatively little damage.",
+          "notes": "Stockmann's entrance facing Three Blacksmiths is city's most popular meeting point under the clock. Everyone in Finland knows 'Let's meet under the clock.' Old Student Hall across street decorated with legendary Finnish heroes.",
+          "googleMapsUrl": "https://maps.app.goo.gl/M9kQrXpqvW8YbZYz6",
           "photos": []
         },
         {
           "id": "helsinki-central-train-station",
           "name": "Central Train Station",
           "coordinates": [
-            24.9382,
-            60.1698
+            24.9414,
+            60.1719
           ],
           "category": "landmark",
-          "visibility": "walkingTour",
-          "description": "Helsinki landmark designed by Eliel Saarinen with stern figures on the facade carrying illuminated globes that seem to have stepped right out of Nordic myth. The main hall features early 20th-century architectural razzle-dazzle. Across the square is the Ateneum (Finland's national gallery) and Finnish National Theater.",
-          "notes": "rs,p717 - Check out Olivia Restaurant inside for Art Nouveau architecture",
-          "googleMapsUrl": "",
+          "visibility": "always",
+          "description": "Helsinki landmark designed by Eliel Saarinen featuring big stern figures carrying illuminated globes on facade. Inside: grand main hall with early 20th-century architectural razzle-dazzle and Olivia Restaurant.",
+          "walkingTourNotes": "Designed by Eliel Saarinen, one of the two men who remade Helsinki. The granite giants on facade seem to have stepped right out of Nordic myth. Station once connected Helsinki to St. Petersburg (4 hours), Moscow (overnight), and all the way to Hong Kong with just two changes.",
+          "notes": "Peek into Olivia Restaurant inside (on left) for architectural details. Ateneum (Finland's national gallery) diagonally across square to left. Finnish National Theater founded to promote Finnish-speaking theater faces station.",
+          "googleMapsUrl": "https://maps.app.goo.gl/Tzx8YKjAh3NX2vR98",
           "photos": []
         },
         {
@@ -638,6 +653,81 @@
           "photos": []
         },
         {
+          "id": "stockholm-obelisk",
+          "name": "Obelisk at Slottsbacken",
+          "coordinates": [
+            18.0715,
+            59.3259
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Obelisk that honors Stockholm's merchant class for its support in a 1788 war against Russia. Located at the crest of Slottsbacken hill, facing Storkyrkan cathedral.",
+          "walkingTourNotes": "Erected to commemorate merchant support during war against Russia in 1788. Considered the very centre point of the Swedish capital city.",
+          "notes": "Good viewpoint to see harbor, National Museum across water, Strandvägen street buildings, and embassy row. Rick Steves page 558.",
+          "googleMapsUrl": "https://maps.app.goo.gl/YmzQXh9yqRjVNRCj8",
+          "photos": []
+        },
+        {
+          "id": "stockholm-finnish-church",
+          "name": "Finnish Church (Finska Kyrkan)",
+          "coordinates": [
+            18.0720,
+            59.3257
+          ],
+          "category": "culture",
+          "visibility": "walkingTour",
+          "description": "Deep orange building opposite the Royal Palace that originated as the royal tennis hall. When Protestant Reformation hit in 1527, each merchant community needed its own church. Finns worshipped here.",
+          "walkingTourNotes": "Converted from royal tennis hall to church after Protestant Reformation. Churchyard contains Iron Boy statue.",
+          "notes": "Churchyard is accessible and kid-friendly. Rick Steves page 558.",
+          "googleMapsUrl": "https://maps.app.goo.gl/8xGJcmZvBT7XfYPu5",
+          "photos": []
+        },
+        {
+          "id": "stockholm-kopmangatan",
+          "name": "Köpmangatan",
+          "coordinates": [
+            18.0725,
+            59.3248
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Quintessential Gamla Stan lane with cobbles and traditional pastel facades—one of the oldest in town. Mellow yellow houses predominantly from 18th century; reddish facades mostly 17th century. Once merchants' homes, today popular with antique dealers and refined specialty shops.",
+          "walkingTourNotes": "Historic merchant street showing architectural evolution from 17th to 18th century. Once densely populated when living within city walls was common.",
+          "notes": "Look for hoists poking from gables (merchants lifted goods into attics with pulleys), tie bolts (iron bars binding timber beams), coal/wood hatches, flaming gold phoenixes under red-crown medallions (firefighter insurance markers). Rick Steves pages 558-559.",
+          "googleMapsUrl": "https://maps.app.goo.gl/VYb6vP3Ty4cHxZrY9",
+          "photos": []
+        },
+        {
+          "id": "stockholm-rune-stone",
+          "name": "Rune Stone (Prästgatan)",
+          "coordinates": [
+            18.0702,
+            59.3247
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Viking-age rune stone guarded by a cannon barrel on the corner at Kåkbrinken and Prästgatan. The inscription reads: 'Torsten and Frogun erected this stone in memory of their son.'",
+          "walkingTourNotes": "Ancient Nordic memorial stone from Viking age. Officially known as Uppland Runic Inscription 53, believed to date from around AD 1000, about 200 years older than the city itself.",
+          "notes": "Look down at corner to see cannon barrel guard. Good example of old Stockholm preservation. Rick Steves page 562.",
+          "googleMapsUrl": "https://maps.app.goo.gl/zXqKh9YwPnV8JTBP7",
+          "photos": []
+        },
+        {
+          "id": "stockholm-prastgatan",
+          "name": "Prästgatan",
+          "coordinates": [
+            18.0704,
+            59.3243
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Peaceful 15th-century 'Priests' Lane' parallel to touristy Västerlånggatan. Features quintessential old Stockholm architecture with cobbles and medieval building features.",
+          "walkingTourNotes": "15th-century lane showing Stockholm's merchant past. Like other Scandinavian cities, Stockholm was plagued by fire until only stone, stucco, and brick construction was allowed in town center.",
+          "notes": "Look for architectural details: hoists, tie bolts, hatches, phoenixes (#46 has good example). Quieter alternative to busy Västerlånggatan. Rick Steves page 561.",
+          "googleMapsUrl": "https://maps.app.goo.gl/8rKxVj3YhN9wPQdz6",
+          "photos": []
+        },
+        {
           "id": "stockholm-german-church",
           "name": "German Church (Tyska Kyrkan)",
           "coordinates": [
@@ -653,6 +743,21 @@
           "photos": []
         },
         {
+          "id": "stockholm-osterlangatan-viewpoint",
+          "name": "Viewpoint (Österlånggatan overlook)",
+          "coordinates": [
+            18.0715,
+            59.3235
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Iron railing perch overlooking Österlånggatan street. From here you can survey how the street curves, marking the old shoreline. The lane leads to the water, showing how medieval piers stretched into harbor.",
+          "walkingTourNotes": "In medieval times, piers stretched out like fingers into the harbor. Gradually, as land was reclaimed and developed, these piers were extended, becoming lanes leading to piers ever farther away.",
+          "notes": "Good spot to understand Stockholm's medieval geography and land reclamation history. Rick Steves pages 562-563.",
+          "googleMapsUrl": "https://maps.app.goo.gl/9xKhJfY2zBqW8Vvh9",
+          "photos": []
+        },
+        {
           "id": "stockholm-jarntorget",
           "name": "Järntorget",
           "coordinates": [
@@ -665,6 +770,36 @@
           "walkingTourNotes": "Medieval customs square where trade was conducted and taxed. Second oldest square in Stockholm.",
           "notes": "Good spot for picnic supplies. Connection point to Västerlånggatan shopping street. Rick Steves page 563.",
           "googleMapsUrl": "https://maps.app.goo.gl/nPqvkK6dYKYxDHJy6",
+          "photos": []
+        },
+        {
+          "id": "stockholm-slussen-bridge",
+          "name": "Bridge Overlooking Slussen",
+          "coordinates": [
+            18.0726,
+            59.3212
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Area called Slussen, named for the locks between the salt water of the Baltic Sea and the fresh water of huge Lake Mälaren. Stockholm exists because this is where Lake Mälaren meets the sea.",
+          "walkingTourNotes": "In the 13th century, the new kingdom of Sweden began levying duty taxes on all the iron, copper, and furs shipped through here. Traders would sail goods from far inland to this point to meet merchants who would ship goods south to Europe. Today the locks are nicknamed 'the divorce lock' because this is where captains and first mates learn to communicate under pressure.",
+          "notes": "Notice the current in the water from the weir being lowered. Water spills from Lake Mälaren (about two feet above sea level) into the sea. Rick Steves page 563.",
+          "googleMapsUrl": "https://maps.app.goo.gl/hX8vY9dKmPqR7Zjd8",
+          "photos": []
+        },
+        {
+          "id": "stockholm-golden-bridge",
+          "name": "Golden Bridge (Viewing point)",
+          "coordinates": [
+            18.0727,
+            59.3212
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Bridge made in China offering excellent views of Södermalm neighborhood, cruise ships, Gröna Lund amusement park, and Djurgården island with top Stockholm attractions (Skansen, Nordic Museum, Vasa Museum). Also view of Af Chapman sailing ship youth hostel and ferries to Djurgården.",
+          "walkingTourNotes": "Modern bridge providing panoramic view of Stockholm's key districts and attractions. Also known as Guldbron or Slussbron, officially opened in October 2020.",
+          "notes": "Walk ends here. Can backtrack along Västerlånggatan, visit Gamla Stan sights, or hop ferry to Djurgården. Can also walk 15 minutes to Kungsträdgården for Modern City Walk. Rick Steves pages 563-564.",
+          "googleMapsUrl": "https://maps.app.goo.gl/T4xNYhQ8vP6ZrWjK7",
           "photos": []
         },
         {
@@ -1322,13 +1457,17 @@
         "mapImage": "/maps/stockholm-gamla-stan-walk.jpg",
         "poiSequence": [
           "stockholm-royal-palace",
+          "stockholm-obelisk",
           "stockholm-iron-boy",
           "stockholm-st-george-statue",
           "stockholm-stortorget",
-          "stockholm-nobel-museum",
           "stockholm-storkyrkan",
+          "stockholm-rune-stone",
           "stockholm-german-church",
-          "stockholm-jarntorget"
+          "stockholm-osterlangatan-viewpoint",
+          "stockholm-jarntorget",
+          "stockholm-slussen-bridge",
+          "stockholm-golden-bridge"
         ]
       },
       {

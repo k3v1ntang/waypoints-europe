@@ -206,6 +206,231 @@ waypoints-europe/
 
 ---
 
+## FILE RELATIONSHIPS: GUIDE → POI REFERENCE → POIS.JSON
+
+### Overview
+
+Walking tour data flows through three key files, each serving a distinct purpose:
+
+```
+Rick Steves Guide     POI Reference Doc        pois.json
+(Source Content)      (Developer Reference)    (App Data)
+       ↓                     ↓                       ↓
+/public/guides/       /docs/                   /src/data/
+{tour-id}.md         {tour-id}-pois.md        pois.json
+```
+
+### 1. Walking Tour Guide (`/public/guides/{tour-id}.md`)
+
+**Purpose**: User-facing markdown content rendered in the app's GuideViewer component
+
+**Content**:
+- Full Rick Steves walking tour narrative
+- Step-by-step walking directions
+- Historical context and stories
+- Cultural insights and tips
+- Formatted for mobile reading experience
+
+**Format**: Markdown with headers, paragraphs, and emphasis
+- Organized by numbered stops (## 1. POI Name)
+- Rich narrative prose for travelers
+- No structured data (coordinates, categories, etc.)
+
+**Example**: `/public/guides/helsinki-city-walk.md`
+
+**Usage**: Loaded dynamically by GuideViewer.jsx when user clicks "View Full Tour Guide" button
+
+---
+
+### 2. POI Reference Document (`/docs/{tour-id}-pois.md`)
+
+**Purpose**: Developer reference for implementing POIs in pois.json
+
+**Content**: Structured POI data extracted from the guide with additional metadata
+- **Description**: User-facing POI summary (what it is)
+- **History**: Historical context and significance (why it matters)
+- **Tips**: Practical visitor information (hours, costs, what to see)
+- **Coordinates**: latitude, longitude (human-readable format)
+- **Google Maps**: Direct link to location
+- **Visibility**: `always` or `walkingTour`
+- **Category**: landmark, culture, food, practical, hotel
+
+**Format**: Markdown with consistent structure per POI
+```markdown
+### 1 POI Name
+- **Description**: Brief overview
+- **History**: Historical background
+- **Tips**: Practical information
+- **Coordinates**: 60.1677083, 24.9541698
+- **[Google Maps](https://maps.app.goo.gl/xyz)**
+- **Visibility**: always
+```
+
+**Example**: `/docs/helsinki-city-walk-pois.md`
+
+**Usage**:
+- Reference when adding/updating POIs in pois.json
+- Single source of truth for POI data
+- Bridge between guide narrative and JSON structure
+
+---
+
+### 3. POI Data (`/src/data/pois.json`)
+
+**Purpose**: App runtime data consumed by React components
+
+**Content**: JSON-structured POI objects with app-specific formatting
+- **description**: Main POI description (from reference doc Description)
+- **walkingTourNotes**: Historical context for tours (from reference doc History)
+- **notes**: Practical tips (from reference doc Tips)
+- **coordinates**: [longitude, latitude] - **SWAPPED from reference doc!**
+- **googleMapsUrl**: Direct from reference doc
+- **visibility**: always | walkingTour
+- **category**: landmark | culture | food | practical | hotel
+
+**Format**: JSON array of POI objects
+```json
+{
+  "id": "helsinki-market-square",
+  "name": "Kauppatori - Market Square",
+  "coordinates": [24.9541698, 60.1677083],
+  "category": "landmark",
+  "visibility": "always",
+  "description": "Helsinki's main outdoor market square...",
+  "walkingTourNotes": "The Czarina's Stone obelisk was the first...",
+  "notes": "Explore colorful outdoor market...",
+  "googleMapsUrl": "https://maps.app.goo.gl/GwVVFPTTwwcy1Xnw7",
+  "photos": []
+}
+```
+
+**Example**: See Helsinki POIs in `/src/data/pois.json`
+
+**Usage**:
+- Loaded by Map.jsx to render POI markers
+- Powers POI popups with descriptions
+- Defines walking tour sequences
+
+---
+
+### Data Flow: How Content Moves Between Files
+
+**Step 1: Extract from Guide**
+```
+/public/guides/helsinki-city-walk.md
+    ↓
+Read Rick Steves narrative content
+Extract POI information, history, tips
+```
+
+**Step 2: Structure in Reference Doc**
+```
+/docs/helsinki-city-walk-pois.md
+    ↓
+Organize into structured POI entries
+Add coordinates (lat, lng format)
+Add Google Maps links
+Categorize and set visibility
+```
+
+**Step 3: Implement in JSON**
+```
+/src/data/pois.json
+    ↓
+Create JSON POI objects
+**SWAP coordinates to [lng, lat]**
+Map fields: Description → description
+           History → walkingTourNotes
+           Tips → notes
+Add to city's pois array
+Add to walking tour poiSequence
+```
+
+---
+
+### Field Mapping Reference
+
+| POI Reference Doc | pois.json Field | Notes |
+|------------------|-----------------|-------|
+| **Description** | `description` | User-facing summary |
+| **History** | `walkingTourNotes` | Historical context |
+| **Tips** | `notes` | Practical information |
+| **Coordinates** (lat, lng) | `coordinates` [lng, lat] | **SWAP ORDER!** |
+| **Google Maps** | `googleMapsUrl` | Direct copy |
+| **Visibility** | `visibility` | always \| walkingTour |
+| **Category** | `category` | landmark \| culture \| food \| practical \| hotel |
+
+---
+
+### Critical Coordinate Conversion
+
+**POI Reference Doc** (Human-readable):
+```markdown
+- **Coordinates**: 60.1677083, 24.9541698
+                   ↑ latitude  ↑ longitude
+```
+
+**pois.json** (Mapbox GL JS format):
+```json
+"coordinates": [24.9541698, 60.1677083]
+                ↑ longitude ↑ latitude
+```
+
+**Always swap when transferring!** Mapbox requires [lng, lat] format.
+
+---
+
+### Best Practices
+
+1. **Always start with POI reference doc** - Don't skip to pois.json
+2. **Single source of truth** - Update reference doc, then sync to pois.json
+3. **Coordinate precision** - Use exact coordinates from Google Maps (7+ decimals)
+4. **Consistent structure** - Follow field mapping exactly
+5. **Verify data** - Check JSON validity with `node -e "JSON.parse(...)"`
+6. **Test in app** - Verify POIs appear correctly on map and in popups
+
+---
+
+### Example: Adding a New POI
+
+**1. Add to POI Reference Doc** (`/docs/helsinki-city-walk-pois.md`):
+```markdown
+### 10 New POI
+- **Description**: A stunning example of Finnish architecture
+- **History**: Built in 1952 to commemorate independence
+- **Tips**: Free entry, open daily 9:00-17:00
+- **Coordinates**: 60.1234567, 24.9876543
+- **[Google Maps](https://maps.app.goo.gl/xyz)**
+- **Visibility**: walkingTour
+```
+
+**2. Implement in pois.json**:
+```json
+{
+  "id": "helsinki-new-poi",
+  "name": "New POI",
+  "coordinates": [24.9876543, 60.1234567],  // SWAPPED!
+  "category": "landmark",
+  "visibility": "walkingTour",
+  "description": "A stunning example of Finnish architecture",
+  "walkingTourNotes": "Built in 1952 to commemorate independence",
+  "notes": "Free entry, open daily 9:00-17:00",
+  "googleMapsUrl": "https://maps.app.goo.gl/xyz",
+  "photos": []
+}
+```
+
+**3. Add to Walking Tour Sequence**:
+```json
+"poiSequence": [
+  "helsinki-market-square",
+  "helsinki-senate-square",
+  "helsinki-new-poi"  // Add here
+]
+```
+
+---
+
 ## WALKING TOUR IMPLEMENTATION
 
 **For new walking tours, follow the standardized 8-step process:**
@@ -232,17 +457,15 @@ See complete guide: `/docs/walking-tour-implementation-guide.md`
 
 ### Current Status (October 2025)
 
-**Cities**: 6 cities with 58 POIs (Munich, Helsinki, Tallinn, Stockholm, Copenhagen, Malmö)
+**Cities**: 6 cities with 72 POIs (Munich, Helsinki, Tallinn, Stockholm, Copenhagen, Malmö)
 
-**Walking Tours**: 4 complete tours
+**Walking Tours**: 6 complete tours
 - ✅ Copenhagen City Walk (22 POIs)
-- ✅ Helsinki City Walk (9 POIs)
+- ✅ Helsinki City Walk (9 POIs + 6 additional POIs)
 - ✅ Tallinn Walk (4 POIs)
 - ✅ Munich Historic Center (5 POIs)
-
-**Pending Tours**:
-- [ ] Stockholm Gamla Stan Walk (map exists)
-- [ ] Stockholm Modern City Walk (map exists)
+- ✅ Stockholm Gamla Stan Walk (12 POIs) - **Completed Oct 2025**
+- ✅ Stockholm Modern City Walk (9 POIs) - **Validated Oct 2025**
 
 **Features**:
 - ✅ PWA with offline caching (30-day cache for travel)
@@ -321,6 +544,25 @@ See complete guide: `/docs/walking-tour-implementation-guide.md`
 - [x] Validate POI data consistency across all cities
 - [x] Document code quality improvements and recommendations
 - [x] Standardize markdown file naming to kebab-case convention
+
+### Stockholm Walking Tours Enhancement (Completed - October 2025)
+- [x] Review and validate Stockholm Gamla Stan Walk POI reference document
+- [x] Add 8 missing POIs to pois.json (Obelisk, Finnish Church, Köpmangatan, Rune Stone, Prästgatan, Viewpoint, Slussen Bridge, Golden Bridge)
+- [x] Update walking tour poiSequence from 8 to 12 POIs (all numbered stops from Rick Steves guide)
+- [x] Verify Stockholm Modern City Walk implementation (all 9 POIs validated)
+- [x] Add walkingTourNotes field to all Stockholm POIs for historical context
+- [x] Update Google Maps links and coordinates for all Stockholm POIs
+- [x] Standardize POI reference document naming convention (renamed copenhagen-travel-guide.md to copenhagen-city-walk-pois.md)
+
+### Helsinki POI Data Enhancement (Completed - October 2025)
+- [x] Create comprehensive helsinki-city-walk-pois.md reference document
+- [x] Merge Rick Steves guide content with user notes
+- [x] Update all 9 walking tour POIs with enhanced descriptions
+- [x] Add walkingTourNotes field to all Helsinki POIs (historical context from History section)
+- [x] Update coordinates and Google Maps links from user notes
+- [x] Add 6 additional Helsinki POIs (Old Market Hall, Sibelius Monument, Kamppi Chapel, Rock Church, Design District, Suomenlinna)
+- [x] Update all POI categories and visibility settings
+- [x] Document file relationships between guide, POI reference, and pois.json in CLAUDE.md
 
 ### Post-Trip Enhancement (Pending)
 - [ ] Replace placeholder photos with actual travel photos
