@@ -302,7 +302,7 @@ const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => 
       {/* Guide Viewer */}
       {isGuideOpen && (
         <GuideViewer
-          cityId={currentCity?.id}
+          cityId={selectedTour?.id}
           onClose={() => setIsGuideOpen(false)}
         />
       )}
