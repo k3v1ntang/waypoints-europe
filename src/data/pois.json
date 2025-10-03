@@ -546,6 +546,126 @@
           "notes": "Address: Tegelbacken 6, 101 23 Stockholm, Sweden 10123 - Phone: +4684123400",
           "googleMapsUrl": "https://maps.app.goo.gl/p2DwGtkK9rYMv9368",
           "photos": []
+        },
+        {
+          "id": "stockholm-royal-palace",
+          "name": "Royal Palace (Kungliga Slottet)",
+          "coordinates": [
+            18.0717,
+            59.3268
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Built in the 1700s on the site of Stockholm's first castle. Gustav III transformed Stockholm from a dowdy Scandinavian port into a sophisticated European capital modeled on French culture. Features the grand entry to the Royal Palace with the changing of the guard ceremony.",
+          "walkingTourNotes": "Gustav III founded the Royal Dramatic Theater and the Royal Opera in Stockholm. He was ironically assassinated by a discontented nobleman who shot Gustav in the back at a masquerade ball at the Royal Opera House in 1792, inspiring Verdi's opera Un Ballo in Maschera.",
+          "notes": "Palace facade finished in 1754, replacing one that burned in 1697. Inside passage features the royal chapel (free, Baroque) and Hall of State with 1650 throne. Changing of the guard ceremony in courtyard. Rick Steves pages 556-557.",
+          "googleMapsUrl": "https://maps.app.goo.gl/nh3cjYNxHKEYHMjy6",
+          "photos": []
+        },
+        {
+          "id": "stockholm-storkyrkan",
+          "name": "Storkyrkan (Stockholm Cathedral)",
+          "coordinates": [
+            18.0690,
+            59.3222
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Stockholm's Gothic cathedral from the 14th century, with painted stonework. Stockholm's oldest church featuring many styles from medieval to modern, guarded by statues of Caution and Hope at the gate.",
+          "walkingTourNotes": "Baroque facade added to match newer palace. Olaus Petri's tombstone under pulpit - he was a Swedish reformer who befriended Gustav Vasa and guided him in Lutheranizing Sweden, turning this cathedral from Catholic to Protestant. Petri was a witness to Stockholm Bloodbath and nearly executed himself.",
+          "notes": "Cost 85 SEK, daily 9:00-18:00. Features: centuries-old tombstones, bronze plaque recalling 1925 ecumenical meeting, carved wood royal boxes (1684), 17th-century silver and ebony altar, 1489 St. George statue carved from oak and elk horn (gnarliest dragon's head in Europe), 1630 painting showing 1500s Stockholm. Rick Steves pages 560-561.",
+          "googleMapsUrl": "https://maps.app.goo.gl/xJZN4k5fHvYjHPYk8",
+          "photos": []
+        },
+        {
+          "id": "stockholm-stortorget",
+          "name": "Stortorget",
+          "coordinates": [
+            18.0708,
+            59.325
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Stockholm's oldest square, the heart of medieval Stockholm (pop. 6,000) in 1400. Colorful old buildings topped with gables line this square. Here at the town well, many tangled lanes intersected, making it the natural center for trading.",
+          "walkingTourNotes": "Site of the Stockholm Bloodbath of 1520, when many of Stockholm's movers and shakers who had challenged Danish rule were rounded up and beheaded. Legend holds that the 80 or so gray stones in the fine red facade symbolize the victims. One victim's son escaped and later led Swedish revolt, becoming Gustav Vasa, Sweden's first king, ushering in the Swedish Renaissance.",
+          "notes": "Today hosts concerts, occasional demonstrators, Christmas market in winter. Home to Nobel Prize Museum in old stock exchange building. Recommended lunch at Grillska Huset. Rick Steves pages 559-560.",
+          "googleMapsUrl": "https://maps.app.goo.gl/fQq2dRKJ8mWJnKYV7",
+          "photos": []
+        },
+        {
+          "id": "stockholm-nobel-museum",
+          "name": "Nobel Prize Museum",
+          "coordinates": [
+            18.0708,
+            59.325
+          ],
+          "category": "culture",
+          "visibility": "walkingTour",
+          "description": "Museum located in old stock exchange building on Stortorget square, celebrating the Nobel Prize laureates and their achievements.",
+          "walkingTourNotes": "Housed in grand building that once served as Stockholm's stock exchange.",
+          "notes": "Located in old stock exchange on Stortorget. Rick Steves page 559.",
+          "googleMapsUrl": "https://maps.app.goo.gl/KxNDJjWqJZTyqdhv8",
+          "photos": []
+        },
+        {
+          "id": "stockholm-iron-boy",
+          "name": "Iron Boy Statue (Järnpojke)",
+          "coordinates": [
+            18.0724,
+            59.3255
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "The tiniest public statue (fist-sized, out of about 600) in Stockholm. Swedish grannies knit caps for him in winter. Located in the shady churchyard of the Finnish church.",
+          "walkingTourNotes": "Local legend says the statue honors the orphans who had to transfer cargo from sea ships to lake ships before Stockholm's locks were built. The artist says it's simply a portrait of himself as a child, sitting on his bed and gazing at the moon.",
+          "notes": "Some people rub his head for good luck, others for wisdom. Located in Finnish church churchyard (Finska Kyrkan). Rick Steves page 558.",
+          "googleMapsUrl": "https://maps.app.goo.gl/dKFWy7x1oPqH8Y8y8",
+          "photos": []
+        },
+        {
+          "id": "stockholm-st-george-statue",
+          "name": "St. George Statue",
+          "coordinates": [
+            18.0736,
+            59.3251
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Breathtaking statue of St. George slaying the dragon, with a maiden representing Stockholm looking on with thanks and admiration. Located in Köpmantorget square surrounded by shops noted for Swedish handicrafts.",
+          "walkingTourNotes": "Medieval statue in a square that represents old Stockholm's merchant culture.",
+          "notes": "Surrounded by shops noted for Swedish handicrafts. Bronze copy placed in 1912, reproduction of wooden sculpture inside Storkyrkan Cathedral. Rick Steves page 559.",
+          "googleMapsUrl": "https://maps.app.goo.gl/5wAZw4wNxR4QKPUY9",
+          "photos": []
+        },
+        {
+          "id": "stockholm-german-church",
+          "name": "German Church (Tyska Kyrkan)",
+          "coordinates": [
+            18.0713,
+            59.3239
+          ],
+          "category": "culture",
+          "visibility": "walkingTour",
+          "description": "Church with powerful brick steeple. The carillon has played four times a day since 1666. Sweden formally became a Lutheran country even before northern part of Germany—making this the very first German Lutheran church.",
+          "walkingTourNotes": "Built when German merchants worked in Stockholm. Reflects German cultural influence on art, building styles, and language in old Stockholm.",
+          "notes": "Mon-Sat 10:30-16:30, Sun 14:30-16:30. Churchyard can be explored. Rick Steves page 562.",
+          "googleMapsUrl": "https://maps.app.goo.gl/Qp8YjLhKmFxWZy6c9",
+          "photos": []
+        },
+        {
+          "id": "stockholm-jarntorget",
+          "name": "Järntorget",
+          "coordinates": [
+            18.0705,
+            59.3203
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "A customs square in medieval times, home of Sweden's first bank back in 1680 (yellow building with bars on windows). Today features Co-op Nära supermarket for picnic fixings. From here, Västerlånggatan—the touristy pedestrian mall—leads back across the island.",
+          "walkingTourNotes": "Medieval customs square where trade was conducted and taxed. Second oldest square in Stockholm.",
+          "notes": "Good spot for picnic supplies. Connection point to Västerlånggatan shopping street. Rick Steves page 563.",
+          "googleMapsUrl": "https://maps.app.goo.gl/nPqvkK6dYKYxDHJy6",
+          "photos": []
         }
       ]
     },
@@ -1053,6 +1173,27 @@
           "tallinn-patkuli-viewing-platform",
           "tallinn-alexander-nevsky-cathedral",
           "tallinn-kiek-in-de-kok"
+        ]
+      }
+    ],
+    "stockholm": [
+      {
+        "id": "stockholm-gamla-stan-walk",
+        "name": "Gamla Stan Walk",
+        "description": "Self-guided walk through Stockholm's historic Old Town, exploring medieval streets, the Royal Palace, and Stockholm's oldest square",
+        "difficulty": "easy",
+        "estimatedTime": "1-2 hours",
+        "distance": "~1.5 km",
+        "mapImage": "/maps/stockholm-gamla-stan-walk.jpg",
+        "poiSequence": [
+          "stockholm-royal-palace",
+          "stockholm-iron-boy",
+          "stockholm-st-george-statue",
+          "stockholm-stortorget",
+          "stockholm-nobel-museum",
+          "stockholm-storkyrkan",
+          "stockholm-german-church",
+          "stockholm-jarntorget"
         ]
       }
     ]
