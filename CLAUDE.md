@@ -30,7 +30,7 @@
 - `src/components/Map.jsx` - Main map component
 - `src/config/theme.js` - Centralized color scheme (#2563eb blue)
 
-**For detailed technical architecture, see:** `/docs/technical-architecture.md`
+**For detailed technical architecture, see:** `/docs/architecture/technical-architecture.md`
 
 ---
 
@@ -100,7 +100,7 @@ When providing assistance:
    - Ensure understanding of fundamentals before introducing complex patterns
    - Provide technical context for why certain approaches are preferred
 
-**For learning objectives and milestones, see:** `/docs/learning-guide.md`
+**For learning objectives and milestones, see:** `/docs/architecture/learning-guide.md`
 
 ### ⚠️ CRITICAL: Modern Development Practices
 
@@ -157,11 +157,15 @@ waypoints-europe/
 │   │   └── theme.js           # Centralized color scheme
 │   └── App.jsx                # Main application
 ├── docs/                       # Developer documentation
-│   ├── technical-architecture.md
-│   ├── learning-guide.md
-│   ├── technology-decisions.md
-│   ├── walking-tour-implementation-guide.md
-│   └── {tour-id}-pois.md      # POI reference docs for tours
+│   ├── architecture/           # Technical architecture & design
+│   │   ├── technical-architecture.md
+│   │   ├── learning-guide.md
+│   │   └── technology-decisions.md
+│   ├── implementation/         # How-to guides
+│   │   └── walking-tour-implementation-guide.md
+│   ├── reference/              # POI reference docs for tours
+│   │   └── {tour-id}-pois.md  # Data source for pois.json
+│   └── README.md               # Documentation index
 └── package.json
 ```
 
@@ -435,11 +439,11 @@ Add to walking tour poiSequence
 
 **For new walking tours, follow the standardized 8-step process:**
 
-See complete guide: `/docs/walking-tour-implementation-guide.md`
+See complete guide: `/docs/implementation/walking-tour-implementation-guide.md`
 
 **Quick Reference:**
 1. Extract Rick Steves content → `/public/guides/{tour-id}.md`
-2. Create POI reference doc → `/docs/{tour-id}-pois.md`
+2. Create POI reference doc → `/docs/reference/{tour-id}-pois.md`
 3. Get coordinates from Google Maps
 4. Update `pois.json` with POI data (convert coordinates!)
 5. Add walking tour definition to `pois.json`
@@ -585,10 +589,12 @@ See complete guide: `/docs/walking-tour-implementation-guide.md`
 
 ## ADDITIONAL DOCUMENTATION
 
-- **Technical Architecture**: `/docs/technical-architecture.md`
-- **Learning Guide**: `/docs/learning-guide.md`
-- **Technology Decisions**: `/docs/technology-decisions.md`
-- **Walking Tour Implementation**: `/docs/walking-tour-implementation-guide.md`
+- **Documentation Index**: `/docs/README.md` - Complete navigation guide for all documentation
+- **Technical Architecture**: `/docs/architecture/technical-architecture.md`
+- **Learning Guide**: `/docs/architecture/learning-guide.md`
+- **Technology Decisions**: `/docs/architecture/technology-decisions.md`
+- **Walking Tour Implementation**: `/docs/implementation/walking-tour-implementation-guide.md`
+- **POI Reference Docs**: `/docs/reference/` - Data source for all walking tours
 
 ---
 
@@ -610,7 +616,7 @@ useEffect(() => {
 ### File Naming Conventions
 - **Guides**: `/public/guides/{tour-id}.md` (kebab-case)
 - **Maps**: `/public/maps/{tour-id}.jpg` (kebab-case)
-- **Docs**: `/docs/{tour-id}-pois.md` (kebab-case)
+- **POI Reference**: `/docs/reference/{tour-id}-pois.md` (kebab-case)
 
 ### Deployment
 - Can be deployed to Vercel, Netlify, or GitHub Pages
