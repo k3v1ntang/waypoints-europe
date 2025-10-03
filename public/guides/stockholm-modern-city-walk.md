@@ -12,13 +12,17 @@ The garden also plays host to huge parties. Students are treated to a cultural f
 
 Farther on, watch for the Astroturf zone with "latte dads" and their kids (paid parental leave includes dads, in Sweden), and enjoy a summer concert at the bandstand. There's always something going on. The fountain is flanked by a delightful trellis of cherry trees given to the Swedish king by the Japanese emperor. A welcoming Volvo showroom near the top-left side of the square shows off the latest in Swedish car design. And, high in the sky at the far end, is a handy reference point—the revolving clock on the NK department store.
 
+> Midway up the square you may opt for a side trip to a ...
+
 ## 2. Holocaust Monument & Synagogue
 
 Leave the square to the right, a half-block down Wahrendorffsgatan street. Behind stout black security bollards is Stockholm's most central synagogue. In the courtyard a wall is etched with the names of Swedish victims of the Nazis. Farther down the street, train tracks—symbolizing the journey to death in concentration camps—lead to a memorial honoring the Schindler-like heroism of Swedish diplomat Raoul Wallenberg. A stone orb faces a dozen thought-provoking, abstract coffin-like markers near the beautiful harbor.
 
+> Retrace your steps back to Kungsträdgården. Stroll through the garden, past the fountain and the Volvo store, and up to Hamngatan street. From here, we turn left and walk the length of the NK department store as we wade through Stockholm/s...
+> 
 ## 3. Urban Shopping Zone (Hamngatan)
 
-In just a couple of blocks, we'll pass some major landmarks of Swedish consumerism. Across the street, notice the giant gold NK marking the Nordiska Kompaniet department store (locals joke that the NK stands for "no kronor left"). It's located in an elegant early-20th-century building that dominates the top end of Kungsträdgården. If it feels like an old-time American department store, that's because its architect was inspired by grand stores he'd seen in the US (circa 1910).
+In just a couple of blocks, we'll pass some major landmarks of Swedish consumerism. Across the street, notice the giant gold NK marking the Nordiska Kompaniet department store.
 
 ## 4. Nordiska Kompaniet
 
@@ -28,7 +32,7 @@ This elegant early-20th-century department store building dominates the top end 
 
 Another block down, on the left (across from #26), is the sleeker, more modern Gallerian mall. Step inside and chat with the people at the welcoming info desk for all the latest (very friendly). Among this two-story world of shops, you'll find a Clas Ohlson hardware and electronics shop (most Stockholmers have a cabin that's always in need of a little DIY repair). Lagerhaus is a favorite for Swedish home design. The Akademibokhandeln bookstore is fun to browse. Ikea is at the back end. And along with an elegant-for-a-mall food court, there are plenty of affordable little lunch bars and classy cafes for your fika (Swedish coffee-and-bun break). You may notice that American influence (frozen yogurt and other trendy food chains) is challenging the notion of the traditional fika.
 
-High-end shoppers should consider heading into the streets behind NK, with exclusive designer boutiques and the chichi Mood Stockholm mall (see "Shopping in Stockholm," later). Otherwise, just beyond the Gallerian mall, you'll emerge into Sergels Torg. (Note that the handy tram #7 goes from here directly to Skansen and other important sights on Djurgården.)
+> High-end shoppers should consider heading into the streets behind NK, with exclusive designer boutiques and the chichi Mood Stockholm mall (see "Shopping in Stockholm," later). Otherwise, just beyond the Gallerian mall, you'll emerge into Sergels Torg. (Note that the handy tram #7 goes from here directly to Skansen and other important sights on Djurgården.)
 
 ## 6. Sergels Torg
 
@@ -44,6 +48,8 @@ Back at ground level outside, stand in front of the Kulturhuset (across from the
 
 Stockholmsrummet (outside, lower-level, in the underpass, Sergelgången 31) showcases how the city is developing with a big 1:1000 model under its glass floor. Nearby are major boutiques and department stores, including, across the way, H&M and the massive Åhléns.
 
+> Head in the opposite direction from Kulturhuset to the street that leads past the five uniform white towers you see beyond the fountain. This is...
+
 ## 8. Sergelgatan
 
 Walk up this thriving pedestrian and commercial street, enjoying the public art and people-watching. The five office towers, so modern in the 1960s, are now struggling as societies no longer fill office space with nine-to-five workers five days a week.
@@ -54,10 +60,10 @@ Midway along, the gun-tied-in-a-knot statue is a reminder of how Sweden is famou
 
 Designtorget, a fun shop at the top of the street on right (#20), near the T-bana stop, is great for whimsical and clever Swedish design.
 
+> Sergelgatan ends at a wonderful market square...
+
 ## 9. Hötorget
 
 "Hötorget" means "Hay Market," but today its stalls feed people rather than horses. The adjacent indoor market, Hötorgshallen, is fun and fragrant. This hall dates from 1914 when, for hygienic reasons, the city forbade selling fish and meat outdoors (market described later, under "Eating in Stockholm"). The square also hosts a Sunday morning flea market in summer. Carl Milles' statue of Orpheus Emerging from the Underworld (with seven sad Muses) stands in front of the Konserthuset, the city concert hall (which hosts the annual Nobel Prize award ceremony). The concert house, from 1926, is Swedish Art Deco (a.k.a. "Swedish Grace"). The lobby (open through much of the summer) still evokes Stockholm's Roaring Twenties. If the door's open, peek in for a look. They host free exhibitions and concerts by local music students in summer (5/day, 20 minutes each). Popping into the Hötorget T-bana station provides a fun glimpse at local urban design. Stockholm's subway system was inaugurated in the 1950s, and many stations are modern art installations in themselves.
 
----
-
-**Our walk ends here.** For more shopping and an enjoyable pedestrian boulevard leading back into the Old Town, cut down a block to Drottninggatan and turn left. This busy drag leads straight out of the commercial district, passes the parliament, then becomes the main street of Gamla Stan.
+> **Our walk ends here.** For more shopping and an enjoyable pedestrian boulevard leading back into the Old Town, cut down a block to Drottninggatan and turn left. This busy drag leads straight out of the commercial district, passes the parliament, then becomes the main street of Gamla Stan.

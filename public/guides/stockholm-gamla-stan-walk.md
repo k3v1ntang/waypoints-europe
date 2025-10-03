@@ -22,9 +22,9 @@ Gamla Stan, Stockholm's historic island Old Town, is charming, photogenic, and f
 
 ---
 
-## 1. Royal Palace
-
 *Our walk begins along the harborfront. Start at the base of Slottsbacken (the Palace Hill esplanade) leading up to the...*
+
+## 1. Royal Palace
 
 Along the water, check out the **statue of King Gustav III** gazing at the palace, which was built in the 1700s on the site of Stockholm's first castle (for more about the palace, see "Sights in Stockholm," later). Gustav transformed Stockholm from a dowdy Scandinavian port into a sophisticated European capital, modeled on French culture. Gustav loved the arts, and he founded the Royal Dramatic Theater and the Royal Opera in Stockholm. Ironically, he was assassinated by a discontented nobleman, who shot Gustav in the back at a masquerade ball at the Royal Opera House in 1792 (inspiring Verdi's opera *Un Ballo in Maschera*).
 

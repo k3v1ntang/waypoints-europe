@@ -6,7 +6,7 @@ This self-guided walk takes about two hours. It starts at Rådhuspladsen (City H
 
 Start from Rådhuspladsen, the bustling heart of Copenhagen, dominated by the tower of the City Hall. For 700 years, Copenhagen was contained within its city walls, and this square was its fortified west end. By the mid-1800s, 140,000 people were packed inside. The overcrowding led to hygiene problems. (A cholera outbreak killed 5,000.) It was clear: The walls needed to come down...and they did. Those formidable town walls survive today only in echoes—a circular series of roads and the remnants of moats, which are now people-friendly city lakes (see the sidebar on page 43). Today, with its convenient Metro station, Rådhuspladsen is where the city gathers to celebrate.
 
-**Stand 50 yards in front of City Hall and turn clockwise for a...**
+> Stand 50 yards in front of City Hall and turn clockwise for a...
 
 **Rådhuspladsen Spin-Tour:** The City Hall, or Rådhus, is worth a visit (described on page 77). Old Hans Christian Andersen sits to the right of City Hall, almost begging to be in another photo (as he used to in real life). Climb onto his well-worn knee. (While up there, you might take off your shirt for a racy photo, as many Danes enjoy doing.)
 
@@ -30,7 +30,7 @@ As you spin farther right, three fast-food joints stand at the entry to the Str�
 
 Down the street, on the left side of City Hall, the Rainbow Square (Regnbuepladsen) marked by a pride flag is a reminder that in 1989 Denmark was the first country in the world to give legal rights to same-sex partnerships and has long been a leader in gay rights.
 
-**Now head down the pedestrian boulevard (pickpocket alert).**
+> Now head down the pedestrian boulevard (pickpocket alert).
 
 ## 4. The Strøget
 
@@ -46,7 +46,7 @@ At Sankt Peders Stræde, turn right and walk to the end of the street. Notice th
 
 You'll also pass funky shops and the big brick St. Peter's Church (Sankt Petri Kirke)—the old German merchant community's church, which still holds services in German. Its fine 17th-century brick funerary chapel (filling a ground-floor building out back due to the boggy nature of the soil) is filled with fancy German tombs (church and burial chapels typically open to visitors Thu-Sat 11:00-15:00).
 
-**When Sankt Peders Stræde intersects with Nørregade, look right to find the big, Neoclassical...**
+> When Sankt Peders Stræde intersects with Nørregade, look right to find the big, Neoclassical...
 
 ## 6. Cathedral of Our Lady (Vor Frue Kirke)
 
@@ -56,7 +56,7 @@ Like much of this part of town, the church burned down in the 1807 British bomba
 
 The interior is a world of Neoclassical serenity (free, open Mon-Sat 8:00-17:00, Sun 12:00-16:30). It feels like a pagan temple that now houses Christianity. The nave is lined by the 12 apostles, clad in classical robes—masterpieces by the great Danish sculptor Bertel Thorvaldsen (see page 87). Each strikes a meditative pose, carrying his identifying symbol: Peter with keys, Andrew with the X-shaped cross of his execution, Matthew and John writing their books, and so on. They lead to a statue of the Risen Christ (see photo), standing where the statue of Zeus would have been: inside a temple-like niche, flanked by columns and topped with a pediment. Rather than wearing a royal robe, Jesus wears his burial shroud, opens his arms wide, and says, "Come to me." (Members of the LDS church will recognize this statue—a replica stands in the visitors center at Salt Lake City's Temple Square.) The marvelous acoustics are demonstrated in free organ concerts Saturdays in July and August at noon (schedule at entry). Notice how, in good Protestant style, the front half of the pews are "reversible," allowing the congregation to flip around and face the pulpit (in the middle of the church) to better hear the sermon.
 
-**Head back outside. If you face the church's facade and look to the left (across the square called Frue Plads), you'll see...**
+> Head back outside. If you face the church's facade and look to the left (across the square called Frue Plads), you'll see...
 
 ## 7. Copenhagen University
 
@@ -64,7 +64,7 @@ Now home to nearly 40,000 students, this university was founded by the king in t
 
 Outside, busts honor great minds from the faculty, including (at the far end) Niels Bohr, a professor who won the 1922 Nobel Prize for theoretical physics. He evaded the clutches of the Nazi science labs by fleeing to America in 1943, where he helped develop the atomic bomb.
 
-**Rejoin the Strøget (one block downhill from the Reformation Memorial to the black-and-gold fountain) at the twin squares called...**
+> Rejoin the Strøget (one block downhill from the Reformation Memorial to the black-and-gold fountain) at the twin squares called...
 
 ## 8. Gammeltorv and Nytorv
 
@@ -74,27 +74,27 @@ The exotic-looking kiosk was one of the city's first community telephone centers
 
 While Gammeltorv was a place of happiness and merriment, Nytorv ("New Square") was a place of severity and judgment. Step up onto the small raised area 20 yards in front of the old, ancient-Greek-style former City Hall and courthouse. Do a 360. The square is Neoclassical (built mostly after the 1807 British bombardment). Read the old Danish on the City Hall facade: "With Law Shall Man Build the Land." Look down at the pavement and read the plaque: "Here stood the town's Kag (whipping post) until 1780."
 
-**Now walk down the next stretch of the Strøget—called Nygade—to reach...**
+> Now walk down the next stretch of the Strøget—called Nygade—to reach...
 
 ## 9. Amagertorv
 
 This is prime real estate for talented street entertainers. Walk past the flagship Lego store (on right) to the stately brick Holy Ghost Church (Helligåndskirken). The fine spire is typical of old Danish churches. Under the stepped gable was a medieval hospital run by monks (one of the oldest buildings in town, dating from the 12th century). Today the hospital is an antiques hall. In summer the pleasant courtyard is shared by a group of charities selling light bites and coffee. The green hotdog stand, Hanegal, sells what's considered the best pølse in town, breaking the gut-bomb mold with organic sausages and innovative sides (handy churchyard nearby to sit and munch).
 
-**Walk behind the church, down Valkendorfsgade—the street just before the church—and through a passage under the reddish-colored building at #32 (if locked, loop back and go down Klosterstræde) to find...**
+> Walk behind the church, down Valkendorfsgade—the street just before the church—and through a passage under the reddish-colored building at #32 (if locked, loop back and go down Klosterstræde) to find...
 
 ## 10. Gråbrødretorv
 
 Surrounded by fine old buildings, this leafy and beer-stained "Grey Friars' Square"—a monastic square until the Reformation made it a people's square—is a popular place for an outdoor meal or drink in the summer. At the end of the square, the street called Niels Hemmingsens Gade runs past a neighborhood known for its design shops back to the Strøget.
 
-**Once back on busy Strøget, turn left and continue down Amagertorv, with its fine inlaid Italian granite stonework, to the square with the Art Nouveau "stork" fountain (Storkespringvandet).**
+> Once back on busy Strøget, turn left and continue down Amagertorv, with its fine inlaid Italian granite stonework, to the square with the Art Nouveau "stork" fountain (Storkespringvandet).
 
 ## 11. "Stork" Fountain Spin Tour
 
 Two entries to underground, Victorian-era WCs are in front of the fountain (free, staffed, and delightful). Stand between the twin stairwells for a 360-degree counterclockwise spin tour. The street ahead, a bit to the left, is Østergade (the fanciest shopping street in town). North of Amagertorv, a broad pedestrian mall called Købmagergade leads past a fine modern bakery (Holm's) to Christian IV's Round Tower. Farther around are three shopping institutions: Georg Jensen (luxury Danish design), Royal Copenhagen (with three floors of porcelain), and Illums Bolighus (department store offering modern Danish design—see "Shopping," later). Finally, a block downhill toward the canal—running parallel to the Strøget—starts Strædet, which is a "second Strøget" featuring cafés and antique shops. If you need a Victorian toilet break, just head downstairs.
 
-**Looking downhill from the fountain, about halfway to the imposing palace in the distance, you'll see a great man on a horse. Walk here to view this statue of Copenhagen's founder, Bishop Absalon, shown in his Warrior Absalon getup.**
-
-From the bishop, continue across a bridge toward the palace and the next statue—a king on a horse. As you cross the bridge, look right to see the City Hall tower, where this walk started. (Strömma's sightseeing cruises depart from near here—see page 56.)
+> Looking downhill from the fountain, about halfway to the imposing palace in the distance, you'll see a great man on a horse. Walk here to view this statue of Copenhagen's founder, Bishop Absalon, shown in his Warrior Absalon getup.
+>
+> From the bishop, continue across a bridge toward the palace and the next statue—a king on a horse. As you cross the bridge, look right to see the City Hall tower, where this walk started. (Strömma's sightseeing cruises depart from near here—see page 56.)
 
 ## Christiansborg Palace and the Birthplace of Copenhagen
 
@@ -114,7 +114,7 @@ The eye-catching red-brick stock exchange (not open to tourists) was inspired by
 
 Notice Copenhagen's distinctive green copper spires all around you. Beyond the old stock exchange lies the island of Christianshavn, with its own distinct spire. It tops Our Savior's Church and features an external spiral staircase winding to the top for a commanding view. While political power resided here on Slotsholmen, commercial power was in the merchant's district, Christianshavn (neighborhood and church described later, under "Sights in Copenhagen"). The Børsen symbolically connected Christianshavn with the rest of the city, in an age when trade was a very big deal.
 
-**Before you reach the end of the stock exchange building, turn left at the crosswalk with the signal. (Note that bus #2A goes from here to Our Savior's Church and Christiania; see the "Copenhagen Public Transportation" map, earlier.) Cross over the canal and turn right to walk along the harborfront promenade, enjoying views of Christianshavn across the water.**
+> Before you reach the end of the stock exchange building, turn left at the crosswalk with the signal. (Note that bus #2A goes from here to Our Savior's Church and Christiania; see the "Copenhagen Public Transportation" map, earlier.) Cross over the canal and turn right to walk along the harborfront promenade, enjoying views of Christianshavn across the water.
 
 ## 16. Havnegade Promenade
 
@@ -124,7 +124,7 @@ Walk 30 meters out on the bridge and stand above the yellow window. It's a slow-
 
 Across the way, at the end of the canal, stands the glassy Royal Danish Theatre's Playhouse. While this walk finishes on Kongens Nytorv, the square at the head of the canal, you could extend it by continuing north along the harbor from the Playhouse (see the "Walk Extension," later).
 
-**Now, leave the bridge the way you came and walk straight to the canal lined with old sailboats. Walk to the center of the bridge over the canal and look toward the center for a nice...**
+> ow, leave the bridge the way you came and walk straight to the canal lined with old sailboats. Walk to the center of the bridge over the canal and look toward the center for a nice...
 
 ## 18. View of Nyhavn
 
@@ -134,7 +134,7 @@ Historically, young locals who couldn't afford the trendy bars on this canal wou
 
 If you crave ice cream instead, facing the canal you'll find Vaffelbageren, a popular place with freshly made waffle cones.
 
-**Beer sipped or ice cream slurped, make your way to the head of the canal, where you'll find a minuscule amber museum (free), above the House of Amber (see "Shopping in Copenhagen," later). Just beyond the end of the canal sprawls the huge and the stately...**
+> Beer sipped or ice cream slurped, make your way to the head of the canal, where you'll find a minuscule amber museum (free), above the House of Amber (see "Shopping in Copenhagen," later). Just beyond the end of the canal sprawls the huge and the stately...
 
 ## 19. Kongens Nytorv
 
@@ -144,19 +144,19 @@ In the mid-1600s the city expanded, pushing its wall farther east. The equestria
 
 Across the street, towering above the Metro station, is Magasin du Nord, the grandest old department store in town (with practical eating options in its basement and top floor).
 
-**Just beyond the Metro station, at #19, under a bar, wander into...**
+> Just beyond the Metro station, at #19, under a bar, wander into...
 
 ## 20. Hviids Vinstue
 
 The town's oldest wine cellar (from 1723) has a characteristic dark and woody interior and fascinating old Copenhagen photos. It's a colorful spot for an open-face sandwich and a beer (three sandwiches and a beer for 90 DKK at lunchtime, sandwiches only as long as they last, daily 10:00-14:00). Their wintertime gløgg (hot spiced wine) is legendary.
 
-**You've reached the end of this walk. But if you'd like to extend it by heading out to Amalienborg Palace and The Little Mermaid, retrace your steps to the far side of Nyhavn canal.**
+> You've reached the end of this walk. But if you'd like to extend it by heading out to Amalienborg Palace and The Little Mermaid, retrace your steps to the far side of Nyhavn canal.
 
 ## Walk Extension: Nyhavn to Amalienborg
 
 Stroll along the canal to the Royal Danish Theatre's Playhouse and head left along the harborfront to a large plaza dotted with outdoor cafés and benches and views across the harbor. Then follow a delightful waterfront promenade to the modern fountain of Amaliehaven Park, immediately across the harbor from Copenhagen's slick Opera House. The striking Opera House is bigger than it looks—of its 14 floors, five are below sea level. Completed in 2005 by Danish architect Henning Larsen, it was a $400 million gift to the nation from an oil-shipping magnate.
 
-**A block inland (behind the fountain) is the orderly...**
+> A block inland (behind the fountain) is the orderly...
 
 ## 21. Amalienborg Palace and Square
 
@@ -168,20 +168,16 @@ The equestrian statue of Frederik V is a reminder that this square was the cente
 
 Just inland, the striking Frederikskirke—better known as the Marble Church—was designed to fit this ritzy new quarter. If it's open, step inside to bask in its vast, serene, Pantheon-esque atmosphere (free, Mon-Thu and Sat 10:00-17:00, Fri and Sun from 12:30; dome climb-50 DKK, daily at 13:00 except during services, concerts, or bad weather).
 
-**If you're done, you can hop on the Metro (by the Marble Church, at the handy Marmorkirken stop) or return to the palace square and follow Amaliegade, which leads two blocks north to...**
+> If you're done, you can hop on the Metro (by the Marble Church, at the handy Marmorkirken stop) or return to the palace square and follow Amaliegade, which leads two blocks north to...
 
 ## Kastellet Park
 
 In this park, you'll find some worthwhile sightseeing (see the "Copenhagen" map on page 44). The 1908 Gefion Fountain illustrates the myth of the goddess who was given one night to carve a hunk out of Sweden to make into Denmark's main island, Sjælland (or "Zealand" in English), which you're on. Gefion transformed her four sons into oxen to do the job, and the chunk she removed from Sweden is supposedly Vänern, Sweden's largest lake. If you look at a map showing Sweden and Denmark, the island and the lake are, in fact, roughly the same shape. Next to the fountain is an Anglican church built of flint.
 
-**Climb up the stairs by the fountain and continue along the top of the rampart about five minutes to reach the harborfront site of the overrated, overfondled, and overphotographed symbol of Copenhagen, Den Lille Havfrue, or...**
+> Climb up the stairs by the fountain and continue along the top of the rampart about five minutes to reach the harborfront site of the overrated, overfondled, and overphotographed symbol of Copenhagen, Den Lille Havfrue, or...
 
 ## 22. The Little Mermaid
 
 The Little Mermaid statue was a gift to the city of Copenhagen in 1909 from brewing magnate Carl Jacobsen (whose art collection forms the basis of the Ny Carlsberg Glyptotek). Inspired by a ballet performance of Andersen's story, Jacobsen hired the young sculptor Edvard Eriksen to immortalize the mermaid as a statue. Eriksen used his wife Eline as the model. The statue sat unappreciated for 40 years until Danny Kaye sang "Wonderful Copenhagen" in the 1952 movie Hans Christian Andersen, and the tourist board decided to use the mermaid as a marketing symbol for the city. For the non-Disneyfied Little Mermaid story—and insights into Hans Christian Andersen—see the sidebar.
 
-**This is the end of our extended wonderful, wonderful Copenhagen City Walk. From here you can get back downtown on foot, by taxi, or on bus #27 (catch it along Indiakaj, a two-minute walk north).**
-
----
-
-**Walk completed!**
+> This is the end of our extended wonderful, wonderful Copenhagen City Walk. From here you can get back downtown on foot, by taxi, or on bus #27 (catch it along Indiakaj, a two-minute walk north).
