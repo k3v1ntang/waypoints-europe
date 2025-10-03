@@ -22,7 +22,7 @@ Gamla Stan, Stockholm's historic island Old Town, is charming, photogenic, and f
 
 ---
 
-## ① Royal Palace
+## 1. Royal Palace
 
 *Our walk begins along the harborfront. Start at the base of Slottsbacken (the Palace Hill esplanade) leading up to the...*
 
@@ -36,7 +36,7 @@ The **equestrian statue** is of King Charles XIV John (r. 1818-44), the first of
 
 ---
 
-## ② Obelisk (Royal Palace to Köpmangatan)
+## 2. Obelisk (Royal Palace to Köpmangatan)
 
 As you crest the hill, you're facing the **obelisk** that honors Stockholm's merchant class for its support in a 1788 war against Russia.
 
@@ -48,13 +48,13 @@ Stroll up the lane to the right of the Finnish church into the shady churchyard,
 
 ---
 
-## ③ Iron Boy Statue
+## 3. Iron Boy Statue
 
 See description above - Iron Boy is located in the Finnish church courtyard.
 
 ---
 
-## ④ St. George Statue (Köpmangatan)
+## 4. St. George Statue (Köpmangatan)
 
 Take a moment to explore this street from one end to the other. With its cobbles and traditional pastel facades, this is a quintessential Gamla Stan lane—and one of the oldest in town. The mellow yellow houses are predominantly from the 18th century; the reddish facades are mostly 17th century. Once merchants' homes, today these are popular with antique dealers and refined specialty shops. Back when there was comfort living within a city's walls, Gamla Stan streets like this were densely populated.
 
@@ -64,7 +64,7 @@ Head left to Köpmantorget square, highlighted by the breathtaking **statue of S
 
 ---
 
-## ⑤ Stortorget
+## 5. Stortorget
 
 Colorful old buildings topped with gables line this square—Stockholm's oldest. In 1400, this was the heart of medieval Stockholm (pop. 6,000). Here at the town well, many tangled lanes intersected, making it the natural center for trading. Today Stortorget is home to lots of tourists—including a steady storm of cruise groups following their guides' paddle on four-hour blitz tours of the city (typically 250 ships call here between June and September). The square also hosts concerts, occasional demonstrators, and a Christmas market in winter.
 
@@ -76,7 +76,7 @@ The town well is still a popular meeting point. This square long held the town's
 
 ---
 
-## ⑥ Cathedral (Storkyrkan)
+## 6. Cathedral (Storkyrkan)
 
 Just before the painted stonework church, you'll see my personal phone booth (Rikstelefon) and the gate to the churchyard—guarded by statues of Caution and Hope. This church is Stockholm's oldest, from the 14th century.
 
@@ -100,7 +100,7 @@ Heading outside, you'll emerge into the kid-friendly churchyard, which was once 
 
 ---
 
-## ⑦ Prästgatan & Rune Stone
+## 7. Prästgatan & Rune Stone
 
 Enjoy a quiet wander up this peaceful 15th-century "Priests' Lane." While this lane is sleepy, you'll notice Västerlånggatan, the touristy main drag that parallels it one block over. (While we'll skip it now, you can walk back up it from the end point of this walk.) As you stroll Prästgatan, look for bits of its past: hoists poking out horizontally from gables (merchants used these with pulleys to lift goods into their attics), tie bolts (iron bars necessary to bind the timber beams of tall buildings together), small coal or wood hatches (for fuel delivery back in the good old days), and flaming gold phoenixes under red-crown medallions (telling firefighters which houses paid insurance and could be saved in case of fire—for example, #46). Like other Scandinavian cities, Stockholm was plagued by fire until it was finally decreed that only stone, stucco, and brick construction (like you see here) would be allowed in the town center.
 
@@ -110,7 +110,7 @@ After a few blocks (at Kåkbrinken), a cannon barrel on the corner (look down) g
 
 ---
 
-## ⑧ German Church (Tyska Kyrkan)
+## 8. German Church (Tyska Kyrkan)
 
 The church's carillon has played four times a day since 1666. Think of the days when German merchants worked here. Today, Germans come to Sweden not to run the economy, but to enjoy its pristine nature (which is progressively harder to find in their own crowded homeland). Sweden formally became a Lutheran country even before the northern part of Germany—making this the very first German Lutheran church (Mon-Sat 10:30-16:30, Sun 14:30-16:30).
 
@@ -118,7 +118,7 @@ The church's carillon has played four times a day since 1666. Think of the days 
 
 ---
 
-## ⑨ Viewpoint
+## 9. Viewpoint
 
 From this perch, survey the street below to the left and right. Notice how it curves. This marks the old shoreline. Notice how the lane (to the right) leads to the water. In medieval times, piers stretched out like fingers into the harbor. Gradually, as land was reclaimed and developed, these piers were extended, becoming lanes leading to piers ever farther away.
 
@@ -126,7 +126,7 @@ From this perch, survey the street below to the left and right. Notice how it cu
 
 ---
 
-## ⑩ Järntorget
+## 10. Järntorget
 
 A customs square in medieval times, this was the home of Sweden's first bank back in 1680 (the yellow building with the bars on the windows). The Co-op Nära supermarket on this square offers picnic fixings. From here, Västerlånggatan—the touristy eating, shopping, and commercial pedestrian mall of Gamla Stan—leads back across the island. You'll be there in a minute, but first let's finish this walk.
 
@@ -134,7 +134,7 @@ A customs square in medieval times, this was the home of Sweden's first bank bac
 
 ---
 
-## ⑪ Bridge Overlooking Slussen
+## 11. Bridge Overlooking Slussen
 
 This area is called Slussen, named for the locks between the salt water of the Baltic Sea (to your left) and the fresh water of huge **Lake Mälaren** (to your right). Stockholm exists because this is where Lake Mälaren meets the sea. Traders would sail their goods from far inland to this point, where they'd meet merchants who would ship the goods south to Europe. In the 13th century, the new kingdom of Sweden needed revenue and began levying duty taxes on all the iron, copper, and furs shipped through here.
 
@@ -144,7 +144,7 @@ From here, you may notice a current in the water, indicating that the weir has b
 
 ---
 
-## ⑫ "Golden Bridge"
+## 12. "Golden Bridge"
 
 Enjoy the view from this bridge (made in China and shipped here). Scan the view from right to left.
 

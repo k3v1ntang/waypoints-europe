@@ -11,7 +11,7 @@ This self-guided walk offers a convenient spine for your Helsinki sightseeing, s
 
 ---
 
-## ① Market Square (Kauppatori)
+## 1. Market Square (Kauppatori)
 
 This obelisk, with its double-headed eagle of imperial Russia, is the **Czarina's Stone**. It was the first public monument in Helsinki, designed by Carl Ludvig Engel and erected in 1835 to celebrate the first visit by a Russian empress (when Czarina Alexandra and Czar Nicholas I came to town). Stand here for a clockwise spin-tour:
 
@@ -29,7 +29,7 @@ Part way up Sofiankatu, at the City Hall entrance on the right (at #1A), notice 
 
 ---
 
-## ② Senate Square (Senaatintori)
+## 2. Senate Square (Senaatintori)
 
 This was once a simple town square with a church and City Hall—but its original buildings were burned in 1808. Later, after Finland became a grand duchy of the Russian Empire, the czar sent in architect Carl Ludvig Engel (a German who had lived and worked in St. Petersburg) to give the place some Neo-class. The result: the finest Neoclassical square in Europe. Engel represents the paradox of Helsinki: The city as we know it was built by Russia, but with an imported European architect, in a very intentionally European style. So, Helsinki is—in a sense—both entirely Russian...and not Russian in the slightest.
 
@@ -53,7 +53,7 @@ At the end of this street, cross over to reach the fountain and female statue ca
 
 ---
 
-## ③ Café Kappeli
+## 3. Café Kappeli
 
 Dip into this old-fashioned, gazebo-like oasis of coffee, pastry, and relaxation and enjoy the Old World atmosphere. In the 19th century, this was a popular hangout for local intellectuals and artists. Today the café offers romantic tourists waiting for their ship a great cup-of-coffee memory. The bandstand in front hosts nearly daily music and dance performances in summer. (You can pick up what you like at the self-serve counter and sit anywhere. Locals love the salmon, soup-and-bread lunch specials, and free seconds.)
 
@@ -61,7 +61,7 @@ Dip into this old-fashioned, gazebo-like oasis of coffee, pastry, and relaxation
 
 ---
 
-## ④ Iittala, Arabia, and Aarikka
+## 4. Iittala, Arabia, and Aarikka
 
 Design like you'll see on display in **Iittala** and **Arabia** is big for Finns: practical for everyday use, affordable, with a simple Nordic aesthetic. **Arabia** has been recognized as a mark of quality and unpretentious class since 1873. Their ceramic pieces are considered lifelong investments in everyday luxury, and their warm colors are beloved in the land of long dark winters. Iittala is its sister brand, with classic Finnish glassware. A block away, **Aarikka** specializes in clothing, jewelry, and home goods. We'll pass other famous design shops soon; for details, see "Shopping in Helsinki," later.
 
@@ -69,7 +69,7 @@ Design like you'll see on display in **Iittala** and **Arabia** is big for Finns
 
 ---
 
-## ⑤ The Esplanade (Esplanaden)
+## 5. The Esplanade (Esplanaden)
 
 Helsinki's top shopping boulevard comes with a park in the middle. Called the Esplanade, it leads to a street called Bulevardi. The grandiose names, while fitting today, would have been purely aspirational in rustic little 1830s Helsinki (whose population was only about 10,000).
 
@@ -85,7 +85,7 @@ Across from the theater, at #39, is the huge **Academic Bookstore** (Akateeminen
 
 ---
 
-## ⑥ Artek, Marimekko, and Stockmann
+## 6. Artek, Marimekko, and Stockmann
 
 Around the corner and down the street from the Academic Bookstore is **Artek**, founded in 1935 by Alvar Aalto to showcase his practical, modern designs for furniture and housewares. And at the far corner is perhaps Finland's most famous export: **Marimekko**, the fabric designer whose bold and colorful patterns adorn everything from purses to shower curtains (more Marimekko branches are within a block of here). The other side of the street is dominated by **Stockmann**, the biggest, best, and oldest department store in town (with a sprawling supermarket in the basement).
 
@@ -93,7 +93,7 @@ Around the corner and down the street from the Academic Bookstore is **Artek**, 
 
 ---
 
-## ⑦ Three Blacksmiths
+## 7. Three Blacksmiths
 
 While there's no universally accepted meaning for this statue (from 1932), most say it celebrates human labor and cooperation and shows the solid character of the Finnish people. On the base, note the surviving shrapnel damage from World War II. Russia used that war as an opportunity to invade Finland—which it had lost just 20 years prior—to try to reclaim their buffer zone. In a two-part war (the Winter War from 1939 to 1940, then the Continuation War from 1941 to 1944), Finland held fast and emerged with its freedom—and relatively little damage.
 
@@ -103,7 +103,7 @@ Stockmann's entrance on Aleksanterinkatu, facing the *Three Blacksmiths*, is one
 
 ---
 
-## ⑧ Central Train Station (Rautatieasema)
+## 8. Central Train Station (Rautatieasema)
 
 This Helsinki landmark was designed by Eliel Saarinen (see the "Two Men Who Remade Helsinki" sidebar). The big, stern figures on the facade, carrying illuminated globes, seem to have stepped right out of a Nordic myth.
 
@@ -117,7 +117,7 @@ Then, step out to the train platform. Before Russia invaded Ukraine (ending serv
 
 ---
 
-## ⑨ Oodi Library
+## 9. Oodi Library
 
 Helsinki's central library (worth ▲▲)—Oodi is pronounced "awdi," which means "ode"—opened in 2018 to celebrate the 101st birthday of Finland's independence. Facing the parliament and other institutions of art, culture, and democracy, its facade is covered with planks of Finnish spruce. A third of the space is dedicated to books and the rest is a creative collection of anything the community might need or appreciate (free, daily 8:00-21:00).
 
