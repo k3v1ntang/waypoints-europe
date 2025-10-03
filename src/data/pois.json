@@ -666,6 +666,141 @@
           "notes": "Good spot for picnic supplies. Connection point to Västerlånggatan shopping street. Rick Steves page 563.",
           "googleMapsUrl": "https://maps.app.goo.gl/nPqvkK6dYKYxDHJy6",
           "photos": []
+        },
+        {
+          "id": "stockholm-kungstradgarden",
+          "name": "Kungsträdgården",
+          "coordinates": [
+            18.0695,
+            59.3254
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Stockholm's \"living room\" - a downtown park and people-watching center",
+          "walkingTourNotes": "Former royal kitchen garden, now a symbol of Swedish freedom. The elm trees were saved by protesters in the 1970s who chained themselves to prevent subway construction. Hosts cultural festivals and events throughout the year.",
+          "notes": "Look for the statue of King Karl XII facing the waterfront, the Japanese cherry tree trellis by the fountain, and the revolving NK clock as a landmark. Popular venue for concerts and festivals.",
+          "googleMapsUrl": "https://maps.google.com/maps?q=59.3254,18.0695",
+          "photos": []
+        },
+        {
+          "id": "stockholm-holocaust-monument",
+          "name": "Holocaust Monument & Synagogue",
+          "coordinates": [
+            18.07535,
+            59.332063
+          ],
+          "category": "culture",
+          "visibility": "walkingTour",
+          "description": "Memorial honoring Holocaust victims and Swedish diplomat Raoul Wallenberg",
+          "walkingTourNotes": "Located a half-block down Wahrendorffsgatan street from Kungsträdgården. Stockholm's central synagogue is behind security bollards. A wall in the courtyard is etched with names of Swedish Nazi victims. Train tracks symbolize the journey to concentration camps, leading to Wallenberg's memorial with abstract coffin-like markers.",
+          "notes": "Raoul Wallenberg showed Schindler-like heroism saving Jews during WWII",
+          "googleMapsUrl": "https://maps.google.com/maps?q=59.332063,18.07535",
+          "photos": []
+        },
+        {
+          "id": "stockholm-hamngatan",
+          "name": "Urban Shopping Zone (Hamngatan)",
+          "coordinates": [
+            18.071111,
+            59.332222
+          ],
+          "category": "practical",
+          "visibility": "walkingTour",
+          "description": "Major shopping street with Swedish consumer landmarks",
+          "walkingTourNotes": "Street running from Kungsträdgården showcasing Swedish consumerism. Walk the length of the NK department store to reach Gallerian mall and beyond.",
+          "notes": "Main commercial corridor in modern Stockholm",
+          "googleMapsUrl": "https://maps.google.com/maps?q=59.332222,18.071111",
+          "photos": []
+        },
+        {
+          "id": "stockholm-nk",
+          "name": "Nordiska Kompaniet (NK)",
+          "coordinates": [
+            18.0691707,
+            59.3331523
+          ],
+          "category": "practical",
+          "visibility": "walkingTour",
+          "description": "Iconic department store (locals joke NK = \"no kronor left\")",
+          "walkingTourNotes": "Elegant early-20th-century building (circa 1910) inspired by grand American department stores. The giant gold NK marking is a landmark. Features a revolving clock visible across Kungsträdgården.",
+          "notes": "High-end shopping destination, landmark building at top of Kungsträdgården",
+          "googleMapsUrl": "https://maps.google.com/maps?q=59.3331523,18.0691707",
+          "photos": []
+        },
+        {
+          "id": "stockholm-gallerian",
+          "name": "Gallerian Mall",
+          "coordinates": [
+            18.067189,
+            59.332464
+          ],
+          "category": "practical",
+          "visibility": "walkingTour",
+          "description": "Modern two-story shopping mall with diverse Swedish retailers",
+          "walkingTourNotes": "Sleek modern mall across from Hamngatan #26. Features Clas Ohlson (hardware/electronics), Lagerhaus (Swedish home design), Akademibokhandeln (bookstore), and Ikea. Welcoming info desk, food court, and cafes for traditional fika (Swedish coffee break). American chains challenging traditional Swedish culture.",
+          "notes": "Behind Gallerian, streets near NK have exclusive designer boutiques and chichi Mood Stockholm mall",
+          "googleMapsUrl": "https://maps.google.com/maps?q=59.332464,18.067189",
+          "photos": []
+        },
+        {
+          "id": "stockholm-sergels-torg",
+          "name": "Sergels Torg",
+          "coordinates": [
+            18.0587,
+            59.3262
+          ],
+          "category": "landmark",
+          "visibility": "walkingTour",
+          "description": "Modern plaza with iconic 1960s architecture and glass tower",
+          "walkingTourNotes": "Heart of modern Stockholm with stark 1960s-era architecture. The glassy tower fountain glows at night symbolizing northern lights (and pride flags, solidarity causes). The sunken square \"Plattan\" (the platter) was revitalized from 1970s junkie zone to people-friendly commercial heart. Stockholmsrummet (Sergelgången 31, lower level) shows 1:1000 city model.",
+          "notes": "Tram #7 from here goes to Skansen and Djurgården. Major department stores H&M and Åhléns nearby",
+          "googleMapsUrl": "https://maps.google.com/maps?q=59.3262,18.0587",
+          "photos": []
+        },
+        {
+          "id": "stockholm-kulturhuset",
+          "name": "Kulturhuset",
+          "coordinates": [
+            18.0649439,
+            59.332042
+          ],
+          "category": "culture",
+          "visibility": "walkingTour",
+          "description": "Stockholm's culture center overlooking Sergels Torg",
+          "walkingTourNotes": "Hulking low-slung glassy building from 1960s-70s. Hosts libraries, theater, kids' zone, chessboards, shops, fine-art cinema, art exhibits, and music venue. Cafeteria Panorama on rooftop has cheap meals with city views. Ground floor has free EU exhibit. Take elevator to top and ride escalator down exploring each level.",
+          "notes": "+46 8 5062 0200, http://kulturhusetstadsteatern.se",
+          "googleMapsUrl": "https://maps.google.com/maps?q=59.332042,18.0649439",
+          "photos": []
+        },
+        {
+          "id": "stockholm-sergelgatan",
+          "name": "Sergelgatan",
+          "coordinates": [
+            18.062222,
+            59.333611
+          ],
+          "category": "practical",
+          "visibility": "walkingTour",
+          "description": "Thriving pedestrian shopping street with public art",
+          "walkingTourNotes": "Pedestrian commercial street with five white office towers (1960s-era, now struggling). Features Avicii Experience museum (Sergelgatan 2, dedicated to Swedish DJ/producer). Gun-tied-in-knot statue symbolizes Swedish neutrality (no war since 1814, neutral in WWI/WWII). Designtorget shop (#20, near T-bana) has whimsical Swedish design.",
+          "notes": "Swedish music industry (ABBA, Avicii, Spotify) is major economic force. Most Swedish pop sung in English for wider audience.",
+          "googleMapsUrl": "https://maps.google.com/maps?q=59.333611,18.062222",
+          "photos": []
+        },
+        {
+          "id": "stockholm-hotorget",
+          "name": "Hötorget",
+          "coordinates": [
+            18.0628711,
+            59.3355007
+          ],
+          "category": "food",
+          "visibility": "walkingTour",
+          "description": "\"Hay Market\" square with outdoor stalls and indoor market hall",
+          "walkingTourNotes": "Market square at end of walk. Outdoor stalls and Hötorgshallen indoor market (1914, when city banned outdoor fish/meat sales for hygiene). Sunday flea market in summer. Carl Milles' Orpheus statue faces Konserthuset concert hall (1926 Swedish Art Deco \"Swedish Grace\", hosts Nobel Prize ceremony). Free student concerts in summer (5/day, 20 min each). Hötorget T-bana station showcases 1950s modern art design.",
+          "notes": "Walk ends here. For Old Town: go to Drottninggatan, turn left toward parliament and Gamla Stan",
+          "googleMapsUrl": "https://maps.google.com/maps?q=59.3355007,18.0628711",
+          "photos": []
         }
       ]
     },
@@ -1194,6 +1329,26 @@
           "stockholm-storkyrkan",
           "stockholm-german-church",
           "stockholm-jarntorget"
+        ]
+      },
+      {
+        "id": "stockholm-modern-city-walk",
+        "name": "Modern City Walk",
+        "description": "Explore the modern center of Stockholm from Kungsträdgården park through shopping districts to Hötorget market",
+        "difficulty": "easy",
+        "estimatedTime": "1.5-2 hours",
+        "distance": "~2 km",
+        "mapImage": "/maps/stockholm-modern-city-walk.jpg",
+        "poiSequence": [
+          "stockholm-kungstradgarden",
+          "stockholm-holocaust-monument",
+          "stockholm-hamngatan",
+          "stockholm-nk",
+          "stockholm-gallerian",
+          "stockholm-sergels-torg",
+          "stockholm-kulturhuset",
+          "stockholm-sergelgatan",
+          "stockholm-hotorget"
         ]
       }
     ]
