@@ -23,7 +23,7 @@
 - **History**: In the 19th century, Café Kappeli was a popular hangout for local intellectuals and artists. Today it continues as a beloved Helsinki institution with its distinctive iron-and-glass structure hidden among linden trees.
 - **Tips**: Self-serve counter with sit-anywhere seating. Locals love salmon and soup-and-bread lunch specials with free seconds. Bandstand in front hosts nearly daily music and dance performances in summer. Great cup-of-coffee memory for romantic tourists.
 - **Coordinates**: 60.1673, 24.9472
-- **[Google Maps](https://maps.app.goo.gl/Ju5PpYKAUkJgbCxv8)**
+- **[Google Maps](https://maps.app.goo.gl/PdRh2c6w5d6CMHY88)**
 - **Visibility**: always
 
 ### 4 Iittala, Arabia & Aarikka
@@ -31,7 +31,7 @@
 - **History**: Arabia has been recognized as a mark of quality and unpretentious class since 1873. Their ceramic pieces are considered lifelong investments in everyday luxury, with warm colors beloved in the land of long dark winters. Iittala is its sister brand with iconic glassware.
 - **Tips**: Located directly across from Café Kappeli on the Esplanade. Design is big for Finns—these shops represent the Finnish commitment to practical everyday luxury with simple Nordic aesthetic.
 - **Coordinates**: 60.1675, 24.9467
-- **[Google Maps](https://maps.app.goo.gl/8vF4L9bfHXm7HqS3A)**
+- **[Google Maps](https://maps.app.goo.gl/66rneXeFQWSZHxRw8)**
 - **Visibility**: walkingTour
 
 ### 5 The Esplanade (Esplanaden)
@@ -47,7 +47,7 @@
 - **History**: Artek founded in 1935 by Alvar Aalto to showcase his practical, modern furniture and housewares designs. Marimekko became Finland's most famous fabric design export with patterns adorning everything from purses to shower curtains. Stockmann has anchored Helsinki shopping for generations.
 - **Tips**: Multiple Marimekko branches within a block. Stockmann has sprawling supermarket in basement. Located around corner from Academic Bookstore at end of Esplanade.
 - **Coordinates**: 60.1686, 24.9420
-- **[Google Maps](https://maps.app.goo.gl/3rK4VnH8YqPbPxYT9)**
+- **[Google Maps](https://maps.app.goo.gl/HsYTWtDCqC2AYjRK6)**
 - **Visibility**: walkingTour
 
 ### 7 Three Blacksmiths
@@ -55,7 +55,7 @@
 - **History**: Most interpretations say it celebrates human labor and cooperation. Shrapnel damage on base from WWII when Russia invaded Finland (1939-1940 Winter War, 1941-1944 Continuation War) to reclaim their lost buffer zone. Finland held fast and emerged with freedom and relatively little damage.
 - **Tips**: Stockmann's entrance facing Three Blacksmiths is city's most popular meeting point under the clock. Everyone in Finland knows "Let's meet under the clock." Old Student Hall across street decorated with legendary Finnish heroes.
 - **Coordinates**: 60.1690, 24.9412
-- **[Google Maps](https://maps.app.goo.gl/M9kQrXpqvW8YbZYz6)**
+- **[Google Maps](https://maps.app.goo.gl/8K1QvBHWim7B1SHX8)**
 - **Visibility**: walkingTour
 
 ### 8 Central Train Station (Rautatieasema)
@@ -63,7 +63,7 @@
 - **History**: Designed by Eliel Saarinen, one of the two men who remade Helsinki. The granite giants on facade seem to have stepped right out of Nordic myth. Station once connected Helsinki to St. Petersburg (4 hours), Moscow (overnight), and all the way to Hong Kong with just two changes.
 - **Tips**: Peek into Olivia Restaurant inside (on left) for architectural details. Ateneum (Finland's national gallery) diagonally across square to left. Finnish National Theater founded to promote Finnish-speaking theater faces station.
 - **Coordinates**: 60.1719, 24.9414
-- **[Google Maps](https://maps.app.goo.gl/Tzx8YKjAh3NX2vR98)**
+- **[Google Maps](https://maps.app.goo.gl/qwb75swVmTisq3wp8)**
 - **Visibility**: always
 
 ### 9 Oodi Library
@@ -122,6 +122,6 @@
 - **Description**: An 18th-century sea fortress and UNESCO World Heritage site spread across a group of islands.
 - **History**: Built in the 18th century when Finland was part of Sweden to protect against Russian expansion. Later used by Russians after 1808, and by independent Finland after 1917. Now a living museum and residential area with museums, parks, and historic fortifications.
 - **Tips**: Fortress island accessible by ferry from Market Square. UNESCO World Heritage site. Allow half-day minimum to explore. Ferry arrives at main pier. Great for picnics and walking.
-- **Coordinates**: 60.1642385, 24.9370194
-- **[Google Maps](https://maps.app.goo.gl/nAVeSVTEJHHj5x3r5)**
+- **Coordinates**: 60.1496082, 24.9790427
+- **[Google Maps](https://maps.app.goo.gl/AzS7J3APAo8HoaGo8)**
 - **Visibility**: always
