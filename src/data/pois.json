@@ -377,8 +377,9 @@
             59.4407311
           ],
           "category": "culture",
-          "description": "Former KGB prison cells preserved as a museum showcasing the dark history of Soviet occupation. Experience the harsh reality of political imprisonment during Estonia's Soviet era.",
-          "notes": "rs,p784",
+          "description": "Former KGB headquarters and interrogation rooms at Pikk 59. Now a museum showing the grim reality of Soviet secret police operations in occupied Estonia. Features preserved cells and exhibits on deportations to Siberia.",
+          "walkingTourNotes": "Located in what was part of the KGB headquarters before 1991, these basement cells were used for interrogation and detention. \"Creative\" interrogation methods were employed here. Locals knew this building as the \"tallest\" in town because \"when you're in the basement, you can already see Siberia\" - referring to the deportations to Siberian gulags that began here. The building at Pikk 59 (second house after St. Olav's Church) was a place of suffering where Tallinn's troublemakers were processed before being sent to Siberia.",
+          "notes": "rs,p784 - Sobering museum visit for understanding Soviet occupation. Look for bricked-up windows at street level and commemorative plaque in Estonian. Located on Pikk street near St. Olav's Church. Rick Steves walking tour mentions this site as a reminder of dark times under Moscow's rule.",
           "googleMapsUrl": "https://maps.app.goo.gl/DA6YvLM4c1yr5ELx6?g_st=ipc",
           "photos": [],
           "visibility": "always"
@@ -391,8 +392,9 @@
             59.4375343
           ],
           "category": "culture",
-          "description": "Unique themed bar dedicated to the British electronic band Depeche Mode. A cult destination for fans featuring band memorabilia, themed cocktails, and regular tribute nights.",
-          "notes": "Carved Stone Museum",
+          "description": "Unique bar dedicated to the British band Depeche Mode, reflecting Estonians' special connection to the band during Soviet times. Features band memorabilia, themed drinks, and regular concerts.",
+          "walkingTourNotes": "Depeche Mode holds special significance for Estonians who grew up during the Soviet occupation. In the 1980s, Western music like Depeche Mode represented freedom and connection to the outside world. The band performed in Tallinn in 2001 and 2009, cementing their legendary status. This themed bar celebrates that cultural connection with authentic memorabilia and atmosphere.",
+          "notes": "Unique cultural experience showing Estonian pop culture history. Located in Old Town. Good cocktails and occasional live music. Walls covered with Depeche Mode posters, photos, and memorabilia. Popular with both tourists and locals who remember Soviet times.",
           "googleMapsUrl": "https://maps.app.goo.gl/93AQ2wU5yHwB7cJv6?g_st=ipc",
           "photos": [],
           "visibility": "always"
@@ -405,8 +407,9 @@
             59.4348093
           ],
           "category": "culture",
-          "description": "",
-          "notes": "",
+          "description": "Small museum in the basement of Church of the Holy Ghost showcasing medieval stone carvings, gravestones, and architectural fragments from Tallinn's churches and buildings.",
+          "walkingTourNotes": "The museum preserves medieval stone carvings and architectural details that once adorned Tallinn's churches, buildings, and graveyards. These pieces date from the 13th-17th centuries, representing the city's Gothic, Renaissance, and early Baroque periods. The collection provides insight into medieval craftsmanship and the lives of Tallinn's German merchant elite.",
+          "notes": "Small specialized museum for medieval architecture enthusiasts. Located in basement of Church of the Holy Ghost (Pühavaimu Kirik) near Town Hall Square. Modest entry fee. Can be combined with church visit. Good for rainy days.",
           "googleMapsUrl": "https://maps.app.goo.gl/hS7ejrsTAwFuMgKBA?g_st=ipc",
           "photos": [],
           "visibility": "always"

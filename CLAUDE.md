@@ -464,12 +464,14 @@ See complete guide: `/docs/implementation/walking-tour-implementation-guide.md`
 **Cities**: 6 cities with 72 POIs (Munich, Helsinki, Tallinn, Stockholm, Copenhagen, Malmö)
 
 **Walking Tours**: 6 complete tours
-- ✅ Copenhagen City Walk (22 POIs)
-- ✅ Helsinki City Walk (9 POIs + 6 additional POIs)
-- ✅ Tallinn Walk (4 POIs)
+- ✅ Copenhagen City Walk (22 POIs) - **Data synchronized Oct 2025**
+- ✅ Helsinki City Walk (9 POIs + 6 additional POIs) - **Enhanced Oct 2025**
+- ✅ Tallinn Walk (16 POIs + 4 additional POIs) - **Data quality issues fixed Oct 2025**
 - ✅ Munich Historic Center (5 POIs)
-- ✅ Stockholm Gamla Stan Walk (12 POIs) - **Completed Oct 2025**
-- ✅ Stockholm Modern City Walk (9 POIs) - **Validated Oct 2025**
+- ✅ Stockholm Gamla Stan Walk (12 POIs) - **Data synchronized Oct 2025**
+- ✅ Stockholm Modern City Walk (9 POIs) - **Data synchronized Oct 2025**
+
+**Data Quality**: All POI reference documents now fully synchronized with pois.json ✅
 
 **Features**:
 - ✅ PWA with offline caching (30-day cache for travel)
@@ -567,6 +569,17 @@ See complete guide: `/docs/implementation/walking-tour-implementation-guide.md`
 - [x] Add 6 additional Helsinki POIs (Old Market Hall, Sibelius Monument, Kamppi Chapel, Rock Church, Design District, Suomenlinna)
 - [x] Update all POI categories and visibility settings
 - [x] Document file relationships between guide, POI reference, and pois.json in CLAUDE.md
+
+### POI Data Synchronization & Quality Assurance (Completed - October 2025)
+- [x] Comprehensive review of all POI reference documents vs pois.json
+- [x] Synchronize Copenhagen POIs: Updated 5 Google Maps URLs, fixed Vesterbrogade description, updated Christiansborg visibility
+- [x] Add 4 missing Copenhagen POIs to reference doc (Church of Our Saviour, Fisketorvet, Islands Brygge, Residence Inn)
+- [x] Synchronize Stockholm Gamla Stan: Updated 4 POIs with corrected coordinates and Google Maps URLs
+- [x] Synchronize Stockholm Modern City Walk: Updated all 9 POI coordinates and URLs to match pois.json
+- [x] Fix Tallinn data quality issues: Populated empty fields for Carved Stone Museum, fixed Depeche Mode Baar notes, added KGB Prison Cells walkingTourNotes
+- [x] Remove duplicate Hotel Viru entry from pois.json
+- [x] Establish pois.json as single source of truth for coordinates and URLs
+- [x] Validate coordinate format conversion (lat,lng in docs ↔ [lng,lat] in JSON)
 
 ### Post-Trip Enhancement (Pending)
 - [ ] Replace placeholder photos with actual travel photos
