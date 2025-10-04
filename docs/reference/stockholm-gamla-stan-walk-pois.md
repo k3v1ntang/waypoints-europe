@@ -96,8 +96,8 @@ This document contains all POIs from the Rick Steves Gamla Stan Walk for impleme
 - **Description**: Bridge made in China offering excellent views of Södermalm neighborhood, cruise ships, Gröna Lund amusement park, and Djurgården island with top Stockholm attractions (Skansen, Nordic Museum, Vasa Museum). Also view of Af Chapman sailing ship youth hostel and ferries to Djurgården.
 - **History**: Modern bridge providing panoramic view of Stockholm's key districts and attractions.
 - **Tips**: Walk ends here. Can backtrack along Västerlånggatan, visit Gamla Stan sights, or hop ferry to Djurgården. Can also walk 15 minutes to Kungsträdgården for Modern City Walk. Rick Steves pages 563-564.
-- **Coordinates**: TO BE FILLED
-- **[Google Maps]()**
+- **Coordinates**: 59.321218, 18.073694
+- **[Google Maps](https://maps.app.goo.gl/hHMWTiPkkFDWVZjW9)**
 - **Visibility**: walkingTour
 
 ---
@@ -116,22 +116,22 @@ This document contains all POIs from the Rick Steves Gamla Stan Walk for impleme
 - **Description**: Quintessential Gamla Stan lane with cobbles and traditional pastel facades—one of the oldest in town. Mellow yellow houses predominantly from 18th century; reddish facades mostly 17th century. Once merchants' homes, today popular with antique dealers and refined specialty shops.
 - **History**: Historic merchant street showing architectural evolution from 17th to 18th century. Once densely populated when living within city walls was common.
 - **Tips**: Look for hoists poking from gables (merchants lifted goods into attics with pulleys), tie bolts (iron bars binding timber beams), coal/wood hatches, flaming gold phoenixes under red-crown medallions (firefighter insurance markers). Rick Steves pages 558-559.
-- **Coordinates**: TO BE FILLED
-- **[Google Maps]()**
+- **Coordinates**: 59.325118, 18.072097
+- **[Google Maps](https://maps.app.goo.gl/pTBS4beXmzBefBLw8)**
 - **Visibility**: walkingTour
 
 ### Prästgatan
 - **Description**: Peaceful 15th-century "Priests' Lane" parallel to touristy Västerlånggatan. Features quintessential old Stockholm architecture with cobbles and medieval building features.
 - **History**: 15th-century lane showing Stockholm's merchant past. Like other Scandinavian cities, Stockholm was plagued by fire until only stone, stucco, and brick construction was allowed in town center.
 - **Tips**: Look for architectural details: hoists, tie bolts, hatches, phoenixes (#46 has good example). Quieter alternative to busy Västerlånggatan. Rick Steves page 561.
-- **Coordinates**: TO BE FILLED
-- **[Google Maps]()**
+- **Coordinates**: 59.3242844, 18.0706556
+- **[Google Maps](https://maps.app.goo.gl/4mDPauH8J3DaN84n7)**
 - **Visibility**: walkingTour
 
 ### Nobel Prize Museum
 - **Description**: Museum located in old stock exchange building on Stortorget square.
 - **History**: Housed in grand building that once served as Stockholm's stock exchange.
 - **Tips**: Described in "Sights in Stockholm" section of guidebook. Rick Steves page 559.
-- **Coordinates**: TO BE FILLED
-- **[Google Maps]()**
-- **Visibility**: always
+- **Coordinates**: 59.3255401, 18.0708145
+- **[Google Maps](https://maps.app.goo.gl/o4uDzoj2nS1ZivS4A)**
+- **Visibility**: walkingTour

@@ -370,20 +370,6 @@
       ],
       "pois": [
         {
-          "id": "tallinn-hotel-viru-kgb",
-          "name": "Hotel Viru & KGB Museum",
-          "coordinates": [
-            24.7534737,
-            59.4366062
-          ],
-          "category": "culture",
-          "description": "Soviet-era tourist hotel with a secret KGB museum on the 23rd floor. Once the tallest building in Estonia, this hotel was used by the KGB to monitor foreign visitors during the Soviet occupation.",
-          "notes": "rs,p784 - Soviet-era tourist hotel",
-          "googleMapsUrl": "https://maps.app.goo.gl/km7x1VEQf8q9sCkk8?g_st=ipc",
-          "photos": [],
-          "visibility": "always"
-        },
-        {
           "id": "tallinn-kgb-prison-cells",
           "name": "KGB Prison Cells",
           "coordinates": [
@@ -675,7 +661,7 @@
           "category": "culture",
           "description": "Soviet-era hotel built in 1972, the first modern hotel in Tallinn. The 23rd floor housed a secret KGB surveillance operation. Now features a KGB Museum showcasing original equipment and operations from the Soviet occupation. Free view bar on 23rd floor.",
           "walkingTourNotes": "Built in 1972 as Tallinn's first skyscraper and luxury hotel during Soviet times, designed to accommodate foreign visitors. The KGB secretly operated from the sealed 23rd floor, monitoring guests and diplomats. The hotel's microphones, hidden cameras, and listening equipment were only discovered after Estonian independence in 1991. The 23rd floor has been preserved as a museum since 2011. The iconic white skyscraper was the biggest hotel in the Baltics during Soviet times.",
-          "notes": "KGB Museum tour highly recommended for understanding Soviet occupation. Must book guided tour in advance. Tours run daily, last 45-60 minutes. Museum shows original KGB surveillance equipment, listening devices, and operations. Viewing the old equipment and hearing stories brings Soviet-era surveillance to life. Hotel still operates today as Original Sokos Hotel Viru. Great free view bar on 23rd floor. Located next to modern Viru Keskus mall.",
+          "notes": "rs,p784 - KGB Museum tour highly recommended for understanding Soviet occupation. Must book guided tour in advance. Tours run daily, last 45-60 minutes. Museum shows original KGB surveillance equipment, listening devices, and operations. Viewing the old equipment and hearing stories brings Soviet-era surveillance to life. Hotel still operates today as Original Sokos Hotel Viru. Great free view bar on 23rd floor. Located next to modern Viru Keskus mall.",
           "googleMapsUrl": "https://maps.app.goo.gl/d3u36SNC9vifzeFGA",
           "photos": [],
           "visibility": "always"
@@ -810,15 +796,15 @@
           "id": "stockholm-nobel-museum",
           "name": "Nobel Prize Museum",
           "coordinates": [
-            18.0708,
-            59.325
+            18.0708145,
+            59.3255401
           ],
           "category": "culture",
           "visibility": "walkingTour",
           "description": "Museum located in old stock exchange building on Stortorget square, celebrating the Nobel Prize laureates and their achievements.",
           "walkingTourNotes": "Housed in grand building that once served as Stockholm's stock exchange.",
           "notes": "Located in old stock exchange on Stortorget. Rick Steves page 559.",
-          "googleMapsUrl": "https://maps.app.goo.gl/KxNDJjWqJZTyqdhv8",
+          "googleMapsUrl": "https://maps.app.goo.gl/o4uDzoj2nS1ZivS4A",
           "photos": []
         },
         {
@@ -885,15 +871,15 @@
           "id": "stockholm-kopmangatan",
           "name": "Köpmangatan",
           "coordinates": [
-            18.0725,
-            59.3248
+            18.072097,
+            59.325118
           ],
           "category": "landmark",
           "visibility": "walkingTour",
           "description": "Quintessential Gamla Stan lane with cobbles and traditional pastel facades—one of the oldest in town. Mellow yellow houses predominantly from 18th century; reddish facades mostly 17th century. Once merchants' homes, today popular with antique dealers and refined specialty shops.",
           "walkingTourNotes": "Historic merchant street showing architectural evolution from 17th to 18th century. Once densely populated when living within city walls was common.",
           "notes": "Look for hoists poking from gables (merchants lifted goods into attics with pulleys), tie bolts (iron bars binding timber beams), coal/wood hatches, flaming gold phoenixes under red-crown medallions (firefighter insurance markers). Rick Steves pages 558-559.",
-          "googleMapsUrl": "https://maps.app.goo.gl/VYb6vP3Ty4cHxZrY9",
+          "googleMapsUrl": "https://maps.app.goo.gl/pTBS4beXmzBefBLw8",
           "photos": []
         },
         {
@@ -915,15 +901,15 @@
           "id": "stockholm-prastgatan",
           "name": "Prästgatan",
           "coordinates": [
-            18.0704,
-            59.3243
+            18.0706556,
+            59.3242844
           ],
           "category": "landmark",
           "visibility": "walkingTour",
           "description": "Peaceful 15th-century 'Priests' Lane' parallel to touristy Västerlånggatan. Features quintessential old Stockholm architecture with cobbles and medieval building features.",
           "walkingTourNotes": "15th-century lane showing Stockholm's merchant past. Like other Scandinavian cities, Stockholm was plagued by fire until only stone, stucco, and brick construction was allowed in town center.",
           "notes": "Look for architectural details: hoists, tie bolts, hatches, phoenixes (#46 has good example). Quieter alternative to busy Västerlånggatan. Rick Steves page 561.",
-          "googleMapsUrl": "https://maps.app.goo.gl/8rKxVj3YhN9wPQdz6",
+          "googleMapsUrl": "https://maps.app.goo.gl/4mDPauH8J3DaN84n7",
           "photos": []
         },
         {
@@ -990,15 +976,15 @@
           "id": "stockholm-golden-bridge",
           "name": "Golden Bridge (Viewing point)",
           "coordinates": [
-            18.0727,
-            59.3212
+            18.073694,
+            59.321218
           ],
           "category": "landmark",
           "visibility": "walkingTour",
           "description": "Bridge made in China offering excellent views of Södermalm neighborhood, cruise ships, Gröna Lund amusement park, and Djurgården island with top Stockholm attractions (Skansen, Nordic Museum, Vasa Museum). Also view of Af Chapman sailing ship youth hostel and ferries to Djurgården.",
           "walkingTourNotes": "Modern bridge providing panoramic view of Stockholm's key districts and attractions. Also known as Guldbron or Slussbron, officially opened in October 2020.",
           "notes": "Walk ends here. Can backtrack along Västerlånggatan, visit Gamla Stan sights, or hop ferry to Djurgården. Can also walk 15 minutes to Kungsträdgården for Modern City Walk. Rick Steves pages 563-564.",
-          "googleMapsUrl": "https://maps.app.goo.gl/T4xNYhQ8vP6ZrWjK7",
+          "googleMapsUrl": "https://maps.app.goo.gl/hHMWTiPkkFDWVZjW9",
           "photos": []
         },
         {
@@ -1187,9 +1173,9 @@
           ],
           "category": "culture",
           "visibility": "walkingTour",
-          "description": "The big, broad boulevard is Vesterbrogade ('Western Way'), which led to the western gate of the medieval city. Throughout Copenhagen, you'll see how the mayor's mantra, 'We will build a city not for cars but for people'—along with tax-and-regulation policies that encourage small electric cars and use of public transit and bikes—is shaping the city.",
+          "description": "The big, broad boulevard is Vesterbrogade ('Western Way'), which led to the western gate of the medieval city (behind you, where the pedestrian boulevard begins). Here, in the traffic hub of this huge city, you'll notice...not many cars. Throughout Copenhagen, you'll see how the mayor's mantra, 'We will build a city not for cars but for people'—along with tax-and-regulation policies that encourage small electric cars and use of public transit and bikes—is shaping the city.",
           "notes": "The golden weather girls (on the corner, high above Vesterbrogade) indicate the weather: on a bike (fair weather) or with an umbrella (foul).",
-          "googleMapsUrl": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/hftgTNZ3YBGoUr7P6",
           "photos": []
         },
         {
@@ -1234,7 +1220,7 @@
           "description": "Copenhagen's main cathedral with Neoclassical Greek temple facade and Thorvaldsen's masterpiece sculptures of the 12 apostles.",
           "walkingTourNotes": "The cathedral celebrates Denmark's break from the Roman Catholic Church to become Lutheran in 1536. King Christian III presided over the council meeting when they decided to break away from Rome. Because of the reforms of 1536, there's no Mary in the Cathedral of Our Lady. The church burned down in the 1807 British bombardment during the Napoleonic Wars. Rebuilt in Neoclassical style, the cathedral's facade looks like a Greek temple. The interior features the 12 apostles clad in classical robes—masterpieces by the great Danish sculptor Bertel Thorvaldsen. They lead to a statue of the Risen Christ, standing where Zeus would have been.",
           "notes": "Free entry - see Thorvaldsen's apostle sculptures",
-          "googleMapsUrl": "https://maps.app.goo.gl/N2mY8HgX4Q5K3Pz36",
+          "googleMapsUrl": "https://maps.app.goo.gl/dK5eHt8tkPknQpqPA",
           "photos": []
         },
         {
@@ -1329,7 +1315,7 @@
             55.67655
           ],
           "category": "landmark",
-          "visibility": "walkingTour",
+          "visibility": "always",
           "description": "Historic palace complex that houses the Danish Parliament, Supreme Court, and Prime Minister's Office, with beautiful royal reception rooms.",
           "walkingTourNotes": "You're stepping onto Slotsholmen ('Castle Island'), the easy-to-defend birthplace of Copenhagen in the 12th century. This is Denmark's power island, with the Folketinget (Danish parliament), Supreme Court, Ministry of Finance, and the historic Børsen stock exchange. The seat of Danish government today is considered the birthplace of Copenhagen, dominated by the royal palace complex with its distinctive 'three crowns' spire.",
           "notes": "rs, p83",
@@ -1348,7 +1334,7 @@
           "description": "Historic red-brick stock exchange.",
           "walkingTourNotes": "The eye-catching red-brick stock exchange was inspired by the Dutch Renaissance. Built to promote the mercantile ambitions of Denmark in the 1600s, it was the 'World Trade Center' of Scandinavia. Its dragon-tail spire with three crowns represents the Danish aspiration to rule a united Scandinavia—or at least be its commercial capital.",
           "notes": "Not open to tourists - exterior viewing only",
-          "googleMapsUrl": "https://maps.app.goo.gl/8H3gNKjZk5F1Y2rw8",
+          "googleMapsUrl": "https://maps.app.goo.gl/ZokTSDqYdWaqyZBL9",
           "photos": []
         },
         {
@@ -1391,7 +1377,7 @@
           "description": "Iconic canal lined with colorful 17th-century townhouses, restaurants, and historic sailing ships. Hans Christian Andersen lived here.",
           "walkingTourNotes": "Established in the 1670s along with Kongens Nytorv, Nyhavn ('New Harbor') is a recently gentrified sailors' quarter. The canal is filled with glamorous old sailboats of all sizes—Copenhagen's ever-changing boat museum. Hans Christian Andersen lived and wrote his first stories here in the red double-gabled building at #20.",
           "notes": "Perfect for canal-side dining and people watching",
-          "googleMapsUrl": "https://maps.app.goo.gl/VK4gJ9z2QnR8xP2u9",
+          "googleMapsUrl": "https://maps.app.goo.gl/trCFNNVr4T8TMfkj8",
           "photos": []
         },
         {
@@ -1406,7 +1392,7 @@
           "description": "Grand baroque square with Royal Theater, luxury hotels, and equestrian statue of Christian V. Major Metro station and cultural center.",
           "walkingTourNotes": "The 'King's New Square' is home to the Royal Theater, French embassy, and Hotel d'Angleterre where VIPs and pop stars stay. The equestrian statue of Christian V celebrates the king who made this square the city's geographical and cultural center. In past winters, this was a popular ice-skating rink.",
           "notes": "Metro hub and luxury shopping area",
-          "googleMapsUrl": "https://maps.app.goo.gl/P8vK2R9N7bX1mY4z7",
+          "googleMapsUrl": "https://maps.app.goo.gl/XMz6v1hSA8LHWRRJ9",
           "photos": []
         },
         {

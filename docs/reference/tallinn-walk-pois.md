@@ -154,21 +154,12 @@ This document contains all POIs from the Tallinn Walk for implementation in the 
 
 ## Additional POIs (Not on Main Walking Tour)
 
-### Hotel Viru & KGB Museum
-- **Description**: Soviet-era hotel built in 1972, the first modern hotel in Tallinn. The 23rd floor housed a secret KGB surveillance operation. Now features a KGB Museum showcasing original equipment and operations from the Soviet occupation.
-- **History**: Built in 1972 as Tallinn's first skyscraper and luxury hotel during Soviet times, Hotel Viru was designed to accommodate foreign visitors. The KGB secretly operated from the sealed 23rd floor, monitoring guests and diplomats. The hotel's microphones, hidden cameras, and listening equipment were only discovered after Estonian independence in 1991. The 23rd floor has been preserved as a museum since 2011.
-- **Tips**: KGB Museum tour highly recommended for understanding Soviet occupation. Must book guided tour in advance. Tours run daily, last 45-60 minutes. Museum shows original KGB surveillance equipment, listening devices, and operations. Viewing the old equipment and hearing stories brings Soviet-era surveillance to life. Hotel still operates today as Original Sokos Hotel Viru.
-- **Coordinates**: 59.4335827, 24.7538047
-- **[Google Maps](https://maps.app.goo.gl/i1cEEMPM7DCdWqWH9)**
-- **Visibility**: always
-- **Category**: culture
-
 ### KGB Prison Cells
 - **Description**: Former KGB headquarters and interrogation rooms at Pikk 59. Now a museum showing the grim reality of Soviet secret police operations in occupied Estonia. Features preserved cells and exhibits on deportations to Siberia.
 - **History**: Located in what was part of the KGB headquarters before 1991, these basement cells were used for interrogation and detention. "Creative" interrogation methods were employed here. Locals knew this building as the "tallest" in town because "when you're in the basement, you can already see Siberia" - referring to the deportations to Siberian gulags that began here. The building at Pikk 59 (second house after St. Olav's Church) was a place of suffering where Tallinn's troublemakers were processed before being sent to Siberia.
 - **Tips**: Sobering museum visit for understanding Soviet occupation. Look for bricked-up windows at street level and commemorative plaque in Estonian. Located on Pikk street near St. Olav's Church. Rick Steves walking tour mentions this site as a reminder of dark times under Moscow's rule.
-- **Coordinates**: 59.4419804, 24.746192
-- **[Google Maps](https://maps.app.goo.gl/aGt2gR4EgNSiHkwi9)**
+- **Coordinates**: 59.4407311, 24.7474744
+- **[Google Maps](https://maps.app.goo.gl/DA6YvLM4c1yr5ELx6?g_st=ipc)**
 - **Visibility**: always
 - **Category**: culture
 
@@ -176,8 +167,8 @@ This document contains all POIs from the Tallinn Walk for implementation in the 
 - **Description**: Unique bar dedicated to the British band Depeche Mode, reflecting Estonians' special connection to the band during Soviet times. Features band memorabilia, themed drinks, and regular concerts.
 - **History**: Depeche Mode holds special significance for Estonians who grew up during the Soviet occupation. In the 1980s, Western music like Depeche Mode represented freedom and connection to the outside world. The band performed in Tallinn in 2001 and 2009, cementing their legendary status. This themed bar celebrates that cultural connection with authentic memorabilia and atmosphere.
 - **Tips**: Unique cultural experience showing Estonian pop culture history. Located in Old Town. Good cocktails and occasional live music. Walls covered with Depeche Mode posters, photos, and memorabilia. Popular with both tourists and locals who remember Soviet times.
-- **Coordinates**: 59.4371156, 24.7500826
-- **[Google Maps](https://maps.app.goo.gl/RhzZ62hxb58K7wTc9)**
+- **Coordinates**: 59.4375343, 24.7439538
+- **[Google Maps](https://maps.app.goo.gl/93AQ2wU5yHwB7cJv6?g_st=ipc)**
 - **Visibility**: always
 - **Category**: culture
 
@@ -185,8 +176,8 @@ This document contains all POIs from the Tallinn Walk for implementation in the 
 - **Description**: Small museum in the basement of Church of the Holy Ghost showcasing medieval stone carvings, gravestones, and architectural fragments from Tallinn's churches and buildings.
 - **History**: The museum preserves medieval stone carvings and architectural details that once adorned Tallinn's churches, buildings, and graveyards. These pieces date from the 13th-17th centuries, representing the city's Gothic, Renaissance, and early Baroque periods. The collection provides insight into medieval craftsmanship and the lives of Tallinn's German merchant elite.
 - **Tips**: Small specialized museum for medieval architecture enthusiasts. Located in basement of Church of the Holy Ghost (Pühavaimu Kirik) near Town Hall Square. Modest entry fee. Can be combined with church visit. Good for rainy days.
-- **Coordinates**: 59.4379113, 24.7452297
-- **[Google Maps](https://maps.app.goo.gl/H9vgTN7Fmza8MqWe7)**
+- **Coordinates**: 59.4348093, 24.7412552
+- **[Google Maps](https://maps.app.goo.gl/hS7ejrsTAwFuMgKBA?g_st=ipc)**
 - **Visibility**: always
 - **Category**: culture
 

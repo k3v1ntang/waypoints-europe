@@ -178,3 +178,35 @@
 - **Coordinates**: 55.69286, 12.59928
 - **[Google Maps](https://maps.app.goo.gl/g8VD9gNTFnfKVTxR9)**
 - **Visibility**: Always
+
+---
+
+## Additional POIs (Not on Main Walking Tour)
+
+### Church of Our Saviour
+- **Description**: Spiral spire
+- **Tips**: rs,p98
+- **Coordinates**: 55.67293, 12.59421
+- **[Google Maps](https://maps.app.goo.gl/pYd8rgqaseTAAH77A)**
+- **Visibility**: Always
+
+### Fisketorvet - Open Water Swimming Pool
+- **Description**: Harbour bath
+- **Tips**: rs,p106
+- **Coordinates**: 55.66268, 12.56357
+- **[Google Maps](https://maps.app.goo.gl/mBXwWE82PqDFpBN3A)**
+- **Visibility**: Always
+
+### Islands Brygge Havnepark
+- **Description**: Harbour bath
+- **Tips**: rs,p106
+- **Coordinates**: 55.66816, 12.57881
+- **[Google Maps](https://maps.app.goo.gl/mJPrSdZbUVVepXp59)**
+- **Visibility**: Always
+
+### Residence Inn Copenhagen Nordhavn
+- **Description**: Extended-stay hotel in the modern Nordhavn district with apartment-style suites, perfect for longer stays with kitchen facilities and spacious accommodations.
+- **Tips**: Address: Tallinngade 12, Copenhagen, Denmark 2150 - Phone: +4530308124
+- **Coordinates**: 55.7073923, 12.5981343
+- **[Google Maps](https://maps.app.goo.gl/XghNPWQiQAAjwP6d9)**
+- **Visibility**: Always
