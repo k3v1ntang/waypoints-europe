@@ -1,9 +1,5 @@
 # Tallinn Walk - POI Reference
 
-This document contains all POIs from the Tallinn Walk for implementation in the app.
-
----
-
 ## Walking Tour POIs
 
 ### 1 Fat Margaret Tower (Paks Margareeta)
@@ -144,7 +140,7 @@ This document contains all POIs from the Tallinn Walk for implementation in the 
 ### 16 Hotel Viru & KGB Museum
 - **Description**: Soviet-era hotel built in 1972, the first modern hotel in Tallinn. The 23rd floor housed a secret KGB surveillance operation. Now features a KGB Museum showcasing original equipment and operations from the Soviet occupation. Free view bar on 23rd floor.
 - **History**: Built in 1972 as Tallinn's first skyscraper and luxury hotel during Soviet times, designed to accommodate foreign visitors. The KGB secretly operated from the sealed 23rd floor, monitoring guests and diplomats. The hotel's microphones, hidden cameras, and listening equipment were only discovered after Estonian independence in 1991. The 23rd floor has been preserved as a museum since 2011. The iconic white skyscraper was the biggest hotel in the Baltics during Soviet times.
-- **Tips**: KGB Museum tour highly recommended for understanding Soviet occupation. Must book guided tour in advance. Tours run daily, last 45-60 minutes. Museum shows original KGB surveillance equipment, listening devices, and operations. Viewing the old equipment and hearing stories brings Soviet-era surveillance to life. Hotel still operates today as Original Sokos Hotel Viru. Great free view bar on 23rd floor. Located next to modern Viru Keskus mall. Rick Steves walk stop ⑱ (ending point).
+- **Tips**: rs,p784, KGB Museum tour highly recommended for understanding Soviet occupation. Must book guided tour in advance. Tours run daily, last 45-60 minutes. Museum shows original KGB surveillance equipment, listening devices, and operations. Viewing the old equipment and hearing stories brings Soviet-era surveillance to life. Hotel still operates today as Original Sokos Hotel Viru. Great free view bar on 23rd floor. Located next to modern Viru Keskus mall. Rick Steves walk stop ⑱ (ending point).
 - **Coordinates**: 59.4365106, 24.7523231
 - **[Google Maps](https://maps.app.goo.gl/d3u36SNC9vifzeFGA)**
 - **Visibility**: always
@@ -181,24 +177,11 @@ This document contains all POIs from the Tallinn Walk for implementation in the 
 - **Visibility**: always
 - **Category**: culture
 
----
-
-## Walking Tour Metadata
-
-- **Difficulty**: Easy to Moderate
-- **Estimated Time**: ~2 hours (not counting museum visits)
-- **Distance**: ~2.5 km
-- **Starting Point**: Fat Margaret Tower (Paks Margareeta)
-- **Ending Point**: Hotel Viru & Viru Keskus Mall
-- **Route**: Lower Town → Upper Town (Toompea) → Modern Tallinn
-
-**Key Features**:
-- Explores both lower town (Hanseatic merchants) and upper town (seat of government)
-- Two steep streets connect the towns: "Long Leg" and "Short Leg"
-- Walk goes up the Short Leg and down the Long Leg
-- Medieval buildings dating from 15th-16th century boom times
-- Old Town entirely revitalized after 1991 fall of Soviet Union
-
----
-
-*Source: Rick Steves Scandinavia Guidebook*
+### Kiek in de Kök Museum and Bastion Tunnels
+- **Description**: Medieval defense tower and underground bastion tunnels system. The name means "Peek into the Kitchen" in Low German - soldiers could look down into houses from the tower. Now a museum of medieval warfare and fortifications.
+- **History**: Built in the 15th century as part of Tallinn's defensive system, this massive artillery tower was one of the most formidable fortifications in Northern Europe. The 38-meter tower has walls up to 4 meters thick. The name "Kiek in de Kök" (Peek into the Kitchen) comes from the fact that guards standing atop the tower could see into the kitchens of nearby houses. The bastion tunnels beneath were built in the 17th-18th centuries by Swedish rulers to strengthen city defenses.
+- **Tips**: Museum entry fee required. Tour the medieval tower and explore underground Swedish-era bastion tunnels. Exhibits on medieval warfare, city fortifications, and daily life. Allow 1-2 hours for full visit. Combined ticket with other museums available.
+- **Coordinates**: 59.4346895, 24.7407135
+- **[Google Maps](https://maps.app.goo.gl/2bXGDvQ2ynL7eYwQA)**
+- **Visibility**: always
+- **Category**: culture

@@ -1,12 +1,5 @@
 # Copenhagen City Walk - POI Reference
 
-**Tour ID**: `copenhagen-city-walk`
-
-⚠️ **COORDINATE FORMAT**: This document uses human-readable **latitude, longitude** format.
-When implementing in `pois.json`, coordinates MUST be swapped to Mapbox format: **[longitude, latitude]**
-
----
-
 ## Walking Tour POIs
 
 ### Rådhuspladsen (City Hall Square)

@@ -1,9 +1,5 @@
 # Stockholm Gamla Stan Walk - POI Reference
 
-This document contains all POIs from the Rick Steves Gamla Stan Walk for implementation in the app.
-
----
-
 ## Walking Tour POIs
 
 ### 1 Royal Palace (Kungliga Slottet)

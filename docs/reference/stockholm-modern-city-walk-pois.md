@@ -1,13 +1,5 @@
 # Stockholm Modern City Walk - POI Reference
 
-**Tour ID**: `stockholm-modern-city-walk`
-
-This document lists all POIs for the Stockholm Modern City Walk in human-readable format with coordinates as **latitude, longitude**.
-
-⚠️ **IMPORTANT**: When adding to `pois.json`, coordinates must be **swapped to [longitude, latitude]** (Mapbox format).
-
----
-
 ## Walking Tour POIs
 
 ### 1. Kungsträdgården
@@ -81,15 +73,3 @@ This document lists all POIs for the Stockholm Modern City Walk in human-readabl
 - **Description**: "Hay Market" square with outdoor stalls and indoor market hall
 - **History**: Market square at end of walk. Outdoor stalls and Hötorgshallen indoor market (1914, when city banned outdoor fish/meat sales for hygiene). Sunday flea market in summer. Carl Milles' Orpheus statue faces Konserthuset concert hall (1926 Swedish Art Deco "Swedish Grace", hosts Nobel Prize ceremony). Free student concerts in summer (5/day, 20 min each). Hötorget T-bana station showcases 1950s modern art design.
 - **Tips**: Walk ends here. For Old Town: go to Drottninggatan, turn left toward parliament and Gamla Stan
-
----
-
-## Walking Tour Metadata
-
-- **Difficulty**: Easy
-- **Estimated Time**: 1.5-2 hours
-- **Distance**: ~2 km
-- **Starting Point**: Kungsträdgården (King Karl XII statue)
-- **Ending Point**: Hötorget
-- **Route**: Kungsträdgården → Hamngatan → Sergels Torg → Sergelgatan → Hötorget
-
