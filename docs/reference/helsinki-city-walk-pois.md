@@ -1,6 +1,6 @@
 # Helsinki City Walk - POI Reference
 
-## City Walk
+## Walking Tour POIs
 
 ### 1 Market Square (Kauppatori)
 - **Description**: Helsinki's main outdoor market square, located at the South Harbour. A hub for food stalls and ferries. Features the Czarina's Stone obelisk, outdoor market stalls, and views of the harbor with Viking ships and the SkyWheel Helsinki Ferris wheel.

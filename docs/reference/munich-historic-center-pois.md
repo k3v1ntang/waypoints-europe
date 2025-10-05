@@ -1,5 +1,7 @@
 # Munich POI Reference
 
+## Walking Tour POIs
+
 ### 1 Karlsplatz (Stachus)
 - **Description**: Major transportation hub and western gateway to Munich's pedestrian zone. Features the historic 14th-century Karlstor gate, underground shopping mall.
 - **History**: Named after Elector Charles Theodore, Stachus is the local nickname. The Karlstor (Charles Gate) is one of the three remaining medieval city gates. Built in the 14th century as part of Munich's second city wall.

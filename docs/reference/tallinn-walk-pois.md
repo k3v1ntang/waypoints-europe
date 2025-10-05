@@ -201,17 +201,4 @@ This document contains all POIs from the Tallinn Walk for implementation in the 
 
 ---
 
-## Implementation Checklist
-
-- ✅ Extract content to markdown guide (`/public/guides/tallinn-walk.md`)
-- ✅ Create this POI reference doc
-- ✅ Get coordinates from Google Maps
-- ✅ POIs implemented in `/src/data/pois.json` (16 total)
-- ✅ Walking tour definition in `pois.json`
-- ✅ Map image at `/public/maps/tallinn-walk.jpg`
-- ✅ Review and enhance POI descriptions
-- ✅ Add walkingTourNotes field to all POIs in pois.json
-
----
-
 *Source: Rick Steves Scandinavia Guidebook*
