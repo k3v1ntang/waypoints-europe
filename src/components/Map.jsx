@@ -12,6 +12,7 @@ const LAST_CITY_STORAGE_KEY = 'waypoints-last-city';
 const Map = () => {
   const mapContainerRef = useRef();
   const mapRef = useRef();
+  const hasLoadedRef = useRef(false);
   const [currentCity, setCurrentCity] = useState(null);
   const [selectedTour, setSelectedTour] = useState(null);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
@@ -265,9 +266,15 @@ const Map = () => {
 
     // Mapbox init failures (bad token, no network on first load, etc.) fire
     // 'error' rather than throwing, so React's error boundary can't see them.
+    // Once the map has loaded successfully once, later 'error' events are
+    // almost always individual tile fetches failing while offline-panning
+    // into an area that was never cached - expected and not fatal, so only
+    // the map (not the whole UI) should degrade for those.
     map.on('error', (e) => {
       console.error('Mapbox error:', e.error);
-      setMapError('The map failed to load. Check your connection and try reloading.');
+      if (!hasLoadedRef.current) {
+        setMapError('The map failed to load. Check your connection and try reloading.');
+      }
     });
 
     // Add navigation controls (zoom + compass) to top-right corner
@@ -287,6 +294,8 @@ const Map = () => {
 
     // Wait for map to load, then add clustering functionality
     map.on('load', () => {
+      hasLoadedRef.current = true;
+
       // Convert POI data to GeoJSON format for clustering
       const geojsonData = {
         type: 'FeatureCollection',
@@ -617,15 +626,20 @@ const Map = () => {
       />
       
       {mapError && (
+        // Anchored to the bottom (not top) so it can never cover the
+        // top-left city nav or the top-right zoom/geolocate controls -
+        // those should stay usable even when the map itself failed to load.
         <div
           style={{
             position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
+            bottom: 'calc(96px + env(safe-area-inset-bottom))',
+            left: '16px',
+            right: '16px',
             zIndex: 2000,
             backgroundColor: '#fef2f2',
-            borderBottom: '1px solid #ef4444',
+            border: '1px solid #ef4444',
+            borderRadius: '10px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
             padding: '12px 16px',
             display: 'flex',
             alignItems: 'center',
