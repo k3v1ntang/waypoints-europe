@@ -10,6 +10,7 @@ import WalkingTourBottomSheet from './WalkingTourBottomSheet.jsx';
 import POIPopup from './POIPopup.jsx';
 import PoiEditorSheet from './PoiEditorSheet.jsx';
 import { usePoiData } from '../hooks/usePoiData.js';
+import { exportMergedPois } from '../data/exportPois.js';
 
 const LAST_CITY_STORAGE_KEY = 'waypoints-last-city';
 
@@ -62,7 +63,7 @@ const Map = () => {
   const popupStateRef = useRef(null); // { popup, root, poiId } for the open POI popup
   const lastFittedTourRef = useRef(null);
   const pickingRef = useRef(false); // mirror of isPicking for the run-once map click handler
-  const { poisData, savePoi, deletePoi, resetPoi, isBasePoi, hasEdit } = usePoiData();
+  const { poisData, savePoi, deletePoi, resetPoi, isBasePoi, hasEdit, editCount } = usePoiData();
   const [mapLoaded, setMapLoaded] = useState(false);
   const [currentCity, setCurrentCity] = useState(null);
   const [selectedPoi, setSelectedPoi] = useState(null); // { id } - object so re-selecting re-runs the popup effect
@@ -729,6 +730,8 @@ const Map = () => {
         cities={poisData.cities}
         onCitySelect={handleCitySelect}
         currentCity={currentCity}
+        editCount={editCount}
+        onExport={() => exportMergedPois(poisData)}
       />
 
       {/* Floating Action Button for Walking Tours */}
