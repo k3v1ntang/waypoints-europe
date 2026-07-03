@@ -102,6 +102,7 @@
             48.1392677
           ],
           "category": "hotel",
+          "visibility": "always",
           "description": "Near Munich Central Station",
           "notes": "Address: Bayerstraße 37, Munich, Germany 80335 - Phone: +49 89-5402370",
           "googleMapsUrl": "https://maps.app.goo.gl/nkZdiaoqJ2QSD3ASA",
@@ -352,6 +353,7 @@
             60.1649695
           ],
           "category": "hotel",
+          "visibility": "always",
           "description": "Boutique hotel part of Marriott's Autograph Collection, located in the heart of Helsinki with unique design and personalized service.",
           "notes": "Address: Unioninkatu 14, Helsinki, Finland 00130 - Phone: +35 829 3141414",
           "googleMapsUrl": "https://maps.app.goo.gl/yGR7QQMFpH5wNR3cA",
@@ -745,6 +747,7 @@
             59.3290754
           ],
           "category": "hotel",
+          "visibility": "always",
           "description": "Premium hotel located on Södermalm island with stunning views of Stockholm's Old Town and waterfront. Perfect location for exploring the city.",
           "notes": "Address: Tegelbacken 6, 101 23 Stockholm, Sweden 10123 - Phone: +4684123400",
           "googleMapsUrl": "https://maps.app.goo.gl/p2DwGtkK9rYMv9368",

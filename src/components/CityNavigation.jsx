@@ -235,6 +235,19 @@ const CityNavigation = ({ onCitySelect, currentCity = null }) => {
               </div>
             </button>
           ))}
+
+          {/* Build stamp - confirms which deploy is running (vs. a stale SW cache) */}
+          <div
+            style={{
+              padding: '8px 20px',
+              fontSize: '11px',
+              color: '#9ca3af',
+              textAlign: 'left',
+              borderTop: '1px solid #f3f4f6'
+            }}
+          >
+            {__BUILD_SHA__} &middot; {new Date(__BUILD_DATE__).toLocaleDateString()}
+          </div>
         </div>
       )}
 

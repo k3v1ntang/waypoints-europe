@@ -14,6 +14,7 @@ const Map = () => {
   const [selectedTour, setSelectedTour] = useState(null);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [showWalkingTourPOIs, setShowWalkingTourPOIs] = useState(false);
+  const [mapError, setMapError] = useState(null);
 
   // Helper function to find POI coordinates by ID
   const findPOICoordinates = (poiId, cityId) => {
@@ -198,7 +199,6 @@ const Map = () => {
 
       const popupId = button.dataset.popupId;
       const fullDescription = button.dataset.fullDescription;
-      const hasTourNotes = button.dataset.hasTourNotes === 'true';
       const textElement = document.getElementById(`${popupId}-text`);
 
       if (!textElement) return;
@@ -234,6 +234,13 @@ const Map = () => {
       center: [15.0, 54.0], // Europe center to show all travel cities
       zoom: 4, // Appropriate zoom to see Munich to Helsinki range
       style: 'mapbox://styles/mapbox/streets-v12'
+    });
+
+    // Mapbox init failures (bad token, no network on first load, etc.) fire
+    // 'error' rather than throwing, so React's error boundary can't see them.
+    map.on('error', (e) => {
+      console.error('Mapbox error:', e.error);
+      setMapError('The map failed to load. Check your connection and try reloading.');
     });
 
     // Add navigation controls (zoom + compass) to top-right corner
@@ -489,7 +496,7 @@ const Map = () => {
         });
 
         // Create popup with Mapbox mobile best practices
-        const popup = new mapboxgl.Popup({
+        new mapboxgl.Popup({
           anchor: 'center', // Center anchor for optimal mobile positioning
           offset: [0, -10], // Slight upward offset for visual balance
           closeButton: false, // Clean mobile UX without close button
@@ -582,6 +589,44 @@ const Map = () => {
         }} 
       />
       
+      {mapError && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 2000,
+            backgroundColor: '#fef2f2',
+            borderBottom: '1px solid #ef4444',
+            padding: '12px 16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+          }}
+        >
+          <span style={{ fontSize: '14px', color: '#991b1b' }}>⚠️ {mapError}</span>
+          <button
+            onClick={() => window.location.reload()}
+            style={{
+              backgroundColor: '#ef4444',
+              color: 'white',
+              border: 'none',
+              borderRadius: '6px',
+              padding: '8px 14px',
+              fontSize: '13px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              flexShrink: 0
+            }}
+          >
+            Reload
+          </button>
+        </div>
+      )}
+
       {/* City Navigation Dropdown */}
       <CityNavigation
         onCitySelect={handleCitySelect}
