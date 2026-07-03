@@ -16,6 +16,11 @@ This folder contains all developer documentation for the Waypoints Europe projec
 
 - [`walking-tour-implementation-guide.md`](./implementation/walking-tour-implementation-guide.md) - Step-by-step guide for adding new walking tours
 
+### [`/planning`](./planning/)
+**Project plans and improvement roadmaps**
+
+- [`2026-08-trip-improvement-plan.md`](./planning/2026-08-trip-improvement-plan.md) - August 2026 trip (Amsterdam + Paris Disneyland): codebase assessment, offline-failure root causes, decisions, and phased plan (offline reliability, in-app POI editing, photos, trip content)
+
 ### [`/reference`](./reference/)
 **POI reference documentation (data source for pois.json)**
 
@@ -84,4 +89,4 @@ Rick Steves Guide
 
 ---
 
-*Last updated: October 2025*
+*Last updated: July 2026*
