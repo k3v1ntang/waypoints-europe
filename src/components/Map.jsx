@@ -13,6 +13,7 @@ const Map = () => {
   const mapContainerRef = useRef();
   const mapRef = useRef();
   const hasLoadedRef = useRef(false);
+  const mapErrorTimeoutRef = useRef(null);
   const [currentCity, setCurrentCity] = useState(null);
   const [selectedTour, setSelectedTour] = useState(null);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
@@ -270,11 +271,21 @@ const Map = () => {
     // almost always individual tile fetches failing while offline-panning
     // into an area that was never cached - expected and not fatal, so only
     // the map (not the whole UI) should degrade for those.
+    //
+    // 'error' can also fire once before 'load' during a normal successful
+    // init (a transient first-resource hiccup, observed on cold offline
+    // launches) - the map goes on to load fine a moment later. So a
+    // pre-load error only gets treated as fatal if 'load' still hasn't
+    // fired after a short grace period, not on the first error.
     map.on('error', (e) => {
       console.error('Mapbox error:', e.error);
-      if (!hasLoadedRef.current) {
-        setMapError('The map failed to load. Check your connection and try reloading.');
-      }
+      if (hasLoadedRef.current || mapErrorTimeoutRef.current) return;
+      mapErrorTimeoutRef.current = setTimeout(() => {
+        mapErrorTimeoutRef.current = null;
+        if (!hasLoadedRef.current) {
+          setMapError('The map failed to load. Check your connection and try reloading.');
+        }
+      }, 6000);
     });
 
     // Add navigation controls (zoom + compass) to top-right corner
@@ -295,6 +306,10 @@ const Map = () => {
     // Wait for map to load, then add clustering functionality
     map.on('load', () => {
       hasLoadedRef.current = true;
+      if (mapErrorTimeoutRef.current) {
+        clearTimeout(mapErrorTimeoutRef.current);
+        mapErrorTimeoutRef.current = null;
+      }
 
       // Convert POI data to GeoJSON format for clustering
       const geojsonData = {
@@ -603,6 +618,10 @@ const Map = () => {
       if (mapRef.current) {
         mapRef.current.remove();
         mapRef.current = null;
+      }
+      if (mapErrorTimeoutRef.current) {
+        clearTimeout(mapErrorTimeoutRef.current);
+        mapErrorTimeoutRef.current = null;
       }
       // Clean up event listener
       document.removeEventListener('click', handleToggleClick);

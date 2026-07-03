@@ -118,6 +118,8 @@ Reviewed the plan for day-to-day usefulness (not just reliability) and confirmed
 
 ### Phase 1 — Offline reliability (small-moderate; top priority) — branch: `feature/offline-reliability`
 
+**Status: complete, merged to `main`, live in production (July 3, 2026).**
+
 1. `matchOptions: { ignoreSearch: true }` on the Mapbox runtime cache (**the sku fix — the critical one**)
 2. Raise `maxEntries` 100 → ~4000
 3. Extend Workbox `globPatterns` to precache `md/jpg/jpeg/webp/svg/ico/png` (guides, tour maps, future POI photos)
@@ -128,6 +130,14 @@ Reviewed the plan for day-to-day usefulness (not just reliability) and confirmed
    - Netlify **branch deploy** on actual iPhone (note: different origin = separate cache — good for testing, not the final word)
    - After merge: production URL, installed home-screen PWA, browse cities on WiFi, enable **airplane mode, quit and relaunch** (cross-session = validates the sku fix), verify everything
    - Confirm app is used from the **home-screen icon** (installed PWAs are exempt from Safari's 7-day storage eviction; Safari tabs are not)
+
+**On-device findings (not anticipated by the plan):**
+
+- Skipped the Netlify branch-deploy step in the test protocol — **branch deploys are not enabled for this Netlify site** (dashboard only shows production deploys from `main`). Went straight to merging into `main` and testing production instead. Also noticed the last production deploy shown pre-merge was stale (Oct 5, 2025) despite newer commits already on `main` — the Phase 1 merge push may have resolved this, but the underlying cause (was auto-deploy actually wired up?) wasn't root-caused. Worth checking `Site settings → Build & deploy → Continuous deployment` if a future push to `main` doesn't trigger a new deploy.
+- **The sku fix itself is confirmed working**: real iPhone test — WiFi browse, airplane mode, force-quit, relaunch from the home-screen icon — showed cached map tiles, POI popups, and notes all loading correctly offline.
+- That same test surfaced a real bug: `map.on('error')` (added in Phase 0) treated *every* Mapbox error as fatal, including normal per-tile fetch misses when panning offline into an area that was never cached. The resulting banner never auto-cleared and covered the top-left city nav dropdown. Fixed in two follow-up commits after Phase 1 merged:
+  1. Only treat an error as fatal before the map's first successful `load`; moved the banner to a bottom-anchored toast so it can never block the nav controls even if it does fire.
+  2. Found that `error` can also fire *once before* `load` during a normal successful init — a transient first-resource hiccup on cold offline launches, with the map going on to load fine moments later. Added a 6-second grace period so a pre-load error only becomes fatal if `load` still hasn't fired by then, instead of judging on the first error event.
 
 ### Phase 2 — POI editing (moderate; ~3-5 sessions) — branch: `feature/poi-editing`
 
