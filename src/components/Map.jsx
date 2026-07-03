@@ -7,6 +7,8 @@ import BottomSheet from './BottomSheet.jsx';
 import FloatingActionButton from './FloatingActionButton.jsx';
 import WalkingTourBottomSheet from './WalkingTourBottomSheet.jsx';
 
+const LAST_CITY_STORAGE_KEY = 'waypoints-last-city';
+
 const Map = () => {
   const mapContainerRef = useRef();
   const mapRef = useRef();
@@ -147,7 +149,19 @@ const Map = () => {
   const handleCitySelect = (city) => {
     setCurrentCity(city);
     setSelectedTour(null); // Clear any selected tour when changing cities
-    
+
+    // Remember the selected city so the app reopens here instead of the
+    // Europe-wide view every launch.
+    try {
+      if (city) {
+        localStorage.setItem(LAST_CITY_STORAGE_KEY, city.id);
+      } else {
+        localStorage.removeItem(LAST_CITY_STORAGE_KEY);
+      }
+    } catch {
+      // localStorage unavailable (e.g. Safari private mode) - non-critical
+    }
+
     if (!mapRef.current) return;
     
     if (city === null) {
@@ -228,13 +242,26 @@ const Map = () => {
     if (mapRef.current) return;
     
     mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
-    
+
+    // Reopen on the last-viewed city instead of the Europe-wide view
+    let savedCity = null;
+    try {
+      const savedCityId = localStorage.getItem(LAST_CITY_STORAGE_KEY);
+      savedCity = savedCityId ? poisData.cities.find(c => c.id === savedCityId) : null;
+    } catch {
+      // localStorage unavailable - fall back to the default Europe view
+    }
+
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      center: [15.0, 54.0], // Europe center to show all travel cities
-      zoom: 4, // Appropriate zoom to see Munich to Helsinki range
+      center: savedCity ? savedCity.centerCoordinates : [15.0, 54.0], // Europe center to show all travel cities
+      zoom: savedCity ? 12 : 4, // Appropriate zoom to see Munich to Helsinki range
       style: 'mapbox://styles/mapbox/streets-v12'
     });
+
+    if (savedCity) {
+      setCurrentCity(savedCity);
+    }
 
     // Mapbox init failures (bad token, no network on first load, etc.) fire
     // 'error' rather than throwing, so React's error boundary can't see them.

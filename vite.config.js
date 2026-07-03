@@ -54,6 +54,10 @@ export default defineConfig({
         // drop it from the precache manifest and break offline app-shell
         // loading. Raised with headroom for dependency growth.
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+        // Precache everything fetched at runtime (walking tour guides + maps,
+        // future POI photos) in addition to Workbox's default JS/CSS/HTML,
+        // so it's available offline without ever having been visited.
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,jpg,jpeg,md,json,webmanifest}'],
         // Cache Mapbox tiles for offline use during travel
         runtimeCaching: [
           {
@@ -62,8 +66,18 @@ export default defineConfig({
             options: {
               cacheName: 'mapbox-cache',
               expiration: {
-                maxEntries: 100, // Increased for more tile coverage
+                // mapbox-gl appends a `sku` param that rotates every browser
+                // session; without ignoreSearch, tiles cached in one session
+                // never match a request in the next, so offline breaks across
+                // app restarts regardless of cache size.
+                maxEntries: 4000, // One city at street-level zoom is several hundred tiles
                 maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days - covers full Europe trip
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              },
+              matchOptions: {
+                ignoreSearch: true
               }
             }
           }
