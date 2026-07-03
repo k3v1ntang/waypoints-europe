@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ImageLightbox from './ImageLightbox.jsx';
 
 // ❓ CONCEPT: Popup content as a React component
 // 📝 EXPLANATION: Previously the popup was a raw HTML string passed to
@@ -9,7 +10,9 @@ import { useState } from 'react';
 // banner that could never appear due to a stale closure).
 const POIPopup = ({ poi, tour, onEdit }) => {
   const [expanded, setExpanded] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
+  const photos = Array.isArray(poi.photos) ? poi.photos : [];
   const description = poi.description || '';
   const walkingTourNotes = poi.walkingTourNotes || '';
   const hasDiscoverMore = walkingTourNotes.length > 0 || description.length > 120;
@@ -66,6 +69,45 @@ const POIPopup = ({ poi, tour, onEdit }) => {
           </button>
         )}
       </div>
+
+      {photos.length > 0 && (
+        <div
+          style={{
+            display: 'flex',
+            gap: '6px',
+            overflowX: 'auto',
+            marginTop: '8px',
+            WebkitOverflowScrolling: 'touch'
+          }}
+        >
+          {photos.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt={`${poi.name} photo ${i + 1}`}
+              onClick={() => setLightboxIndex(i)}
+              loading="lazy"
+              style={{
+                width: '64px',
+                height: '64px',
+                objectFit: 'cover',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                flexShrink: 0
+              }}
+            />
+          ))}
+        </div>
+      )}
+
+      {photos.length > 0 && (
+        <ImageLightbox
+          isOpen={lightboxIndex !== null}
+          onClose={() => setLightboxIndex(null)}
+          slides={photos.map((src) => ({ src, alt: poi.name }))}
+          index={lightboxIndex ?? 0}
+        />
+      )}
 
       {stopIndex >= 0 && (
         <div style={{ background: '#ecfdf5', border: '1px solid #059669', padding: '8px', borderRadius: '4px', marginTop: '8px' }}>

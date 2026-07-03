@@ -292,9 +292,13 @@ const WalkingTourBottomSheet = ({ currentCity, walkingTours, onTourSelect, selec
         <ImageLightbox
           isOpen={isLightboxOpen}
           onClose={() => setIsLightboxOpen(false)}
-          imageSrc={activeTour.mapImage}
-          imageAlt={`${activeTour.name} Map - Detailed walking tour route with numbered stops`}
-          title={`${activeTour.name} Map`}
+          slides={[
+            {
+              src: activeTour.mapImage,
+              alt: `${activeTour.name} Map - Detailed walking tour route with numbered stops`,
+              title: `${activeTour.name} Map`
+            }
+          ]}
         />
       )}
 

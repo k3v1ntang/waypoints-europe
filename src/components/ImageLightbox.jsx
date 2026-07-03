@@ -13,22 +13,16 @@ import 'yet-another-react-lightbox/styles.css';
  *
  * @param {boolean} isOpen - Controls lightbox visibility
  * @param {function} onClose - Callback when lightbox closes
- * @param {string} imageSrc - Image URL to display
- * @param {string} imageAlt - Alt text for accessibility
- * @param {string} title - Optional title displayed in toolbar
+ * @param {Array<{src: string, alt?: string, title?: string}>} slides - Images to show
+ * @param {number} index - Slide to open on (default 0)
  */
-const ImageLightbox = ({ isOpen, onClose, imageSrc, imageAlt, title }) => {
+const ImageLightbox = ({ isOpen, onClose, slides, index = 0 }) => {
   return (
     <Lightbox
       open={isOpen}
       close={onClose}
-      slides={[
-        {
-          src: imageSrc,
-          alt: imageAlt,
-          title: title
-        }
-      ]}
+      slides={slides}
+      index={index}
       plugins={[Zoom]}
       zoom={{
         maxZoomPixelRatio: 3,
@@ -64,9 +58,7 @@ const ImageLightbox = ({ isOpen, onClose, imageSrc, imageAlt, title }) => {
         }
       }}
       render={{
-        iconClose: () => '×',
-        buttonPrev: () => null,
-        buttonNext: () => null
+        iconClose: () => '×'
       }}
     />
   );

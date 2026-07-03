@@ -56,8 +56,12 @@ export function getPoiErrors(poi) {
   if (!isNonEmptyString(poi.description)) errors.push('missing or empty "description"');
   if (typeof poi.notes !== 'string') errors.push('missing "notes" field (must be a string, empty allowed)');
   if (!isNonEmptyString(poi.googleMapsUrl)) errors.push('missing or empty "googleMapsUrl"');
-  if (poi.photos !== undefined && !Array.isArray(poi.photos)) {
-    errors.push('"photos" must be an array if present');
+  if (poi.photos !== undefined) {
+    if (!Array.isArray(poi.photos)) {
+      errors.push('"photos" must be an array if present');
+    } else if (poi.photos.some((p) => !isNonEmptyString(p))) {
+      errors.push('"photos" entries must all be non-empty strings');
+    }
   }
 
   return errors;
