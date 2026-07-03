@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import { colors } from '../config/theme.js';
-import poisData from '../data/pois.json';
 
 /**
  * Modern City Navigation Dropdown Component
@@ -13,7 +12,7 @@ import poisData from '../data/pois.json';
  * - Click outside to close functionality
  */
 
-const CityNavigation = ({ onCitySelect, currentCity = null }) => {
+const CityNavigation = ({ cities, onCitySelect, currentCity = null }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -44,13 +43,14 @@ const CityNavigation = ({ onCitySelect, currentCity = null }) => {
     }
   };
 
-  // Sort cities by travel itinerary order
+  // Sort cities by travel itinerary order; cities not in the list (e.g.
+  // newly added trip destinations) go to the end in data order.
   const itineraryOrder = ['munich', 'helsinki', 'tallinn', 'stockholm', 'copenhagen', 'malmo'];
-  const sortedCities = [...poisData.cities].sort((a, b) => {
-    const indexA = itineraryOrder.indexOf(a.id);
-    const indexB = itineraryOrder.indexOf(b.id);
-    return indexA - indexB;
-  });
+  const orderIndex = (city) => {
+    const index = itineraryOrder.indexOf(city.id);
+    return index === -1 ? itineraryOrder.length : index;
+  };
+  const sortedCities = [...cities].sort((a, b) => orderIndex(a) - orderIndex(b));
 
   const displayName = currentCity ? currentCity.name.split(' (')[0] : 'Waypoints';
 

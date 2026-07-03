@@ -1,16 +1,15 @@
 import { useState } from 'react';
-import poisData from '../data/pois.json';
 import ImageLightbox from './ImageLightbox';
 import GuideViewer from './GuideViewer';
 
-const WalkingTourBottomSheet = ({ currentCity, onTourSelect, selectedTour }) => {
+const WalkingTourBottomSheet = ({ currentCity, walkingTours, onTourSelect, selectedTour }) => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [activeTour, setActiveTour] = useState(null); // Track which tour's resources are being viewed
   // Get walking tours for current city
   const getAvailableTours = () => {
-    if (!currentCity || !poisData.walkingTours) return [];
-    return poisData.walkingTours[currentCity.id] || [];
+    if (!currentCity || !walkingTours) return [];
+    return walkingTours[currentCity.id] || [];
   };
 
   const availableTours = getAvailableTours();
