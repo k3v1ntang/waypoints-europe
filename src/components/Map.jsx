@@ -8,6 +8,7 @@ import BottomSheet from './BottomSheet.jsx';
 import FloatingActionButton from './FloatingActionButton.jsx';
 import WalkingTourBottomSheet from './WalkingTourBottomSheet.jsx';
 import POIPopup from './POIPopup.jsx';
+import PoiEditorSheet from './PoiEditorSheet.jsx';
 import { usePoiData } from '../hooks/usePoiData.js';
 
 const LAST_CITY_STORAGE_KEY = 'waypoints-last-city';
@@ -60,7 +61,8 @@ const Map = () => {
   const mapErrorTimeoutRef = useRef(null);
   const popupStateRef = useRef(null); // { popup, root, poiId } for the open POI popup
   const lastFittedTourRef = useRef(null);
-  const { poisData } = usePoiData();
+  const pickingRef = useRef(false); // mirror of isPicking for the run-once map click handler
+  const { poisData, savePoi, deletePoi, resetPoi, isBasePoi, hasEdit } = usePoiData();
   const [mapLoaded, setMapLoaded] = useState(false);
   const [currentCity, setCurrentCity] = useState(null);
   const [selectedPoi, setSelectedPoi] = useState(null); // { id } - object so re-selecting re-runs the popup effect
@@ -68,6 +70,9 @@ const Map = () => {
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [showWalkingTourPOIs, setShowWalkingTourPOIs] = useState(false);
   const [mapError, setMapError] = useState(null);
+  const [editorSession, setEditorSession] = useState(null); // { poi: object|null, cityId } - null poi = add new
+  const [isPicking, setIsPicking] = useState(false); // tap-on-map coordinate picking mode
+  const [pickedCoordinates, setPickedCoordinates] = useState(null);
 
   // Close the open popup and tear down its React root. Deferring unmount()
   // avoids unmounting a root from inside the render cycle that scheduled it.
@@ -78,6 +83,31 @@ const Map = () => {
     state.popup.remove();
     setTimeout(() => state.root.unmount(), 0);
   }, []);
+
+  // --- POI editing (Phase 2) ---
+
+  const handleEditPoi = useCallback((poi) => {
+    const found = findPoiById(poisData, poi.id);
+    setPickedCoordinates(null);
+    setEditorSession({ poi, cityId: found?.city.id ?? null });
+  }, [poisData]);
+
+  const handleAddPoi = () => {
+    setPickedCoordinates(null);
+    setEditorSession({ poi: null, cityId: currentCity?.id ?? null });
+  };
+
+  const handleCloseEditor = () => {
+    setEditorSession(null);
+    setIsPicking(false);
+    setPickedCoordinates(null);
+  };
+
+  // Save, then select the POI so the popup shows (or refreshes to) the result.
+  const handleSavePoi = async (poi, cityId) => {
+    await savePoi(poi, cityId);
+    setSelectedPoi({ id: poi.id });
+  };
 
   // Function to handle walking tour selection
   const handleTourSelect = (tour) => {
@@ -152,6 +182,14 @@ const Map = () => {
       }
     }
   };
+
+  // Keep the run-once map click handler aware of picking mode, and switch
+  // the cursor so desktop testing makes the mode visible.
+  useEffect(() => {
+    pickingRef.current = isPicking;
+    const canvas = mapRef.current?.getCanvas();
+    if (canvas) canvas.style.cursor = isPicking ? 'crosshair' : '';
+  }, [isPicking]);
 
   // Keep the map's POI source in sync with the current data and visibility
   // mode. Runs once when the map first loads (the source starts empty) and
@@ -231,7 +269,7 @@ const Map = () => {
 
     const map = mapRef.current;
     const { poi } = found;
-    const content = <POIPopup poi={poi} tour={selectedTour} />;
+    const content = <POIPopup poi={poi} tour={selectedTour} onEdit={handleEditPoi} />;
     const existing = popupStateRef.current;
 
     if (existing && existing.poiId === poi.id) {
@@ -280,7 +318,7 @@ const Map = () => {
     });
 
     popupStateRef.current = { popup, root, poiId: poi.id };
-  }, [selectedPoi, selectedTour, poisData, mapLoaded, closePopup]);
+  }, [selectedPoi, selectedTour, poisData, mapLoaded, closePopup, handleEditPoi]);
 
   // When POI data changes (runtime edits), refresh the currentCity reference
   // so components receiving it see the updated city object.
@@ -532,6 +570,13 @@ const Map = () => {
       // clears the selection (closing it). setState functions are stable,
       // so this run-once handler never sees stale state.
       map.on('click', (e) => {
+        // In picking mode the click sets the edit form's coordinates
+        // instead of selecting/deselecting POIs.
+        if (pickingRef.current) {
+          setPickedCoordinates([e.lngLat.lng, e.lngLat.lat]);
+          setIsPicking(false);
+          return;
+        }
         const features = map.queryRenderedFeatures(e.point, {
           layers: ['unclustered-point']
         });
@@ -637,6 +682,48 @@ const Map = () => {
         </div>
       )}
 
+      {/* Coordinate picking banner - the editor sheet is hidden while this
+          is up, so the whole map is available for the location tap */}
+      {isPicking && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '70px',
+            left: '16px',
+            right: '16px',
+            zIndex: 1300,
+            backgroundColor: '#1f2937',
+            color: 'white',
+            borderRadius: '10px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+            padding: '12px 16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+          }}
+        >
+          <span style={{ fontSize: '14px' }}>📍 Tap the map to set the location</span>
+          <button
+            onClick={() => setIsPicking(false)}
+            style={{
+              backgroundColor: 'rgba(255,255,255,0.15)',
+              color: 'white',
+              border: '1px solid rgba(255,255,255,0.4)',
+              borderRadius: '6px',
+              padding: '6px 12px',
+              fontSize: '13px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              flexShrink: 0
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      )}
+
       {/* City Navigation Dropdown */}
       <CityNavigation
         cities={poisData.cities}
@@ -650,6 +737,29 @@ const Map = () => {
         icon="🚶‍♂️"
         label="Walking Tours"
         badge={getToursCount() > 0 ? getToursCount() : null}
+      />
+
+      {/* Floating Action Button for adding a place (Phase 2 editing) */}
+      <FloatingActionButton
+        onClick={handleAddPoi}
+        icon="➕"
+        label="Add Place"
+        bottom="92px"
+      />
+
+      {/* POI add/edit sheet */}
+      <PoiEditorSheet
+        session={editorSession}
+        poisData={poisData}
+        isBasePoi={isBasePoi}
+        hasEdit={hasEdit}
+        isPicking={isPicking}
+        pickedCoordinates={pickedCoordinates}
+        onStartPicking={() => setIsPicking(true)}
+        onSave={handleSavePoi}
+        onDelete={deletePoi}
+        onReset={resetPoi}
+        onClose={handleCloseEditor}
       />
 
       {/* Walking Tours Bottom Sheet */}

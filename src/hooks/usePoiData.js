@@ -87,6 +87,7 @@ export function usePoiData() {
     editsReady: edits !== null,
     editCount: edits?.length ?? 0,
     isBasePoi: (poiId) => BASE_POI_IDS.has(poiId),
+    hasEdit: (poiId) => (edits ?? []).some((r) => r.poiId === poiId),
     savePoi,
     deletePoi,
     resetPoi
