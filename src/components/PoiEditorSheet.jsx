@@ -182,27 +182,33 @@ const PoiEditorSheet = ({
   const handleSave = async () => {
     const problems = [];
     if (!draft.coordinates) {
-      problems.push('Set a location first — tap on the map or use your current location.');
+      problems.push('Set a location — tap on the map or use your current location.');
     }
     if (isNew && !cityId) {
       problems.push('Choose which city this place belongs to.');
     }
-    if (problems.length === 0) {
-      const poi = buildPoi();
-      problems.push(...getPoiErrors(poi));
-      if (problems.length === 0) {
-        setIsSaving(true);
-        try {
-          await onSave(poi, cityId);
-          onClose();
-        } catch (err) {
-          setErrors([`Saving failed: ${err.message}`]);
-          setIsSaving(false);
-        }
-        return;
-      }
+    const poi = buildPoi();
+    // Report every field problem in one pass. When the location is missing,
+    // the friendly message above already covers it, so drop the technical
+    // coordinate error and the googleMapsUrl one (its fallback is generated
+    // from the coordinates once they exist).
+    problems.push(
+      ...getPoiErrors(poi).filter(
+        (e) => draft.coordinates || !(e.includes('coordinates') || e.includes('googleMapsUrl'))
+      )
+    );
+    if (problems.length > 0) {
+      setErrors(problems);
+      return;
     }
-    setErrors(problems);
+    setIsSaving(true);
+    try {
+      await onSave(poi, cityId);
+      onClose();
+    } catch (err) {
+      setErrors([`Saving failed: ${err.message}`]);
+      setIsSaving(false);
+    }
   };
 
   const handleDelete = async () => {

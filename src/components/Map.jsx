@@ -767,7 +767,12 @@ const Map = () => {
         hasEdit={hasEdit}
         isPicking={isPicking}
         pickedCoordinates={pickedCoordinates}
-        onStartPicking={() => setIsPicking(true)}
+        onStartPicking={() => {
+          // Close any open popup so it can't sit over (and swallow) the
+          // location tap; after save the POI gets re-selected anyway.
+          setSelectedPoi(null);
+          setIsPicking(true);
+        }}
         onSave={handleSavePoi}
         onDelete={deletePoi}
         onReset={resetPoi}
