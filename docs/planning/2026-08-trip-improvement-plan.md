@@ -153,10 +153,12 @@ Reviewed the plan for day-to-day usefulness (not just reliability) and confirmed
 
 ### Phase 3 — Photos (~1-2 sessions) — branch: `feature/poi-photos`
 
-1. Photo pipeline script: HEIC → WebP/JPEG, resize (~200KB), **strip EXIF/GPS**, output to `public/images/{poi-id}/`
-2. List filenames in POI `photos` arrays
-3. Thumbnails in the (now React-rendered) popup → existing YARL lightbox
-4. Verify photos are covered by the Phase 1 precache and work offline
+**Status: infrastructure complete on `feature/poi-photos` (July 3, 2026); no real POI photos added yet — no source photos were available this session.** All four items below are built and verified; adding actual photos is a follow-up `npm run process-photos` invocation once source files are on hand.
+
+1. Photo pipeline script (`scripts/process-photos.js`): HEIC → WebP, resize to a 1600px max edge, iterate WebP quality to target ~200KB, **strip EXIF/GPS** (sharp omits all metadata unless `.withMetadata()` is called, which the script never does). HEIC decoding shells out to macOS's `sips` — sharp's bundled libvips only handles AVIF, not HEIC, for HEIF-family input. Verified end-to-end: a synthetic JPEG with embedded GPS EXIF came out with `metadata().exif === undefined` after processing. The script edits `pois.json` via a targeted text splice of just the target POI's `photos` array (not a full `JSON.parse`/`stringify` round-trip), which would otherwise silently renormalize every number in the file (e.g. `24.9420` → `24.942`) and drop its no-trailing-newline convention — confirmed this produces a clean single-POI diff.
+2. Filenames land in `photos` arrays via the script (`/images/{poi-id}/N.webp`); `poiValidation.js` now also rejects non-string entries.
+3. Thumbnails added to `POIPopup.jsx` (64px thumbnail strip, shown only when `photos.length > 0`) wired to `ImageLightbox`. `ImageLightbox`'s API changed from a single `imageSrc`/`imageAlt`/`title` to a `slides`/`index` array so it can show a multi-photo gallery with prev/next — `WalkingTourBottomSheet.jsx`'s tour-map usage was updated to the new API. Verified with Playwright against the dev server (city select → marker click → popup thumbnails visible → click opens full-screen lightbox → next/prev navigates → close returns cleanly to the popup, 0 leftover portal nodes). One false alarm during verification: the lightbox looked semi-transparent in a screenshot preview, which raised a concern about the Mapbox popup's CSS `transform` breaking the portal's `position: fixed` — pixel-sampled the PNG directly (RGB ~4,4,5 across the "see-through" area) and confirmed the dark backdrop was in fact fully opaque; the concern didn't hold up.
+4. Precache coverage confirmed structural, not just assumed: `vite.config.js`'s Workbox `globPatterns` already includes `webp` and `jpg/jpeg` (added in Phase 1 for tour maps/guides), so any file under `public/images/` is covered automatically once real photos exist — no config change needed for this phase.
 
 ### Phase 4 — Trip content (low effort per city) — branch: `feature/amsterdam-paris`
 
