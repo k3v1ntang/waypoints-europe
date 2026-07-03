@@ -1,10 +1,10 @@
-const FloatingActionButton = ({ onClick, icon, label, badge }) => {
+const FloatingActionButton = ({ onClick, icon, label, badge, bottom = '24px' }) => {
   return (
     <button
       onClick={onClick}
       style={{
         position: 'fixed',
-        bottom: '24px',
+        bottom,
         right: '24px',
         width: '56px',
         height: '56px',

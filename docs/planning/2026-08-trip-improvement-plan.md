@@ -141,6 +141,8 @@ Reviewed the plan for day-to-day usefulness (not just reliability) and confirmed
 
 ### Phase 2 — POI editing (moderate; ~3-5 sessions) — branch: `feature/poi-editing`
 
+**Status: implemented on `feature/poi-editing` (July 3, 2026), all six items below including search and export. Verified end-to-end in a scripted browser run against the production build (22/22 steps: tour banner, edit/save/reset, tap-on-map + geolocation, IndexedDB persistence across reload, export download, validation errors). Remaining before merge: on-device testing on iPhone per the Phase 1 test protocol (Web Share/AirDrop export path can't be exercised in a desktop browser).**
+
 1. **Pre-work refactor of `Map.jsx`** (~1 session): derive GeoJSON from state, push changes via `setData`; render popup content with React (`createRoot` into popup container) instead of string HTML. Fixes the tour-banner stale-closure bug and the escaping fragility; prerequisite for runtime-changing data.
 2. Add/edit form: name, description, notes, category, Google Maps link; coordinates via **tap-on-map** or **use-my-location**
 2a. **POI search**: client-side name search in the top bar, results list, tap-to-fly-and-open-popup; doubles as the "find POI to edit" mechanism (category filter chips only if trivial)

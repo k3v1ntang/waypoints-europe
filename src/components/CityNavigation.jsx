@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import { colors } from '../config/theme.js';
-import poisData from '../data/pois.json';
 
 /**
  * Modern City Navigation Dropdown Component
@@ -13,7 +12,7 @@ import poisData from '../data/pois.json';
  * - Click outside to close functionality
  */
 
-const CityNavigation = ({ onCitySelect, currentCity = null }) => {
+const CityNavigation = ({ cities, onCitySelect, currentCity = null, editCount = 0, onExport }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -44,13 +43,14 @@ const CityNavigation = ({ onCitySelect, currentCity = null }) => {
     }
   };
 
-  // Sort cities by travel itinerary order
+  // Sort cities by travel itinerary order; cities not in the list (e.g.
+  // newly added trip destinations) go to the end in data order.
   const itineraryOrder = ['munich', 'helsinki', 'tallinn', 'stockholm', 'copenhagen', 'malmo'];
-  const sortedCities = [...poisData.cities].sort((a, b) => {
-    const indexA = itineraryOrder.indexOf(a.id);
-    const indexB = itineraryOrder.indexOf(b.id);
-    return indexA - indexB;
-  });
+  const orderIndex = (city) => {
+    const index = itineraryOrder.indexOf(city.id);
+    return index === -1 ? itineraryOrder.length : index;
+  };
+  const sortedCities = [...cities].sort((a, b) => orderIndex(a) - orderIndex(b));
 
   const displayName = currentCity ? currentCity.name.split(' (')[0] : 'Waypoints';
 
@@ -235,6 +235,47 @@ const CityNavigation = ({ onCitySelect, currentCity = null }) => {
               </div>
             </button>
           ))}
+
+          {/* Export merged POI data (bundled data + on-device edits) via the
+              share sheet - doubles as the mid-trip backup (AirDrop to iPad) */}
+          {onExport && (
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                onExport();
+              }}
+              style={{
+                width: '100%',
+                padding: '14px 20px',
+                border: 'none',
+                backgroundColor: 'transparent',
+                color: '#374151',
+                fontSize: '14px',
+                fontWeight: '500',
+                textAlign: 'left',
+                cursor: 'pointer',
+                borderTop: '1px solid #f3f4f6'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#f9fafb';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <span style={{ fontSize: '16px' }}>📤</span>
+                <div>
+                  <div style={{ fontWeight: '600' }}>Export POI data</div>
+                  <div style={{ fontSize: '12px', color: '#6b7280', marginTop: '2px' }}>
+                    {editCount > 0
+                      ? `${editCount} ${editCount === 1 ? 'edit' : 'edits'} on this device`
+                      : 'No edits on this device yet'}
+                  </div>
+                </div>
+              </div>
+            </button>
+          )}
 
           {/* Build stamp - confirms which deploy is running (vs. a stale SW cache) */}
           <div
