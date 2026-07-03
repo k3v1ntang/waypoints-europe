@@ -8,6 +8,7 @@ import BottomSheet from './BottomSheet.jsx';
 import FloatingActionButton from './FloatingActionButton.jsx';
 import WalkingTourBottomSheet from './WalkingTourBottomSheet.jsx';
 import POIPopup from './POIPopup.jsx';
+import { usePoiData } from '../hooks/usePoiData.js';
 
 const LAST_CITY_STORAGE_KEY = 'waypoints-last-city';
 
@@ -59,7 +60,7 @@ const Map = () => {
   const mapErrorTimeoutRef = useRef(null);
   const popupStateRef = useRef(null); // { popup, root, poiId } for the open POI popup
   const lastFittedTourRef = useRef(null);
-  const [poisData] = useState(basePoisData);
+  const { poisData } = usePoiData();
   const [mapLoaded, setMapLoaded] = useState(false);
   const [currentCity, setCurrentCity] = useState(null);
   const [selectedPoi, setSelectedPoi] = useState(null); // { id } - object so re-selecting re-runs the popup effect

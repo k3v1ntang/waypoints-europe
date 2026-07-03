@@ -6,19 +6,19 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import {
+  isNonEmptyString,
+  getCoordinateErrors,
+  getPoiErrors
+} from '../src/data/poiValidation.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_PATH = path.join(__dirname, '../src/data/pois.json');
 
-// Loose bounding box covering continental Europe (incl. Nordics/Baltics).
-// Existing trip cities range from Munich (lat 48) to Helsinki (lat 60); the
-// August 2026 additions (Amsterdam, Paris) fall well inside it too. Its main
-// job is catching the [lat, lng] vs [lng, lat] swap footgun: a swapped
-// coordinate pair lands outside this box for every city in the app.
-const EUROPE_BOUNDS = { minLng: -25, maxLng: 45, minLat: 34, maxLat: 71 };
-
-const VALID_CATEGORIES = ['landmark', 'culture', 'food', 'practical', 'hotel'];
-const VALID_VISIBILITY = ['always', 'walkingTour'];
+// Field-level rules (Europe bounding box, enums, required fields) live in
+// src/data/poiValidation.js so the in-app POI editor enforces the same
+// rules. This script adds the whole-file concerns: id uniqueness, city
+// structure, and walking-tour cross-references.
 
 const errors = [];
 
@@ -26,60 +26,22 @@ function fail(message) {
   errors.push(message);
 }
 
-function isNonEmptyString(value) {
-  return typeof value === 'string' && value.trim().length > 0;
-}
-
 function validateCoordinates(coordinates, label) {
-  if (!Array.isArray(coordinates) || coordinates.length !== 2) {
-    fail(`${label}: coordinates must be a [longitude, latitude] pair, got ${JSON.stringify(coordinates)}`);
-    return;
-  }
-  const [lng, lat] = coordinates;
-  if (typeof lng !== 'number' || typeof lat !== 'number') {
-    fail(`${label}: coordinates must be numbers, got ${JSON.stringify(coordinates)}`);
-    return;
-  }
-  if (
-    lng < EUROPE_BOUNDS.minLng || lng > EUROPE_BOUNDS.maxLng ||
-    lat < EUROPE_BOUNDS.minLat || lat > EUROPE_BOUNDS.maxLat
-  ) {
-    fail(
-      `${label}: coordinates [${lng}, ${lat}] fall outside the Europe bounding box ` +
-      `(lng ${EUROPE_BOUNDS.minLng}..${EUROPE_BOUNDS.maxLng}, lat ${EUROPE_BOUNDS.minLat}..${EUROPE_BOUNDS.maxLat}). ` +
-      `This usually means [lat, lng] were swapped instead of [lng, lat].`
-    );
-  }
+  getCoordinateErrors(coordinates).forEach((e) => fail(`${label}: ${e}`));
 }
 
 function validatePoi(poi, city, seenIds) {
-  const label = `POI in ${city.id} (index within city pois array)`;
-
   if (!isNonEmptyString(poi.id)) {
-    fail(`${label}: missing or empty "id"`);
-  } else {
-    const idLabel = `POI "${poi.id}" (${city.id})`;
-    if (seenIds.has(poi.id)) {
-      fail(`${idLabel}: duplicate id — POI ids must be unique across the whole app`);
-    }
-    seenIds.add(poi.id);
-
-    if (!isNonEmptyString(poi.name)) fail(`${idLabel}: missing or empty "name"`);
-    validateCoordinates(poi.coordinates, idLabel);
-
-    if (!VALID_CATEGORIES.includes(poi.category)) {
-      fail(`${idLabel}: invalid category "${poi.category}" — must be one of ${VALID_CATEGORIES.join(', ')}`);
-    }
-    if (!VALID_VISIBILITY.includes(poi.visibility)) {
-      fail(`${idLabel}: invalid visibility "${poi.visibility}" — must be one of ${VALID_VISIBILITY.join(', ')}`);
-    }
-    if (!isNonEmptyString(poi.description)) fail(`${idLabel}: missing or empty "description"`);
-    if (typeof poi.notes !== 'string') fail(`${idLabel}: missing "notes" field (must be a string, empty allowed)`);
-    if (!isNonEmptyString(poi.googleMapsUrl)) fail(`${idLabel}: missing or empty "googleMapsUrl"`);
-    if (poi.photos !== undefined && !Array.isArray(poi.photos)) {
-      fail(`${idLabel}: "photos" must be an array if present`);
-    }
+    fail(`POI in ${city.id} (index within city pois array): missing or empty "id"`);
+    return;
   }
+  const idLabel = `POI "${poi.id}" (${city.id})`;
+  if (seenIds.has(poi.id)) {
+    fail(`${idLabel}: duplicate id — POI ids must be unique across the whole app`);
+  }
+  seenIds.add(poi.id);
+
+  getPoiErrors(poi).forEach((e) => fail(`${idLabel}: ${e}`));
 }
 
 function validateCity(city, seenIds) {
