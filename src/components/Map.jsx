@@ -9,6 +9,7 @@ import FloatingActionButton from './FloatingActionButton.jsx';
 import WalkingTourBottomSheet from './WalkingTourBottomSheet.jsx';
 import POIPopup from './POIPopup.jsx';
 import PoiEditorSheet from './PoiEditorSheet.jsx';
+import POISearch from './POISearch.jsx';
 import { usePoiData } from '../hooks/usePoiData.js';
 import { exportMergedPois } from '../data/exportPois.js';
 
@@ -732,6 +733,14 @@ const Map = () => {
         currentCity={currentCity}
         editCount={editCount}
         onExport={() => exportMergedPois(poisData)}
+      />
+
+      {/* POI name search - selecting a result flies to the POI and opens
+          its popup (which carries the Edit button) */}
+      <POISearch
+        poisData={poisData}
+        currentCityId={currentCity?.id}
+        onSelectPoi={(poi) => setSelectedPoi({ id: poi.id })}
       />
 
       {/* Floating Action Button for Walking Tours */}
