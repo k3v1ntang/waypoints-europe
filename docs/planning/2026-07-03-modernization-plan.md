@@ -4,7 +4,7 @@
 **Context**: Follows the July 2026 security review and stack assessment conversation. Captures every action item, decision, and rationale from that discussion as the implementation blueprint.
 **Working branch strategy**: One feature branch per phase, merged to `main` (auto-deploys to Netlify) only after on-device testing on iPhone/iPad.
 **Timing anchor**: August 2026 trip (~6 weeks out). Phases 1–3 should land before the trip; Phases 4–5 are flexible; Phase 6 is post-trip.
-**Status**: In progress — Phase 1 merged 2026-07-04
+**Status**: In progress — Phases 1–3 merged 2026-07-04
 
 ---
 
@@ -153,7 +153,7 @@ Success criteria: full feature parity including popup CSS; offline works across 
 
 ---
 
-### Phase 2 — Security & Netlify hardening
+### Phase 2 — Security & Netlify hardening ✅ (merged 2026-07-04)
 
 **Effort**: ~1–2 hours (mostly CSP testing)
 **Branch**: `feature/hardening`
@@ -172,7 +172,7 @@ Success criteria: all 5 guides render identically; no CSP violations in the cons
 
 ---
 
-### Phase 3 — Dependency majors + test baseline
+### Phase 3 — Dependency majors + test baseline ✅ (merged 2026-07-04)
 
 **Effort**: ~half a day
 **Branch**: `feature/deps-2026-07`
@@ -310,6 +310,7 @@ One long-lived **Fable 5 session acts as orchestrator**; Sessions A–F are **wo
 5. On-device checklist for the user (exact steps, expected results)
 
 **Session Log** (orchestrator-maintained; newest first):
+- **2026-07-04 — Session B (Phase 3 + Phase 2) — merged.** PR #2 → `aaefea3` on main; commits `bac276f`+`69e108b` (Phase 3) and `deb7b11`+`83e1993` (Phase 2), revertable per concern; worker model Sonnet 5; rollback tag `pre-B-stable` = `92a6db4` (created retroactively — merge happened before the tag). Gates: lint 0 errors / 32 tests / build with SW + 28 precache entries, all re-verified independently by the orchestrator; CSP re-read and scoped correctly (`style-src 'self'` — GuideViewer's inline `<style>` extracted to CSS, tighter than the plan's draft). *Gate deviation*: user merged before the Netlify deploy-preview CSP check ran — the 6-point CSP checklist moved to production verification instead (Netlify deploy-history rollback + `pre-B-stable` as the safety net). *Deviations*: `react-hooks/set-state-in-effect` (new in plugin v7) downgraded to warning for only the 3 pre-existing violator files (Map.jsx, BottomSheet.jsx, PoiEditorSheet.jsx — Phase 5 owns them); `process-photos.js` got an export + `realpathSync` main-module guard for testability. *Accepted risk*: /code-review completed 3 of 5 agents (rate limit); rerun available on PR #2 if wanted. *Watch item*: pre-existing >500 kB chunk warning (React + maplibre-gl), not actioned.
 - **2026-07-04 — Session A (Phase 1, MapLibre) — merged.** PR #1 → `21a6940` on main; migration commit `2e46422` (single commit as planned); worker model Sonnet 5; rollback tag `pre-A-stable` = `9e8a43d`. Gates: lint/build green (orchestrator re-verified independently), no `api.mapbox.com` in bundle, OpenFreeMap CacheFirst rule confirmed in generated `sw.js`, full on-device iPhone pass (Liberty style, popup CSS, attribution, geolocate, airplane-mode-across-restart). *Deviation*: the one-time `mapbox-cache` cleanup lives in `src/main.jsx`, not `vite.config.js` — Workbox generateSW has no declarative way to delete a foreign cache. *Watch item*: the single CacheFirst rule also pins OpenFreeMap's `/planet` TileJSON (daily-rotating snapshot path) for up to 30 days; if stale-tile 404s appear while online, add a `StaleWhileRevalidate` rule for the style/TileJSON paths (Phase 2 candidate). *Follow-ups resolved 2026-07-04*: `VITE_MAPBOX_TOKEN` removed from Netlify env vars; Mapbox account teardown done (tokens/billing exposure removed) — the Phase 1 post-merge reminder is discharged. *Still open*: verify installed-PWA update path on production (open the home-screen app twice; offline still works; `mapbox-cache` gone).
 
 **Orchestrator cold-start prompt**:
