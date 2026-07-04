@@ -145,6 +145,7 @@ const GuideViewer = ({ cityId, onClose }) => {
           {!loading && !error && markdownContent && (
             <Markdown
               options={{
+                disableParsingRawHTML: true,
                 overrides: {
                   h1: {
                     props: {
