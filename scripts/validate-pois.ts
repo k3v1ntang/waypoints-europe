@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S npx tsx
 // Validates src/data/pois.json. Run via `npm run validate:pois` (also runs
 // automatically as a `prebuild` hook so a broken data file fails the build
 // instead of shipping). Exits non-zero on any error.
@@ -11,26 +11,27 @@ import {
   getCoordinateErrors,
   getPoiErrors
 } from '../src/data/poiValidation.js';
+import type { City, Poi, PoisData, WalkingTour } from '../src/data/types.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_PATH = path.join(__dirname, '../src/data/pois.json');
 
 // Field-level rules (Europe bounding box, enums, required fields) live in
-// src/data/poiValidation.js so the in-app POI editor enforces the same
+// src/data/poiValidation.ts so the in-app POI editor enforces the same
 // rules. This script adds the whole-file concerns: id uniqueness, city
 // structure, and walking-tour cross-references.
 
-const errors = [];
+const errors: string[] = [];
 
-function fail(message) {
+function fail(message: string): void {
   errors.push(message);
 }
 
-function validateCoordinates(coordinates, label) {
+function validateCoordinates(coordinates: unknown, label: string): void {
   getCoordinateErrors(coordinates).forEach((e) => fail(`${label}: ${e}`));
 }
 
-function validatePoi(poi, city, seenIds) {
+function validatePoi(poi: Poi, city: City, seenIds: Set<string>): void {
   if (!isNonEmptyString(poi.id)) {
     fail(`POI in ${city.id} (index within city pois array): missing or empty "id"`);
     return;
@@ -44,7 +45,7 @@ function validatePoi(poi, city, seenIds) {
   getPoiErrors(poi).forEach((e) => fail(`${idLabel}: ${e}`));
 }
 
-function validateCity(city, seenIds) {
+function validateCity(city: City, seenIds: Set<string>): void {
   if (!isNonEmptyString(city.id)) {
     fail('City missing or empty "id"');
     return;
@@ -62,11 +63,15 @@ function validateCity(city, seenIds) {
   city.pois.forEach((poi) => validatePoi(poi, city, seenIds));
 }
 
-function validateWalkingTours(walkingTours, citiesById) {
+function validateWalkingTours(
+  walkingTours: Record<string, WalkingTour[]> | undefined,
+  citiesById: Map<string, City>
+): void {
   if (walkingTours === undefined) return;
 
   for (const [cityId, tours] of Object.entries(walkingTours)) {
-    if (!citiesById.has(cityId)) {
+    const city = citiesById.get(cityId);
+    if (!city) {
       fail(`walkingTours: key "${cityId}" does not match any city id`);
       continue;
     }
@@ -74,7 +79,7 @@ function validateWalkingTours(walkingTours, citiesById) {
       fail(`walkingTours.${cityId}: must be an array of tour objects`);
       continue;
     }
-    const cityPoiIds = new Set(citiesById.get(cityId).pois.map((p) => p.id));
+    const cityPoiIds = new Set(city.pois.map((p) => p.id));
 
     tours.forEach((tour, index) => {
       const label = `walkingTours.${cityId}[${index}]${tour?.id ? ` ("${tour.id}")` : ''}`;
@@ -93,13 +98,18 @@ function validateWalkingTours(walkingTours, citiesById) {
   }
 }
 
-function main() {
+function main(): void {
   const raw = readFileSync(DATA_PATH, 'utf-8');
-  let data;
+  let data: PoisData;
   try {
-    data = JSON.parse(raw);
+    // `JSON.parse` always returns `any`, so this cast is the same "trust
+    // the shape, verify it below" bridge used for the pois.json import in
+    // usePoiData.ts - the whole rest of this script is what actually earns
+    // that trust, by walking `data` and reporting every field that doesn't
+    // match.
+    data = JSON.parse(raw) as PoisData;
   } catch (err) {
-    console.error(`✖ pois.json is not valid JSON: ${err.message}`);
+    console.error(`✖ pois.json is not valid JSON: ${(err as Error).message}`);
     process.exit(1);
   }
 
@@ -108,7 +118,7 @@ function main() {
     process.exit(1);
   }
 
-  const seenIds = new Set();
+  const seenIds = new Set<string>();
   data.cities.forEach((city) => validateCity(city, seenIds));
 
   const citiesById = new Map(data.cities.map((c) => [c.id, c]));
