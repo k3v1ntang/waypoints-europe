@@ -2,16 +2,25 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import basePoisData from '../data/pois.json';
 import { mergePois } from '../data/mergePois.js';
 import { getAllEdits, putEdit, removeEdit } from '../data/editStore.js';
+import type { EditRecord, Poi, PoisData } from '../data/types.js';
+
+// pois.json is imported as plain JSON, so TypeScript infers its shape from
+// the file content (e.g. coordinates widen to `number[]`, not the `[number,
+// number]` tuple PoisData expects, and enums widen to `string`). The
+// `unknown` bridge below is TypeScript's "I know this looks unrelated, but
+// trust me" cast for exactly that gap - scripts/validate-pois.ts is what
+// actually enforces the shape at build time.
+const typedBasePoisData = basePoisData as unknown as PoisData;
 
 // Ids of POIs that ship in the bundled pois.json - anything else was
 // created in-app. Determines whether a save is an 'override' or 'new'
 // record and whether a delete needs a tombstone.
 const BASE_POI_IDS = new Set(
-  basePoisData.cities.flatMap((city) => city.pois.map((poi) => poi.id))
+  typedBasePoisData.cities.flatMap((city) => city.pois.map((poi) => poi.id))
 );
 
 // Upsert helper for the in-memory copy of the edit records.
-const upsertRecord = (records, record) => [
+const upsertRecord = (records: EditRecord[], record: EditRecord): EditRecord[] => [
   ...records.filter((r) => r.poiId !== record.poiId),
   record
 ];
@@ -24,7 +33,9 @@ const upsertRecord = (records, record) => [
 // editable. Each operation persists to IndexedDB first, then updates the
 // mirror, so state never claims a write that didn't happen.
 export function usePoiData() {
-  const [edits, setEdits] = useState(null); // null until IndexedDB has been read
+  // `useState<EditRecord[] | null>` - `null` means "IndexedDB hasn't been
+  // read yet"; once read, it's always an array (possibly empty).
+  const [edits, setEdits] = useState<EditRecord[] | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -44,14 +55,14 @@ export function usePoiData() {
   }, []);
 
   const poisData = useMemo(
-    () => (edits && edits.length > 0 ? mergePois(basePoisData, edits) : basePoisData),
+    () => (edits && edits.length > 0 ? mergePois(typedBasePoisData, edits) : typedBasePoisData),
     [edits]
   );
 
   // Save a complete POI object (new or edited). `cityId` is the city it
   // belongs to. Persists first, then updates state.
-  const savePoi = useCallback(async (poi, cityId) => {
-    const record = {
+  const savePoi = useCallback(async (poi: Poi, cityId: string) => {
+    const record: EditRecord = {
       poiId: poi.id,
       cityId,
       type: BASE_POI_IDS.has(poi.id) ? 'override' : 'new',
@@ -64,9 +75,9 @@ export function usePoiData() {
 
   // Delete a POI: tombstone for base POIs, plain record removal for POIs
   // that were created in-app.
-  const deletePoi = useCallback(async (poiId, cityId) => {
+  const deletePoi = useCallback(async (poiId: string, cityId: string) => {
     if (BASE_POI_IDS.has(poiId)) {
-      const record = { poiId, cityId, type: 'delete', updatedAt: Date.now() };
+      const record: EditRecord = { poiId, cityId, type: 'delete', updatedAt: Date.now() };
       await putEdit(record);
       setEdits((prev) => upsertRecord(prev ?? [], record));
     } else {
@@ -77,7 +88,7 @@ export function usePoiData() {
 
   // Discard the edit for one POI, restoring the bundled version (no-op for
   // in-app POIs, which have no bundled version to restore - use deletePoi).
-  const resetPoi = useCallback(async (poiId) => {
+  const resetPoi = useCallback(async (poiId: string) => {
     await removeEdit(poiId);
     setEdits((prev) => (prev ?? []).filter((r) => r.poiId !== poiId));
   }, []);
@@ -86,8 +97,8 @@ export function usePoiData() {
     poisData,
     editsReady: edits !== null,
     editCount: edits?.length ?? 0,
-    isBasePoi: (poiId) => BASE_POI_IDS.has(poiId),
-    hasEdit: (poiId) => (edits ?? []).some((r) => r.poiId === poiId),
+    isBasePoi: (poiId: string) => BASE_POI_IDS.has(poiId),
+    hasEdit: (poiId: string) => (edits ?? []).some((r) => r.poiId === poiId),
     savePoi,
     deletePoi,
     resetPoi

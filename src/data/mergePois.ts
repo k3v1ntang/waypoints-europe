@@ -3,24 +3,26 @@
 // downstream (map, navigation, export, validation) is agnostic about
 // whether a POI came from the repo or from an in-trip edit.
 
-export function mergePois(baseData, edits) {
+import type { City, EditRecord, Poi, PoisData } from './types.js';
+
+export function mergePois(baseData: PoisData, edits: EditRecord[] | null | undefined): PoisData {
   if (!edits || edits.length === 0) return baseData;
 
   const editsByPoiId = new Map(edits.map((e) => [e.poiId, e]));
 
-  const cities = baseData.cities.map((city) => {
+  const cities: City[] = baseData.cities.map((city) => {
     const pois = city.pois
-      .map((poi) => {
+      .map((poi): Poi | null => {
         const edit = editsByPoiId.get(poi.id);
         if (!edit) return poi;
         if (edit.type === 'delete') return null;
         if (edit.type === 'override') return edit.poi;
         return poi;
       })
-      .filter(Boolean);
+      .filter((poi): poi is Poi => poi !== null);
 
     const added = edits
-      .filter((e) => e.type === 'new' && e.cityId === city.id)
+      .filter((e): e is Extract<EditRecord, { type: 'new' }> => e.type === 'new' && e.cityId === city.id)
       .sort((a, b) => (a.updatedAt ?? 0) - (b.updatedAt ?? 0))
       .map((e) => e.poi);
 
@@ -32,7 +34,7 @@ export function mergePois(baseData, edits) {
 
 // Slug-based id for POIs created in-app, unique across the merged data set
 // (e.g. "amsterdam-cafe-de-klos", "-2" suffix on collision).
-export function generatePoiId(name, cityId, poisData) {
+export function generatePoiId(name: string, cityId: string, poisData: PoisData): string {
   const slug = name
     .toLowerCase()
     .normalize('NFD')

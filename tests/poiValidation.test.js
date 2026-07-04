@@ -99,6 +99,19 @@ describe('getPoiErrors', () => {
     expect(errors.some((e) => e.includes('googleMapsUrl'))).toBe(true);
   });
 
+  it('flags a googleMapsUrl using a non-https scheme (F2)', () => {
+    const jsErrors = getPoiErrors(validPoi({ googleMapsUrl: 'javascript:alert(1)' }));
+    expect(jsErrors.some((e) => e.includes('https:'))).toBe(true);
+
+    const httpErrors = getPoiErrors(validPoi({ googleMapsUrl: 'http://maps.google.com/xyz' }));
+    expect(httpErrors.some((e) => e.includes('https:'))).toBe(true);
+  });
+
+  it('flags a googleMapsUrl that is not a valid URL at all (F2)', () => {
+    const errors = getPoiErrors(validPoi({ googleMapsUrl: 'not a url' }));
+    expect(errors.some((e) => e.includes('valid URL'))).toBe(true);
+  });
+
   it('requires "notes" to be a string, empty allowed', () => {
     expect(getPoiErrors(validPoi({ notes: '' }))).toEqual([]);
     const errors = getPoiErrors(validPoi({ notes: undefined }));
