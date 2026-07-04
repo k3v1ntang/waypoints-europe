@@ -1,6 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
+// Phase 5 design system: tokens first (defines the custom properties),
+// then the glass material that consumes them.
+import './styles/tokens.css'
+import './styles/glass.css'
 import App from './App.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 

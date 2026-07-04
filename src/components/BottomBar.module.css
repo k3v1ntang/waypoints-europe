@@ -1,0 +1,284 @@
+/*
+ * BottomBar layout - Phase 5 PoC (D8: Apple-Maps-shape bottom control bar)
+ *
+ * ❓ CONCEPT: CSS Modules
+ * 📝 EXPLANATION: a stylesheet named *.module.css gets its class names
+ * rewritten at build time to unique hashes (`.bar` -> `.BottomBar_bar_x7f2`),
+ * and the import in the component (`import styles from './BottomBar.module.css'`)
+ * returns a mapping of original -> hashed names. That scopes these rules to
+ * this component - no accidental collisions with App.css or MapLibre's CSS.
+ * Think of it as each component getting its own namespace, where plain CSS
+ * is one big global namespace. The global `.glass` class from glass.css is
+ * deliberately NOT a module: it is the one shared material every surface
+ * composes with (className={`glass ${styles.bar}`}).
+ */
+
+.root {
+  position: fixed;
+  left: var(--bar-inset);
+  right: var(--bar-inset);
+  /* Float above the iPhone home indicator; --safe-bottom is 0 elsewhere. */
+  bottom: calc(var(--bar-inset) + var(--safe-bottom));
+  /* Below everything that opens OVER the bar: the tours BottomSheet
+     (1000/1001), POISearch expanded (1100), the editor sheet (1200), and
+     banners (1300/2000). The bar is the resting base layer of the bottom
+     UI - sheets it launches must cover it, like Apple Maps. */
+  z-index: 998;
+  font-family: var(--font-ui);
+  /* The root is a positioning frame only - the bar and popovers inside it
+     paint the glass. */
+  pointer-events: none;
+}
+
+.root > * {
+  pointer-events: auto;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: var(--radius-bar);
+}
+
+/* ---- Search field ------------------------------------------------------ */
+
+.searchField {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0; /* let the input shrink instead of overflowing the bar */
+  height: var(--hit-target);
+  padding: 0 14px;
+  border-radius: var(--radius-capsule);
+  /* A slightly recessed well ON the glass, not a second glass layer:
+     nested backdrop-filters multiply GPU cost (D4 constraint). */
+  background-color: rgba(120, 120, 128, 0.14);
+}
+
+.searchIcon {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 16px; /* >=16px prevents iOS Safari's auto-zoom on focus */
+  color: var(--text-primary);
+  padding: 0;
+}
+
+.searchInput::placeholder {
+  color: var(--text-secondary);
+}
+
+.searchClear {
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  padding: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+/* ---- Grouped action buttons (iOS 26 HIG: related actions share one
+        glass-background group; the group capsule is the visual unit) ---- */
+
+.buttonGroup {
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 0;
+  border-radius: var(--radius-capsule);
+  background-color: rgba(120, 120, 128, 0.14);
+  overflow: hidden; /* clip children to the capsule shape */
+}
+
+.groupButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--hit-target);
+  height: var(--hit-target);
+  border: none;
+  background: transparent;
+  font-size: 19px;
+  cursor: pointer;
+  padding: 0;
+  color: var(--text-primary);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.groupButton:active {
+  background-color: rgba(120, 120, 128, 0.22);
+}
+
+/* Hairline divider between grouped buttons */
+.groupButton + .groupButton {
+  border-left: 0.5px solid var(--separator);
+}
+
+/* Standalone ⋯ button - same size, its own capsule (it opens an overflow
+   menu, a different function class than the direct actions per HIG
+   organize-by-function). */
+.moreButton {
+  composes: groupButton;
+  flex-shrink: 0;
+  border-radius: var(--radius-capsule);
+  background-color: rgba(120, 120, 128, 0.14);
+  font-weight: 700;
+}
+
+/* ---- Badges ------------------------------------------------------------ */
+
+.badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: var(--radius-capsule);
+  background-color: var(--color-danger);
+  color: var(--text-on-accent);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 17px;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* ---- Popovers (⋯ menu, search results) --------------------------------- */
+
+.menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 8px); /* open upward, above the bar */
+  min-width: 240px;
+  border-radius: var(--radius-menu);
+  overflow: hidden;
+  transform-origin: bottom right;
+  animation: pop-in 0.18s ease-out;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-primary);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menuItem:active {
+  background-color: rgba(120, 120, 128, 0.18);
+}
+
+.menuItemIcon {
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.menuItemTitle {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.menuItemSubtitle {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.menuBadge {
+  margin-left: auto;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: var(--radius-capsule);
+  background-color: var(--color-danger);
+  color: var(--text-on-accent);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.results {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 8px);
+  max-height: 40dvh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-menu);
+  transform-origin: bottom center;
+  animation: pop-in 0.18s ease-out;
+}
+
+.resultItem {
+  composes: menuItem;
+}
+
+.resultItem + .resultItem {
+  border-top: 0.5px solid var(--separator);
+}
+
+.resultName {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resultText {
+  min-width: 0; /* allow the name to ellipsize inside a flex row */
+}
+
+.noResults {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ❓ CONCEPT: prefers-reduced-motion
+   📝 EXPLANATION: OS-level "reduce motion" setting (common for vestibular
+   disorders). Animations should collapse to instant appearance. */
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .results {
+    animation: none;
+  }
+}

@@ -1,0 +1,109 @@
+/*
+ * Design tokens - Phase 5 (D4: Liquid-Glass styling layer)
+ *
+ * ❓ CONCEPT: CSS custom properties ("CSS variables")
+ * 📝 EXPLANATION: `--name: value` declared on `:root` (the <html> element)
+ * is readable anywhere below it via `var(--name)`. Like module-level
+ * constants in Python, except they participate in the cascade: a media
+ * query can redeclare a token and every rule using var() picks up the new
+ * value automatically - no JS, no rebuild. That cascade trick is how dark
+ * mode and the reduced-transparency fallback work below: components never
+ * branch, only the tokens change.
+ *
+ * This file is the CSS successor to src/config/theme.js. theme.js stays
+ * for values JS still needs (map marker colors); new UI reads tokens.
+ */
+
+:root {
+  /* ---- Brand ---------------------------------------------------------- */
+  /* Same palette as theme.js `colors` - keep the two in sync. */
+  --color-primary: #2563eb;
+  --color-danger: #dc2626;
+
+  /* Solid text colors - never translucent text on glass (D4: legibility
+     is glassmorphism's known failure mode). */
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-on-accent: #ffffff;
+
+  /* Hairline separators inside a glass surface (menu item dividers). */
+  --separator: rgba(60, 60, 67, 0.14);
+
+  /* ---- Glass material (D4, tint-biased 2026-07-04) -------------------- */
+  /* Per the D4 amendment these sit at the TINTED/FROSTED end of the
+     spectrum: high fill opacity (~0.8, not the 0.4-0.6 of "showy"
+     glassmorphism) and strong blur, because the backdrop is a live map -
+     busier than most app content - and Apple itself walked Liquid Glass
+     back toward opacity for readability. */
+  --glass-fill: rgba(248, 249, 251, 0.82);
+  --glass-fill-elevated: rgba(255, 255, 255, 0.88); /* menus/popovers layered on glass */
+  --glass-blur: 22px;
+  --glass-saturate: 1.7;
+  /* Hairline edge: light from above (lighter top edge), like iOS. */
+  --glass-border: rgba(255, 255, 255, 0.65);
+  --glass-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+
+  /* ---- Elevation ------------------------------------------------------- */
+  /* Two layered shadows read more physically than one big one: a tight
+     "contact" shadow plus a soft "ambient" one. */
+  --shadow-floating:
+    0 1px 2px rgba(17, 24, 39, 0.08),
+    0 8px 28px rgba(17, 24, 39, 0.16);
+
+  /* ---- Shape ----------------------------------------------------------- */
+  --radius-bar: 26px;      /* the floating control bar */
+  --radius-capsule: 999px; /* fully-round pills (search field, buttons) */
+  --radius-menu: 16px;     /* popover menus */
+
+  /* ---- Type ------------------------------------------------------------ */
+  /* -apple-system resolves to San Francisco on iOS/iPadOS - the native
+     look D4 asks for - and falls through cleanly elsewhere. */
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* ---- Layout ---------------------------------------------------------- */
+  --hit-target: 44px; /* iOS HIG minimum touch target */
+  --bar-inset: 12px;  /* gap between the floating bar and the screen edge */
+  /* env(safe-area-inset-bottom) is the iPhone home-indicator zone; it is
+     0 on devices without one, so adding it is always safe. */
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ---- Dark mode ---------------------------------------------------------
+   ❓ CONCEPT: media-query token overrides
+   📝 EXPLANATION: only the token VALUES change here; every component rule
+   keeps reading the same var() names. index.css already declares
+   `color-scheme: light dark`, so the OS setting drives this. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --separator: rgba(84, 84, 88, 0.55);
+
+    --glass-fill: rgba(28, 28, 30, 0.80);
+    --glass-fill-elevated: rgba(44, 44, 46, 0.88);
+    --glass-border: rgba(255, 255, 255, 0.14);
+    --glass-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.09);
+
+    --shadow-floating:
+      0 1px 2px rgba(0, 0, 0, 0.35),
+      0 8px 28px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ---- Accessibility: opaque fallback (D4 constraint) ---------------------
+   Users can ask the OS to reduce transparency; honoring it means swapping
+   the translucent fills for fully opaque ones. Blur is disabled in
+   glass.css under the same query. */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --glass-fill: #f8f9fb;
+    --glass-fill-elevated: #ffffff;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) and (prefers-color-scheme: dark) {
+  :root {
+    --glass-fill: #1c1c1e;
+    --glass-fill-elevated: #2c2c2e;
+  }
+}
