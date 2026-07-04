@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Markdown from 'markdown-to-jsx/react';
+import './GuideViewer.css';
 
 const GuideViewer = ({ cityId, onClose }) => {
   const [markdownContent, setMarkdownContent] = useState('');
@@ -273,29 +274,6 @@ const GuideViewer = ({ cityId, onClose }) => {
           )}
         </div>
       </div>
-
-      <style>
-        {`
-          .guide-content a:hover {
-            text-decoration: underline;
-          }
-
-          @media (max-width: 640px) {
-            .guide-content h1 {
-              font-size: 24px !important;
-            }
-            .guide-content h2 {
-              font-size: 20px !important;
-            }
-            .guide-content h3 {
-              font-size: 16px !important;
-            }
-            .guide-content p, .guide-content li {
-              font-size: 15px !important;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 };
