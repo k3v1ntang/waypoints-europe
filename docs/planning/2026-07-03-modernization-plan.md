@@ -4,7 +4,7 @@
 **Context**: Follows the July 2026 security review and stack assessment conversation. Captures every action item, decision, and rationale from that discussion as the implementation blueprint.
 **Working branch strategy**: One feature branch per phase, merged to `main` (auto-deploys to Netlify) only after on-device testing on iPhone/iPad.
 **Timing anchor**: August 2026 trip (~6 weeks out). Phases 1–3 should land before the trip; Phases 4–5 are flexible; Phase 6 is post-trip.
-**Status**: Planned
+**Status**: In progress — Phase 1 merged 2026-07-04
 
 ---
 
@@ -128,7 +128,7 @@ Each phase includes a **cold-start prompt** (paste into a fresh Claude Code sess
 
 ---
 
-### Phase 1 — MapLibre + OpenFreeMap swap
+### Phase 1 — MapLibre + OpenFreeMap swap ✅ (merged 2026-07-04)
 
 **Effort**: ~half a day (most of it on-device offline verification)
 **Branch**: `feature/maplibre`, single commit for clean reversibility
@@ -310,7 +310,7 @@ One long-lived **Fable 5 session acts as orchestrator**; Sessions A–F are **wo
 5. On-device checklist for the user (exact steps, expected results)
 
 **Session Log** (orchestrator-maintained; newest first):
-- *(empty — begins with Session A)*
+- **2026-07-04 — Session A (Phase 1, MapLibre) — merged.** PR #1 → `21a6940` on main; migration commit `2e46422` (single commit as planned); worker model Sonnet 5; rollback tag `pre-A-stable` = `9e8a43d`. Gates: lint/build green (orchestrator re-verified independently), no `api.mapbox.com` in bundle, OpenFreeMap CacheFirst rule confirmed in generated `sw.js`, full on-device iPhone pass (Liberty style, popup CSS, attribution, geolocate, airplane-mode-across-restart). *Deviation*: the one-time `mapbox-cache` cleanup lives in `src/main.jsx`, not `vite.config.js` — Workbox generateSW has no declarative way to delete a foreign cache. *Watch item*: the single CacheFirst rule also pins OpenFreeMap's `/planet` TileJSON (daily-rotating snapshot path) for up to 30 days; if stale-tile 404s appear while online, add a `StaleWhileRevalidate` rule for the style/TileJSON paths (Phase 2 candidate). *Open follow-ups*: remove `VITE_MAPBOX_TOKEN` from Netlify env vars; Mapbox account teardown (see Phase 1 post-merge reminder); verify installed-PWA update path on production (only testable post-merge).
 
 **Orchestrator cold-start prompt**:
 > You are the orchestration session for docs/planning/2026-07-03-modernization-plan.md — read it fully; §5's orchestration rules define your role. You advise and edit the plan only; you never write application code. Each turn: verify actual repo state (git log, plan status marks, CI) before trusting anything I paste. When I give you a worker's Session Report or an on-device gate result, judge it against that phase's success criteria and lead with a verdict — merge, fix (give me the exact follow-up prompt for a worker session), or rollback (name the tag). Tell me when to close the current worker session, which model to open the next one with, and give me its exact cold-start prompt. After each merged session, update the plan's status marks and Session Log and commit that doc-only change. Keep replies short: verdict first, reasoning second. Start by reading the plan and current git state, then tell me whether we're ready to begin Session A and give me its prompt.
