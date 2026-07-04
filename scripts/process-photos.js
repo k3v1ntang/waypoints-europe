@@ -50,7 +50,7 @@ function findPoiById(data, poiId) {
 // renormalize every number in the file (e.g. "24.9420" -> "24.942") and
 // drop the file's trailing-newline convention, producing a huge unrelated
 // diff for what should be a one-POI change.
-function updatePhotosInRawText(raw, poiId, newPhotos) {
+export function updatePhotosInRawText(raw, poiId, newPhotos) {
   const idMarker = `"id": "${poiId}"`;
   const idIndex = raw.indexOf(idMarker);
   if (idIndex === -1) throw new Error(`"${idMarker}" not found in pois.json text`);
@@ -182,7 +182,12 @@ async function main() {
   console.log(`✓ Updated pois.json: "${poiId}" now has ${mergedPhotos.length} photo(s)`);
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+// Only run the CLI when this file is executed directly (not when imported
+// by tests) - mirrors Python's `if __name__ == "__main__":`.
+const isMainModule = process.argv[1] && import.meta.url === `file://${process.argv[1]}`;
+if (isMainModule) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Markdown from 'markdown-to-jsx';
+import Markdown from 'markdown-to-jsx/react';
 
 const GuideViewer = ({ cityId, onClose }) => {
   const [markdownContent, setMarkdownContent] = useState('');
