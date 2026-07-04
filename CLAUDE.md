@@ -20,7 +20,7 @@
 ## TECHNOLOGY STACK
 
 ### Core Technologies
-- **PWA + React 18 + Vite 5 + Mapbox GL JS 3**
+- **PWA + React 18 + Vite 5 + MapLibre GL JS 5** with OpenFreeMap tiles (keyless, no billing)
 - **vite-plugin-pwa**: Automatic service worker generation with Workbox
 - **Yet Another React Lightbox**: Professional image viewer
 - **markdown-to-jsx**: Walking tour guide renderer
@@ -51,15 +51,10 @@ npm run preview # Test production build
 ```
 
 ### Environment Variables
-```env
-VITE_MAPBOX_TOKEN=your_mapbox_access_token_here
-```
 
-**Access in code:**
-```javascript
-const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN;
-// NOT process.env.REACT_APP_MAPBOX_TOKEN (CRA is deprecated)
-```
+None required. MapLibre GL JS renders OpenFreeMap's keyless public tile CDN
+directly — no account, token, or registration (Phase 1 migration, July 2026;
+previously required `VITE_MAPBOX_TOKEN`).
 
 ### Target Devices
 - **iPhone**: Primary travel device (iOS Safari PWA)
@@ -127,7 +122,7 @@ When providing assistance:
    - Check for any breaking changes or migration guides
 
 **Documentation Priority:**
-1. Official docs (React, Vite, Mapbox, PWA specs)
+1. Official docs (React, Vite, MapLibre, PWA specs)
 2. Current community best practices
 3. Latest stable releases
 4. Modern alternatives to older approaches
@@ -178,7 +173,7 @@ waypoints-europe/
 {
   "id": "city-poi-slug",
   "name": "POI Name",
-  "coordinates": [longitude, latitude],  // Mapbox format [lng, lat]
+  "coordinates": [longitude, latitude],  // MapLibre format [lng, lat]
   "category": "landmark|culture|food|practical|hotel",
   "visibility": "always|walkingTour",
   "description": "Main description",
@@ -204,7 +199,7 @@ waypoints-europe/
 ```
 
 **⚠️ IMPORTANT Coordinate Format:**
-- **In pois.json**: `[longitude, latitude]` (Mapbox GL JS format)
+- **In pois.json**: `[longitude, latitude]` (MapLibre GL JS format)
 - **In docs**: `latitude, longitude` (human-readable format)
 - **Always swap when transferring between docs and JSON!**
 
@@ -374,13 +369,13 @@ Add to walking tour poiSequence
                    ↑ latitude  ↑ longitude
 ```
 
-**pois.json** (Mapbox GL JS format):
+**pois.json** (MapLibre GL JS format):
 ```json
 "coordinates": [24.9541698, 60.1677083]
                 ↑ longitude ↑ latitude
 ```
 
-**Always swap when transferring!** Mapbox requires [lng, lat] format.
+**Always swap when transferring!** MapLibre requires [lng, lat] format.
 
 ---
 
@@ -476,7 +471,7 @@ See complete guide: `/docs/implementation/walking-tour-implementation-guide.md`
 **Features**:
 - ✅ PWA with offline caching (30-day cache for travel)
 - ✅ Modern UI with city navigation dropdown
-- ✅ Mapbox clustering and geolocation
+- ✅ MapLibre clustering and geolocation (migrated from Mapbox, Phase 1, July 2026)
 - ✅ Walking tour system (FAB, bottom sheet, guide viewer)
 - ✅ Image lightbox (YARL) with mobile gestures
 - ✅ Google Maps integration for all POIs
@@ -581,6 +576,16 @@ See complete guide: `/docs/implementation/walking-tour-implementation-guide.md`
 - [x] Establish pois.json as single source of truth for coordinates and URLs
 - [x] Validate coordinate format conversion (lat,lng in docs ↔ [lng,lat] in JSON)
 
+### MapLibre + OpenFreeMap Migration (Phase 1 of docs/planning/2026-07-03-modernization-plan.md - Completed July 2026, pending on-device verification)
+- [x] Replace mapbox-gl with maplibre-gl; swap style URL to OpenFreeMap Liberty
+- [x] Rename all `.mapboxgl-*` CSS selectors to `.maplibregl-*` in App.css/index.css
+- [x] Update Workbox runtime cache to `tiles.openfreemap.org` (drops the Mapbox `sku`-rotation workaround)
+- [x] One-time cleanup of the orphaned `mapbox-cache` runtime cache on app load
+- [x] Remove `VITE_MAPBOX_TOKEN` from `.env`; update this file's Mapbox references
+- [ ] On-device iPhone verification (map, offline-across-restart, PWA update path) - see session report
+- [ ] Remove `VITE_MAPBOX_TOKEN` from Netlify env vars
+- [ ] Style-quality comparison (Liberty vs Bright/Positron) in trip cities
+
 ### Post-Trip Enhancement (Pending)
 - [ ] Replace placeholder photos with actual travel photos
 - [ ] Update descriptions with personal experiences
@@ -615,9 +620,9 @@ See complete guide: `/docs/implementation/walking-tour-implementation-guide.md`
 
 ## QUICK REFERENCE
 
-### Mapbox Optimization
+### MapLibre Optimization
 ```javascript
-// Prevent unnecessary map reloads (saves API calls)
+// Prevent unnecessary map reinitialization
 useEffect(() => {
   if (map.current) return // Prevent duplicate initialization
   // Initialize map only once

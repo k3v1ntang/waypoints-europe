@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import basePoisData from '../data/pois.json';
 import CityNavigation from './CityNavigation.jsx';
 import BottomSheet from './BottomSheet.jsx';
@@ -173,7 +173,7 @@ const Map = () => {
         });
       } else {
         // Multiple POIs - fit bounds to show all
-        const bounds = new mapboxgl.LngLatBounds();
+        const bounds = new maplibregl.LngLatBounds();
         coordinates.forEach(coord => bounds.extend(coord));
 
         mapRef.current.fitBounds(bounds, {
@@ -229,7 +229,7 @@ const Map = () => {
       // Fit bounds once per tour selection (not again on data edits)
       if (coordinates.length >= 2 && lastFittedTourRef.current !== selectedTour.id) {
         lastFittedTourRef.current = selectedTour.id;
-        const bounds = new mapboxgl.LngLatBounds();
+        const bounds = new maplibregl.LngLatBounds();
         coordinates.forEach((coord) => bounds.extend(coord));
         map.fitBounds(bounds, {
           padding: { top: 120, bottom: 50, left: 50, right: 50 },
@@ -283,7 +283,7 @@ const Map = () => {
 
     closePopup();
 
-    // Mapbox best practice: center POI on screen before showing popup,
+    // Best practice: center POI on screen before showing popup,
     // with padding so the popup and surrounding UI stay visible.
     map.flyTo({
       center: poi.coordinates,
@@ -297,7 +297,7 @@ const Map = () => {
     const root = createRoot(container);
     root.render(content);
 
-    const popup = new mapboxgl.Popup({
+    const popup = new maplibregl.Popup({
       anchor: 'center', // Center anchor for optimal mobile positioning
       offset: [0, -10], // Slight upward offset for visual balance
       closeButton: false, // Clean mobile UX without close button
@@ -332,10 +332,7 @@ const Map = () => {
 
   useEffect(() => {
     // ❓ CONCEPT: Prevent duplicate map initialization
-    // 💰 COST IMPACT: Each map initialization = 1 API call
     if (mapRef.current) return;
-
-    mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
     // Reopen on the last-viewed city instead of the Europe-wide view
     let savedCity = null;
@@ -346,18 +343,18 @@ const Map = () => {
       // localStorage unavailable - fall back to the default Europe view
     }
 
-    const map = new mapboxgl.Map({
+    const map = new maplibregl.Map({
       container: mapContainerRef.current,
       center: savedCity ? savedCity.centerCoordinates : [15.0, 54.0], // Europe center to show all travel cities
       zoom: savedCity ? 12 : 4, // Appropriate zoom to see Munich to Helsinki range
-      style: 'mapbox://styles/mapbox/streets-v12'
+      style: 'https://tiles.openfreemap.org/styles/liberty'
     });
 
     if (savedCity) {
       setCurrentCity(savedCity);
     }
 
-    // Mapbox init failures (bad token, no network on first load, etc.) fire
+    // MapLibre init failures (no network on first load, etc.) fire
     // 'error' rather than throwing, so React's error boundary can't see them.
     // Once the map has loaded successfully once, later 'error' events are
     // almost always individual tile fetches failing while offline-panning
@@ -370,7 +367,7 @@ const Map = () => {
     // pre-load error only gets treated as fatal if 'load' still hasn't
     // fired after a short grace period, not on the first error.
     map.on('error', (e) => {
-      console.error('Mapbox error:', e.error);
+      console.error('MapLibre error:', e.error);
       if (hasLoadedRef.current || mapErrorTimeoutRef.current) return;
       mapErrorTimeoutRef.current = setTimeout(() => {
         mapErrorTimeoutRef.current = null;
@@ -381,11 +378,11 @@ const Map = () => {
     });
 
     // Add navigation controls (zoom + compass) to top-right corner
-    const nav = new mapboxgl.NavigationControl();
+    const nav = new maplibregl.NavigationControl();
     map.addControl(nav, 'top-right');
 
     // Add geolocation control for current location tracking
-    const geolocate = new mapboxgl.GeolocateControl({
+    const geolocate = new maplibregl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true
       },

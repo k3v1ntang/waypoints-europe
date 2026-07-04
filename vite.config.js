@@ -50,7 +50,7 @@ export default defineConfig({
       },
       workbox: {
         // Workbox's default precache limit is 2 MiB; the app's own JS bundle
-        // (React + mapbox-gl) already exceeds that, which would silently
+        // (React + maplibre-gl) already exceeds that, which would silently
         // drop it from the precache manifest and break offline app-shell
         // loading. Raised with headroom for dependency growth.
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
@@ -58,26 +58,20 @@ export default defineConfig({
         // future POI photos) in addition to Workbox's default JS/CSS/HTML,
         // so it's available offline without ever having been visited.
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,jpg,jpeg,md,json,webmanifest}'],
-        // Cache Mapbox tiles for offline use during travel
+        // Cache OpenFreeMap tiles/style/sprites/glyphs for offline use during
+        // travel - all served from the same domain, so one rule covers it all.
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/api\.mapbox\.com/,
+            urlPattern: /^https:\/\/tiles\.openfreemap\.org/,
             handler: 'CacheFirst',
             options: {
-              cacheName: 'mapbox-cache',
+              cacheName: 'openfreemap-cache',
               expiration: {
-                // mapbox-gl appends a `sku` param that rotates every browser
-                // session; without ignoreSearch, tiles cached in one session
-                // never match a request in the next, so offline breaks across
-                // app restarts regardless of cache size.
                 maxEntries: 4000, // One city at street-level zoom is several hundred tiles
                 maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days - covers full Europe trip
               },
               cacheableResponse: {
                 statuses: [0, 200]
-              },
-              matchOptions: {
-                ignoreSearch: true
               }
             }
           }
