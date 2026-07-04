@@ -357,7 +357,12 @@
           "description": "Boutique hotel part of Marriott's Autograph Collection, located in the heart of Helsinki with unique design and personalized service.",
           "notes": "Address: Unioninkatu 14, Helsinki, Finland 00130 - Phone: +35 829 3141414",
           "googleMapsUrl": "https://maps.app.goo.gl/yGR7QQMFpH5wNR3cA",
-          "photos": []
+          "photos": [
+            "/images/helsinki-hotel-u14/1.webp",
+            "/images/helsinki-hotel-u14/2.webp",
+            "/images/helsinki-hotel-u14/3.webp",
+            "/images/helsinki-hotel-u14/4.webp"
+          ]
         }
       ]
     },

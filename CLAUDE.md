@@ -607,6 +607,7 @@ See complete guide: `/docs/implementation/walking-tour-implementation-guide.md`
 - **Learning Guide**: `/docs/architecture/learning-guide.md`
 - **Technology Decisions**: `/docs/architecture/technology-decisions.md`
 - **Walking Tour Implementation**: `/docs/implementation/walking-tour-implementation-guide.md`
+- **Photo Pipeline**: `/docs/implementation/photo-pipeline-guide.md`
 - **POI Reference Docs**: `/docs/reference/` - Data source for all walking tours
 
 ---

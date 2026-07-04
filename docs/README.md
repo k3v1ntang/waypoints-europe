@@ -15,6 +15,7 @@ This folder contains all developer documentation for the Waypoints Europe projec
 **How-to guides and implementation procedures**
 
 - [`walking-tour-implementation-guide.md`](./implementation/walking-tour-implementation-guide.md) - Step-by-step guide for adding new walking tours
+- [`photo-pipeline-guide.md`](./implementation/photo-pipeline-guide.md) - Step-by-step guide for adding POI photos (`scripts/process-photos.js`)
 
 ### [`/planning`](./planning/)
 **Project plans and improvement roadmaps**
@@ -56,6 +57,7 @@ Rick Steves Guide
 
 ### For Contributors
 - **Adding a new walking tour?** → [`/implementation/walking-tour-implementation-guide.md`](./implementation/walking-tour-implementation-guide.md)
+- **Adding photos to a POI?** → [`/implementation/photo-pipeline-guide.md`](./implementation/photo-pipeline-guide.md)
 - **Looking up POI data?** → [`/reference/`](./reference/) (organized by city/tour)
 
 ### For Data Management
