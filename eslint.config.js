@@ -28,17 +28,27 @@ export default defineConfig([
     },
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-      // New in eslint-plugin-react-hooks v7's recommended config; flags
-      // existing effect patterns in Map.jsx/PoiEditorSheet.jsx/bottom sheets.
-      // Those components are rewritten in the Phase 5 UX pass (out of scope
-      // for this dependency-upgrade session) - downgraded to warn for now.
-      'react-hooks/set-state-in-effect': 'warn',
     },
   },
   {
     files: ['scripts/**/*.js'],
     languageOptions: {
       globals: globals.node,
+    },
+  },
+  {
+    // New in eslint-plugin-react-hooks v7's recommended config; flags
+    // existing effect patterns in these three components. They're rewritten
+    // in the Phase 5 UX pass (out of scope for this dependency-upgrade
+    // session), so scoped to a warning here rather than downgraded
+    // repo-wide - new violations elsewhere still fail lint as errors.
+    files: [
+      'src/components/BottomSheet.jsx',
+      'src/components/Map.jsx',
+      'src/components/PoiEditorSheet.jsx',
+    ],
+    rules: {
+      'react-hooks/set-state-in-effect': 'warn',
     },
   },
 ])

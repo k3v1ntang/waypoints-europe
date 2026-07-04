@@ -22,10 +22,10 @@
 // macOS machine with source photos on disk.
 
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import sharp from 'sharp';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -183,9 +183,20 @@ async function main() {
 }
 
 // Only run the CLI when this file is executed directly (not when imported
-// by tests) - mirrors Python's `if __name__ == "__main__":`.
-const isMainModule = process.argv[1] && import.meta.url === `file://${process.argv[1]}`;
-if (isMainModule) {
+// by tests) - mirrors Python's `if __name__ == "__main__":`. realpathSync +
+// pathToFileURL (rather than a hand-built `file://${...}` string) so paths
+// with spaces/special characters, or invocation through a symlink, still
+// compare equal to import.meta.url (which Node resolves to the real path).
+function isMainModule() {
+  if (!process.argv[1]) return false;
+  try {
+    return import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href;
+  } catch {
+    return false;
+  }
+}
+
+if (isMainModule()) {
   main().catch((err) => {
     console.error(err);
     process.exit(1);

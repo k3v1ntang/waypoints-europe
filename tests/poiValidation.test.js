@@ -57,7 +57,7 @@ describe('getCoordinateErrors', () => {
   it('catches the classic [lat, lng] vs [lng, lat] swap', () => {
     // Amsterdam is lat 52.37, lng 4.88 - swapped puts "lng" at 52 (out of
     // bounds) and "lat" at 4.88 (in range), which the bounding box catches.
-    const [errors] = [getCoordinateErrors([52.3752, 4.8840])];
+    const errors = getCoordinateErrors([52.3752, 4.8840]);
     expect(errors).toHaveLength(1);
     expect(errors[0]).toMatch(/swapped/);
   });
