@@ -147,7 +147,7 @@ Steps:
 Success criteria: full feature parity including popup CSS; offline works across an app restart (the bug class from the October 2025 trip) *and* across a PWA update; attribution visible; no Mapbox requests in the network log.
 
 **Cold-start prompt**:
-> Implement Phase 1 of docs/planning/2026-07-modernization-plan.md: swap mapbox-gl for MapLibre GL JS + OpenFreeMap tiles. Follow the steps and success criteria in the plan exactly — single commit on a feature/maplibre branch, don't touch anything outside the migration scope. All Mapbox API usage in Map.jsx was verified to exist identically in MapLibre. Leave on-device iPhone verification to me; tell me exactly what to check, including the airplane-mode-across-restart scenario.
+> Implement Phase 1 of docs/planning/2026-07-03-modernization-plan.md: swap mapbox-gl for MapLibre GL JS + OpenFreeMap tiles. Follow the steps and success criteria in the plan exactly — single commit on a feature/maplibre branch, don't touch anything outside the migration scope. All Mapbox API usage in Map.jsx was verified to exist identically in MapLibre. Leave on-device iPhone verification to me; tell me exactly what to check, including the airplane-mode-across-restart scenario.
 
 ---
 
@@ -166,7 +166,7 @@ Steps:
 Success criteria: all 5 guides render identically; no CSP violations in the console on map load, tour view, photo lightbox, or geolocation.
 
 **Cold-start prompt**:
-> Implement Phase 2 of docs/planning/2026-07-modernization-plan.md: add disableParsingRawHTML to GuideViewer's markdown-to-jsx options, and create public/_headers with a CSP + security headers for Netlify. The app now uses MapLibre + tiles.openfreemap.org (Phase 1 is merged) — build the CSP for that, including worker-src blob:. Verify every guide still renders and list the manual checks I should run on the Netlify deploy preview before merging.
+> Implement Phase 2 of docs/planning/2026-07-03-modernization-plan.md: add disableParsingRawHTML to GuideViewer's markdown-to-jsx options, and create public/_headers with a CSP + security headers for Netlify. The app now uses MapLibre + tiles.openfreemap.org (Phase 1 is merged) — build the CSP for that, including worker-src blob:. Verify every guide still renders and list the manual checks I should run on the Netlify deploy preview before merging.
 
 ---
 
@@ -187,7 +187,7 @@ Steps:
 Success criteria: clean lint, green tests in CI, production build installs and works offline on iPhone as before.
 
 **Cold-start prompt**:
-> Implement Phase 3 of docs/planning/2026-07-modernization-plan.md: upgrade the pending dependency majors (Vite 8, markdown-to-jsx 9 via the /react entry point, plugin-react 6, ESLint 10, globals 17, plus a vite-plugin-pwa release compatible with Vite 8), then add Vitest with tests for poiValidation.js, mergePois.js, and the photos-array rewriter in scripts/process-photos.js, and wire npm test into the CI workflow. Verify the production build still generates the service worker and precache manifest correctly.
+> Implement Phase 3 of docs/planning/2026-07-03-modernization-plan.md: upgrade the pending dependency majors (Vite 8, markdown-to-jsx 9 via the /react entry point, plugin-react 6, ESLint 10, globals 17, plus a vite-plugin-pwa release compatible with Vite 8), then add Vitest with tests for poiValidation.js, mergePois.js, and the photos-array rewriter in scripts/process-photos.js, and wire npm test into the CI workflow. Verify the production build still generates the service worker and precache manifest correctly.
 
 ---
 
@@ -205,7 +205,7 @@ Slices, in value order:
 Success criteria per slice: `tsc --noEmit` clean, tests green, app behavior unchanged — **including that existing on-device IndexedDB edits still load** (the phone holds live trip-planning edits; the `EditRecord` schema must not change shape). Before merging anything that touches `editStore`, use the app's Export POI data button as a backup of current edits. (Verified July 2026: all bundled `googleMapsUrl` values are already `https:`, so the F2 scheme check passes existing data — run `npm run validate:pois` after adding it to confirm.)
 
 **Cold-start prompt** (Session C):
-> Implement Phase 4 slices 1–2 of docs/planning/2026-07-modernization-plan.md: set up TypeScript (strict, allowJs) and convert the data layer — poiValidation, mergePois, editStore, usePoiData — defining Poi/City/WalkingTour/EditRecord types, then scripts/validate-pois. While in poiValidation, add the https: scheme check for googleMapsUrl described under finding F2 in the plan. Do NOT convert any components — Phase 5 rebuilds them as .tsx (see D8). I'm a Python developer learning web dev, so explain the TS concepts as you go per CLAUDE.md's teaching style.
+> Implement Phase 4 slices 1–2 of docs/planning/2026-07-03-modernization-plan.md: set up TypeScript (strict, allowJs) and convert the data layer — poiValidation, mergePois, editStore, usePoiData — defining Poi/City/WalkingTour/EditRecord types, then scripts/validate-pois. While in poiValidation, add the https: scheme check for googleMapsUrl described under finding F2 in the plan. Do NOT convert any components — Phase 5 rebuilds them as .tsx (see D8). I'm a Python developer learning web dev, so explain the TS concepts as you go per CLAUDE.md's teaching style.
 
 ---
 
@@ -236,10 +236,10 @@ Constraints (from D4/D8): frosted glass only — no Chrome-only SVG refraction; 
 Success criteria: PoC approved on-device; controls consolidated to **two surfaces** (bottom bar + geolocate); Export reachable in ≤2 taps via ⋯; no inline `style={{}}` blocks left except genuinely dynamic values; 60fps sheet interactions on iPhone; passes reduced-transparency/motion checks.
 
 **Cold-start prompt (Session D — 5a + PoC)**:
-> Implement Phase 5 stage 5a and the PoC from docs/planning/2026-07-modernization-plan.md (decisions D4 and D8): create the design-token CSS and glass material class, then build the new bottom-anchored glass control bar as a TypeScript component — search field, grouped Tours/Add-Place buttons per iOS 26 HIG grouping, and a ⋯ More menu containing Export POI data with the pending-edits badge. Do not delete the old controls yet; render the new bar alongside them so I can compare. Frosted glass only (backdrop-filter blur+saturate, Safari-compatible), no SVG refraction, prefers-reduced-transparency fallback. Stop after the PoC so I can judge it on my iPhone.
+> Implement Phase 5 stage 5a and the PoC from docs/planning/2026-07-03-modernization-plan.md (decisions D4 and D8): create the design-token CSS and glass material class, then build the new bottom-anchored glass control bar as a TypeScript component — search field, grouped Tours/Add-Place buttons per iOS 26 HIG grouping, and a ⋯ More menu containing Export POI data with the pending-edits badge. Do not delete the old controls yet; render the new bar alongside them so I can compare. Frosted glass only (backdrop-filter blur+saturate, Safari-compatible), no SVG refraction, prefers-reduced-transparency fallback. Stop after the PoC so I can judge it on my iPhone.
 
 **Cold-start prompt (Session E — 5b completion)**:
-> Complete Phase 5 stage 5b from docs/planning/2026-07-modernization-plan.md; the PoC bottom bar is approved and merged. Build the expanded search sheet with city chips, move city selection and export fully into the new surfaces, delete CityNavigation and both FloatingActionButtons, restyle the POI popup, bottom sheets, and GuideViewer in the glass system, hide zoom/compass on touch devices, and add motion springs. New or rewritten components in TypeScript; convert surviving components as a final mop-up. Finish by verifying every item in the phase's success criteria and give me the on-device checklist.
+> Complete Phase 5 stage 5b from docs/planning/2026-07-03-modernization-plan.md; the PoC bottom bar is approved and merged. Build the expanded search sheet with city chips, move city selection and export fully into the new surfaces, delete CityNavigation and both FloatingActionButtons, restyle the POI popup, bottom sheets, and GuideViewer in the glass system, hide zoom/compass on touch devices, and add motion springs. New or rewritten components in TypeScript; convert surviving components as a final mop-up. Finish by verifying every item in the phase's success criteria and give me the on-device checklist.
 
 ---
 
@@ -262,7 +262,7 @@ Steps:
 Success criteria: a fresh user on a new device can download the region once and get a complete offline Banff map with zero priming; Europe cities unaffected.
 
 **Cold-start prompt**:
-> Implement Phase 6 of docs/planning/2026-07-modernization-plan.md: add PMTiles-based guaranteed offline for a Banff regional extract, per decision D3. Start by proposing the exact bbox for the Banff–Canmore–Lake Louise–Icefields extract and the hosting setup on Cloudflare R2, then build the pmtiles:// protocol + OPFS download layer with a download-management UI, keeping OpenFreeMap runtime caching as the default for the Europe cities. Walk me through the extract pipeline commands since I'll need to rerun them for data updates.
+> Implement Phase 6 of docs/planning/2026-07-03-modernization-plan.md: add PMTiles-based guaranteed offline for a Banff regional extract, per decision D3. Start by proposing the exact bbox for the Banff–Canmore–Lake Louise–Icefields extract and the hosting setup on Cloudflare R2, then build the pmtiles:// protocol + OPFS download layer with a download-management UI, keeping OpenFreeMap runtime caching as the default for the Europe cities. Walk me through the extract pipeline commands since I'll need to rerun them for data updates.
 
 ---
 
@@ -292,6 +292,26 @@ Phases define *scope*; sessions define *execution*. Each session is a **fresh Cl
 3. Optionally in Session B: one **worktree-isolated agent** writes the Vitest tests (all-new files, zero conflict) while the main thread does the dependency upgrades.
 
 Parallel *editing* agents on shared component/CSS files are explicitly out of scope.
+
+**Orchestration session (conductor/worker split)**:
+
+One long-lived **Fable 5 session acts as orchestrator**; Sessions A–F are **worker sessions**. Division of labor:
+
+- **Orchestrator** (advisory + editorial only): verifies repo state directly (`git log`, CI, plan status marks) rather than trusting pasted summaries; judges gate results against each phase's success criteria and issues a verdict — merge / fix (as a follow-up worker prompt) / rollback (to the `pre-<session>-stable` tag); tells the user when to close a worker session and which model to open the next one with, supplying the exact cold-start prompt (from this plan, adjusted for anything learned); is the **only session that edits this plan** — status marks, the Session Log, and decision amendments — and commits those doc-only changes. It never edits application code; needed fixes become instructions for a worker session.
+- **Workers** (implementation only): execute one session's scope on its branch, run the objective gates (lint/test/build/`tsc`, `/code-review`), and **end by printing a Session Report** for the user to paste into the orchestrator.
+
+**Session Report format** (every worker session ends with this):
+1. Session letter + phase(s); branch and commit SHAs
+2. Gate results — each success criterion: pass / fail / pending-on-device
+3. Deviations from the plan, with reasons
+4. Open issues or follow-ups discovered
+5. On-device checklist for the user (exact steps, expected results)
+
+**Session Log** (orchestrator-maintained; newest first):
+- *(empty — begins with Session A)*
+
+**Orchestrator cold-start prompt**:
+> You are the orchestration session for docs/planning/2026-07-03-modernization-plan.md — read it fully; §5's orchestration rules define your role. You advise and edit the plan only; you never write application code. Each turn: verify actual repo state (git log, plan status marks, CI) before trusting anything I paste. When I give you a worker's Session Report or an on-device gate result, judge it against that phase's success criteria and lead with a verdict — merge, fix (give me the exact follow-up prompt for a worker session), or rollback (name the tag). Tell me when to close the current worker session, which model to open the next one with, and give me its exact cold-start prompt. After each merged session, update the plan's status marks and Session Log and commit that doc-only change. Keep replies short: verdict first, reasoning second. Start by reading the plan and current git state, then tell me whether we're ready to begin Session A and give me its prompt.
 
 **Risk management (the app is a live trip tool)**:
 - The production PWA is in active use for August trip planning, and `main` auto-deploys. Before each risky merge (Sessions A, B, E), tag the last verified-good commit (`pre-<session>-stable`) so Netlify rollback has a named target.
