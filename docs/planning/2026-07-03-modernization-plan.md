@@ -4,7 +4,7 @@
 **Context**: Follows the July 2026 security review and stack assessment conversation. Captures every action item, decision, and rationale from that discussion as the implementation blueprint.
 **Working branch strategy**: One feature branch per phase, merged to `main` (auto-deploys to Netlify) only after on-device testing on iPhone/iPad.
 **Timing anchor**: August 2026 trip (~6 weeks out). Phases 1–3 should land before the trip; Phases 4–5 are flexible; Phase 6 is post-trip.
-**Status**: In progress — Phases 1–3 merged 2026-07-04
+**Status**: In progress — Phases 1–4 merged 2026-07-04 (Phase 4 = data-layer slices; component TS mop-up lives in Phase 5). All pre-trip phases complete; Phases 5–6 are post-trip by default per §5.
 
 ---
 
@@ -193,7 +193,7 @@ Success criteria: clean lint, green tests in CI, production build installs and w
 
 ---
 
-### Phase 4 — TypeScript, incrementally
+### Phase 4 — TypeScript, incrementally ✅ (slices 1–2 merged 2026-07-04; component mop-up folded into Phase 5 per D8)
 
 **Effort**: ~1–2 days cumulative, across sessions; independently shippable slices
 **Branch**: one branch per slice (e.g., `feature/ts-data-layer`)
@@ -310,6 +310,7 @@ One long-lived **Fable 5 session acts as orchestrator**; Sessions A–F are **wo
 5. On-device checklist for the user (exact steps, expected results)
 
 **Session Log** (orchestrator-maintained; newest first):
+- **2026-07-04 — Session C (Phase 4, slices 1–2) — merged.** PR #3 → `82721cd` on main; commits `8d261bc` (conversion), `c32ae44` (review fixes), `8938219` (typecheck in CI); worker model Sonnet 5. Gates: `tsc --noEmit` clean, 35/35 tests, lint 0 errors, `validate:pois` green (100 POIs pass the new F2 `https:` check), build baseline unchanged — all re-verified independently by the orchestrator; diff confirmed zero component files touched (D8 boundary held, enforced via tsconfig `include` scoping). *Scope amendment*: orchestrator added `ci.yml` to Session C's file scope so `npm run typecheck` runs in CI between lint and test (leaving it out would forfeit the phase's main benefit). *Notable catch*: /code-review found a conversion regression — `.filter(Boolean)` → `.filter(poi => poi !== null)` let `undefined` (malformed IndexedDB record) leak into the merged POI list; fixed with a regression test. *New devDependency*: `tsx` for running `validate-pois.ts`. *Still open*: on-device edit-persistence check (saved edits load; new edit survives an app restart).
 - **2026-07-04 — Session B (Phase 3 + Phase 2) — merged.** PR #2 → `aaefea3` on main; commits `bac276f`+`69e108b` (Phase 3) and `deb7b11`+`83e1993` (Phase 2), revertable per concern; worker model Sonnet 5; rollback tag `pre-B-stable` = `92a6db4` (created retroactively — merge happened before the tag). Gates: lint 0 errors / 32 tests / build with SW + 28 precache entries, all re-verified independently by the orchestrator; CSP re-read and scoped correctly (`style-src 'self'` — GuideViewer's inline `<style>` extracted to CSS, tighter than the plan's draft). *Gate deviation, resolved*: user merged before the Netlify deploy-preview CSP check ran; the checklist moved to production instead and **passed 2026-07-04** — orchestrator confirmed via `curl` that production serves the full CSP + nosniff + Referrer-Policy headers, and the user verified map/tiles/photos/popups/worker function normally on the live site. *Deviations*: `react-hooks/set-state-in-effect` (new in plugin v7) downgraded to warning for only the 3 pre-existing violator files (Map.jsx, BottomSheet.jsx, PoiEditorSheet.jsx — Phase 5 owns them); `process-photos.js` got an export + `realpathSync` main-module guard for testability. *Accepted risk*: /code-review completed 3 of 5 agents (rate limit); rerun available on PR #2 if wanted. *Watch item*: pre-existing >500 kB chunk warning (React + maplibre-gl), not actioned.
 - **2026-07-04 — Session A (Phase 1, MapLibre) — merged.** PR #1 → `21a6940` on main; migration commit `2e46422` (single commit as planned); worker model Sonnet 5; rollback tag `pre-A-stable` = `9e8a43d`. Gates: lint/build green (orchestrator re-verified independently), no `api.mapbox.com` in bundle, OpenFreeMap CacheFirst rule confirmed in generated `sw.js`, full on-device iPhone pass (Liberty style, popup CSS, attribution, geolocate, airplane-mode-across-restart). *Deviation*: the one-time `mapbox-cache` cleanup lives in `src/main.jsx`, not `vite.config.js` — Workbox generateSW has no declarative way to delete a foreign cache. *Watch item*: the single CacheFirst rule also pins OpenFreeMap's `/planet` TileJSON (daily-rotating snapshot path) for up to 30 days; if stale-tile 404s appear while online, add a `StaleWhileRevalidate` rule for the style/TileJSON paths (Phase 2 candidate). *Follow-ups resolved 2026-07-04*: `VITE_MAPBOX_TOKEN` removed from Netlify env vars; Mapbox account teardown done (tokens/billing exposure removed) — the Phase 1 post-merge reminder is discharged. *Still open*: verify installed-PWA update path on production (open the home-screen app twice; offline still works; `mapbox-cache` gone).
 
