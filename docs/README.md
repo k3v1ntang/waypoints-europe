@@ -16,6 +16,7 @@ This folder contains all developer documentation for the Waypoints Europe projec
 
 - [`walking-tour-implementation-guide.md`](./implementation/walking-tour-implementation-guide.md) - Step-by-step guide for adding new walking tours
 - [`photo-pipeline-guide.md`](./implementation/photo-pipeline-guide.md) - Step-by-step guide for adding POI photos (`scripts/process-photos.js`)
+- [`city-data-contract.md`](./implementation/city-data-contract.md) - Data shape expected from the external trip-research project for Amsterdam + Paris Disneyland (Phase 4 handoff)
 
 ### [`/planning`](./planning/)
 **Project plans and improvement roadmaps**

@@ -73,7 +73,9 @@ Photos are optimized (HEIC → WebP/JPEG, ~200KB, **EXIF/GPS stripped** — publ
 
 ### D3. Trip content: POI pins + walking tour(s)
 
-Amsterdam gets pins + a Rick Steves-style walking tour via the existing 8-step pipeline (source content to be provided). Paris Disneyland gets a **minimal logistics-shell POI set only** (hotel, dining reservations, Marne-la-Vallée station, pre/post-park stops) — confirmed July 2: in-park needs are served by the official Disneyland Paris app (live wait times, park map); Waypoints does not compete there and no in-park effort is spent.
+Amsterdam gets pins + a walking tour. Paris Disneyland gets a **minimal logistics-shell POI set only** (hotel, dining reservations, Marne-la-Vallée station, pre/post-park stops) — confirmed July 2: in-park needs are served by the official Disneyland Paris app (live wait times, park map); Waypoints does not compete there and no in-park effort is spent.
+
+**Correction (July 3, 2026)**: Amsterdam content does *not* come from a Rick Steves guide via the existing 8-step walking-tour pipeline (that pipeline is Rick-Steves-specific and doesn't apply). Trip research for this trip is being done in a **separate AI-assisted research/trip-planning project outside this repo**; its output will be handed off and ingested here once ready. This repo's only prep work for Phase 4 is defining the data contract that handoff should conform to — see `docs/implementation/city-data-contract.md`. Both Amsterdam and Paris Disneyland content (including the Paris logistics-shell details) wait on that external project; neither is independently scaffoldable yet.
 
 ### D4. Offline reliability is top priority; "download city" button is a stretch goal
 
@@ -162,10 +164,13 @@ Reviewed the plan for day-to-day usefulness (not just reliability) and confirmed
 
 ### Phase 4 — Trip content (low effort per city) — branch: `feature/amsterdam-paris`
 
-1. Add `amsterdam` and `paris-disneyland` cities to `pois.json` (`id`, `name (CODE)`, `country`, `countryCode`, `centerCoordinates`, `pois`)
-2. Amsterdam: POI reference doc → pins → walking tour via the 8-step pipeline (**needs Rick Steves Amsterdam source from user**)
+**Status: parked (July 3, 2026), blocked on an external dependency.** See D3's correction: actual Amsterdam + Paris Disneyland content is being produced by a separate AI-assisted research/trip-planning project outside this repo, not the Rick Steves 8-step pipeline. This repo's only prep work right now is the data contract that handoff will conform to — `docs/implementation/city-data-contract.md` — so ingestion is a known target and there's no rework risk if the external project's structure evolves before it's done. No `pois.json` changes yet; nothing here is independently scaffoldable ahead of that project's output.
+
+Once the external research is delivered, ingestion is:
+1. Add `amsterdam` and `paris-disneyland` cities to `pois.json` per the data contract (`id`, `name (CODE)`, `country`, `countryCode`, `centerCoordinates`, `pois`)
+2. Amsterdam: pins + walking tour, from the delivered research
 3. Paris Disneyland: minimal logistics-shell pins only per D3 (hotel, dining reservations, station, pre/post-park stops) — no in-park content effort
-4. Validation script checks all new data; test offline on device
+4. Validation script checks all new data; test offline on device (folded into the week-7 end-to-end rehearsal, alongside the parked Phase 3 photo offline check)
 
 ### Stretch — "Download city for offline" button — branch: `feature/city-download`
 
