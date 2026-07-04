@@ -146,6 +146,8 @@ Steps:
 
 Success criteria: full feature parity including popup CSS; offline works across an app restart (the bug class from the October 2025 trip) *and* across a PWA update; attribution visible; no Mapbox requests in the network log.
 
+**Post-merge reminder (user request, July 2026)**: after Session A merges and is verified, the user will ask the orchestrator for the full **Mapbox account teardown** steps — delete/rotate the access token, remove any stored payment exposure, and confirm nothing (repo, Netlify, Mapbox dashboard) can generate accidental charges. Step 6 covers the repo/Netlify side; this covers the Mapbox-account side.
+
 **Cold-start prompt**:
 > Implement Phase 1 of docs/planning/2026-07-03-modernization-plan.md: swap mapbox-gl for MapLibre GL JS + OpenFreeMap tiles. Follow the steps and success criteria in the plan exactly — single commit on a feature/maplibre branch, don't touch anything outside the migration scope. All Mapbox API usage in Map.jsx was verified to exist identically in MapLibre. Leave on-device iPhone verification to me; tell me exactly what to check, including the airplane-mode-across-restart scenario.
 
