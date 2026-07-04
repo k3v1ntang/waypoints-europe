@@ -69,14 +69,14 @@ button:focus-visible {
   }
 }
 
-/* iPhone safe area handling for Mapbox */
-.mapboxgl-ctrl-bottom-left,
-.mapboxgl-ctrl-bottom-right {
+/* iPhone safe area handling for MapLibre */
+.maplibregl-ctrl-bottom-left,
+.maplibregl-ctrl-bottom-right {
   margin-bottom: env(safe-area-inset-bottom) !important;
 }
 
 /* Ensure map container respects safe areas */
-.mapboxgl-map {
+.maplibregl-map {
   padding-bottom: env(safe-area-inset-bottom);
 }
 

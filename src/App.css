@@ -28,7 +28,7 @@ html, body {
 }
 
 /* Mobile-optimized popup styles */
-.mobile-poi-popup .mapboxgl-popup-content {
+.mobile-poi-popup .maplibregl-popup-content {
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   padding: 16px;
@@ -37,7 +37,7 @@ html, body {
 }
 
 /* Style all popup close buttons */
-.mapboxgl-popup-close-button {
+.maplibregl-popup-close-button {
   width: 20px !important;
   height: 20px !important;
   font-size: 16px !important;
@@ -55,19 +55,19 @@ html, body {
   justify-content: center !important;
 }
 
-.mapboxgl-popup-close-button:hover {
+.maplibregl-popup-close-button:hover {
   background-color: #f3f4f6 !important;
   color: black !important;
 }
 
 /* Improve popup tip (arrow) */
-.mobile-poi-popup .mapboxgl-popup-tip {
+.mobile-poi-popup .maplibregl-popup-tip {
   border-top-color: white;
   border-width: 8px;
 }
 
 /* Touch-friendly scrolling for popup content */
-.mobile-poi-popup .mapboxgl-popup-content {
+.mobile-poi-popup .maplibregl-popup-content {
   -webkit-overflow-scrolling: touch;
 }
 
