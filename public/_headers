@@ -1,0 +1,12 @@
+# style-src is 'self' only, no 'unsafe-inline': GuideViewer's one literal
+# <style> tag was extracted to GuideViewer.css (an external, same-origin
+# stylesheet) specifically so this CSP doesn't need to loosen style-src.
+# React's inline style={{}} props are unaffected either way (set via the
+# CSSOM, not the style="" attribute, so CSP doesn't gate them).
+#
+# connect-src/worker-src allow tiles.openfreemap.org and blob: workers for
+# MapLibre GL JS tile fetching and rendering.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://tiles.openfreemap.org; worker-src 'self' blob:; manifest-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

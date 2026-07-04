@@ -22,10 +22,10 @@
 // macOS machine with source photos on disk.
 
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import sharp from 'sharp';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -50,7 +50,7 @@ function findPoiById(data, poiId) {
 // renormalize every number in the file (e.g. "24.9420" -> "24.942") and
 // drop the file's trailing-newline convention, producing a huge unrelated
 // diff for what should be a one-POI change.
-function updatePhotosInRawText(raw, poiId, newPhotos) {
+export function updatePhotosInRawText(raw, poiId, newPhotos) {
   const idMarker = `"id": "${poiId}"`;
   const idIndex = raw.indexOf(idMarker);
   if (idIndex === -1) throw new Error(`"${idMarker}" not found in pois.json text`);
@@ -182,7 +182,23 @@ async function main() {
   console.log(`✓ Updated pois.json: "${poiId}" now has ${mergedPhotos.length} photo(s)`);
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+// Only run the CLI when this file is executed directly (not when imported
+// by tests) - mirrors Python's `if __name__ == "__main__":`. realpathSync +
+// pathToFileURL (rather than a hand-built `file://${...}` string) so paths
+// with spaces/special characters, or invocation through a symlink, still
+// compare equal to import.meta.url (which Node resolves to the real path).
+function isMainModule() {
+  if (!process.argv[1]) return false;
+  try {
+    return import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href;
+  } catch {
+    return false;
+  }
+}
+
+if (isMainModule()) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
