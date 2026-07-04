@@ -3,6 +3,7 @@
 **Created**: July 2, 2026
 **Trip**: Amsterdam + Paris Disneyland, August 2026 (~7 weeks out)
 **Working branch strategy**: One feature branch per phase, merged to `main` (auto-deploys to Netlify) only after on-device testing. Current branch: `feature/offline-reliability`.
+**Status**: Complete
 
 ---
 
