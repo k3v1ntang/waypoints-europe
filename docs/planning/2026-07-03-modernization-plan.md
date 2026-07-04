@@ -319,7 +319,7 @@ One long-lived **Fable 5 session acts as orchestrator**; Sessions A–F are **wo
 
 **Risk management (the app is a live trip tool)**:
 - The production PWA is in active use for August trip planning, and `main` auto-deploys. Before each risky merge (Sessions A, B, E), tag the last verified-good commit (`pre-<session>-stable`) so Netlify rollback has a named target.
-- **Pre-trip merge freeze**: no merges to `main` in the final ~2 weeks before departure except verified fixes. Sessions A–C are expected to land well before the freeze. **Sessions D/E (the UX rebuild) are post-trip by default** — they only land pre-trip if fully complete and on-device-verified before the freeze; a half-finished IA rebuild is worse for the trip than the current UI. Set the actual freeze date once travel dates are fixed.
+- **Pre-trip merge freeze**: no merges to `main` in the final ~2 weeks before departure except verified fixes. Sessions A–C are expected to land well before the freeze. **Sessions D/E (the UX rebuild) are post-trip by default** — they only land pre-trip if fully complete and on-device-verified before the freeze; a half-finished IA rebuild is worse for the trip than the current UI. **Freeze date set 2026-07-04: no merges to `main` after 2026-08-14** except verified fixes (departure ~end of August). D/E may land before then only if fully on-device-verified; anything unfinished at the freeze waits until after the trip.
 - Before merging anything that touches `editStore` or the edit overlay (Sessions C, E), back up on-device edits via Export POI data.
 - **Status tracking**: when a session completes, mark its phase heading with `✅ (merged YYYY-MM-DD)` so every cold start can see progress without asking.
 
