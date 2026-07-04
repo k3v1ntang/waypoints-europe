@@ -77,9 +77,11 @@ Amsterdam gets pins + a walking tour. Paris Disneyland gets a **minimal logistic
 
 **Correction (July 3, 2026)**: Amsterdam content does *not* come from a Rick Steves guide via the existing 8-step walking-tour pipeline (that pipeline is Rick-Steves-specific and doesn't apply). Trip research for this trip is being done in a **separate AI-assisted research/trip-planning project outside this repo**; its output will be handed off and ingested here once ready. This repo's only prep work for Phase 4 is defining the data contract that handoff should conform to — see `docs/implementation/city-data-contract.md`. Both Amsterdam and Paris Disneyland content (including the Paris logistics-shell details) wait on that external project; neither is independently scaffoldable yet.
 
-### D4. Offline reliability is top priority; "download city" button is a stretch goal
+### D4. Offline reliability is top priority; "download city" button is dropped
 
-The cache fixes are trip-critical. The download button (pre-fetch all tiles for a city's bounds) is an **established community pattern** (cf. `leaflet.offline`) but **not an official Mapbox GL JS feature** (official offline regions exist only in native mobile SDKs; Mapbox ToS permits performance caching — fine at personal scale). With the cache fixed, panning around a city on hotel WiFi achieves ~90% of the same result, so the button is nice-to-have, not trip-critical. It must replicate Mapbox's exact tile URL scheme and be validated for cross-session cache hits.
+The cache fixes are trip-critical. The download button (pre-fetch all tiles for a city's bounds) is an **established community pattern** (cf. `leaflet.offline`) but **not an official Mapbox GL JS feature** (official offline regions exist only in native mobile SDKs; Mapbox ToS permits performance caching — fine at personal scale). With the cache fixed, panning around a city on hotel WiFi achieves ~90% of the same result, so the button was always nice-to-have, not trip-critical.
+
+**Decision (July 3, 2026): dropped, not just deprioritized.** Reconsidered now that Phase 1's cross-session cache fix is confirmed working on-device — the prerequisite for attempting this was met, and there was idle time to consider it while Phase 4 waits on external content. Decided against it specifically *because* it isn't official Mapbox GL JS support: it would require reverse-engineering Mapbox's undocumented tile URL/grid scheme and manually validating cross-session cache hits, for a feature that only closes the last ~10% gap over what the existing fix already achieves. Not worth building on top of unofficial, unsupported behavior for that marginal a gain.
 
 ### D5. Trip-usability additions (confirmed July 2, 2026)
 
@@ -172,9 +174,9 @@ Once the external research is delivered, ingestion is:
 3. Paris Disneyland: minimal logistics-shell pins only per D3 (hotel, dining reservations, station, pre/post-park stops) — no in-park content effort
 4. Validation script checks all new data; test offline on device (folded into the week-7 end-to-end rehearsal, alongside the parked Phase 3 photo offline check)
 
-### Stretch — "Download city for offline" button — branch: `feature/city-download`
+### Stretch — "Download city for offline" button — DROPPED (July 3, 2026)
 
-Compute tile grid for city bounds at z11–16 (a few hundred vector tiles, tens of MB), fetch each so the (now fixed) CacheFirst cache stores them; progress UI. Only after Phase 1 is validated cross-session. Skip without guilt if time runs short.
+**Status: dropped, see D4.** Was: compute tile grid for city bounds at z11–16 (a few hundred vector tiles, tens of MB), fetch each so the (now fixed) CacheFirst cache stores them; progress UI. Decided against building on top of an unofficial, unsupported Mapbox GL JS pattern for a feature that only closes the last ~10% gap over the already-working cache fix. No `feature/city-download` branch was created.
 
 ### Post-trip backlog
 
@@ -201,6 +203,6 @@ GitHub commit-back sync · `react-map-gl` migration · TypeScript (gradual) · m
 - **Weeks 2–4 (mid-July)**: Phase 2 (editing), field-test on phone
 - **Week 5**: Phase 3 (photos)
 - **Weeks 5–6 (late July)**: Phase 4 (content) — can interleave with 2–3 since it's data work
-- **Week 7 (early August)**: buffer — full end-to-end rehearsal in airplane mode; stretch goal only if everything is validated. **Feature freeze begins**: from here (and throughout the trip), `main` receives data/content commits only — no dependency bumps, no refactors.
+- **Week 7 (early August)**: buffer — full end-to-end rehearsal in airplane mode. **Feature freeze begins**: from here (and throughout the trip), `main` receives data/content commits only — no dependency bumps, no refactors.
 
-Phases 0, 1, 2, 4 are trip-critical; 3 slots into slack; stretch is optional.
+Phases 0, 1, 2, 4 are trip-critical; 3 slots into slack. The city-download stretch goal was dropped (see D4).
