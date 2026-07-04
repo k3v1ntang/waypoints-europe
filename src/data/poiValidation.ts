@@ -23,12 +23,14 @@ export function isNonEmptyString(value: unknown): value is string {
   return typeof value === 'string' && value.trim().length > 0;
 }
 
-function isValidCategory(value: unknown): value is Category {
-  return typeof value === 'string' && (VALID_CATEGORIES as string[]).includes(value);
-}
-
-function isValidVisibility(value: unknown): value is Visibility {
-  return typeof value === 'string' && (VALID_VISIBILITY as string[]).includes(value);
+// ❓ CONCEPT: Generic function (`<T>`) - one implementation reused for
+// multiple types, filled in per call site (closest Python analogue: a
+// function typed over a TypeVar).
+// 📝 EXPLANATION: Category and Visibility are both "one of a fixed set of
+// strings" - `isOneOf` checks membership once and narrows `value` to
+// whichever literal-union type its `valid` array was declared with.
+function isOneOf<T extends string>(value: unknown, valid: readonly T[]): value is T {
+  return typeof value === 'string' && (valid as readonly string[]).includes(value);
 }
 
 // Returns an array of error messages (empty when valid). `coordinates` is
@@ -87,10 +89,10 @@ export function getPoiErrors(poi: Partial<Poi>): string[] {
   if (!isNonEmptyString(poi.name)) errors.push('missing or empty "name"');
   errors.push(...getCoordinateErrors(poi.coordinates));
 
-  if (!isValidCategory(poi.category)) {
+  if (!isOneOf(poi.category, VALID_CATEGORIES)) {
     errors.push(`invalid category "${poi.category}" — must be one of ${VALID_CATEGORIES.join(', ')}`);
   }
-  if (!isValidVisibility(poi.visibility)) {
+  if (!isOneOf(poi.visibility, VALID_VISIBILITY)) {
     errors.push(`invalid visibility "${poi.visibility}" — must be one of ${VALID_VISIBILITY.join(', ')}`);
   }
   if (!isNonEmptyString(poi.description)) errors.push('missing or empty "description"');

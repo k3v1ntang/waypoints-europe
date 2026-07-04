@@ -102,6 +102,11 @@ function main(): void {
   const raw = readFileSync(DATA_PATH, 'utf-8');
   let data: PoisData;
   try {
+    // `JSON.parse` always returns `any`, so this cast is the same "trust
+    // the shape, verify it below" bridge used for the pois.json import in
+    // usePoiData.ts - the whole rest of this script is what actually earns
+    // that trust, by walking `data` and reporting every field that doesn't
+    // match.
     data = JSON.parse(raw) as PoisData;
   } catch (err) {
     console.error(`✖ pois.json is not valid JSON: ${(err as Error).message}`);

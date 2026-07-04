@@ -62,9 +62,16 @@ export interface PoisData {
 // 📝 EXPLANATION: Once code checks `record.type === 'override'`, TypeScript
 // narrows the whole object to that branch, so `record.poi` is known to
 // exist (and be required) only where it actually is. Mirrors the three
-// record shapes documented in editStore.js: override/new carry a full
-// `poi`, delete is a tombstone with none.
-export type EditRecord =
-  | { poiId: string; cityId: string; type: 'override'; poi: Poi; updatedAt: number }
-  | { poiId: string; cityId: string; type: 'new'; poi: Poi; updatedAt: number }
-  | { poiId: string; cityId: string; type: 'delete'; updatedAt: number };
+// record shapes documented in editStore.ts: override/new carry a full
+// `poi`, delete is a tombstone with none. The `&` below intersects the
+// fields every record has with the part that actually varies by `type`,
+// so poiId/cityId/updatedAt are declared once instead of three times.
+export type EditRecord = {
+  poiId: string;
+  cityId: string;
+  updatedAt: number;
+} & (
+  | { type: 'override'; poi: Poi }
+  | { type: 'new'; poi: Poi }
+  | { type: 'delete' }
+);

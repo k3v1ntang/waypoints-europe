@@ -16,11 +16,28 @@ export function mergePois(baseData: PoisData, edits: EditRecord[] | null | undef
         const edit = editsByPoiId.get(poi.id);
         if (!edit) return poi;
         if (edit.type === 'delete') return null;
-        if (edit.type === 'override') return edit.poi;
+        // `?? null` guards a malformed/legacy IndexedDB record that lacks
+        // `poi` despite what the EditRecord type promises - types are
+        // erased at runtime, so a corrupt override record's `poi` could
+        // still be `undefined` here.
+        if (edit.type === 'override') return edit.poi ?? null;
         return poi;
       })
+      // ❓ CONCEPT: Type predicate on `.filter()` - the same `value is T`
+      // trick from poiValidation.ts, applied to an array method.
+      // 📝 EXPLANATION: A plain `(poi) => poi !== null` predicate makes
+      // `.filter()` drop the nulls at runtime, but its *type* stays
+      // `(Poi | null)[]` - TypeScript can't tell a filter callback actually
+      // removes a case. Writing `poi is Poi` instead tells it the output
+      // array is `Poi[]`, so `pois` below doesn't need another null check.
       .filter((poi): poi is Poi => poi !== null);
 
+    // ❓ CONCEPT: `Extract<Union, Shape>` - a utility type that picks just
+    // the union members matching `Shape` (here, EditRecord's `'new'` case).
+    // 📝 EXPLANATION: Same idea as the `.filter()` above: the type
+    // predicate tells TypeScript that anything surviving the filter has a
+    // `poi` field, so the `.map((e) => e.poi)` below type-checks without
+    // an extra cast.
     const added = edits
       .filter((e): e is Extract<EditRecord, { type: 'new' }> => e.type === 'new' && e.cityId === city.id)
       .sort((a, b) => (a.updatedAt ?? 0) - (b.updatedAt ?? 0))

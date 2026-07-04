@@ -36,6 +36,16 @@ describe('mergePois', () => {
     expect(city.pois).toHaveLength(2);
   });
 
+  it('drops a malformed override edit missing its poi field, instead of leaking undefined', () => {
+    // Simulates a corrupted/legacy IndexedDB record - schema says 'override'
+    // records always carry `poi`, but nothing enforces that at runtime.
+    const edits = [{ poiId: 'amsterdam-poi-a', type: 'override' }];
+    const merged = mergePois(baseData(), edits);
+    const city = merged.cities.find((c) => c.id === 'amsterdam');
+    expect(city.pois.map((p) => p.id)).toEqual(['amsterdam-poi-b']);
+    expect(city.pois.every((p) => p !== undefined)).toBe(true);
+  });
+
   it('deletes a POI', () => {
     const edits = [{ poiId: 'amsterdam-poi-b', type: 'delete' }];
     const merged = mergePois(baseData(), edits);

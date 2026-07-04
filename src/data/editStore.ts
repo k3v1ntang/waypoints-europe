@@ -70,7 +70,7 @@ async function withStore<T>(
 }
 
 export function getAllEdits(): Promise<EditRecord[]> {
-  return withStore<EditRecord[]>('readonly', (store) => store.getAll() as IDBRequest<EditRecord[]>);
+  return withStore('readonly', (store) => store.getAll() as IDBRequest<EditRecord[]>);
 }
 
 export function putEdit(record: EditRecord): Promise<IDBValidKey> {
