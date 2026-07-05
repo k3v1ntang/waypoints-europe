@@ -53,10 +53,12 @@ const BottomBar = ({
   }, [isMenuOpen]);
 
   // The search "field" doubles as the passive current-city label D8 asks
-  // for: with a city active it reads "Search Munich…".
+  // for: with a city active it reads "Search Munich…". Before any city is
+  // chosen it advertises the sheet's real first job - picking a city -
+  // since this is the app's starting point.
   const searchLabel = currentCity
     ? `Search ${cityDisplayName(currentCity.name)}…`
-    : 'Search places…';
+    : 'Find a city or place…';
 
   return (
     <div ref={rootRef} className={styles.root}>

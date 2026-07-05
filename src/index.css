@@ -130,6 +130,13 @@ body {
   .maplibregl-ctrl button .maplibregl-ctrl-icon {
     filter: invert(1) hue-rotate(180deg);
   }
+
+  /* The attribution ⓘ is the same deal in different markup: a dark SVG
+     background-image on a <summary> with a translucent white circle.
+     Inverting the element gives a white glyph on a dark circle. */
+  .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button {
+    filter: invert(1);
+  }
 }
 
 /* D8: on touch devices pinch/rotate gestures replace the zoom/compass
