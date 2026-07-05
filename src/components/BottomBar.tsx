@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import type { City } from '../data/types';
 import { springPop } from '../config/motion';
+import { cityDisplayName } from '../utils/text';
+import { PlusIcon, RouteIcon, SearchIcon, ShareIcon } from './icons';
 import styles from './BottomBar.module.css';
 
 // Phase 5b (D8): the bottom-anchored glass control bar, Apple Maps shape -
@@ -21,55 +23,6 @@ interface BottomBarProps {
   onAddPlace: () => void;
   onExport: () => void;
 }
-
-// Bar icons as inline SVG line drawings instead of emoji: stroke uses
-// `currentColor` (the CSS `color` of the button), so contrast is right in
-// both color schemes automatically - emoji ship fixed colors and were
-// unreadable on dark glass. 24-unit viewBox, 1.8 stroke, round caps: one
-// consistent visual weight across the bar.
-const iconProps = {
-  width: 20,
-  height: 20,
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
-  strokeWidth: 1.8,
-  strokeLinecap: 'round',
-  strokeLinejoin: 'round',
-  'aria-hidden': true
-} as const;
-
-/** Tour route: start point, S-curved path, end point. */
-const RouteIcon = () => (
-  <svg {...iconProps}>
-    <circle cx="6" cy="19" r="2.5" />
-    <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
-    <circle cx="18" cy="5" r="2.5" />
-  </svg>
-);
-
-const PlusIcon = () => (
-  <svg {...iconProps}>
-    <path d="M12 5v14M5 12h14" />
-  </svg>
-);
-
-const SearchIcon = () => (
-  <svg {...iconProps} width={16} height={16}>
-    <circle cx="11" cy="11" r="7" />
-    <path d="m21 21-4.3-4.3" />
-  </svg>
-);
-
-/** iOS-style share: box with an arrow rising out of it. */
-const ShareIcon = () => (
-  <svg {...iconProps} width={18} height={18}>
-    <path d="M12 3v12M8 6.5 12 3l4 3.5" />
-    <path d="M7 10H5.5v10h13V10H17" />
-  </svg>
-);
-
-const cityDisplayName = (name: string): string => name.split(' (')[0] ?? name;
 
 const BottomBar = ({
   currentCity,
@@ -127,7 +80,7 @@ const BottomBar = ({
                 onExport();
               }}
             >
-              <span className={styles.menuItemIcon} aria-hidden="true"><ShareIcon /></span>
+              <span className={styles.menuItemIcon} aria-hidden="true"><ShareIcon size={18} /></span>
               <span>
                 <span className={styles.menuItemTitle}>Export POI data</span>
                 <span className={styles.menuItemSubtitle}>
@@ -151,7 +104,7 @@ const BottomBar = ({
       {/* The bar itself */}
       <div className={`glass ${styles.bar}`}>
         <button className={styles.searchButton} onClick={onOpenSearch}>
-          <span className={styles.searchIcon} aria-hidden="true"><SearchIcon /></span>
+          <span className={styles.searchIcon} aria-hidden="true"><SearchIcon size={16} /></span>
           <span className={styles.searchLabel}>{searchLabel}</span>
         </button>
 

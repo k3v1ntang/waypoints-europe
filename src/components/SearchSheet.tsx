@@ -2,6 +2,9 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import type { City, Poi, PoisData } from '../data/types';
 import { springSheet } from '../config/motion';
+import { cityDisplayName, normalizeSearchText } from '../utils/text';
+import { useEscapeKey } from '../hooks/useSheetDismiss';
+import { SearchIcon } from './icons';
 import styles from './SearchSheet.module.css';
 
 // Phase 5b (D8): the expanded search sheet - the single home of POI search
@@ -34,13 +37,6 @@ const CATEGORY_ICONS: Record<Poi['category'], string> = {
   hotel: '🏨'
 };
 
-// Case- and accent-insensitive matching ("cafe" finds "Café")
-const normalize = (text: string): string =>
-  text
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
-
 const MAX_RESULTS = 30;
 
 // Travel itinerary order for the city chips; cities not listed (future
@@ -57,8 +53,6 @@ const flagEmoji = (countryCode: string): string =>
         ...[...countryCode.toUpperCase()].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65)
       )
     : '📍';
-
-const cityDisplayName = (name: string): string => name.split(' (')[0] ?? name;
 
 // Height of the on-screen keyboard, measured via the visualViewport API.
 //
@@ -82,34 +76,33 @@ const useKeyboardInset = (): number => {
   return inset;
 };
 
+interface SearchSheetBodyProps extends Omit<SearchSheetProps, 'isOpen' | 'poisData'> {
+  allPois: SearchEntry[];
+  sortedCities: City[];
+}
+
 // Inner body component: mounted fresh each time the sheet opens, so query
-// state resets naturally instead of via a "clear on open" effect.
+// state resets naturally instead of via a "clear on open" effect. The POI
+// index and city ordering are computed in the always-mounted wrapper below
+// so they survive across opens instead of being rebuilt per open.
 const SearchSheetBody = ({
-  poisData,
+  allPois,
+  sortedCities,
   currentCity,
   onSelectPoi,
   onSelectCity,
   onClose
-}: Omit<SearchSheetProps, 'isOpen'>) => {
+}: SearchSheetBodyProps) => {
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const keyboardInset = useKeyboardInset();
 
-  const allPois = useMemo<SearchEntry[]>(
-    () =>
-      poisData.cities.flatMap((city) =>
-        city.pois.map((poi) => ({
-          poi,
-          cityId: city.id,
-          cityName: city.name,
-          normName: normalize(poi.name)
-        }))
-      ),
-    [poisData]
-  );
+  // Document-level, not just on the input: Escape must close the sheet
+  // even after focus has left the field (e.g. while browsing the chips).
+  useEscapeKey(onClose);
 
   const results = useMemo<SearchEntry[]>(() => {
-    const needle = normalize(query.trim());
+    const needle = normalizeSearchText(query.trim());
     if (!needle) return [];
     const matches = allPois.filter(({ normName }) => normName.includes(needle));
     // Results in the city currently on screen first. Number() turns the
@@ -120,14 +113,6 @@ const SearchSheetBody = ({
     );
     return matches.slice(0, MAX_RESULTS);
   }, [query, allPois, currentCity]);
-
-  const sortedCities = useMemo(() => {
-    const orderIndex = (city: City) => {
-      const index = ITINERARY_ORDER.indexOf(city.id);
-      return index === -1 ? ITINERARY_ORDER.length : index;
-    };
-    return [...poisData.cities].sort((a, b) => orderIndex(a) - orderIndex(b));
-  }, [poisData]);
 
   const handleSelectPoi = (poi: Poi) => {
     inputRef.current?.blur(); // dismiss the keyboard before the map flies
@@ -148,19 +133,7 @@ const SearchSheetBody = ({
       <div className={styles.header}>
         <div className={styles.searchField}>
           <span className={styles.searchIcon} aria-hidden="true">
-            <svg
-              width={16}
-              height={16}
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={1.8}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="11" cy="11" r="7" />
-              <path d="m21 21-4.3-4.3" />
-            </svg>
+            <SearchIcon size={16} />
           </span>
           <input
             ref={inputRef}
@@ -175,7 +148,6 @@ const SearchSheetBody = ({
             autoFocus
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={(e) => {
-              if (e.key === 'Escape') onClose();
               if (e.key === 'Enter' && results[0]) handleSelectPoi(results[0].poi);
             }}
           />
@@ -255,28 +227,53 @@ const SearchSheetBody = ({
   );
 };
 
-const SearchSheet = ({ isOpen, ...bodyProps }: SearchSheetProps) => (
-  // ❓ CONCEPT: AnimatePresence
-  // 📝 EXPLANATION: React normally removes an element from the DOM the
-  // instant it stops being rendered - there is no moment for an exit
-  // animation to play. AnimatePresence keeps the leaving element mounted
-  // until its `exit` animation finishes, then removes it.
-  <AnimatePresence>
-    {isOpen && (
-      <motion.div
-        className={styles.sheet}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Search and city selection"
-        initial={{ y: '100%' }}
-        animate={{ y: 0 }}
-        exit={{ y: '100%' }}
-        transition={springSheet}
-      >
-        <SearchSheetBody {...bodyProps} />
-      </motion.div>
-    )}
-  </AnimatePresence>
-);
+const SearchSheet = ({ isOpen, poisData, ...bodyProps }: SearchSheetProps) => {
+  // Derived once per data change, not per open: this wrapper stays mounted,
+  // so the index survives the body's mount/unmount cycle.
+  const allPois = useMemo<SearchEntry[]>(
+    () =>
+      poisData.cities.flatMap((city) =>
+        city.pois.map((poi) => ({
+          poi,
+          cityId: city.id,
+          cityName: city.name,
+          normName: normalizeSearchText(poi.name)
+        }))
+      ),
+    [poisData]
+  );
+
+  const sortedCities = useMemo(() => {
+    const orderIndex = (city: City) => {
+      const index = ITINERARY_ORDER.indexOf(city.id);
+      return index === -1 ? ITINERARY_ORDER.length : index;
+    };
+    return [...poisData.cities].sort((a, b) => orderIndex(a) - orderIndex(b));
+  }, [poisData]);
+
+  return (
+    // ❓ CONCEPT: AnimatePresence
+    // 📝 EXPLANATION: React normally removes an element from the DOM the
+    // instant it stops being rendered - there is no moment for an exit
+    // animation to play. AnimatePresence keeps the leaving element mounted
+    // until its `exit` animation finishes, then removes it.
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className={styles.sheet}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Search and city selection"
+          initial={{ y: '100%' }}
+          animate={{ y: 0 }}
+          exit={{ y: '100%' }}
+          transition={springSheet}
+        >
+          <SearchSheetBody allPois={allPois} sortedCities={sortedCities} {...bodyProps} />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
 
 export default SearchSheet;

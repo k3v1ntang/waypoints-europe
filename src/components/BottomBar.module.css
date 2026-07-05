@@ -29,11 +29,10 @@
   margin-inline: auto;
   /* Float above the iPhone home indicator; --safe-bottom is 0 elsewhere. */
   bottom: calc(var(--bar-inset) + var(--safe-bottom));
-  /* Below everything that opens OVER the bar: the tours BottomSheet
-     (1000/1001), the SearchSheet (1100), the editor sheet (1200), and
-     banners (1300/2000). The bar is the resting base layer of the bottom
-     UI - sheets it launches must cover it, like Apple Maps. */
-  z-index: 999;
+  /* Bottom of the layer ladder (see the --z-* tokens in tokens.css): the
+     bar is the resting base layer of the bottom UI - everything it
+     launches must cover it, like Apple Maps. */
+  z-index: var(--z-bar);
   font-family: var(--font-ui);
   /* The root is a positioning frame only - the bar and popovers inside it
      paint the glass. */

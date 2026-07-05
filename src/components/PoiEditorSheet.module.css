@@ -6,7 +6,7 @@
   position: fixed;
   inset: 0;
   background-color: var(--scrim);
-  z-index: 1199;
+  z-index: var(--z-editor-backdrop);
 }
 
 .sheet {
@@ -16,7 +16,7 @@
   right: 0;
   max-width: 640px;
   margin-inline: auto;
-  z-index: 1200;
+  z-index: var(--z-editor);
   display: flex;
   flex-direction: column;
   max-height: 85dvh;

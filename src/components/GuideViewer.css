@@ -8,7 +8,7 @@
   position: fixed;
   inset: 0;
   background-color: var(--scrim);
-  z-index: 10000;
+  z-index: var(--z-guide-backdrop);
 }
 
 .guide-sheet {
@@ -19,7 +19,7 @@
   top: max(24px, env(safe-area-inset-top, 0px));
   max-width: 800px;
   margin-inline: auto;
-  z-index: 10001;
+  z-index: var(--z-guide);
   display: flex;
   flex-direction: column;
   background-color: var(--glass-fill-elevated-opaque);
@@ -30,14 +30,7 @@
 }
 
 .guide-handle {
-  display: block;
-  margin: 0 auto;
   padding: 10px 0 2px 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  width: 72px;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .guide-handle::before {
@@ -49,6 +42,10 @@
   border-radius: var(--radius-capsule);
   background-color: var(--separator-strong);
 }
+
+/* NOTE: this shell (backdrop/handle/sheet) visually parallels
+   BottomSheet.module.css and PoiEditorSheet.module.css - a shared sheet
+   primitive is a flagged follow-up (review), kept out of this session. */
 
 /* iOS large-title header: big bold left-aligned title. */
 .guide-header {

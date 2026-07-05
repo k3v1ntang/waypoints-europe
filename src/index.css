@@ -47,12 +47,12 @@ body {
 /* Lift the bottom map chrome (OSM attribution - required visible by ODbL)
    above the floating bottom bar where the bar can actually cover it: the
    bar is a centered 500px-max capsule, so on wide windows the corners are
-   already clear. 76px = bar height 60px + 12px inset + air. !important
+   already clear. --bar-clearance derives from the bar's tokens. !important
    outranks MapLibre's own margin rules. */
 @media (max-width: 900px) {
   .maplibregl-ctrl-bottom-left,
   .maplibregl-ctrl-bottom-right {
-    margin-bottom: calc(76px + env(safe-area-inset-bottom)) !important;
+    margin-bottom: calc(var(--bar-clearance) + env(safe-area-inset-bottom)) !important;
   }
 }
 
@@ -65,24 +65,24 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-.maplibregl-ctrl-group {
+.maplibregl-ctrl.maplibregl-ctrl-group {
   border-radius: 14px;
   overflow: hidden;
 }
 
 /* MapLibre sets its own box-shadow on :not(:empty); ours comes from
    glass.css, so neutralize theirs at equal-or-higher specificity. */
-.maplibregl-ctrl-group:not(:empty) {
+.maplibregl-ctrl.maplibregl-ctrl-group:not(:empty) {
   box-shadow: var(--shadow-floating), var(--glass-inner-highlight);
 }
 
-.maplibregl-ctrl-group button {
+.maplibregl-ctrl.maplibregl-ctrl-group button {
   width: 40px;
   height: 40px;
   background-color: transparent;
 }
 
-.maplibregl-ctrl-group button + button {
+.maplibregl-ctrl.maplibregl-ctrl-group button + button {
   border-top: 0.5px solid var(--separator);
 }
 

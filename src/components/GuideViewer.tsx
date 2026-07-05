@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import Markdown from 'markdown-to-jsx/react';
 import { springSheet } from '../config/motion';
+import { useBodyScrollLock, useEscapeKey } from '../hooks/useSheetDismiss';
+import { CloseIcon } from './icons';
 import './GuideViewer.css';
 
 // Phase 5b: full-height "large title" sheet rendering a walking tour's
@@ -48,22 +50,8 @@ const GuideViewer = ({ tourId, onClose }: GuideViewerProps) => {
     };
   }, [tourId]);
 
-  // Handle escape key to close
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [onClose]);
-
-  // Prevent background scroll while the guide is open
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, []);
+  useEscapeKey(onClose);
+  useBodyScrollLock();
 
   return (
     <>
@@ -84,22 +72,14 @@ const GuideViewer = ({ tourId, onClose }: GuideViewerProps) => {
         exit={{ y: '100%' }}
         transition={springSheet}
       >
-        <button className="guide-handle" aria-label="Close guide" onClick={onClose} />
+        {/* Decorative only (this sheet has no drag gesture): a second
+            close BUTTON here would give screen readers two adjacent,
+            identically-labeled "Close guide" stops (review finding). */}
+        <div className="guide-handle" aria-hidden="true" />
         <div className="guide-header">
           <h2 className="guide-title">Walking Tour Guide</h2>
           <button className="guide-close" aria-label="Close guide" onClick={onClose}>
-            <svg
-              width={16}
-              height={16}
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              strokeLinecap="round"
-              aria-hidden="true"
-            >
-              <path d="M6 6l12 12M18 6 6 18" />
-            </svg>
+            <CloseIcon size={16} />
           </button>
         </div>
 

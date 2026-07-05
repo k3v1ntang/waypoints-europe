@@ -16,12 +16,12 @@
    remaining working controls stay usable. */
 .errorBanner {
   position: absolute;
-  bottom: calc(96px + var(--safe-bottom));
+  bottom: calc(var(--bar-clearance) + 20px + var(--safe-bottom));
   left: 16px;
   right: 16px;
   max-width: 500px;
   margin-inline: auto;
-  z-index: 2000;
+  z-index: var(--z-error-banner);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,7 +62,7 @@
   right: 16px;
   max-width: 500px;
   margin-inline: auto;
-  z-index: 1300;
+  z-index: var(--z-picking-banner);
   display: flex;
   align-items: center;
   justify-content: space-between;

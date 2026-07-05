@@ -11,7 +11,7 @@
   position: fixed;
   inset: 0;
   background-color: var(--scrim);
-  z-index: 1000;
+  z-index: var(--z-sheet-backdrop);
 }
 
 .sheet {
@@ -23,7 +23,7 @@
      window reads as a banner, not a sheet. */
   max-width: 640px;
   margin-inline: auto;
-  z-index: 1001;
+  z-index: var(--z-sheet);
   display: flex;
   flex-direction: column;
   max-height: 80dvh;

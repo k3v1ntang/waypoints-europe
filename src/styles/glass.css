@@ -29,7 +29,7 @@
    controls are glass surfaces like any other and must inherit the same
    opaque/reduced-transparency fallbacks. */
 .glass,
-.maplibregl-ctrl-group {
+.maplibregl-ctrl.maplibregl-ctrl-group {
   background-color: var(--glass-fill);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
@@ -64,7 +64,7 @@
    text-on-map. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .glass,
-  .maplibregl-ctrl-group {
+  .maplibregl-ctrl.maplibregl-ctrl-group {
     background-color: var(--glass-fill-opaque);
   }
   .glass--elevated {
@@ -76,7 +76,7 @@
    already made the fills opaque, so the blur would be invisible work). */
 @media (prefers-reduced-transparency: reduce) {
   .glass,
-  .maplibregl-ctrl-group {
+  .maplibregl-ctrl.maplibregl-ctrl-group {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }

@@ -1,6 +1,7 @@
-import { useEffect, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { springSheet } from '../config/motion';
+import { useBodyScrollLock, useEscapeKey } from '../hooks/useSheetDismiss';
 import styles from './BottomSheet.module.css';
 
 // Phase 5b: reusable modal bottom sheet in the glass system - grab handle,
@@ -16,23 +17,8 @@ interface BottomSheetProps {
 }
 
 const BottomSheet = ({ isOpen, onClose, title, children }: BottomSheetProps) => {
-  // Keep the page behind the sheet from scrolling while it's open.
-  useEffect(() => {
-    if (!isOpen) return;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (!isOpen) return;
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [isOpen, onClose]);
+  useBodyScrollLock(isOpen);
+  useEscapeKey(onClose, isOpen);
 
   return (
     <AnimatePresence>

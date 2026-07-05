@@ -1,9 +1,11 @@
-import { useState, useEffect, type ChangeEvent } from 'react';
+import { useState, useMemo, type ChangeEvent } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { VALID_CATEGORIES, getPoiErrors } from '../data/poiValidation';
 import { generatePoiId } from '../data/mergePois';
 import type { Category, Poi, PoisData } from '../data/types';
 import { springSheet } from '../config/motion';
+import { useEscapeKey } from '../hooks/useSheetDismiss';
+import { LocateIcon, MapTapIcon, PinIcon } from './icons';
 import styles from './PoiEditorSheet.module.css';
 
 // Bottom sheet for adding / editing a POI (Phase 2, glass restyle Phase 5b).
@@ -73,39 +75,6 @@ const draftFromPoi = (poi: Poi): Draft => ({
   coordinates: poi.coordinates ?? null
 });
 
-const iconProps = {
-  width: 15,
-  height: 15,
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
-  strokeWidth: 1.8,
-  strokeLinecap: 'round',
-  strokeLinejoin: 'round',
-  'aria-hidden': true
-} as const;
-
-const MapTapIcon = () => (
-  <svg {...iconProps}>
-    <path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z" />
-    <path d="M9 4v14M15 6v14" />
-  </svg>
-);
-
-/** Compass needle - "use my location". */
-const LocateIcon = () => (
-  <svg {...iconProps}>
-    <path d="m21 3-9 18-2-7-7-2 18-9Z" />
-  </svg>
-);
-
-const PinIcon = () => (
-  <svg {...iconProps} width={13} height={13}>
-    <path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z" />
-    <circle cx="12" cy="10" r="2.5" />
-  </svg>
-);
-
 // Inner form: mounted while an editing session is open, so per-session
 // state (the draft) initializes in useState instead of a sync-from-props
 // effect - the pattern React's lint rules push toward.
@@ -151,14 +120,7 @@ const EditorBody = ({
   }
 
   // Escape cancels (only while the form is actually visible).
-  useEffect(() => {
-    if (isPicking) return;
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [isPicking, onClose]);
+  useEscapeKey(onClose, !isPicking);
 
   const setField =
     (field: 'name' | 'description' | 'notes' | 'googleMapsUrl') =>
@@ -192,11 +154,17 @@ const EditorBody = ({
 
   // POIs that are stops on a walking tour must not be deleted - the tour's
   // poiSequence would dangle (and fail validation on export).
-  const tourUsingPoi = editingPoi
-    ? Object.values(poisData.walkingTours ?? {})
-        .flat()
-        .find((tour) => tour.poiSequence.includes(editingPoi.id))
-    : null;
+  // Memoized: this scans every tour's sequence, and the form re-renders on
+  // every keystroke (review finding).
+  const tourUsingPoi = useMemo(
+    () =>
+      editingPoi
+        ? Object.values(poisData.walkingTours ?? {})
+            .flat()
+            .find((tour) => tour.poiSequence.includes(editingPoi.id))
+        : null,
+    [poisData, editingPoi]
+  );
 
   const buildPoi = (): Poi => {
     const trimmedName = draft.name.trim();
@@ -308,7 +276,7 @@ const EditorBody = ({
           </>
         ) : (
           <div className={styles.cityNote}>
-            <PinIcon />
+            <PinIcon size={13} />
             {cityName(cityId)}
           </div>
         )}
@@ -346,7 +314,7 @@ const EditorBody = ({
           </div>
           <div className={styles.locationButtons}>
             <button className={styles.locationButton} onClick={onStartPicking}>
-              <MapTapIcon />
+              <MapTapIcon size={15} />
               Tap on map
             </button>
             <button
@@ -354,7 +322,7 @@ const EditorBody = ({
               onClick={handleUseMyLocation}
               disabled={isLocating}
             >
-              <LocateIcon />
+              <LocateIcon size={15} />
               {isLocating ? 'Locating…' : 'My location'}
             </button>
           </div>
@@ -436,7 +404,7 @@ const EditorBody = ({
 };
 
 const PoiEditorSheet = (props: PoiEditorSheetProps) => {
-  const { session, isPicking, onClose } = props;
+  const { session, isPicking } = props;
   return (
     <AnimatePresence>
       {session && (
@@ -465,7 +433,7 @@ const PoiEditorSheet = (props: PoiEditorSheetProps) => {
             exit={{ y: '100%' }}
             transition={springSheet}
           >
-            <EditorBody {...props} session={session} onClose={onClose} />
+            <EditorBody {...props} session={session} />
           </motion.div>
         </>
       )}

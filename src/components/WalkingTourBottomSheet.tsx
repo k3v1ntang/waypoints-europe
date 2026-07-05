@@ -3,6 +3,14 @@ import { AnimatePresence } from 'motion/react';
 import ImageLightbox from './ImageLightbox';
 import GuideViewer from './GuideViewer';
 import type { City, WalkingTour } from '../data/types';
+import {
+  BookIcon,
+  ChevronRightIcon,
+  ClockIcon,
+  CloseIcon,
+  DistanceIcon,
+  PinIcon
+} from './icons';
 import styles from './WalkingTourBottomSheet.module.css';
 
 // Phase 5b: tours list content, restyled on the token system. Control
@@ -15,60 +23,6 @@ interface WalkingTourBottomSheetProps {
   onTourSelect: (tour: WalkingTour | null) => void;
   selectedTour: WalkingTour | null;
 }
-
-const iconProps = {
-  width: 14,
-  height: 14,
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
-  strokeWidth: 1.8,
-  strokeLinecap: 'round',
-  strokeLinejoin: 'round',
-  'aria-hidden': true
-} as const;
-
-const ClockIcon = () => (
-  <svg {...iconProps}>
-    <circle cx="12" cy="12" r="9" />
-    <path d="M12 7v5l3 2" />
-  </svg>
-);
-
-/** Distance: two end points joined by a line. */
-const DistanceIcon = () => (
-  <svg {...iconProps}>
-    <circle cx="5" cy="19" r="2" />
-    <circle cx="19" cy="5" r="2" />
-    <path d="m6.5 17.5 11-11" />
-  </svg>
-);
-
-const PinIcon = () => (
-  <svg {...iconProps}>
-    <path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z" />
-    <circle cx="12" cy="10" r="2.5" />
-  </svg>
-);
-
-const CloseIcon = () => (
-  <svg {...iconProps}>
-    <path d="M6 6l12 12M18 6 6 18" />
-  </svg>
-);
-
-const BookIcon = () => (
-  <svg {...iconProps} width={20} height={20}>
-    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14Z" />
-    <path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5" />
-  </svg>
-);
-
-const ChevronRightIcon = () => (
-  <svg {...iconProps} width={16} height={16}>
-    <path d="m9 6 6 6-6 6" />
-  </svg>
-);
 
 const WalkingTourBottomSheet = ({
   currentCity,
@@ -120,7 +74,7 @@ const WalkingTourBottomSheet = ({
                   className={isSelected ? styles.routeButtonActive : styles.routeButton}
                   onClick={() => onTourSelect(isSelected ? null : tour)}
                 >
-                  {isSelected ? <CloseIcon /> : <PinIcon />}
+                  {isSelected ? <CloseIcon size={14} /> : <PinIcon size={14} />}
                   {isSelected ? 'Hide Route' : 'Show Route'}
                 </button>
               </div>
@@ -129,15 +83,15 @@ const WalkingTourBottomSheet = ({
 
               <div className={styles.tourStats}>
                 <span className={styles.tourStat}>
-                  <ClockIcon />
+                  <ClockIcon size={14} />
                   {tour.estimatedTime}
                 </span>
                 <span className={styles.tourStat}>
-                  <DistanceIcon />
+                  <DistanceIcon size={14} />
                   {tour.distance}
                 </span>
                 <span className={styles.tourStat}>
-                  <PinIcon />
+                  <PinIcon size={14} />
                   {tour.poiSequence.length} stops
                 </span>
               </div>
@@ -173,14 +127,14 @@ const WalkingTourBottomSheet = ({
                       setIsGuideOpen(true);
                     }}
                   >
-                    <span className={styles.guideButtonIcon}><BookIcon /></span>
+                    <span className={styles.guideButtonIcon}><BookIcon size={20} /></span>
                     <span className={styles.guideButtonText}>
                       <span className={styles.guideButtonTitle}>View Full Tour Guide</span>
                       <span className={styles.guideButtonSubtitle}>
                         Complete walking tour with detailed descriptions
                       </span>
                     </span>
-                    <span className={styles.guideButtonChevron}><ChevronRightIcon /></span>
+                    <span className={styles.guideButtonChevron}><ChevronRightIcon size={16} /></span>
                   </button>
                 </div>
               )}

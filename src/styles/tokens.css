@@ -94,6 +94,27 @@
   /* env(safe-area-inset-bottom) is the iPhone home-indicator zone; it is
      0 on devices without one, so adding it is always safe. */
   --safe-bottom: env(safe-area-inset-bottom, 0px);
+  /* Vertical space the floating bottom bar occupies, derived from its real
+     ingredients (44px hit target + 2×8px bar padding + 12px inset + 4px
+     air) so anything that must clear the bar - OSM attribution, the map
+     error banner - tracks bar changes instead of hardcoding a guess. */
+  --bar-clearance: calc(var(--hit-target) + 16px + var(--bar-inset) + 4px);
+
+  /* ---- Layers -----------------------------------------------------------
+     The one place the stacking order is defined. Every fixed surface reads
+     its z-index from here; keep this list in visual bottom-to-top order. */
+  --z-bar: 999;
+  --z-sheet-backdrop: 1000;
+  --z-sheet: 1001;
+  --z-search-sheet: 1100;
+  --z-editor-backdrop: 1199;
+  --z-editor: 1200;
+  --z-picking-banner: 1300;
+  --z-guide-backdrop: 10000;
+  --z-guide: 10001;
+  /* Above even the guide: the map-error banner carries the Reload button
+     and must never be buried (review finding). */
+  --z-error-banner: 10010;
 }
 
 /* ---- Dark mode ---------------------------------------------------------

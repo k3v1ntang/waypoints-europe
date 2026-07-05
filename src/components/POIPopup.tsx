@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ImageLightbox from './ImageLightbox';
 import type { Poi, WalkingTour } from '../data/types';
+import { ExternalIcon, PencilIcon, PinIcon } from './icons';
 import styles from './POIPopup.module.css';
 
 // ❓ CONCEPT: Popup content as a React component
@@ -15,40 +16,6 @@ interface POIPopupProps {
   tour: WalkingTour | null;
   onEdit?: (poi: Poi) => void;
 }
-
-const iconProps = {
-  width: 13,
-  height: 13,
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
-  strokeWidth: 1.8,
-  strokeLinecap: 'round',
-  strokeLinejoin: 'round',
-  'aria-hidden': true
-} as const;
-
-const PinIcon = () => (
-  <svg {...iconProps}>
-    <path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z" />
-    <circle cx="12" cy="10" r="2.5" />
-  </svg>
-);
-
-const PencilIcon = () => (
-  <svg {...iconProps}>
-    <path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3Z" />
-  </svg>
-);
-
-/** Outward arrow in a corner - external link. */
-const ExternalIcon = () => (
-  <svg {...iconProps}>
-    <path d="M14 4h6v6" />
-    <path d="M20 4 10 14" />
-    <path d="M20 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h5" />
-  </svg>
-);
 
 const POIPopup = ({ poi, tour, onEdit }: POIPopupProps) => {
   const [expanded, setExpanded] = useState(false);
@@ -133,7 +100,7 @@ const POIPopup = ({ poi, tour, onEdit }: POIPopupProps) => {
       {poi.googleMapsUrl && (
         <div className={styles.mapsLink}>
           <a href={poi.googleMapsUrl} target="_blank" rel="noreferrer">
-            <ExternalIcon />
+            <ExternalIcon size={13} />
             View on Google Maps
           </a>
         </div>
@@ -141,7 +108,7 @@ const POIPopup = ({ poi, tour, onEdit }: POIPopupProps) => {
 
       <div className={styles.footer}>
         <span className={styles.category}>
-          <PinIcon />
+          <PinIcon size={13} />
           {poi.category}
         </span>
         {onEdit && (
@@ -150,7 +117,7 @@ const POIPopup = ({ poi, tour, onEdit }: POIPopupProps) => {
             onClick={() => onEdit(poi)}
             aria-label={`Edit ${poi.name}`}
           >
-            <PencilIcon />
+            <PencilIcon size={13} />
             Edit
           </button>
         )}
