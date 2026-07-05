@@ -24,7 +24,12 @@
  * already-glass surface and need to separate from it.
  */
 
-.glass {
+/* .maplibregl-ctrl-group rides along with .glass throughout this file:
+   MapLibre owns that DOM (no way to add our class), but the floating map
+   controls are glass surfaces like any other and must inherit the same
+   opaque/reduced-transparency fallbacks. */
+.glass,
+.maplibregl-ctrl.maplibregl-ctrl-group {
   background-color: var(--glass-fill);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
@@ -58,7 +63,8 @@
    browsers a solid, fully legible surface instead of see-through
    text-on-map. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass {
+  .glass,
+  .maplibregl-ctrl.maplibregl-ctrl-group {
     background-color: var(--glass-fill-opaque);
   }
   .glass--elevated {
@@ -69,7 +75,8 @@
 /* Accessibility: reduced transparency kills the blur too (tokens.css
    already made the fills opaque, so the blur would be invisible work). */
 @media (prefers-reduced-transparency: reduce) {
-  .glass {
+  .glass,
+  .maplibregl-ctrl.maplibregl-ctrl-group {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }

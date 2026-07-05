@@ -1,22 +1,26 @@
-import Lightbox from 'yet-another-react-lightbox';
+import Lightbox, { type SlideImage } from 'yet-another-react-lightbox';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 import 'yet-another-react-lightbox/styles.css';
 
 /**
- * ImageLightbox - Modern lightbox component using Yet Another React Lightbox
+ * ImageLightbox - lightbox wrapper around Yet Another React Lightbox.
  *
  * Features:
  * - Professional mobile touch support (pinch-to-zoom, double-tap, swipe)
  * - Prevents background scroll (NoScroll module built-in)
  * - Keyboard navigation (Esc, +/-, arrow keys)
  * - Responsive and accessible
- *
- * @param {boolean} isOpen - Controls lightbox visibility
- * @param {function} onClose - Callback when lightbox closes
- * @param {Array<{src: string, alt?: string, title?: string}>} slides - Images to show
- * @param {number} index - Slide to open on (default 0)
  */
-const ImageLightbox = ({ isOpen, onClose, slides, index = 0 }) => {
+
+interface ImageLightboxProps {
+  isOpen: boolean;
+  onClose: () => void;
+  slides: SlideImage[];
+  /** Slide to open on (default 0). */
+  index?: number;
+}
+
+const ImageLightbox = ({ isOpen, onClose, slides, index = 0 }: ImageLightboxProps) => {
   return (
     <Lightbox
       open={isOpen}
@@ -48,17 +52,12 @@ const ImageLightbox = ({ isOpen, onClose, slides, index = 0 }) => {
         swipe: 500
       }}
       toolbar={{
-        buttons: [
-          'close'
-        ]
+        buttons: ['close']
       }}
       styles={{
         container: {
           backgroundColor: 'rgba(0, 0, 0, 0.95)'
         }
-      }}
-      render={{
-        iconClose: () => '×'
       }}
     />
   );

@@ -27,48 +27,23 @@ html, body {
   height: 100%;
 }
 
-/* Mobile-optimized popup styles */
-.mobile-poi-popup .maplibregl-popup-content {
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  padding: 16px;
-  max-height: 80vh;
-  overflow-y: auto;
+/* ---- MapLibre popup: let the glass card own the surface -----------------
+   MapLibre wraps popup content in .maplibregl-popup-content with its own
+   white background, padding, and shadow. POIPopup renders a .glass card
+   inside, so the wrapper goes fully transparent - otherwise the card would
+   sit on a white slab and the glass material could never read. */
+.maplibregl-popup-content {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  border-radius: var(--radius-card);
 }
 
-/* Style all popup close buttons */
-.maplibregl-popup-close-button {
-  width: 20px !important;
-  height: 20px !important;
-  font-size: 16px !important;
-  font-weight: bold !important;
-  right: 8px !important;
-  top: 2px !important;
-  border-radius: 0 !important;
-  background-color: white !important;
-  color: black !important;
-  border: none !important;
-  line-height: 20px !important;
-  text-align: center !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.maplibregl-popup-close-button:hover {
-  background-color: #f3f4f6 !important;
-  color: black !important;
-}
-
-/* Improve popup tip (arrow) */
-.mobile-poi-popup .maplibregl-popup-tip {
-  border-top-color: white;
-  border-width: 8px;
-}
-
-/* Touch-friendly scrolling for popup content */
-.mobile-poi-popup .maplibregl-popup-content {
-  -webkit-overflow-scrolling: touch;
+/* Popups open with anchor:'center' (no directional arrow needed); the tip
+   would poke out from under the transparent wrapper as a floating white
+   triangle, so remove it. */
+.maplibregl-popup-tip {
+  display: none;
 }
 
 /* Prevent text selection on markers for better touch UX */

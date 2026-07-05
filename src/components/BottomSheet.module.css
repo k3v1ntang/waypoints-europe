@@ -1,0 +1,78 @@
+/*
+ * BottomSheet - Phase 5b: the reusable modal sheet (tours list lives in it).
+ *
+ * The sheet body is the OPAQUE end of the glass system, not translucent
+ * glass: it can cover most of the screen, and D4 restricts backdrop-filter
+ * to small floating surfaces over the live WebGL map. Radius, hairlines,
+ * and type carry the design language instead.
+ */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: var(--scrim);
+  z-index: var(--z-sheet-backdrop);
+}
+
+.sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* Same desktop cap as the bottom bar: a full-width sheet on a Mac
+     window reads as a banner, not a sheet. */
+  max-width: 640px;
+  margin-inline: auto;
+  z-index: var(--z-sheet);
+  display: flex;
+  flex-direction: column;
+  max-height: 80dvh;
+  background-color: var(--glass-fill-elevated-opaque);
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  box-shadow: var(--shadow-floating);
+  font-family: var(--font-ui);
+  color: var(--text-primary);
+}
+
+/* iOS-style grab handle; tapping it closes the sheet. */
+.handle {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 0 6px 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 72px; /* generous hit area around the visible pill */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.handle::before {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 5px;
+  margin: 0 auto;
+  border-radius: var(--radius-capsule);
+  background-color: var(--separator-strong);
+}
+
+.header {
+  padding: 4px 24px 14px 24px;
+  border-bottom: 0.5px solid var(--separator);
+}
+
+.title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 16px 24px calc(24px + var(--safe-bottom)) 24px;
+}
