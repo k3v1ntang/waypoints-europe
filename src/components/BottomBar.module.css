@@ -151,10 +151,21 @@
   background-color: var(--fill-well-pressed);
 }
 
-/* Divider between grouped buttons - full 1px and the stronger separator
-   tone; the 0.5px hairline vanished against the glass fill. */
-.groupButton + .groupButton {
-  border-left: 1px solid var(--separator-strong);
+/* Divider between grouped buttons. Not a border: a border spans the
+   element's full edge, so it ran into the capsule's rounded corners and
+   made the right button read as its own pill. Instead, a ::before
+   pseudo-element (a styleable phantom child) draws a short 1px line,
+   vertically centered and inset from both curved edges - the iOS
+   segmented-control treatment. */
+.groupButton + .groupButton::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 20px;
+  background-color: var(--separator-strong);
 }
 
 /* Standalone ⋯ button - same size, its own capsule (it opens an overflow
