@@ -1,12 +1,12 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
 // Phase 5 design system: tokens first (defines the custom properties),
 // then the glass material that consumes them.
-import './styles/tokens.css'
-import './styles/glass.css'
-import App from './App.jsx'
-import ErrorBoundary from './components/ErrorBoundary.jsx'
+import './styles/tokens.css';
+import './styles/glass.css';
+import App from './App';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // One-time cleanup of the runtime cache left behind by the Mapbox ->
 // MapLibre migration (Phase 1, July 2026). Workbox never deletes a named
@@ -34,10 +34,12 @@ if (navigator.storage?.persist) {
   });
 }
 
-createRoot(document.getElementById('root')).render(
+// The non-null assertion (!) mirrors reality: #root is hardcoded in
+// index.html; if it's missing the app cannot start anyway.
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ErrorBoundary>
       <App />
     </ErrorBoundary>
-  </StrictMode>,
-)
+  </StrictMode>
+);

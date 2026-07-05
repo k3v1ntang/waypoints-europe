@@ -1,24 +1,30 @@
-import { useRef, useEffect, useState, useCallback } from 'react';
-import { createRoot } from 'react-dom/client';
+import { useRef, useEffect, useState, useMemo, useCallback } from 'react';
+import { createRoot, type Root } from 'react-dom/client';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import type { Feature, FeatureCollection, LineString, Point } from 'geojson';
 import basePoisData from '../data/pois.json';
-import CityNavigation from './CityNavigation.jsx';
-import BottomSheet from './BottomSheet.jsx';
-import FloatingActionButton from './FloatingActionButton.jsx';
-import WalkingTourBottomSheet from './WalkingTourBottomSheet.jsx';
-import POIPopup from './POIPopup.jsx';
-import PoiEditorSheet from './PoiEditorSheet.jsx';
-import POISearch from './POISearch.jsx';
-import BottomBar from './BottomBar.tsx';
-import { usePoiData } from '../hooks/usePoiData.js';
+import BottomSheet from './BottomSheet';
+import WalkingTourBottomSheet from './WalkingTourBottomSheet';
+import POIPopup from './POIPopup';
+import PoiEditorSheet, { type EditorSession } from './PoiEditorSheet';
+import BottomBar from './BottomBar';
+import SearchSheet from './SearchSheet';
+import { usePoiData } from '../hooks/usePoiData';
 import { exportMergedPois } from '../data/exportPois.js';
+import type { City, Poi, PoisData, WalkingTour } from '../data/types';
+import styles from './Map.module.css';
 
 const LAST_CITY_STORAGE_KEY = 'waypoints-last-city';
 
+// Same `unknown` bridge as usePoiData: the JSON import's inferred shape is
+// wider than PoisData (number[] vs [number, number] tuples); the validate
+// script enforces the real shape at build time.
+const typedBasePoisData = basePoisData as unknown as PoisData;
+
 // Find a POI (and its city) anywhere in the data set. POI ids are validated
 // to be globally unique, so a flat search is safe.
-const findPoiById = (poisData, poiId) => {
+const findPoiById = (poisData: PoisData, poiId: string): { poi: Poi; city: City } | null => {
   for (const city of poisData.cities) {
     const poi = city.pois.find((p) => p.id === poiId);
     if (poi) return { poi, city };
@@ -26,7 +32,7 @@ const findPoiById = (poisData, poiId) => {
   return null;
 };
 
-const shouldShowPOI = (poi, showWalkingTourPOIs) => {
+const shouldShowPOI = (poi: Poi, showWalkingTourPOIs: boolean): boolean => {
   const visibility = poi.visibility || 'always'; // Default to 'always' for POIs without visibility field
   return visibility === 'walkingTour' ? showWalkingTourPOIs : true;
 };
@@ -36,13 +42,16 @@ const shouldShowPOI = (poi, showWalkingTourPOIs) => {
 // time, we compute it from the current POI data whenever that data changes
 // and push it into the existing source with setData(). This is what lets
 // runtime edits (Phase 2) appear on the map without re-initializing it.
-const buildGeojson = (poisData, showWalkingTourPOIs) => ({
+const buildGeojson = (
+  poisData: PoisData,
+  showWalkingTourPOIs: boolean
+): FeatureCollection<Point> => ({
   type: 'FeatureCollection',
   features: poisData.cities.flatMap((city) =>
     city.pois
       .filter((poi) => shouldShowPOI(poi, showWalkingTourPOIs))
       .map((poi) => ({
-        type: 'Feature',
+        type: 'Feature' as const,
         properties: {
           id: poi.id,
           name: poi.name,
@@ -50,32 +59,65 @@ const buildGeojson = (poisData, showWalkingTourPOIs) => ({
           isHotel: poi.category === 'hotel'
         },
         geometry: {
-          type: 'Point',
+          type: 'Point' as const,
           coordinates: poi.coordinates
         }
       }))
   )
 });
 
+const EMPTY_LINE: Feature<LineString> = {
+  type: 'Feature',
+  properties: {},
+  geometry: { type: 'LineString', coordinates: [] }
+};
+
+interface PopupState {
+  popup: maplibregl.Popup;
+  root: Root;
+  poiId: string;
+}
+
 const Map = () => {
-  const mapContainerRef = useRef();
-  const mapRef = useRef();
+  const mapContainerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
   const hasLoadedRef = useRef(false);
-  const mapErrorTimeoutRef = useRef(null);
-  const popupStateRef = useRef(null); // { popup, root, poiId } for the open POI popup
-  const lastFittedTourRef = useRef(null);
+  const mapErrorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const popupStateRef = useRef<PopupState | null>(null); // the open POI popup
+  const lastFittedTourRef = useRef<string | null>(null);
   const pickingRef = useRef(false); // mirror of isPicking for the run-once map click handler
   const { poisData, savePoi, deletePoi, resetPoi, isBasePoi, hasEdit, editCount } = usePoiData();
   const [mapLoaded, setMapLoaded] = useState(false);
-  const [currentCity, setCurrentCity] = useState(null);
-  const [selectedPoi, setSelectedPoi] = useState(null); // { id } - object so re-selecting re-runs the popup effect
-  const [selectedTour, setSelectedTour] = useState(null);
+  // City selection is stored as an ID and the City object derived from the
+  // live data, so runtime edits can never leave a stale object in state.
+  const [currentCityId, setCurrentCityId] = useState<string | null>(() => {
+    try {
+      return localStorage.getItem(LAST_CITY_STORAGE_KEY);
+    } catch {
+      return null; // localStorage unavailable (e.g. Safari private mode)
+    }
+  });
+  const [selectedPoi, setSelectedPoi] = useState<{ id: string } | null>(null); // object so re-selecting re-runs the popup effect
+  const [selectedTour, setSelectedTour] = useState<WalkingTour | null>(null);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [showWalkingTourPOIs, setShowWalkingTourPOIs] = useState(false);
-  const [mapError, setMapError] = useState(null);
-  const [editorSession, setEditorSession] = useState(null); // { poi: object|null, cityId } - null poi = add new
+  const [mapError, setMapError] = useState<string | null>(null);
+  const [editorSession, setEditorSession] = useState<EditorSession | null>(null);
   const [isPicking, setIsPicking] = useState(false); // tap-on-map coordinate picking mode
-  const [pickedCoordinates, setPickedCoordinates] = useState(null);
+  const [pickedCoordinates, setPickedCoordinates] = useState<[number, number] | null>(null);
+
+  const currentCity = useMemo<City | null>(
+    () => (currentCityId ? poisData.cities.find((c) => c.id === currentCityId) ?? null : null),
+    [poisData, currentCityId]
+  );
+
+  // Drop a selection whose POI no longer exists (deleted by an edit).
+  // Adjusting state during render (see PoiEditorSheet for the concept
+  // note) - React restarts the render before anything is committed.
+  if (selectedPoi && !findPoiById(poisData, selectedPoi.id)) {
+    setSelectedPoi(null);
+  }
 
   // Close the open popup and tear down its React root. Deferring unmount()
   // avoids unmounting a root from inside the render cycle that scheduled it.
@@ -89,15 +131,15 @@ const Map = () => {
 
   // --- POI editing (Phase 2) ---
 
-  const handleEditPoi = useCallback((poi) => {
-    const found = findPoiById(poisData, poi.id);
+  const handleEditPoi = useCallback((poi: Poi) => {
     setPickedCoordinates(null);
+    const found = findPoiById(poisData, poi.id);
     setEditorSession({ poi, cityId: found?.city.id ?? null });
   }, [poisData]);
 
   const handleAddPoi = () => {
     setPickedCoordinates(null);
-    setEditorSession({ poi: null, cityId: currentCity?.id ?? null });
+    setEditorSession({ poi: null, cityId: currentCityId });
   };
 
   const handleCloseEditor = () => {
@@ -107,33 +149,26 @@ const Map = () => {
   };
 
   // Save, then select the POI so the popup shows (or refreshes to) the result.
-  const handleSavePoi = async (poi, cityId) => {
+  const handleSavePoi = async (poi: Poi, cityId: string) => {
     await savePoi(poi, cityId);
     setSelectedPoi({ id: poi.id });
   };
 
-  // Function to handle walking tour selection
-  const handleTourSelect = (tour) => {
+  const handleTourSelect = (tour: WalkingTour | null) => {
     setSelectedTour(tour);
     setShowWalkingTourPOIs(tour !== null); // Show walking tour POIs when a tour is selected
     setIsBottomSheetOpen(false); // Close bottom sheet when tour is selected/deselected
   };
 
-  // Function to handle FAB click
-  const handleFABClick = () => {
-    setIsBottomSheetOpen(true);
-  };
-
-  // Tours available in the current city - badges on the old FAB and the
-  // new BottomBar. Computed once per render instead of per call site.
+  // Tours available in the current city - badge on the BottomBar.
   const toursCount =
     currentCity && poisData.walkingTours
       ? (poisData.walkingTours[currentCity.id] || []).length
       : 0;
 
-  // Function to handle city selection and zoom
-  const handleCitySelect = (city) => {
-    setCurrentCity(city);
+  // City selection (from the SearchSheet's chips): remember it and fly there.
+  const handleCitySelect = (city: City | null) => {
+    setCurrentCityId(city?.id ?? null);
     setSelectedTour(null); // Clear any selected tour when changing cities
 
     // Remember the selected city so the app reopens here instead of the
@@ -160,11 +195,11 @@ const Map = () => {
       });
     } else {
       // Calculate bounds for the selected city's POIs
-      const coordinates = city.pois.map(poi => poi.coordinates);
+      const coordinates = city.pois.map((poi) => poi.coordinates);
 
       if (coordinates.length === 0) return;
 
-      if (coordinates.length === 1) {
+      if (coordinates.length === 1 && coordinates[0]) {
         // Single POI - center and zoom in
         mapRef.current.flyTo({
           center: coordinates[0],
@@ -175,7 +210,7 @@ const Map = () => {
       } else {
         // Multiple POIs - fit bounds to show all
         const bounds = new maplibregl.LngLatBounds();
-        coordinates.forEach(coord => bounds.extend(coord));
+        coordinates.forEach((coord) => bounds.extend(coord));
 
         mapRef.current.fitBounds(bounds, {
           padding: { top: 80, bottom: 50, left: 50, right: 50 },
@@ -199,7 +234,7 @@ const Map = () => {
   // again whenever the data or the walking-tour filter changes.
   useEffect(() => {
     if (!mapLoaded) return;
-    const source = mapRef.current?.getSource('pois');
+    const source = mapRef.current?.getSource<maplibregl.GeoJSONSource>('pois');
     if (!source) return;
     source.setData(buildGeojson(poisData, showWalkingTourPOIs));
   }, [poisData, showWalkingTourPOIs, mapLoaded]);
@@ -208,8 +243,8 @@ const Map = () => {
   useEffect(() => {
     if (!mapLoaded) return;
     const map = mapRef.current;
-    const source = map?.getSource('walking-tour-line');
-    if (!source) return;
+    const source = map?.getSource<maplibregl.GeoJSONSource>('walking-tour-line');
+    if (!map || !source) return;
 
     if (selectedTour) {
       // Increase label minzoom to reduce clutter when route is active
@@ -220,10 +255,11 @@ const Map = () => {
       // Create direct lines between POIs in sequence
       const coordinates = selectedTour.poiSequence
         .map((poiId) => findPoiById(poisData, poiId)?.poi.coordinates)
-        .filter(Boolean);
+        .filter((coord): coord is [number, number] => Boolean(coord));
 
       source.setData({
         type: 'Feature',
+        properties: {},
         geometry: { type: 'LineString', coordinates }
       });
 
@@ -243,10 +279,7 @@ const Map = () => {
       if (map.getLayer('poi-labels')) {
         map.setLayerZoomRange('poi-labels', 13, 22);
       }
-      source.setData({
-        type: 'Feature',
-        geometry: { type: 'LineString', coordinates: [] }
-      });
+      source.setData(EMPTY_LINE);
     }
   }, [selectedTour, poisData, mapLoaded]);
 
@@ -263,10 +296,10 @@ const Map = () => {
     }
 
     const found = findPoiById(poisData, selectedPoi.id);
+    // A vanished POI is handled by the render-time adjustment above; this
+    // guard only covers the window before that re-render's effects run.
     if (!found) {
-      // POI no longer exists (e.g. deleted by an edit) - drop the selection
       closePopup();
-      setSelectedPoi(null);
       return;
     }
 
@@ -323,23 +356,19 @@ const Map = () => {
     popupStateRef.current = { popup, root, poiId: poi.id };
   }, [selectedPoi, selectedTour, poisData, mapLoaded, closePopup, handleEditPoi]);
 
-  // When POI data changes (runtime edits), refresh the currentCity reference
-  // so components receiving it see the updated city object.
-  useEffect(() => {
-    setCurrentCity((prev) =>
-      prev ? poisData.cities.find((c) => c.id === prev.id) ?? null : prev
-    );
-  }, [poisData]);
-
   useEffect(() => {
     // ❓ CONCEPT: Prevent duplicate map initialization
-    if (mapRef.current) return;
+    if (mapRef.current || !mapContainerRef.current) return;
 
-    // Reopen on the last-viewed city instead of the Europe-wide view
-    let savedCity = null;
+    // Reopen on the last-viewed city instead of the Europe-wide view. Reads
+    // the lazily-initialized state's first value via localStorage again so
+    // this run-once effect needs no state dependency.
+    let savedCity: City | null = null;
     try {
       const savedCityId = localStorage.getItem(LAST_CITY_STORAGE_KEY);
-      savedCity = savedCityId ? basePoisData.cities.find(c => c.id === savedCityId) : null;
+      savedCity = savedCityId
+        ? typedBasePoisData.cities.find((c) => c.id === savedCityId) ?? null
+        : null;
     } catch {
       // localStorage unavailable - fall back to the default Europe view
     }
@@ -350,10 +379,6 @@ const Map = () => {
       zoom: savedCity ? 12 : 4, // Appropriate zoom to see Munich to Helsinki range
       style: 'https://tiles.openfreemap.org/styles/liberty'
     });
-
-    if (savedCity) {
-      setCurrentCity(savedCity);
-    }
 
     // MapLibre init failures (no network on first load, etc.) fire
     // 'error' rather than throwing, so React's error boundary can't see them.
@@ -378,7 +403,8 @@ const Map = () => {
       }, 6000);
     });
 
-    // Add navigation controls (zoom + compass) to top-right corner
+    // Zoom + compass controls; CSS hides them on touch devices (D8), where
+    // pinch/rotate gestures cover the same ground.
     const nav = new maplibregl.NavigationControl();
     map.addControl(nav, 'top-right');
 
@@ -387,8 +413,9 @@ const Map = () => {
       positionOptions: {
         enableHighAccuracy: true
       },
-      trackUserLocation: true, // Enable live tracking for travel
-      showUserHeading: true   // Show direction user is facing
+      trackUserLocation: true // Enable live tracking for travel
+      // (the old showUserHeading option was Mapbox-only - MapLibre's
+      // GeolocateControl never had it; TS conversion surfaced the no-op)
     });
     map.addControl(geolocate, 'top-right');
 
@@ -420,11 +447,11 @@ const Map = () => {
           'circle-color': [
             'step',
             ['get', 'point_count'],
-            '#2563eb',  // Blue for small clusters
+            '#2563eb', // Blue for small clusters
             5,
-            '#f59e0b',  // Orange for medium clusters
+            '#f59e0b', // Orange for medium clusters
             10,
-            '#dc2626'   // Red for large clusters
+            '#dc2626' // Red for large clusters
           ],
           'circle-radius': [
             'step',
@@ -433,7 +460,7 @@ const Map = () => {
             5,
             20, // Medium clusters
             10,
-            25  // Large clusters
+            25 // Large clusters
           ],
           'circle-stroke-width': 2,
           'circle-stroke-color': '#ffffff'
@@ -448,7 +475,7 @@ const Map = () => {
         filter: ['has', 'point_count'],
         layout: {
           'text-field': '{point_count_abbreviated}',
-          'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+          'text-font': ['Noto Sans Bold'],
           'text-size': 12
         },
         paint: {
@@ -467,7 +494,7 @@ const Map = () => {
             'case',
             ['get', 'isHotel'],
             '#dc2626', // Red for hotels
-            '#2563eb'  // Blue for POIs
+            '#2563eb' // Blue for POIs
           ],
           'circle-radius': 9,
           'circle-stroke-width': 3,
@@ -483,15 +510,15 @@ const Map = () => {
         filter: ['!', ['has', 'point_count']], // Only show labels for unclustered points
         layout: {
           'text-field': ['get', 'name'],
-          'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+          'text-font': ['Noto Sans Regular'],
           'text-size': [
             'interpolate',
             ['linear'],
             ['zoom'],
-            10, 0,    // Hidden at zoom level 10 and below
-            12, 11,   // Small text at zoom 12
-            14, 13,   // Medium text at zoom 14
-            16, 15    // Larger text at zoom 16+
+            10, 0, // Hidden at zoom level 10 and below
+            12, 11, // Small text at zoom 12
+            14, 13, // Medium text at zoom 14
+            16, 15 // Larger text at zoom 16+
           ],
           'text-variable-anchor': [
             'top', 'bottom', 'left', 'right',
@@ -502,8 +529,8 @@ const Map = () => {
           'text-allow-overlap': false,
           'text-ignore-placement': false,
           'symbol-spacing': 250, // Minimum distance between repeated labels
-          'text-max-width': 8,   // Maximum text width in ems
-          'text-padding': 4      // Padding around text for collision detection
+          'text-max-width': 8, // Maximum text width in ems
+          'text-padding': 4 // Padding around text for collision detection
         },
         paint: {
           'text-color': '#1f2937',
@@ -513,9 +540,9 @@ const Map = () => {
             'interpolate',
             ['linear'],
             ['zoom'],
-            10, 0,    // Invisible at zoom 10 and below
-            11, 0.6,  // Fade in at zoom 11
-            12, 1     // Fully visible at zoom 12+
+            10, 0, // Invisible at zoom 10 and below
+            11, 0.6, // Fade in at zoom 11
+            12, 1 // Fully visible at zoom 12+
           ]
         }
       });
@@ -523,13 +550,7 @@ const Map = () => {
       // Add walking tour line source (initially empty)
       map.addSource('walking-tour-line', {
         type: 'geojson',
-        data: {
-          type: 'Feature',
-          geometry: {
-            type: 'LineString',
-            coordinates: []
-          }
-        }
+        data: EMPTY_LINE
       });
 
       // Add walking tour line layer
@@ -549,20 +570,31 @@ const Map = () => {
         }
       });
 
-      // Handle cluster clicks - zoom in
+      // Handle cluster clicks - zoom in.
+      // getClusterExpansionZoom is Promise-based since MapLibre v4 (the old
+      // Mapbox-era callback form was silently a no-op after the migration -
+      // caught by the TypeScript conversion, Phase 5b).
       map.on('click', 'clusters', (e) => {
         const features = map.queryRenderedFeatures(e.point, {
           layers: ['clusters']
         });
-        const clusterId = features[0].properties.cluster_id;
-        map.getSource('pois').getClusterExpansionZoom(clusterId, (err, zoom) => {
-          if (!err) {
+        const feature = features[0];
+        const source = map.getSource<maplibregl.GeoJSONSource>('pois');
+        if (!feature || !source || feature.geometry.type !== 'Point') return;
+        const clusterId = feature.properties.cluster_id as number;
+        source
+          .getClusterExpansionZoom(clusterId)
+          .then((zoom) => {
             map.easeTo({
-              center: features[0].geometry.coordinates,
-              zoom: zoom
+              center: feature.geometry.type === 'Point'
+                ? (feature.geometry.coordinates as [number, number])
+                : e.lngLat,
+              zoom
             });
-          }
-        });
+          })
+          .catch(() => {
+            // Cluster no longer exists at this zoom - nothing to do
+          });
       });
 
       // Single map-level click handler drives POI selection: clicking a
@@ -580,11 +612,8 @@ const Map = () => {
         const features = map.queryRenderedFeatures(e.point, {
           layers: ['unclustered-point']
         });
-        if (features.length > 0) {
-          setSelectedPoi({ id: features[0].properties.id });
-        } else {
-          setSelectedPoi(null);
-        }
+        const id = features[0]?.properties.id;
+        setSelectedPoi(typeof id === 'string' ? { id } : null);
       });
 
       // Change cursor on hover
@@ -625,58 +654,12 @@ const Map = () => {
 
   return (
     <>
-      <div
-        ref={mapContainerRef}
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          height: '100dvh', // modern dynamic viewport height (fallback: 100vh)
-          width: '100vw',
-          paddingBottom: 'env(safe-area-inset-bottom)'
-        }}
-      />
+      <div ref={mapContainerRef} className={styles.container} />
 
       {mapError && (
-        // Anchored to the bottom (not top) so it can never cover the
-        // top-left city nav or the top-right zoom/geolocate controls -
-        // those should stay usable even when the map itself failed to load.
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 'calc(96px + env(safe-area-inset-bottom))',
-            left: '16px',
-            right: '16px',
-            zIndex: 2000,
-            backgroundColor: '#fef2f2',
-            border: '1px solid #ef4444',
-            borderRadius: '10px',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-            padding: '12px 16px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
-            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-          }}
-        >
-          <span style={{ fontSize: '14px', color: '#991b1b' }}>⚠️ {mapError}</span>
-          <button
-            onClick={() => window.location.reload()}
-            style={{
-              backgroundColor: '#ef4444',
-              color: 'white',
-              border: 'none',
-              borderRadius: '6px',
-              padding: '8px 14px',
-              fontSize: '13px',
-              fontWeight: '600',
-              cursor: 'pointer',
-              flexShrink: 0
-            }}
-          >
+        <div className={styles.errorBanner}>
+          <span className={styles.errorText}>⚠️ {mapError}</span>
+          <button className={styles.errorReload} onClick={() => window.location.reload()}>
             Reload
           </button>
         </div>
@@ -685,98 +668,38 @@ const Map = () => {
       {/* Coordinate picking banner - the editor sheet is hidden while this
           is up, so the whole map is available for the location tap */}
       {isPicking && (
-        <div
-          style={{
-            position: 'absolute',
-            top: '70px',
-            left: '16px',
-            right: '16px',
-            zIndex: 1300,
-            backgroundColor: '#1f2937',
-            color: 'white',
-            borderRadius: '10px',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
-            padding: '12px 16px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
-            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-          }}
-        >
-          <span style={{ fontSize: '14px' }}>📍 Tap the map to set the location</span>
-          <button
-            onClick={() => setIsPicking(false)}
-            style={{
-              backgroundColor: 'rgba(255,255,255,0.15)',
-              color: 'white',
-              border: '1px solid rgba(255,255,255,0.4)',
-              borderRadius: '6px',
-              padding: '6px 12px',
-              fontSize: '13px',
-              fontWeight: 600,
-              cursor: 'pointer',
-              flexShrink: 0
-            }}
-          >
+        <div className={styles.pickingBanner}>
+          <span className={styles.pickingText}>Tap the map to set the location</span>
+          <button className={styles.pickingCancel} onClick={() => setIsPicking(false)}>
             Cancel
           </button>
         </div>
       )}
 
-      {/* City Navigation Dropdown */}
-      <CityNavigation
-        cities={poisData.cities}
-        onCitySelect={handleCitySelect}
-        currentCity={currentCity}
-        editCount={editCount}
-        onExport={() => exportMergedPois(poisData)}
-      />
-
-      {/* POI name search - selecting a result flies to the POI and opens
-          its popup (which carries the Edit button) */}
-      <POISearch
-        poisData={poisData}
-        currentCityId={currentCity?.id}
-        onSelectPoi={(poi) => setSelectedPoi({ id: poi.id })}
-      />
-
-      {/* Floating Action Button for Walking Tours.
-          PoC comparison period: both FABs are nudged up (via their existing
-          bottom prop) so they don't sit on top of the new BottomBar; they
-          are deleted entirely in stage 5b. */}
-      <FloatingActionButton
-        onClick={handleFABClick}
-        icon="🚶‍♂️"
-        label="Walking Tours"
-        badge={toursCount > 0 ? toursCount : null}
-        bottom="calc(160px + env(safe-area-inset-bottom))"
-      />
-
-      {/* Floating Action Button for adding a place (Phase 2 editing) */}
-      <FloatingActionButton
-        onClick={handleAddPoi}
-        icon="➕"
-        label="Add Place"
-        bottom="calc(228px + env(safe-area-inset-bottom))"
-      />
-
-      {/* Phase 5 PoC (D8): new bottom-anchored glass control bar, rendered
-          alongside the old controls until judged on-device. Hidden while
+      {/* D8: ALL top-level controls live in the bottom bar; hidden while
           picking coordinates so it can't swallow location taps in the
           bottom strip (the editor sheet hides itself the same way). */}
       {!isPicking && (
         <BottomBar
-          poisData={poisData}
           currentCity={currentCity}
           toursCount={toursCount}
           editCount={editCount}
-          onSelectPoi={(poi) => setSelectedPoi({ id: poi.id })}
-          onShowTours={handleFABClick}
+          onOpenSearch={() => setIsSearchOpen(true)}
+          onShowTours={() => setIsBottomSheetOpen(true)}
           onAddPlace={handleAddPoi}
           onExport={() => exportMergedPois(poisData)}
         />
       )}
+
+      {/* Expanded search sheet: POI search + city switching (D8) */}
+      <SearchSheet
+        isOpen={isSearchOpen}
+        poisData={poisData}
+        currentCity={currentCity}
+        onSelectPoi={(poi) => setSelectedPoi({ id: poi.id })}
+        onSelectCity={handleCitySelect}
+        onClose={() => setIsSearchOpen(false)}
+      />
 
       {/* POI add/edit sheet */}
       <PoiEditorSheet

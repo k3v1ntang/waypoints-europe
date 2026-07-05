@@ -1,0 +1,225 @@
+/* WalkingTourBottomSheet - Phase 5b restyle on the token system. Lives
+   inside BottomSheet's opaque sheet, so everything here is content
+   styling: cards, stats, the map preview, and the guide button. */
+
+.emptyState {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.emptyStateArt {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.emptyStateTitle {
+  margin: 0 0 8px 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.emptyStateText {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.tourList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tourCard {
+  border: 1px solid var(--separator);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  background-color: var(--glass-fill-opaque);
+}
+
+.tourCardSelected {
+  composes: tourCard;
+  border-color: var(--color-primary);
+  /* A light wash of the brand color; color-mix keeps it readable in both
+     schemes instead of hardcoding a pastel that only works on white. */
+  background-color: color-mix(in srgb, var(--color-primary) 10%, var(--glass-fill-opaque));
+}
+
+.tourHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.tourName {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.routeButton {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  border-radius: var(--radius-capsule);
+  padding: 8px 14px;
+  min-height: 36px;
+  background-color: var(--color-primary);
+  color: var(--text-on-accent);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.routeButtonActive {
+  composes: routeButton;
+  background-color: var(--color-danger);
+}
+
+.routeButton svg,
+.guideButton svg {
+  display: block;
+}
+
+.tourDescription {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.tourStats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.tourStat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tourStat svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ---- Resources: map preview + guide button ------------------------------ */
+
+.resources {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resourceLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.resourceHint {
+  font-size: 11px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.mapPreview {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 120px;
+  padding: 0;
+  border: 1px solid var(--separator);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  cursor: pointer;
+  background: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mapPreviewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.mapPreviewChip {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: var(--radius-capsule);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.guideButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: var(--hit-target);
+  padding: 12px 14px;
+  border: 1px solid var(--separator);
+  border-radius: var(--radius-card);
+  background-color: var(--glass-fill-elevated-opaque);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-primary);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.guideButton:active {
+  background-color: var(--fill-well-pressed);
+}
+
+.guideButtonIcon {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+.guideButtonText {
+  flex: 1;
+  min-width: 0;
+}
+
+.guideButtonTitle {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.guideButtonSubtitle {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.guideButtonChevron {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}

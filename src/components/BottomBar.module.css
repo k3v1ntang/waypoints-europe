@@ -1,5 +1,5 @@
 /*
- * BottomBar layout - Phase 5 PoC (D8: Apple-Maps-shape bottom control bar)
+ * BottomBar layout - Phase 5 (D8: Apple-Maps-shape bottom control bar)
  *
  * ❓ CONCEPT: CSS Modules
  * 📝 EXPLANATION: a stylesheet named *.module.css gets its class names
@@ -23,20 +23,16 @@
      toolbar. Capping the width and setting both horizontal margins to
      `auto` makes the browser split the leftover space evenly - the
      classic CSS centering idiom - so on wide screens it stays a floating
-     phone-width capsule, like Apple Maps' sheet on iPad. The popovers are
-     positioned inside this frame, so they inherit the same cap. */
+     phone-width capsule, like Apple Maps' sheet on iPad. The ⋯ menu is
+     positioned inside this frame, so it inherits the same cap. */
   max-width: 500px;
   margin-inline: auto;
   /* Float above the iPhone home indicator; --safe-bottom is 0 elsewhere. */
   bottom: calc(var(--bar-inset) + var(--safe-bottom));
   /* Below everything that opens OVER the bar: the tours BottomSheet
-     (1000/1001), POISearch expanded (1100), the editor sheet (1200), and
+     (1000/1001), the SearchSheet (1100), the editor sheet (1200), and
      banners (1300/2000). The bar is the resting base layer of the bottom
-     UI - sheets it launches must cover it, like Apple Maps. Ties the old
-     FABs' 999 deliberately: at equal z-index the later DOM sibling paints
-     on top, and BottomBar renders after the FABs in Map.jsx, so the
-     search-results popover isn't shadowed by them during the PoC
-     comparison period. */
+     UI - sheets it launches must cover it, like Apple Maps. */
   z-index: 999;
   font-family: var(--font-ui);
   /* The root is a positioning frame only - the bar and popovers inside it
@@ -56,20 +52,28 @@
   border-radius: var(--radius-bar);
 }
 
-/* ---- Search field ------------------------------------------------------ */
+/* ---- Search button (opens the SearchSheet) ------------------------------ */
 
-.searchField {
+.searchButton {
   flex: 1;
   display: flex;
   align-items: center;
   gap: 8px;
-  min-width: 0; /* let the input shrink instead of overflowing the bar */
+  min-width: 0;
   height: var(--hit-target);
   padding: 0 14px;
+  border: none;
   border-radius: var(--radius-capsule);
   /* A slightly recessed well ON the glass, not a second glass layer:
      nested backdrop-filters multiply GPU cost (D4 constraint). */
   background-color: var(--fill-well);
+  font-family: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.searchButton:active {
+  background-color: var(--fill-well-pressed);
 }
 
 .searchIcon {
@@ -78,39 +82,14 @@
   color: var(--text-secondary);
 }
 
-.searchInput {
-  flex: 1;
+/* Placeholder-toned label; also the passive current-city indicator. */
+.searchLabel {
   min-width: 0;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-family: inherit;
-  font-size: 16px; /* >=16px prevents iOS Safari's auto-zoom on focus */
-  color: var(--text-primary);
-  padding: 0;
-}
-
-.searchInput::placeholder {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 16px;
   color: var(--text-secondary);
-}
-
-/* WebKit draws its own clear (✕) inside type="search" inputs once text is
-   entered - hide it so it doesn't double up with our styled clear button. */
-.searchInput::-webkit-search-cancel-button,
-.searchInput::-webkit-search-decoration {
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.searchClear {
-  flex-shrink: 0;
-  border: none;
-  background: none;
-  padding: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  cursor: pointer;
 }
 
 /* ---- Grouped action buttons (iOS 26 HIG: related actions share one
@@ -198,7 +177,7 @@
   pointer-events: none;
 }
 
-/* ---- Popovers (⋯ menu, search results) --------------------------------- */
+/* ---- ⋯ menu popover ------------------------------------------------------ */
 
 .menu {
   position: absolute;
@@ -208,7 +187,6 @@
   border-radius: var(--radius-menu);
   overflow: hidden;
   transform-origin: bottom right;
-  animation: pop-in 0.18s ease-out;
 }
 
 .menuItem {
@@ -231,8 +209,9 @@
 }
 
 .menuItemIcon {
-  font-size: 17px;
+  display: flex;
   flex-shrink: 0;
+  color: var(--text-primary);
 }
 
 .menuItemTitle {
@@ -263,63 +242,9 @@
   flex-shrink: 0;
 }
 
-.results {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: calc(100% + 8px);
-  max-height: 40dvh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border-radius: var(--radius-menu);
-  transform-origin: bottom center;
-  animation: pop-in 0.18s ease-out;
-}
-
-.resultItem {
-  composes: menuItem;
-}
-
-.resultItem + .resultItem {
-  border-top: 0.5px solid var(--separator);
-}
-
-.resultName {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.resultText {
-  min-width: 0; /* allow the name to ellipsize inside a flex row */
-}
-
-.noResults {
-  padding: 14px 16px;
-  font-size: 14px;
+.buildStamp {
+  padding: 8px 16px;
+  font-size: 11px;
   color: var(--text-secondary);
-}
-
-@keyframes pop-in {
-  from {
-    opacity: 0;
-    transform: translateY(6px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* ❓ CONCEPT: prefers-reduced-motion
-   📝 EXPLANATION: OS-level "reduce motion" setting (common for vestibular
-   disorders). Animations should collapse to instant appearance. */
-@media (prefers-reduced-motion: reduce) {
-  .menu,
-  .results {
-    animation: none;
-  }
+  border-top: 0.5px solid var(--separator);
 }

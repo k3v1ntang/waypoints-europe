@@ -22,6 +22,14 @@
      colors.error (#ef4444), which is the softer form-validation red. */
   --color-primary: #2563eb;
   --color-danger: #dc2626;
+  /* Accent for text-on-surface uses (links, text buttons, active labels).
+     Same blue as --color-primary in light mode, but overridden to a
+     lighter blue in dark mode below - #2563eb as TEXT on a near-black fill
+     fails contrast, while as a FILL behind white text it stays fine, which
+     is why the two tokens exist separately. */
+  --color-accent: #2563eb;
+  /* Success/walking-tour green, same text-on-surface logic as --color-accent. */
+  --color-success: #059669;
 
   /* Solid text colors - never translucent text on glass (D4: legibility
      is glassmorphism's known failure mode). */
@@ -69,6 +77,11 @@
   --radius-bar: 26px;      /* the floating control bar */
   --radius-capsule: 999px; /* fully-round pills (search field, buttons) */
   --radius-menu: 16px;     /* popover menus */
+  --radius-sheet: 20px;    /* bottom sheets' top corners */
+  --radius-card: 12px;     /* cards/tiles inside sheets, the POI popup */
+
+  /* Dimmed backdrop behind modal sheets. */
+  --scrim: rgba(0, 0, 0, 0.4);
 
   /* ---- Type ------------------------------------------------------------ */
   /* -apple-system resolves to San Francisco on iOS/iPadOS - the native
@@ -92,6 +105,8 @@
   :root {
     --text-primary: #f3f4f6;
     --text-secondary: #9ca3af;
+    --color-accent: #60a5fa;
+    --color-success: #34d399;
     --separator: rgba(84, 84, 88, 0.55);
     --separator-strong: rgba(255, 255, 255, 0.22);
 

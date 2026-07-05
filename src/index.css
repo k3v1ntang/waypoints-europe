@@ -1,11 +1,17 @@
+/* Global base styles - Phase 5b replaced the Vite starter boilerplate
+   (whose global button/anchor rules bled purple hover borders into the new
+   token-styled components) with a minimal, intentional base. */
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-ui);
   line-height: 1.5;
   font-weight: 400;
 
+  /* Tells the browser both schemes are supported: form controls, scroll
+     bars, and the tokens' prefers-color-scheme overrides follow the OS. */
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--text-primary);
+  background-color: var(--glass-fill-opaque);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,61 +19,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
   /* iPhone safe area handling */
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* One consistent keyboard-focus ring; :focus-visible fires for keyboard
+   navigation but not for taps/clicks. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* ---- MapLibre chrome (Phase 5b, D8) -------------------------------------
+   The control groups get the glass material via glass.css; here: shape,
+   button sizing, and the touch-device slimming. */
 
 /* iPhone safe area handling for MapLibre */
 .maplibregl-ctrl-bottom-left,
@@ -75,8 +44,63 @@ button:focus-visible {
   margin-bottom: env(safe-area-inset-bottom) !important;
 }
 
+/* Lift the bottom map chrome (OSM attribution - required visible by ODbL)
+   above the floating bottom bar where the bar can actually cover it: the
+   bar is a centered 500px-max capsule, so on wide windows the corners are
+   already clear. 76px = bar height 60px + 12px inset + air. !important
+   outranks MapLibre's own margin rules. */
+@media (max-width: 900px) {
+  .maplibregl-ctrl-bottom-left,
+  .maplibregl-ctrl-bottom-right {
+    margin-bottom: calc(76px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+.maplibregl-ctrl-top-right {
+  margin-top: env(safe-area-inset-top, 0px);
+}
+
 /* Ensure map container respects safe areas */
 .maplibregl-map {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+.maplibregl-ctrl-group {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* MapLibre sets its own box-shadow on :not(:empty); ours comes from
+   glass.css, so neutralize theirs at equal-or-higher specificity. */
+.maplibregl-ctrl-group:not(:empty) {
+  box-shadow: var(--shadow-floating), var(--glass-inner-highlight);
+}
+
+.maplibregl-ctrl-group button {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+}
+
+.maplibregl-ctrl-group button + button {
+  border-top: 0.5px solid var(--separator);
+}
+
+/* MapLibre's control glyphs are dark SVGs baked in as background images;
+   they can't read CSS variables, so dark mode inverts them. hue-rotate
+   keeps the geolocate control's active-blue recognizably blue. */
+@media (prefers-color-scheme: dark) {
+  .maplibregl-ctrl button .maplibregl-ctrl-icon {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+
+/* D8: on touch devices pinch/rotate gestures replace the zoom/compass
+   buttons (Apple Maps ships none), leaving geolocate as the single piece
+   of floating map chrome. :has() targets the NavigationControl group by
+   what it contains - MapLibre gives the groups no distinguishing class. */
+@media (pointer: coarse) {
+  .maplibregl-ctrl-group:has(.maplibregl-ctrl-zoom-in) {
+    display: none;
+  }
+}

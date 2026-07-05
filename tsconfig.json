@@ -18,10 +18,7 @@
     "noEmit": true
   },
   "include": [
-    "src/components/**/*.tsx",
-    "src/vite-env.d.ts",
-    "src/data/**/*",
-    "src/hooks/**/*",
+    "src/**/*",
     "scripts/**/*",
     "tests/**/*",
     "vite.config.js",

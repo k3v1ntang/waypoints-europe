@@ -1,0 +1,226 @@
+/*
+ * SearchSheet - Phase 5b (D8): the expanded search surface.
+ *
+ * A full-screen takeover, not a floating glass capsule: D4 restricts
+ * backdrop-filter to small surfaces over the live WebGL map, so a sheet
+ * covering the whole viewport uses the solid elevated fill and relies on
+ * the shared radius/type/token language to read as part of the system.
+ *
+ * The search field lives at the TOP of the screen. That placement is the
+ * fix for the Session D keyboard-overlap issue: iOS Safari keeps
+ * position:fixed elements anchored to the layout viewport while the
+ * keyboard is up, so anything anchored to the bottom can end up behind the
+ * keyboard - anchoring the input to the top sidesteps the problem entirely
+ * (Apple Maps does the same on search focus).
+ */
+
+.sheet {
+  position: fixed;
+  inset: 0; /* shorthand for top/right/bottom/left: 0 */
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--glass-fill-elevated-opaque);
+  font-family: var(--font-ui);
+  padding-top: calc(8px + env(safe-area-inset-top, 0px));
+}
+
+/* ---- Header: search field + cancel ------------------------------------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px 12px 16px;
+  border-bottom: 0.5px solid var(--separator);
+}
+
+.searchField {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  height: var(--hit-target);
+  padding: 0 14px;
+  border-radius: var(--radius-capsule);
+  background-color: var(--fill-well);
+}
+
+.searchIcon {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 16px; /* >=16px prevents iOS Safari's auto-zoom on focus */
+  color: var(--text-primary);
+  padding: 0;
+}
+
+.searchInput::placeholder {
+  color: var(--text-secondary);
+}
+
+.searchInput::-webkit-search-cancel-button,
+.searchInput::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.searchClear {
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  padding: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.cancelButton {
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  min-height: var(--hit-target);
+  padding: 0 4px 0 12px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-accent);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---- Scrollable body ---------------------------------------------------- */
+
+.body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain; /* keep scroll from chaining to the page */
+}
+
+.sectionTitle {
+  margin: 20px 16px 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+/* ---- City chips (D8: city selection lives here now) --------------------- */
+
+.chipGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px 8px 16px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: var(--hit-target);
+  padding: 0 16px;
+  border: 0.5px solid var(--separator);
+  border-radius: var(--radius-capsule);
+  background-color: var(--fill-well);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.chip:active {
+  background-color: var(--fill-well-pressed);
+}
+
+.chipSelected {
+  composes: chip;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--text-on-accent);
+}
+
+.chipSelected:active {
+  background-color: var(--color-primary);
+}
+
+.chipFlag {
+  font-size: 17px;
+}
+
+.chipCount {
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+/* ---- Results list -------------------------------------------------------- */
+
+.resultItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-primary);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.resultItem:active {
+  background-color: var(--fill-well-pressed);
+}
+
+.resultItem + .resultItem {
+  border-top: 0.5px solid var(--separator);
+}
+
+.resultIcon {
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.resultText {
+  min-width: 0; /* allow the name to ellipsize inside a flex row */
+}
+
+.resultName {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resultCity {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.noResults {
+  padding: 20px 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}

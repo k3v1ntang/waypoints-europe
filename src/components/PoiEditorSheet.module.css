@@ -1,0 +1,240 @@
+/* PoiEditorSheet - Phase 5b: the add/edit form sheet on the token system.
+   Opaque sheet (large, text-dense surface - D4 keeps blur off these), same
+   radius/shadow/type language as BottomSheet. */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: var(--scrim);
+  z-index: 1199;
+}
+
+.sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 640px;
+  margin-inline: auto;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  max-height: 85dvh;
+  background-color: var(--glass-fill-elevated-opaque);
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  box-shadow: var(--shadow-floating);
+  font-family: var(--font-ui);
+  color: var(--text-primary);
+}
+
+.header {
+  padding: 16px 24px 12px 24px;
+  border-bottom: 0.5px solid var(--separator);
+}
+
+.title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-primary);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 4px 24px calc(24px + var(--safe-bottom)) 24px;
+}
+
+/* ---- Form fields --------------------------------------------------------- */
+
+.label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 14px 0 6px 0;
+}
+
+.labelHint {
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.field {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--separator-strong);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 16px; /* 16px minimum prevents iOS Safari from zooming on focus */
+  color: var(--text-primary);
+  background-color: var(--glass-fill-elevated-opaque);
+  font-family: inherit;
+}
+
+.field:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -1px;
+}
+
+.fieldMultiline {
+  composes: field;
+  resize: vertical;
+}
+
+.cityNote {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 12px;
+}
+
+.cityNote svg {
+  display: block;
+}
+
+/* ---- Location box -------------------------------------------------------- */
+
+.locationBox {
+  border: 1px solid var(--separator);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background-color: var(--fill-well);
+}
+
+.locationValue {
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.locationValueEmpty {
+  composes: locationValue;
+  color: var(--text-secondary);
+}
+
+.locationButtons {
+  display: flex;
+  gap: 8px;
+}
+
+/* ---- Buttons -------------------------------------------------------------- */
+
+.secondaryButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: var(--fill-well);
+  color: var(--text-primary);
+  border: 0.5px solid var(--separator);
+  border-radius: 10px;
+  padding: 10px 14px;
+  min-height: var(--hit-target);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.secondaryButton:active {
+  background-color: var(--fill-well-pressed);
+}
+
+.secondaryButton svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.locationButton {
+  composes: secondaryButton;
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cancelButton {
+  composes: secondaryButton;
+  flex: 1;
+  padding: 12px 14px;
+}
+
+.saveButton {
+  flex: 2;
+  background-color: var(--color-primary);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 14px;
+  min-height: var(--hit-target);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.saveButton:disabled,
+.locationButton:disabled {
+  opacity: 0.6;
+}
+
+.dangerZone {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.textButton {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.textButtonDanger {
+  composes: textButton;
+  color: var(--color-danger);
+}
+
+.tourLockNote {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 6px;
+}
+
+/* ---- Errors ---------------------------------------------------------------- */
+
+.errorBox {
+  margin-top: 16px;
+  background-color: color-mix(in srgb, var(--color-danger) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-danger) 45%, transparent);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.errorLine {
+  font-size: 13px;
+  color: var(--color-danger);
+  line-height: 1.5;
+}
