@@ -1,8 +1,5 @@
 .App {
-  margin: 0;
-  padding: 0;
-  height: 100vh; /* fallback */
-  height: 100dvh; /* modern dynamic viewport height */
+  height: 100%;
   width: 100%;
 }
 
@@ -10,21 +7,15 @@
   box-sizing: border-box;
 }
 
-/* iOS Safari viewport height fix */
-html {
-  height: -webkit-fill-available;
-}
-
+/* Simple, modern viewport chain: html/body fill the layout viewport and
+   the app renders fixed surfaces inside it. (The -webkit-fill-available
+   and vh-fallback hacks that used to live here were workarounds for
+   pre-dvh iOS Safari; on iOS 26 they only muddy standalone-mode sizing.) */
+html,
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  min-height: 100vh; /* fallback */
-  min-height: -webkit-fill-available; /* iOS Safari fix */
-  min-height: 100dvh; /* modern dynamic viewport */
-}
-
-html, body {
-  height: 100%;
 }
 
 /* ---- MapLibre popup: let the glass card own the surface -----------------

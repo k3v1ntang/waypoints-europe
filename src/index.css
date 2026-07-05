@@ -35,6 +35,20 @@ body {
   overflow: hidden;
 }
 
+/* Installed web app (home screen): iOS 26 ends the layout viewport ABOVE
+   the home-indicator strip and reports env(safe-area-inset-bottom) as 0,
+   so that last ~34pt cannot be painted by the page. Per HIG guidance for
+   reserved regions, make it continuous with the content instead: the strip
+   shows the page background, so tint it to the MAP's paper color - in both
+   color schemes, because the map style itself is light - and it reads as
+   the map running out under the indicator (Apple Maps look) rather than a
+   seam. Browser-tab Safari is unaffected (display-mode doesn't match). */
+@media (display-mode: standalone) {
+  :root {
+    background-color: #f0eee9;
+  }
+}
+
 /* One consistent keyboard-focus ring; :focus-visible fires for keyboard
    navigation but not for taps/clicks. */
 :focus-visible {
