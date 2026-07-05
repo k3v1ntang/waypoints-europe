@@ -10,6 +10,7 @@ import WalkingTourBottomSheet from './WalkingTourBottomSheet.jsx';
 import POIPopup from './POIPopup.jsx';
 import PoiEditorSheet from './PoiEditorSheet.jsx';
 import POISearch from './POISearch.jsx';
+import BottomBar from './BottomBar.tsx';
 import { usePoiData } from '../hooks/usePoiData.js';
 import { exportMergedPois } from '../data/exportPois.js';
 
@@ -123,12 +124,12 @@ const Map = () => {
     setIsBottomSheetOpen(true);
   };
 
-  // Get available tours count for FAB badge
-  const getToursCount = () => {
-    if (!currentCity || !poisData.walkingTours) return 0;
-    const tours = poisData.walkingTours[currentCity.id] || [];
-    return tours.length;
-  };
+  // Tours available in the current city - badges on the old FAB and the
+  // new BottomBar. Computed once per render instead of per call site.
+  const toursCount =
+    currentCity && poisData.walkingTours
+      ? (poisData.walkingTours[currentCity.id] || []).length
+      : 0;
 
   // Function to handle city selection and zoom
   const handleCitySelect = (city) => {
@@ -740,12 +741,16 @@ const Map = () => {
         onSelectPoi={(poi) => setSelectedPoi({ id: poi.id })}
       />
 
-      {/* Floating Action Button for Walking Tours */}
+      {/* Floating Action Button for Walking Tours.
+          PoC comparison period: both FABs are nudged up (via their existing
+          bottom prop) so they don't sit on top of the new BottomBar; they
+          are deleted entirely in stage 5b. */}
       <FloatingActionButton
         onClick={handleFABClick}
         icon="🚶‍♂️"
         label="Walking Tours"
-        badge={getToursCount() > 0 ? getToursCount() : null}
+        badge={toursCount > 0 ? toursCount : null}
+        bottom="calc(160px + env(safe-area-inset-bottom))"
       />
 
       {/* Floating Action Button for adding a place (Phase 2 editing) */}
@@ -753,8 +758,25 @@ const Map = () => {
         onClick={handleAddPoi}
         icon="➕"
         label="Add Place"
-        bottom="92px"
+        bottom="calc(228px + env(safe-area-inset-bottom))"
       />
+
+      {/* Phase 5 PoC (D8): new bottom-anchored glass control bar, rendered
+          alongside the old controls until judged on-device. Hidden while
+          picking coordinates so it can't swallow location taps in the
+          bottom strip (the editor sheet hides itself the same way). */}
+      {!isPicking && (
+        <BottomBar
+          poisData={poisData}
+          currentCity={currentCity}
+          toursCount={toursCount}
+          editCount={editCount}
+          onSelectPoi={(poi) => setSelectedPoi({ id: poi.id })}
+          onShowTours={handleFABClick}
+          onAddPlace={handleAddPoi}
+          onExport={() => exportMergedPois(poisData)}
+        />
+      )}
 
       {/* POI add/edit sheet */}
       <PoiEditorSheet

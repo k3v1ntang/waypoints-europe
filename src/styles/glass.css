@@ -1,0 +1,76 @@
+/*
+ * The frosted-glass material - Phase 5 (D4/D8)
+ *
+ * ❓ CONCEPT: backdrop-filter
+ * 📝 EXPLANATION: `filter` blurs an element's OWN pixels; `backdrop-filter`
+ * blurs whatever is rendered BEHIND the element - here, the live map -
+ * before the element's translucent fill is painted on top. blur() melts
+ * the map detail into soft color, and saturate() re-boosts the colors the
+ * blur washed out; the combination is what reads as "frosted glass"
+ * instead of "gray film". Safari (our primary platform, iOS/iPadOS PWA)
+ * needs the -webkit- prefixed copy of the property.
+ *
+ * D4 constraints honored here:
+ *  - frosted glass only; no Chrome-only SVG refraction/displacement
+ *  - glass ONLY on small floating surfaces (blur over a live WebGL canvas
+ *    costs GPU per pixel, so surface area matters doubly)
+ *  - tint-biased material: the heavy lifting is in tokens.css (high fill
+ *    opacity, strong blur)
+ *  - opaque fallback when the browser lacks backdrop-filter or the user
+ *    prefers reduced transparency
+ *
+ * One material, applied per surface: `class="glass"` for the standard
+ * material, plus `glass--elevated` for popovers/menus that float above an
+ * already-glass surface and need to separate from it.
+ */
+
+.glass {
+  background-color: var(--glass-fill);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  /* Hairline edge. 0.5px renders as a true hairline on 2x/3x displays
+     (iPhone); browsers on 1x screens round it up to 1px. */
+  border: 0.5px solid var(--glass-border);
+  /* Layered depth: soft drop shadows below + a faint light edge along the
+     top inside face, as if lit from above. box-shadow accepts a
+     comma-separated stack; they all render. */
+  box-shadow: var(--shadow-floating), var(--glass-inner-highlight);
+}
+
+.glass--elevated {
+  background-color: var(--glass-fill-elevated);
+}
+
+/* Opaque variant: for surfaces too LARGE or too text-dense for blur (D4:
+   backdrop-filter cost scales with pixel area over the live WebGL map, and
+   dense text reads worst on translucency). Keeps the glass system's edge,
+   radius, and shadow language - drops the translucency and the GPU bill. */
+.glass--opaque {
+  background-color: var(--glass-fill-elevated-opaque);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* ❓ CONCEPT: @supports (feature query)
+   📝 EXPLANATION: like `hasattr()` before calling - applies rules only if
+   the browser does NOT understand backdrop-filter. The -opaque tokens
+   (which carry their own dark-mode override in tokens.css) give old
+   browsers a solid, fully legible surface instead of see-through
+   text-on-map. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background-color: var(--glass-fill-opaque);
+  }
+  .glass--elevated {
+    background-color: var(--glass-fill-elevated-opaque);
+  }
+}
+
+/* Accessibility: reduced transparency kills the blur too (tokens.css
+   already made the fills opaque, so the blur would be invisible work). */
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
