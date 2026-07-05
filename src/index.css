@@ -27,6 +27,16 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+/* This is a fixed-viewport app - every surface is position:fixed with its
+   own internal scroller, so the PAGE must never scroll. Without this, iOS
+   Safari's scroll-focused-input-into-view behavior can shove the whole
+   layout off-screen when the search field gains focus (observed on
+   iPad/iPhone, 2026-07-05). */
+html,
+body {
+  overflow: hidden;
+}
+
 /* One consistent keyboard-focus ring; :focus-visible fires for keyboard
    navigation but not for taps/clicks. */
 :focus-visible {

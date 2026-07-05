@@ -8,16 +8,25 @@
  */
 
 .card {
+  display: flex;
+  flex-direction: column;
   max-width: min(300px, 90vw);
   max-height: min(400px, 60vh);
+  border-radius: var(--radius-card);
+  overflow: hidden; /* clip the scrolling body to the rounded corners */
+  font-family: var(--font-ui);
+  color: var(--text-primary);
+  animation: popup-pop 0.2s ease-out;
+}
+
+/* Only the content scrolls; the action footer below stays pinned. */
+.cardBody {
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   padding: 14px;
-  border-radius: var(--radius-card);
-  font-family: var(--font-ui);
-  color: var(--text-primary);
-  animation: popup-pop 0.2s ease-out;
 }
 
 @keyframes popup-pop {
@@ -126,35 +135,36 @@
 }
 
 .mapsLink {
-  margin-top: 10px;
-}
-
-.mapsLink a {
   color: var(--color-accent);
   text-decoration: none;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  padding: 6px 0;
 }
 
 .mapsLink svg {
   display: block;
 }
 
+/* Pinned action row - never scrolls out of reach. */
 .footer {
-  margin-top: 10px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+  padding: 8px 14px;
+  border-top: 0.5px solid var(--separator);
 }
 
 .category {
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  margin-top: 10px;
   font-size: 12px;
   color: var(--text-secondary);
   text-transform: capitalize;

@@ -41,6 +41,10 @@ const POIPopup = ({ poi, tour, onEdit }: POIPopupProps) => {
 
   return (
     <div className={`glass ${styles.card}`}>
+      {/* Only the text content scrolls; the footer with the two actions
+          (Google Maps, Edit) stays pinned - on long POIs they were below
+          the fold and easy to miss (on-device finding, 2026-07-05). */}
+      <div className={styles.cardBody}>
       <h3 className={styles.name}>{poi.name}</h3>
 
       <div className={styles.description}>
@@ -97,31 +101,39 @@ const POIPopup = ({ poi, tour, onEdit }: POIPopupProps) => {
         </div>
       )}
 
-      {poi.googleMapsUrl && (
-        <div className={styles.mapsLink}>
-          <a href={poi.googleMapsUrl} target="_blank" rel="noreferrer">
-            <ExternalIcon size={13} />
-            View on Google Maps
-          </a>
+      <span className={styles.category}>
+        <PinIcon size={13} />
+        {poi.category}
+      </span>
+      </div>
+
+      {(poi.googleMapsUrl || onEdit) && (
+        <div className={styles.footer}>
+          {poi.googleMapsUrl ? (
+            <a
+              className={styles.mapsLink}
+              href={poi.googleMapsUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <ExternalIcon size={13} />
+              Google Maps
+            </a>
+          ) : (
+            <span />
+          )}
+          {onEdit && (
+            <button
+              className={styles.editButton}
+              onClick={() => onEdit(poi)}
+              aria-label={`Edit ${poi.name}`}
+            >
+              <PencilIcon size={13} />
+              Edit
+            </button>
+          )}
         </div>
       )}
-
-      <div className={styles.footer}>
-        <span className={styles.category}>
-          <PinIcon size={13} />
-          {poi.category}
-        </span>
-        {onEdit && (
-          <button
-            className={styles.editButton}
-            onClick={() => onEdit(poi)}
-            aria-label={`Edit ${poi.name}`}
-          >
-            <PencilIcon size={13} />
-            Edit
-          </button>
-        )}
-      </div>
     </div>
   );
 };

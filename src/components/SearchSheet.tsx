@@ -68,8 +68,12 @@ const useKeyboardInset = (): number => {
   useEffect(() => {
     const viewport = window.visualViewport;
     if (!viewport) return;
-    const update = () =>
+    const update = () => {
+      // If focusing the field made Safari scroll the page anyway (despite
+      // html/body overflow:hidden), pin it back - the app never scrolls.
+      window.scrollTo(0, 0);
       setInset(Math.max(0, window.innerHeight - viewport.height - viewport.offsetTop));
+    };
     viewport.addEventListener('resize', update);
     return () => viewport.removeEventListener('resize', update);
   }, []);
@@ -264,9 +268,15 @@ const SearchSheet = ({ isOpen, poisData, ...bodyProps }: SearchSheetProps) => {
           role="dialog"
           aria-modal="true"
           aria-label="Search and city selection"
-          initial={{ y: '100%' }}
-          animate={{ y: 0 }}
-          exit={{ y: '100%' }}
+          // A short rise + fade, NOT a full-height slide: the input is
+          // autofocused on mount, and iOS captures its on-screen position
+          // at focus time - during a bottom slide that position is under
+          // the keyboard, so Safari panned the whole page to "reveal" it
+          // (the on-device bug from 2026-07-05). With a 24px offset the
+          // field is already at the top when focus lands.
+          initial={{ y: 24, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 24, opacity: 0 }}
           transition={springSheet}
         >
           <SearchSheetBody allPois={allPois} sortedCities={sortedCities} {...bodyProps} />

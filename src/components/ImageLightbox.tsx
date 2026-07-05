@@ -59,9 +59,6 @@ const ImageLightbox = ({ isOpen, onClose, slides, index = 0 }: ImageLightboxProp
           backgroundColor: 'rgba(0, 0, 0, 0.95)'
         }
       }}
-      render={{
-        iconClose: () => '×'
-      }}
     />
   );
 };

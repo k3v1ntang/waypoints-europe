@@ -427,6 +427,17 @@ const Map = () => {
         mapErrorTimeoutRef.current = null;
       }
 
+      // On narrow screens MapLibre auto-compacts the attribution but ships
+      // it EXPANDED, leaving a long text pill floating above the bottom
+      // bar (on-device finding, 2026-07-05). Collapse it to its ⓘ button;
+      // a tap re-expands it, which satisfies OSM's attribution guidance
+      // for space-constrained mobile UIs.
+      const attrib = map.getContainer().querySelector('.maplibregl-ctrl-attrib');
+      if (attrib?.classList.contains('maplibregl-compact')) {
+        attrib.classList.remove('maplibregl-compact-show');
+        attrib.removeAttribute('open');
+      }
+
       // Add clustered data source. It starts empty; the sync effect fills it
       // from current state as soon as mapLoaded flips to true.
       map.addSource('pois', {
