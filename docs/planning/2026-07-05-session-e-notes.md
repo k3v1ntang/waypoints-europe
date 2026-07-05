@@ -70,6 +70,20 @@ in the plan (plan edits are orchestrator-only).
   opaque rgb(248,249,251), backdrop-filter: none. Chromium-verified only —
   the iOS Reduce Transparency setting still needs the on-device check.
 
+## /code-review (high effort) — outcome
+
+8 finder agents launched; 5 completed, 3 (the correctness angles) were
+rate-limited and **completed inline by the worker** — same deviation
+Session D logged. Verification was inline (probes against the running app
+where possible). 10 findings reported, 9 fixed in commit `20c6d40`, all
+re-verified in headless Chromium afterward. Highest-severity: the MapLibre
+control groups never actually got the glass material (maplibre-gl.css
+loads after app CSS and won the specificity tie — computed white/4px/29px
+confirmed, now fixed with a doubled selector); stacked sheets fought over
+the body scroll lock; the map-error banner could be buried under the guide
+sheet. One finding deliberately deferred (unifying the three sheet shells
+into one primitive — structural refactor after the review gate).
+
 ## Not done / left open
 
 - `react-hooks/set-state-in-effect` lint exemptions were removed with the
@@ -82,3 +96,9 @@ in the plan (plan edits are orchestrator-only).
   components; doc update is orchestrator scope.
 - Pre-existing >500 kB chunk watch item unchanged (motion adds ~35 kB
   gzipped to the bundle).
+- Review follow-ups deferred: one shared sheet primitive (3 shells today);
+  ITINERARY_ORDER city list lives in SearchSheet.tsx while pois.json is
+  the data home (matters for the Amsterdam/Paris handoff); zoom/compass
+  hiding uses a :has() selector on MapLibre-internal class names (cleaner:
+  conditionally skip addControl on coarse pointers); normalizeSearchText
+  and mergePois' slug-folding are still two copies of the same transform.
