@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, useEffect } from 'react';
+import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import type { City, Poi, PoisData } from '../data/types';
 import styles from './BottomBar.module.css';
 
@@ -31,6 +31,8 @@ interface SearchEntry {
   poi: Poi;
   cityId: string;
   cityName: string;
+  /** poi.name pre-normalized once, so keystrokes only normalize the query. */
+  normName: string;
 }
 
 const CATEGORY_ICONS: Record<Poi['category'], string> = {
@@ -68,7 +70,12 @@ const BottomBar = ({
   const allPois = useMemo<SearchEntry[]>(
     () =>
       poisData.cities.flatMap((city) =>
-        city.pois.map((poi) => ({ poi, cityId: city.id, cityName: city.name }))
+        city.pois.map((poi) => ({
+          poi,
+          cityId: city.id,
+          cityName: city.name,
+          normName: normalize(poi.name)
+        }))
       ),
     [poisData]
   );
@@ -76,7 +83,7 @@ const BottomBar = ({
   const results = useMemo<SearchEntry[]>(() => {
     const needle = normalize(query.trim());
     if (!needle) return [];
-    const matches = allPois.filter(({ poi }) => normalize(poi.name).includes(needle));
+    const matches = allPois.filter(({ normName }) => normName.includes(needle));
     // Results in the city currently on screen first. Number() turns the
     // boolean comparison into the -1/0/1 contract sort() expects.
     matches.sort(
@@ -88,6 +95,18 @@ const BottomBar = ({
 
   const showResults = query.trim().length > 0;
 
+  // One atomic "dismiss everything" for all close paths (outside press,
+  // action buttons) so no site can forget half the popover state.
+  // ❓ CONCEPT: useCallback
+  // 📝 EXPLANATION: functions defined in a component body are re-created
+  // every render; useCallback keeps one stable identity (like caching a
+  // bound method) so effects listing it as a dependency don't re-run per
+  // render. Setter functions from useState are already stable, so [] deps.
+  const closePopovers = useCallback(() => {
+    setIsMenuOpen(false);
+    setQuery('');
+  }, []);
+
   // Dismiss popovers on any press outside the bar. 'pointerdown' covers
   // mouse and touch in one event (vs the old mousedown+touchstart pair).
   useEffect(() => {
@@ -98,12 +117,11 @@ const BottomBar = ({
       // the runtime check narrows it so .contains() typechecks - TS's
       // version of isinstance() narrowing.
       if (event.target instanceof Node && rootRef.current?.contains(event.target)) return;
-      setIsMenuOpen(false);
-      setQuery('');
+      closePopovers();
     };
     document.addEventListener('pointerdown', handlePointerDown);
     return () => document.removeEventListener('pointerdown', handlePointerDown);
-  }, [isMenuOpen, showResults]);
+  }, [isMenuOpen, showResults, closePopovers]);
 
   const handleSelectPoi = (poi: Poi) => {
     setQuery('');
@@ -113,9 +131,12 @@ const BottomBar = ({
 
   return (
     <div ref={rootRef} className={styles.root}>
-      {/* Search results popover - grows upward from the bar */}
+      {/* Search results popover - grows upward from the bar. Opaque, not
+          glass: at up to 40dvh it would be the app's largest blur surface
+          (D4 restricts glass to small floating controls over the WebGL
+          map), and dense scrolling text is most legible on a solid fill. */}
       {showResults && (
-        <div className={`glass glass--elevated ${styles.results}`} role="listbox" aria-label="Search results">
+        <div className={`glass glass--opaque ${styles.results}`} role="listbox" aria-label="Search results">
           {results.length === 0 ? (
             <div className={styles.noResults}>No places match “{query.trim()}”</div>
           ) : (
@@ -127,6 +148,9 @@ const BottomBar = ({
                 className={styles.resultItem}
                 onClick={() => handleSelectPoi(poi)}
               >
+                {/* The type says category is always a known key, but POIs
+                    edited on-device (IndexedDB) aren't compile-checked, so
+                    keep a runtime fallback. */}
                 <span className={styles.menuItemIcon}>{CATEGORY_ICONS[poi.category] ?? '📍'}</span>
                 <span className={styles.resultText}>
                   <span className={styles.resultName}>{poi.name}</span>
@@ -201,8 +225,7 @@ const BottomBar = ({
             aria-label="Walking tours"
             title="Walking Tours"
             onClick={() => {
-              setIsMenuOpen(false);
-              setQuery('');
+              closePopovers();
               onShowTours();
             }}
           >
@@ -214,8 +237,7 @@ const BottomBar = ({
             aria-label="Add place"
             title="Add Place"
             onClick={() => {
-              setIsMenuOpen(false);
-              setQuery('');
+              closePopovers();
               onAddPlace();
             }}
           >

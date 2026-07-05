@@ -46,6 +46,17 @@ Built at the tinted/frosted end per the 2026-07-04 D4 amendment: fill opacity
 PoC verdict is "too opaque / not glassy enough", the knobs are the four
 `--glass-*` tokens in `src/styles/tokens.css` — no component changes needed.
 
+## Post-review adjustment (from the /code-review gate)
+
+The search-results panel is **opaque** (`.glass--opaque` variant: solid fill,
+no blur, same border/radius/shadow language), not translucent glass. Review
+flagged that at up to `40dvh` it would have been the app's largest
+backdrop-filter surface over the live WebGL map — exactly what D4's
+small-surfaces-only constraint exists to prevent — and dense scrolling text
+is most legible on a solid fill anyway. The bar and the ⋯ menu remain true
+glass. If the on-device verdict wants the results panel glassy after all,
+swap its class back to `glass--elevated` (one line in `BottomBar.tsx`).
+
 ## Not done (correctly out of PoC scope, listed to avoid surprises)
 
 - D8's map-chrome slimming (hide zoom/compass on touch, single glass

@@ -41,26 +41,28 @@
   background-color: var(--glass-fill-elevated);
 }
 
+/* Opaque variant: for surfaces too LARGE or too text-dense for blur (D4:
+   backdrop-filter cost scales with pixel area over the live WebGL map, and
+   dense text reads worst on translucency). Keeps the glass system's edge,
+   radius, and shadow language - drops the translucency and the GPU bill. */
+.glass--opaque {
+  background-color: var(--glass-fill-elevated-opaque);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
 /* ❓ CONCEPT: @supports (feature query)
    📝 EXPLANATION: like `hasattr()` before calling - applies rules only if
-   the browser does NOT understand backdrop-filter. tokens.css already
-   holds opaque fills for reduced-transparency; reuse them here so old
-   browsers get a solid, fully legible surface instead of see-through
+   the browser does NOT understand backdrop-filter. The -opaque tokens
+   (which carry their own dark-mode override in tokens.css) give old
+   browsers a solid, fully legible surface instead of see-through
    text-on-map. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .glass {
-    background-color: #f8f9fb;
+    background-color: var(--glass-fill-opaque);
   }
   .glass--elevated {
-    background-color: #ffffff;
-  }
-  @media (prefers-color-scheme: dark) {
-    .glass {
-      background-color: #1c1c1e;
-    }
-    .glass--elevated {
-      background-color: #2c2c2e;
-    }
+    background-color: var(--glass-fill-elevated-opaque);
   }
 }
 

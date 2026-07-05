@@ -16,7 +16,10 @@
 
 :root {
   /* ---- Brand ---------------------------------------------------------- */
-  /* Same palette as theme.js `colors` - keep the two in sync. */
+  /* --color-primary mirrors theme.js colors.primary - keep those in sync.
+     --color-danger is the badge/hotel-marker red already used across the
+     app (FAB badges, hotel markers) - deliberately NOT theme.js
+     colors.error (#ef4444), which is the softer form-validation red. */
   --color-primary: #2563eb;
   --color-danger: #dc2626;
 
@@ -37,6 +40,15 @@
      back toward opacity for readability. */
   --glass-fill: rgba(248, 249, 251, 0.82);
   --glass-fill-elevated: rgba(255, 255, 255, 0.88); /* menus/popovers layered on glass */
+  /* Fully opaque counterparts: used by the reduced-transparency override
+     below, by glass.css's no-backdrop-filter fallback, and by the
+     .glass--opaque variant for surfaces too large/text-dense to blur. */
+  --glass-fill-opaque: #f8f9fb;
+  --glass-fill-elevated-opaque: #ffffff;
+  /* Recessed "well" fill for controls sitting ON a glass surface (search
+     field, button groups) - a tint, not a second blur layer. */
+  --fill-well: rgba(120, 120, 128, 0.14);
+  --fill-well-pressed: rgba(120, 120, 128, 0.22);
   --glass-blur: 22px;
   --glass-saturate: 1.7;
   /* Hairline edge: light from above (lighter top edge), like iOS. */
@@ -81,6 +93,8 @@
 
     --glass-fill: rgba(28, 28, 30, 0.80);
     --glass-fill-elevated: rgba(44, 44, 46, 0.88);
+    --glass-fill-opaque: #1c1c1e;
+    --glass-fill-elevated-opaque: #2c2c2e;
     --glass-border: rgba(255, 255, 255, 0.14);
     --glass-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.09);
 
@@ -92,18 +106,13 @@
 
 /* ---- Accessibility: opaque fallback (D4 constraint) ---------------------
    Users can ask the OS to reduce transparency; honoring it means swapping
-   the translucent fills for fully opaque ones. Blur is disabled in
+   the translucent fills for fully opaque ones. The -opaque tokens already
+   carry their own dark-mode override above, so pointing the live fills at
+   them covers both color schemes in one rule. Blur is disabled in
    glass.css under the same query. */
 @media (prefers-reduced-transparency: reduce) {
   :root {
-    --glass-fill: #f8f9fb;
-    --glass-fill-elevated: #ffffff;
-  }
-}
-
-@media (prefers-reduced-transparency: reduce) and (prefers-color-scheme: dark) {
-  :root {
-    --glass-fill: #1c1c1e;
-    --glass-fill-elevated: #2c2c2e;
+    --glass-fill: var(--glass-fill-opaque);
+    --glass-fill-elevated: var(--glass-fill-elevated-opaque);
   }
 }

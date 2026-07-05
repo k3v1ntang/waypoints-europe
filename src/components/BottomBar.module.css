@@ -22,8 +22,12 @@
   /* Below everything that opens OVER the bar: the tours BottomSheet
      (1000/1001), POISearch expanded (1100), the editor sheet (1200), and
      banners (1300/2000). The bar is the resting base layer of the bottom
-     UI - sheets it launches must cover it, like Apple Maps. */
-  z-index: 998;
+     UI - sheets it launches must cover it, like Apple Maps. Ties the old
+     FABs' 999 deliberately: at equal z-index the later DOM sibling paints
+     on top, and BottomBar renders after the FABs in Map.jsx, so the
+     search-results popover isn't shadowed by them during the PoC
+     comparison period. */
+  z-index: 999;
   font-family: var(--font-ui);
   /* The root is a positioning frame only - the bar and popovers inside it
      paint the glass. */
@@ -55,7 +59,7 @@
   border-radius: var(--radius-capsule);
   /* A slightly recessed well ON the glass, not a second glass layer:
      nested backdrop-filters multiply GPU cost (D4 constraint). */
-  background-color: rgba(120, 120, 128, 0.14);
+  background-color: var(--fill-well);
 }
 
 .searchIcon {
@@ -79,6 +83,14 @@
   color: var(--text-secondary);
 }
 
+/* WebKit draws its own clear (✕) inside type="search" inputs once text is
+   entered - hide it so it doesn't double up with our styled clear button. */
+.searchInput::-webkit-search-cancel-button,
+.searchInput::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 .searchClear {
   flex-shrink: 0;
   border: none;
@@ -98,7 +110,7 @@
   align-items: stretch;
   flex-shrink: 0;
   border-radius: var(--radius-capsule);
-  background-color: rgba(120, 120, 128, 0.14);
+  background-color: var(--fill-well);
   overflow: hidden; /* clip children to the capsule shape */
 }
 
@@ -119,7 +131,7 @@
 }
 
 .groupButton:active {
-  background-color: rgba(120, 120, 128, 0.22);
+  background-color: var(--fill-well-pressed);
 }
 
 /* Hairline divider between grouped buttons */
@@ -134,7 +146,7 @@
   composes: groupButton;
   flex-shrink: 0;
   border-radius: var(--radius-capsule);
-  background-color: rgba(120, 120, 128, 0.14);
+  background-color: var(--fill-well);
   font-weight: 700;
 }
 
@@ -186,7 +198,7 @@
 }
 
 .menuItem:active {
-  background-color: rgba(120, 120, 128, 0.18);
+  background-color: var(--fill-well-pressed);
 }
 
 .menuItemIcon {

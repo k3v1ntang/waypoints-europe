@@ -124,12 +124,12 @@ const Map = () => {
     setIsBottomSheetOpen(true);
   };
 
-  // Get available tours count for FAB badge
-  const getToursCount = () => {
-    if (!currentCity || !poisData.walkingTours) return 0;
-    const tours = poisData.walkingTours[currentCity.id] || [];
-    return tours.length;
-  };
+  // Tours available in the current city - badges on the old FAB and the
+  // new BottomBar. Computed once per render instead of per call site.
+  const toursCount =
+    currentCity && poisData.walkingTours
+      ? (poisData.walkingTours[currentCity.id] || []).length
+      : 0;
 
   // Function to handle city selection and zoom
   const handleCitySelect = (city) => {
@@ -749,7 +749,7 @@ const Map = () => {
         onClick={handleFABClick}
         icon="🚶‍♂️"
         label="Walking Tours"
-        badge={getToursCount() > 0 ? getToursCount() : null}
+        badge={toursCount > 0 ? toursCount : null}
         bottom="calc(160px + env(safe-area-inset-bottom))"
       />
 
@@ -762,17 +762,21 @@ const Map = () => {
       />
 
       {/* Phase 5 PoC (D8): new bottom-anchored glass control bar, rendered
-          alongside the old controls until judged on-device */}
-      <BottomBar
-        poisData={poisData}
-        currentCity={currentCity}
-        toursCount={getToursCount()}
-        editCount={editCount}
-        onSelectPoi={(poi) => setSelectedPoi({ id: poi.id })}
-        onShowTours={handleFABClick}
-        onAddPlace={handleAddPoi}
-        onExport={() => exportMergedPois(poisData)}
-      />
+          alongside the old controls until judged on-device. Hidden while
+          picking coordinates so it can't swallow location taps in the
+          bottom strip (the editor sheet hides itself the same way). */}
+      {!isPicking && (
+        <BottomBar
+          poisData={poisData}
+          currentCity={currentCity}
+          toursCount={toursCount}
+          editCount={editCount}
+          onSelectPoi={(poi) => setSelectedPoi({ id: poi.id })}
+          onShowTours={handleFABClick}
+          onAddPlace={handleAddPoi}
+          onExport={() => exportMergedPois(poisData)}
+        />
+      )}
 
       {/* POI add/edit sheet */}
       <PoiEditorSheet
