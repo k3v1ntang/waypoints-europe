@@ -123,19 +123,30 @@ body {
   color: var(--text-primary) !important;
 }
 
+/* The ⓘ toggle. MapLibre draws it as a dark SVG background-image on a
+   translucent white circle - unfixable by tokens (images can't read CSS
+   variables) and ugly under filters (an invert also flips the focus ring
+   and stacks a second circle on the dark pill). So: remove MapLibre's
+   artwork entirely and draw the glyph ourselves - one pill, token colors
+   in both schemes, normal focus ring. */
+.maplibregl-ctrl.maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button {
+  background: none !important; /* kills both the circle and the SVG glyph */
+  display: grid;
+  place-items: center;
+}
+
+.maplibregl-ctrl.maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button::before {
+  content: 'i';
+  font: italic 700 14px/1 Georgia, 'Times New Roman', serif;
+  color: var(--text-primary);
+}
+
 /* MapLibre's control glyphs are dark SVGs baked in as background images;
    they can't read CSS variables, so dark mode inverts them. hue-rotate
    keeps the geolocate control's active-blue recognizably blue. */
 @media (prefers-color-scheme: dark) {
   .maplibregl-ctrl button .maplibregl-ctrl-icon {
     filter: invert(1) hue-rotate(180deg);
-  }
-
-  /* The attribution ⓘ is the same deal in different markup: a dark SVG
-     background-image on a <summary> with a translucent white circle.
-     Inverting the element gives a white glyph on a dark circle. */
-  .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button {
-    filter: invert(1);
   }
 }
 

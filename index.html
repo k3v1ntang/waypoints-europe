@@ -5,7 +5,12 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#2563eb" />
+    <!-- Tints Safari's own top/bottom chrome to blend with the app instead
+         of rendering as hard dark slabs (values mirror the light/dark
+         --glass-fill-opaque tokens). The PWA manifest keeps the blue brand
+         theme_color for install surfaces. -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8f9fb" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1c1c1e" />
     <meta name="description" content="Your European Travel Companion - offline-ready map of points of interest and walking tours." />
     <title>Waypoints</title>
   </head>
