@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- Installed-PWA polish: black-translucent lets the map render UNDER
+         the iOS status bar (clock/battery float over the map, like Apple
+         Maps) instead of iOS reserving an opaque bar above the app. Only
+         affects standalone/home-screen mode; Safari-in-browser ignores it. -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <!-- Tints Safari's own top/bottom chrome to blend with the app instead
          of rendering as hard dark slabs (values mirror the light/dark

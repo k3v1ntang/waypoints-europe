@@ -128,11 +128,39 @@ body {
    variables) and ugly under filters (an invert also flips the focus ring
    and stacks a second circle on the dark pill). So: remove MapLibre's
    artwork entirely and draw the glyph ourselves - one pill, token colors
-   in both schemes, normal focus ring. */
-.maplibregl-ctrl.maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button {
+   in both schemes, normal focus ring.
+
+   Geometry is pinned rather than inherited: MapLibre absolutely-positions
+   the 24px button at the pill's top-right and sizes the collapsed pill
+   from leftover padding, which centered the glyph in Chromium but not in
+   iOS Safari. A fixed 32px circle with the button filling it renders the
+   same everywhere. */
+.maplibregl-ctrl.maplibregl-ctrl-attrib.maplibregl-compact:not(.maplibregl-compact-show) {
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  padding: 0 !important;
+  border-radius: 50% !important;
+}
+
+.maplibregl-ctrl.maplibregl-ctrl-attrib.maplibregl-compact .maplibregl-ctrl-attrib-button {
   background: none !important; /* kills both the circle and the SVG glyph */
-  display: grid;
+  display: grid !important;
   place-items: center;
+}
+
+.maplibregl-ctrl.maplibregl-ctrl-attrib.maplibregl-compact:not(.maplibregl-compact-show)
+  .maplibregl-ctrl-attrib-button {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Expanded: the button stays MapLibre's absolute 24px square; nudge it
+   off the exact corner so it sits inside the pill's padding. */
+.maplibregl-ctrl.maplibregl-ctrl-attrib.maplibregl-compact-show .maplibregl-ctrl-attrib-button {
+  top: 4px;
+  right: 6px;
 }
 
 .maplibregl-ctrl.maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button::before {
