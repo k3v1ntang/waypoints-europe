@@ -96,6 +96,33 @@ body {
   border-top: 0.5px solid var(--separator);
 }
 
+/* Attribution, expanded state (tap on the ⓘ). MapLibre ships it as a
+   full-width, left-aligned white strip; cap the width so the credit text
+   wraps into a tidy right-aligned pill above the bar, and read colors
+   from the tokens so dark mode matches the rest of the chrome. The
+   !importants are deliberate: maplibre-gl.css loads after this file and
+   sets these same properties at the same specificity, so it wins every
+   tie - this is a surgical third-party override, not a style to imitate. */
+.maplibregl-ctrl.maplibregl-ctrl-attrib {
+  background-color: var(--glass-fill-elevated-opaque) !important;
+  color: var(--text-primary) !important;
+  border-radius: 12px !important;
+}
+
+.maplibregl-ctrl.maplibregl-ctrl-attrib.maplibregl-compact-show {
+  /* MapLibre resets its controls to content-box, which silently added the
+     padding on top of the width cap. */
+  box-sizing: border-box;
+  max-width: min(300px, calc(100vw - 48px));
+  text-align: right;
+  padding: 6px 36px 6px 12px !important; /* right padding clears the ⓘ button */
+  line-height: 1.45;
+}
+
+.maplibregl-ctrl.maplibregl-ctrl-attrib a {
+  color: var(--text-primary) !important;
+}
+
 /* MapLibre's control glyphs are dark SVGs baked in as background images;
    they can't read CSS variables, so dark mode inverts them. hue-rotate
    keeps the geolocate control's active-blue recognizably blue. */
