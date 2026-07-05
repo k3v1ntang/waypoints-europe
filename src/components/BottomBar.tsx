@@ -52,6 +52,45 @@ const normalize = (text: string): string =>
 
 const MAX_RESULTS = 30;
 
+// Bar icons as inline SVG line drawings instead of emoji: stroke uses
+// `currentColor` (the CSS `color` of the button), so contrast is right in
+// both color schemes automatically - emoji ship fixed colors and were
+// unreadable on dark glass. 24-unit viewBox, 1.8 stroke, round caps: one
+// consistent visual weight across the bar.
+const iconProps = {
+  width: 20,
+  height: 20,
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 1.8,
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round',
+  'aria-hidden': true
+} as const;
+
+/** Tour route: start point, S-curved path, end point. */
+const RouteIcon = () => (
+  <svg {...iconProps}>
+    <circle cx="6" cy="19" r="2.5" />
+    <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+    <circle cx="18" cy="5" r="2.5" />
+  </svg>
+);
+
+const PlusIcon = () => (
+  <svg {...iconProps}>
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+);
+
+const SearchIcon = () => (
+  <svg {...iconProps} width={16} height={16}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="m21 21-4.3-4.3" />
+  </svg>
+);
+
 const BottomBar = ({
   poisData,
   currentCity,
@@ -190,7 +229,7 @@ const BottomBar = ({
       {/* The bar itself */}
       <div className={`glass ${styles.bar}`}>
         <div className={styles.searchField}>
-          <span className={styles.searchIcon} aria-hidden="true">🔍</span>
+          <span className={styles.searchIcon} aria-hidden="true"><SearchIcon /></span>
           <input
             ref={inputRef}
             type="search"
@@ -229,7 +268,7 @@ const BottomBar = ({
               onShowTours();
             }}
           >
-            🚶
+            <RouteIcon />
             {toursCount > 0 && <span className={styles.badge}>{toursCount}</span>}
           </button>
           <button
@@ -241,7 +280,7 @@ const BottomBar = ({
               onAddPlace();
             }}
           >
-            ➕
+            <PlusIcon />
           </button>
         </div>
 

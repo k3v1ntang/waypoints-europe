@@ -17,6 +17,16 @@
   position: fixed;
   left: var(--bar-inset);
   right: var(--bar-inset);
+  /* ❓ CONCEPT: max-width + auto margins
+     📝 EXPLANATION: on phones the bar spans the screen (left/right insets
+     above), but a bar stretched across a desktop window reads as a clumsy
+     toolbar. Capping the width and setting both horizontal margins to
+     `auto` makes the browser split the leftover space evenly - the
+     classic CSS centering idiom - so on wide screens it stays a floating
+     phone-width capsule, like Apple Maps' sheet on iPad. The popovers are
+     positioned inside this frame, so they inherit the same cap. */
+  max-width: 500px;
+  margin-inline: auto;
   /* Float above the iPhone home indicator; --safe-bottom is 0 elsewhere. */
   bottom: calc(var(--bar-inset) + var(--safe-bottom));
   /* Below everything that opens OVER the bar: the tours BottomSheet
@@ -63,8 +73,9 @@
 }
 
 .searchIcon {
-  font-size: 15px;
+  display: flex; /* center the SVG, no inline baseline gap */
   flex-shrink: 0;
+  color: var(--text-secondary);
 }
 
 .searchInput {
@@ -126,17 +137,24 @@
   font-size: 19px;
   cursor: pointer;
   padding: 0;
+  /* SVG icons use stroke="currentColor", so they inherit this and stay
+     legible in both color schemes (emoji have fixed colors and don't). */
   color: var(--text-primary);
   -webkit-tap-highlight-color: transparent;
+}
+
+.groupButton svg {
+  display: block; /* kill the baseline gap inline SVGs get as inline elements */
 }
 
 .groupButton:active {
   background-color: var(--fill-well-pressed);
 }
 
-/* Hairline divider between grouped buttons */
+/* Divider between grouped buttons - full 1px and the stronger separator
+   tone; the 0.5px hairline vanished against the glass fill. */
 .groupButton + .groupButton {
-  border-left: 0.5px solid var(--separator);
+  border-left: 1px solid var(--separator-strong);
 }
 
 /* Standalone ⋯ button - same size, its own capsule (it opens an overflow

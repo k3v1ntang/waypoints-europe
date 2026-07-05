@@ -29,8 +29,11 @@
   --text-secondary: #6b7280;
   --text-on-accent: #ffffff;
 
-  /* Hairline separators inside a glass surface (menu item dividers). */
+  /* Hairline separators inside a glass surface (menu item dividers), and
+     a stronger tone for dividers that must read at a glance (the split
+     between grouped buttons). */
   --separator: rgba(60, 60, 67, 0.14);
+  --separator-strong: rgba(60, 60, 67, 0.33);
 
   /* ---- Glass material (D4, tint-biased 2026-07-04) -------------------- */
   /* Per the D4 amendment these sit at the TINTED/FROSTED end of the
@@ -90,6 +93,7 @@
     --text-primary: #f3f4f6;
     --text-secondary: #9ca3af;
     --separator: rgba(84, 84, 88, 0.55);
+    --separator-strong: rgba(255, 255, 255, 0.22);
 
     --glass-fill: rgba(28, 28, 30, 0.80);
     --glass-fill-elevated: rgba(44, 44, 46, 0.88);
