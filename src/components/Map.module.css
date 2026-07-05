@@ -1,15 +1,14 @@
 /* Map - Phase 5b: the container and the two transient banners, extracted
    from inline styles onto the token system. */
 
+/* Full-bleed map: sized purely by inset:0 (all four edges pinned to the
+   viewport). The old explicit 100dvh height + safe-area padding-bottom
+   left an unpainted black band under the home indicator in the installed
+   PWA - the canvas must run UNDER the home indicator (Apple Maps style);
+   only floating controls respect the safe-area inset. */
 .container {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100dvh; /* modern dynamic viewport height */
-  width: 100vw;
-  padding-bottom: env(safe-area-inset-bottom);
+  inset: 0;
 }
 
 /* Map failed to load. Anchored above the bottom bar (not top) so the

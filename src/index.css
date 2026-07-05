@@ -23,8 +23,6 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  /* iPhone safe area handling */
-  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* This is a fixed-viewport app - every surface is position:fixed with its
@@ -68,11 +66,6 @@ body {
 
 .maplibregl-ctrl-top-right {
   margin-top: env(safe-area-inset-top, 0px);
-}
-
-/* Ensure map container respects safe areas */
-.maplibregl-map {
-  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .maplibregl-ctrl.maplibregl-ctrl-group {
