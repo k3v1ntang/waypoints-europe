@@ -2,7 +2,7 @@
 
 This document defines the exact data shape this repo expects when Amsterdam and Paris Disneyland content is handed off from the **separate, external AI-assisted trip-research project** (outside this repo) that is doing the actual research for the August 2026 trip.
 
-**Why this exists**: Phase 4 in `docs/planning/2026-08-trip-improvement-plan.md` originally assumed Amsterdam content would come from a Rick Steves guidebook via the existing 8-step walking-tour pipeline (`docs/implementation/walking-tour-implementation-guide.md`). That's no longer the case — the research is happening in a different project entirely. This contract exists so that whenever that project's output lands, ingesting it here is mechanical: validate the shape, drop it into `pois.json`, run the validator, done. No manual guidebook transcription, no lat/lng swap step, no reference-doc intermediate.
+**Why this exists**: Phase 4 in `docs/planning/2026-07-02-trip-improvement-plan.md` originally assumed Amsterdam content would come from a Rick Steves guidebook via the existing 8-step walking-tour pipeline (`docs/implementation/walking-tour-implementation-guide.md`). That's no longer the case — the research is happening in a different project entirely. This contract exists so that whenever that project's output lands, ingesting it here is mechanical: validate the shape, drop it into `pois.json`, run the validator, done. No manual guidebook transcription, no lat/lng swap step, no reference-doc intermediate.
 
 **Status**: contract only — no Amsterdam/Paris data exists in this repo yet. Nothing here is populated until the external project delivers.
 
@@ -10,7 +10,7 @@ This document defines the exact data shape this repo expects when Amsterdam and 
 
 ## Target shape: one JSON object per city
 
-Ask the external project to hand back JSON already matching this shape (same shape `pois.json` uses today), with coordinates **already in `[longitude, latitude]` order** — Mapbox's format. There's no requirement to also produce a human-readable `latitude, longitude` intermediate doc this time, since the source isn't a printed guidebook that needs manual extraction.
+Ask the external project to hand back JSON already matching this shape (same shape `pois.json` uses today), with coordinates **already in `[longitude, latitude]` order** — MapLibre's format (inherited from Mapbox GL, which MapLibre forked). There's no requirement to also produce a human-readable `latitude, longitude` intermediate doc this time, since the source isn't a printed guidebook that needs manual extraction.
 
 ```json
 {
@@ -47,8 +47,8 @@ Ask the external project to hand back JSON already matching this shape (same sha
 | `visibility` | yes | `always` (shown regardless of active tour) or `walkingTour` (shown only while that POI's tour is active) |
 | `description` | yes | user-facing summary |
 | `walkingTourNotes` | no | omit or empty string if there's no deeper historical context to show |
-| `notes` | no | omit or empty string if there's nothing practical to add (an empty string, not `undefined` — see `poiValidation.js`) |
-| `googleMapsUrl` | no | direct link if available |
+| `notes` | no | omit or empty string if there's nothing practical to add (an empty string, not `undefined` — see `poiValidation.ts`) |
+| `googleMapsUrl` | no | direct link if available; must be an `https:` URL — `poiValidation.ts` rejects any other scheme |
 | `photos` | yes | always `[]` at handoff time — Phase 3's separate pipeline (`docs/implementation/photo-pipeline-guide.md`) populates this later, independently |
 
 ---
