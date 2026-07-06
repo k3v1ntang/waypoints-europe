@@ -10,16 +10,15 @@
  * mode and the reduced-transparency fallback work below: components never
  * branch, only the tokens change.
  *
- * This file is the CSS successor to src/config/theme.js. theme.js stays
- * for values JS still needs (map marker colors); new UI reads tokens.
+ * This file is the single source of truth for theme colors, replacing
+ * the retired src/config/theme.js.
  */
 
 :root {
   /* ---- Brand ---------------------------------------------------------- */
-  /* --color-primary mirrors theme.js colors.primary - keep those in sync.
-     --color-danger is the badge/hotel-marker red already used across the
-     app (FAB badges, hotel markers) - deliberately NOT theme.js
-     colors.error (#ef4444), which is the softer form-validation red. */
+  /* --color-danger is the badge/hotel-marker red already used across the
+     app (FAB badges, hotel markers) - deliberately not reused for the
+     softer form-validation red. */
   --color-primary: #2563eb;
   --color-danger: #dc2626;
   /* Accent for text-on-surface uses (links, text buttons, active labels).
