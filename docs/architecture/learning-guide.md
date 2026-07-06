@@ -5,7 +5,7 @@ This document outlines learning objectives and developer background for the Wayp
 ## Developer Profile
 
 - **Background**: Some Python experience using Visual Studio Code with GitHub Copilot
-- **New Technologies**: React, PWA (Progressive Web Apps), Claude Code
+- **New Technologies**: React, PWA (Progressive Web Apps), TypeScript, Claude Code
 - **Learning Goal**: Use Waypoints Europe as a practical learning project for web development
 - **Teaching Style**: Clear explanations with appropriate technical vocabulary, properly explained
 
@@ -62,10 +62,17 @@ This document outlines learning objectives and developer background for the Wayp
 - [ ] Understand offline-first architecture and data synchronization
 
 ### Milestone 4: Integration & Production
-- [ ] Learn third-party library integration patterns (Mapbox SDK)
+- [ ] Learn third-party library integration patterns (MapLibre GL JS + OpenFreeMap)
 - [ ] Understand performance optimization techniques and best practices
 - [ ] Master debugging workflows and browser developer tools
 - [ ] Learn deployment strategies and production considerations
+
+### Milestone 5: TypeScript (added July 2026, D5)
+- [ ] Understand TypeScript as "type hints enforced at build time" — the closest Python analogue is type hints + mypy, except `tsc` blocks a broken build instead of just warning
+- [ ] Learn to read and write basic type annotations (`string`, `number`, union types like `'landmark' | 'culture'`)
+- [ ] Understand interfaces/types for shaping data (`Poi`, `City`, `WalkingTour` in `src/data/types.ts`)
+- [ ] Learn generics well enough to read (not necessarily write) helpers like `src/data/editStore.ts`'s `withStore<T>`
+- [ ] Understand why this codebase converted the data layer before the components (value-order conversion, not converting code about to be rewritten anyway)
 
 ## Code Explanation Style
 
@@ -100,7 +107,7 @@ After implementing each major feature, reflect on:
 
 ## Documentation Priority Order
 
-1. **Official documentation** (React, Vite, Mapbox, PWA specs)
+1. **Official documentation** (React, Vite, MapLibre, TypeScript, PWA specs)
 2. **Current community best practices** (GitHub discussions, recent articles)
 3. **Latest stable releases** and changelogs
 4. **Modern alternatives** to older approaches
