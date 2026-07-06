@@ -6,15 +6,22 @@
    left an unpainted black band under the home indicator in the installed
    PWA - the canvas must run UNDER the home indicator (Apple Maps style);
    only floating controls respect the safe-area inset. */
+/* position FIXED, not absolute: iOS 26 standalone sizes the document's
+   containing block 62px shorter than the real viewport (screen minus the
+   top inset) while fixed elements get the full screen - absolute anchoring
+   left a dead strip under the map and stranded the attribution high above
+   the bar (diagnosed on-device 2026-07-05: innerHeight 874 vs
+   html.clientHeight 812). Fixed puts the map - and the attribution inside
+   it - in the same coordinate system as the bar and sheets. */
 .container {
-  position: absolute;
+  position: fixed;
   inset: 0;
 }
 
 /* Map failed to load. Anchored above the bottom bar (not top) so the
    remaining working controls stay usable. */
 .errorBanner {
-  position: absolute;
+  position: fixed;
   bottom: calc(var(--bar-clearance) + 20px + var(--safe-bottom));
   left: 16px;
   right: 16px;
@@ -55,7 +62,7 @@
    Deliberately dark-on-both-schemes - it floats over map content, and a
    fixed dark chip with white text stays readable on any map style. */
 .pickingBanner {
-  position: absolute;
+  position: fixed;
   top: calc(16px + env(safe-area-inset-top, 0px));
   left: 16px;
   right: 16px;
