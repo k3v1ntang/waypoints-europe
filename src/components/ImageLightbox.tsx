@@ -57,6 +57,13 @@ const ImageLightbox = ({ isOpen, onClose, slides, index = 0 }: ImageLightboxProp
       styles={{
         container: {
           backgroundColor: 'rgba(0, 0, 0, 0.95)'
+        },
+        // The installed PWA renders under the iOS status bar
+        // (black-translucent); keep the toolbar's buttons out of the
+        // clock/battery zone. env() is 0 in ordinary browser tabs.
+        toolbar: {
+          paddingTop: 'env(safe-area-inset-top, 0px)',
+          paddingRight: 'env(safe-area-inset-right, 0px)'
         }
       }}
     />
