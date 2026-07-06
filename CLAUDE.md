@@ -20,15 +20,16 @@
 ## TECHNOLOGY STACK
 
 ### Core Technologies
-- **PWA + React 18 + Vite 5 + MapLibre GL JS 5** with OpenFreeMap tiles (keyless, no billing)
+- **PWA + React 19 + Vite 8 + TypeScript + MapLibre GL JS 5** with OpenFreeMap tiles (keyless, no billing)
 - **vite-plugin-pwa**: Automatic service worker generation with Workbox
 - **Yet Another React Lightbox**: Professional image viewer
 - **markdown-to-jsx**: Walking tour guide renderer
 
 ### Key Files
 - `src/data/pois.json` - All POI data and walking tour definitions
-- `src/components/Map.jsx` - Main map component
-- `src/config/theme.js` - Centralized color scheme (#2563eb blue)
+- `src/components/Map.tsx` - Main map component
+- `src/styles/tokens.css` - Design tokens (colors, spacing, z-index)
+- `src/styles/glass.css` - Liquid-glass styling layer
 
 **For detailed technical architecture, see:** `/docs/architecture/technical-architecture.md`
 
@@ -140,17 +141,25 @@ waypoints-europe/
 │   └── images/                # POI photos
 ├── src/
 │   ├── components/
-│   │   ├── Map.jsx            # Main map component
-│   │   ├── CityNavigation.jsx # City selector dropdown
-│   │   ├── WalkingTourFAB.jsx # Tour floating action button
-│   │   ├── WalkingTourBottomSheet.jsx # Tour details panel
-│   │   ├── GuideViewer.jsx    # Markdown tour guide renderer
-│   │   └── ImageLightbox.jsx  # Full-screen image viewer
+│   │   ├── Map.tsx             # Main map component
+│   │   ├── BottomBar.tsx       # Bottom navigation/action bar
+│   │   ├── SearchSheet.tsx     # POI search sheet
+│   │   ├── BottomSheet.tsx     # Shared bottom sheet primitive
+│   │   ├── WalkingTourBottomSheet.tsx # Tour details panel
+│   │   ├── GuideViewer.tsx     # Markdown tour guide renderer
+│   │   ├── ImageLightbox.tsx   # Full-screen image viewer
+│   │   ├── POIPopup.tsx        # POI popup content
+│   │   ├── PoiEditorSheet.tsx  # POI editing sheet
+│   │   ├── ErrorBoundary.tsx   # Top-level error boundary
+│   │   └── icons.tsx           # Shared SVG line icons
 │   ├── data/
 │   │   └── pois.json          # POI data + walking tour definitions
+│   ├── styles/
+│   │   ├── tokens.css          # Design tokens (colors, spacing, z-index)
+│   │   └── glass.css           # Liquid-glass styling layer
 │   ├── config/
-│   │   └── theme.js           # Centralized color scheme
-│   └── App.jsx                # Main application
+│   │   └── motion.ts           # Motion/animation config
+│   └── App.tsx                 # Main application
 ├── docs/                       # Developer documentation
 │   ├── architecture/           # Technical architecture & design
 │   │   ├── technical-architecture.md
@@ -237,7 +246,7 @@ Rick Steves Guide     POI Reference Doc        pois.json
 
 **Example**: `/public/guides/helsinki-city-walk.md`
 
-**Usage**: Loaded dynamically by GuideViewer.jsx when user clicks "View Full Tour Guide" button
+**Usage**: Loaded dynamically by GuideViewer.tsx when user clicks "View Full Tour Guide" button
 
 ---
 
@@ -306,7 +315,7 @@ Rick Steves Guide     POI Reference Doc        pois.json
 **Example**: See Helsinki POIs in `/src/data/pois.json`
 
 **Usage**:
-- Loaded by Map.jsx to render POI markers
+- Loaded by Map.tsx to render POI markers
 - Powers POI popups with descriptions
 - Defines walking tour sequences
 
@@ -631,7 +640,7 @@ useEffect(() => {
 
 ### Theme Color
 - **Primary Blue**: `#2563eb`
-- **Source**: `src/config/theme.js`
+- **Source**: `src/styles/tokens.css`
 
 ### File Naming Conventions
 - **Guides**: `/public/guides/{tour-id}.md` (kebab-case)
