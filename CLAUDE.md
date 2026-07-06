@@ -17,6 +17,17 @@
 
 ---
 
+## PROJECT STATUS & ACTIVE PLANS — READ FIRST
+
+**Current state lives in `docs/planning/MEMORY.md`** (active project, one-line status, freeze dates, open items — orchestrator-maintained snapshot). **How the planning system works lives in `docs/planning/README.md`.** Do not infer status from this file's Development Log (historical) or from memory — read MEMORY.md.
+
+Durable rules that outlive any single project:
+- The production app (`https://waypoints-europe.netlify.app`) is **live and in real use**; `main` auto-deploys to Netlify. Before risky changes or anything touching `src/data/editStore.ts`, follow `docs/implementation/operations-runbook.md` (backup/rollback procedures).
+- All UI work follows `docs/architecture/design-system.md` — including the iOS 26 rule: viewport-anchored surfaces use `position: fixed`, never document-anchored `absolute`.
+- Plan/status edits belong to the active project's **orchestrator session** (rules in the plan); implementation sessions report instead of editing plans.
+
+---
+
 ## TECHNOLOGY STACK
 
 ### Core Technologies
