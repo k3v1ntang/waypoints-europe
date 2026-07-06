@@ -23,7 +23,7 @@ This folder contains all developer documentation for the Waypoints Europe projec
 ### [`/planning`](./planning/)
 **Project plans and improvement roadmaps**
 
-- [`MEMORY.md`](./planning/MEMORY.md) - **Current state snapshot** (active project, status, freeze dates, open items) — start here for "where are we"
+- [`/MEMORY.md` (repo root)](../MEMORY.md) - **Current state snapshot** (active project, status, freeze dates, open items) — start here for "where are we"
 - [`README.md`](./planning/README.md) - How the planning system works (plan files, session notes, orchestration conventions)
 - [`2026-07-02-trip-improvement-plan.md`](./planning/2026-07-02-trip-improvement-plan.md) - August 2026 trip (Amsterdam + Paris Disneyland): codebase assessment, offline-failure root causes, decisions, and phased plan (offline reliability, in-app POI editing, photos, trip content)
 - [`2026-07-03-modernization-plan.md`](./planning/2026-07-03-modernization-plan.md) - July 2026 modernization: MapLibre migration, security hardening, dependency majors, incremental TypeScript, Liquid-Glass UX rebuild, session-by-session execution log

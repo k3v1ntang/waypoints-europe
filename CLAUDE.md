@@ -19,7 +19,7 @@
 
 ## PROJECT STATUS & ACTIVE PLANS — READ FIRST
 
-**Current state lives in `docs/planning/MEMORY.md`** (active project, one-line status, freeze dates, open items — orchestrator-maintained snapshot). **How the planning system works lives in `docs/planning/README.md`.** Do not infer status from this file's Development Log (historical) or from memory — read MEMORY.md.
+**Read `/MEMORY.md` (repo root) at the start of every session** — it is the canonical snapshot of project status: active project, one-line state, freeze dates, open items. **Keep it current: whenever your work changes project status** (a merge lands, a phase completes, an open item appears or resolves, a freeze date changes), **update `/MEMORY.md` in the same commit.** This repo-committed file is the status memory — do not rely on Claude Code's internal per-user memory for it, and do not infer status from this file's Development Log (historical). Status detail and history belong in the owning plan (see `docs/planning/README.md` for how the planning system works); MEMORY.md holds only the snapshot.
 
 Durable rules that outlive any single project:
 - The production app (`https://waypoints-europe.netlify.app`) is **live and in real use**; `main` auto-deploys to Netlify. Before risky changes or anything touching `src/data/editStore.ts`, follow `docs/implementation/operations-runbook.md` (backup/rollback procedures).

@@ -1,10 +1,10 @@
 # Repo Memory — Current State
 
-> Mutable snapshot, replaced on update by the active project's orchestrator session. Last updated: **2026-07-06**. History: see the active plan's Session Log. How this directory works: [README.md](README.md).
+> Mutable snapshot of project status, replaced on update — **any session that changes project status must update this file in the same commit** (see CLAUDE.md). Last updated: **2026-07-06**. History: see the active plan's Session Log. How the planning system works: [docs/planning/README.md](docs/planning/README.md).
 
 ## Active project
 
-**July 2026 Modernization** — [2026-07-03-modernization-plan.md](2026-07-03-modernization-plan.md)
+**July 2026 Modernization** — [docs/planning/2026-07-03-modernization-plan.md](docs/planning/2026-07-03-modernization-plan.md)
 
 - **State**: Phases 1–5 merged and on-device verified (2026-07-04/05). Docs synced; design-system + operations-runbook docs exist. `npm audit` clean post-upgrades.
 - **Remaining**: Phase 6 (Banff + PMTiles) — explicitly **post-trip**; scope and cold-start prompt are in the plan.
