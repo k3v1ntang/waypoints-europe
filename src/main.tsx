@@ -43,13 +43,3 @@ createRoot(document.getElementById('root')!).render(
     </ErrorBoundary>
   </StrictMode>
 );
-
-// TEMPORARY (2026-07-05): viewport diagnostic for the iOS 26 standalone
-// bottom-inset investigation. Standalone always shows it (a home-screen
-// app can't be launched with a query string); browser tabs need ?debug.
-if (
-  matchMedia('(display-mode: standalone)').matches ||
-  new URLSearchParams(location.search).has('debug')
-) {
-  import('./debug/viewportProbe').then(({ mountViewportProbe }) => mountViewportProbe());
-}
