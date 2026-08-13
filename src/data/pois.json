@@ -1826,6 +1826,20 @@
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/9fsv6kECDMD1LgN77",
           "photos": []
+        },
+        {
+          "id": "amsterdam-w-amsterdam",
+          "name": "W Amsterdam",
+          "coordinates": [
+            4.8900059,
+            52.3727871
+          ],
+          "category": "hotel",
+          "visibility": "always",
+          "description": "Design hotel spanning a former telephone exchange and a 1920s bank building, near Dam Square.",
+          "notes": "From the April 2023 trip, not the current stay (that's The College Hotel Amsterdam).",
+          "googleMapsUrl": "https://maps.app.goo.gl/KBmm4aW4gPiM6BVE8",
+          "photos": []
         }
       ]
     },
