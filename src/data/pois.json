@@ -1840,6 +1840,20 @@
           "notes": "From the April 2023 trip, not the current stay (that's The College Hotel Amsterdam).",
           "googleMapsUrl": "https://maps.app.goo.gl/KBmm4aW4gPiM6BVE8",
           "photos": []
+        },
+        {
+          "id": "amsterdam-nieuwmarkt",
+          "name": "Nieuwmarkt",
+          "coordinates": [
+            4.8998645,
+            52.3725898
+          ],
+          "category": "food",
+          "visibility": "always",
+          "description": "Historic square bordering Amsterdam's small Chinatown (Zeedijk) — street food and market stalls, recommended by a local Uber driver.",
+          "notes": "Uber driver's tip, not yet independently verified — worth exploring on the ground.",
+          "googleMapsUrl": "https://maps.app.goo.gl/FXiYNisfKsezDeSB9",
+          "photos": []
         }
       ]
     },
