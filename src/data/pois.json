@@ -1770,6 +1770,34 @@
           "notes": "DK found this and wants to go.",
           "googleMapsUrl": "https://maps.app.goo.gl/Xy34k2NEpCeK6iiF8",
           "photos": []
+        },
+        {
+          "id": "amsterdam-heineken-experience",
+          "name": "Heineken Experience",
+          "coordinates": [
+            4.8918249,
+            52.3578313
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Self-guided tour through the former Heineken brewery — interactive exhibits, a 4D ride, drinks included. ~1.5–2 h visit.",
+          "notes": "Stadhouderskade 78, at the De Pijp/Museumkwartier border. Daily 10:30–19:30 (Mon–Thu) / 10:30–21:00 (Fri–Sun), daily 10:30–21:00 in Jul/Aug. Adult ticket ~€21–25 [unverified — sources disagree on the exact figure].",
+          "googleMapsUrl": "https://maps.app.goo.gl/rvNHn8wM4VeDhTEE6",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-reguliersdwarsstraat",
+          "name": "Reguliersdwarsstraat",
+          "coordinates": [
+            4.8924239,
+            52.3661757
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Amsterdam's main gay nightlife street, centred near Rembrandtplein — dense with LGBTQ+-friendly bars and clubs. Amsterdam's gay-friendly neighbourhood.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/peR64YmECw7FxyBQ6",
+          "photos": []
         }
       ]
     },
