@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import basePoisData from '../data/pois.json';
-import { mergePois } from '../data/mergePois.js';
+import { mergePois, poiEquals } from '../data/mergePois.js';
+import { mergeIncomingEdits } from '../data/editChangeset.js';
 import { getAllEdits, putEdit, removeEdit } from '../data/editStore.js';
 import type { EditRecord, Poi, PoisData } from '../data/types.js';
 
@@ -19,11 +20,42 @@ const BASE_POI_IDS = new Set(
   typedBasePoisData.cities.flatMap((city) => city.pois.map((poi) => poi.id))
 );
 
+// poiId -> Poi and poiId -> owning city, for two things a plain id set
+// can't answer: detecting a since-become-redundant override (compare
+// against the current bundled poi) and labeling a 'delete' tombstone in
+// the pending-edits list (it carries no `poi`, so the name has to come
+// from the base data it deleted).
+const BASE_POI_BY_ID = new Map(
+  typedBasePoisData.cities.flatMap((city) => city.pois.map((poi) => [poi.id, poi] as const))
+);
+const BASE_CITY_NAME_BY_ID = new Map(typedBasePoisData.cities.map((city) => [city.id, city.name] as const));
+
 // Upsert helper for the in-memory copy of the edit records.
 const upsertRecord = (records: EditRecord[], record: EditRecord): EditRecord[] => [
   ...records.filter((r) => r.poiId !== record.poiId),
   record
 ];
+
+// A pending-edit row shaped for display (the ⋯ menu's edits list) - a
+// human-readable name/city regardless of which EditRecord variant it is.
+export interface EditSummary {
+  poiId: string;
+  cityId: string;
+  name: string;
+  cityName: string;
+  type: EditRecord['type'];
+}
+
+function summarizeEdit(record: EditRecord): EditSummary {
+  const name = record.type === 'delete' ? (BASE_POI_BY_ID.get(record.poiId)?.name ?? record.poiId) : record.poi.name;
+  return {
+    poiId: record.poiId,
+    cityId: record.cityId,
+    name,
+    cityName: BASE_CITY_NAME_BY_ID.get(record.cityId) ?? record.cityId,
+    type: record.type
+  };
+}
 
 // ❓ CONCEPT: Custom hook - reusable stateful logic extracted from a component.
 // 📝 EXPLANATION: usePoiData owns the "base data + edit overlay" model:
@@ -40,8 +72,23 @@ export function usePoiData() {
   useEffect(() => {
     let cancelled = false;
     getAllEdits()
-      .then((records) => {
-        if (!cancelled) setEdits(records);
+      .then(async (records) => {
+        // Self-healing: an 'override' edit whose stored `poi` now exactly
+        // matches the current bundled POI is redundant - the repo shipped
+        // the same change the on-device edit already made (e.g. a live
+        // edit later got folded into pois.json). Drop it silently rather
+        // than leaving a phantom "1 edit on this device" that a manual
+        // "Reset to original" would be a no-op for anyway.
+        const stale = records.filter(
+          (r) => r.type === 'override' && BASE_POI_IDS.has(r.poiId) && poiEquals(r.poi, BASE_POI_BY_ID.get(r.poiId)!)
+        );
+        if (stale.length > 0) {
+          await Promise.all(stale.map((r) => removeEdit(r.poiId))).catch((err) => {
+            console.error('Failed to clear stale synced edits:', err);
+          });
+        }
+        const staleIds = new Set(stale.map((r) => r.poiId));
+        if (!cancelled) setEdits(records.filter((r) => !staleIds.has(r.poiId)));
       })
       .catch((err) => {
         // IndexedDB unavailable (very old browser / exotic private mode):
@@ -58,6 +105,8 @@ export function usePoiData() {
     () => (edits && edits.length > 0 ? mergePois(typedBasePoisData, edits) : typedBasePoisData),
     [edits]
   );
+
+  const editSummaries = useMemo(() => (edits ?? []).map(summarizeEdit), [edits]);
 
   // Save a complete POI object (new or edited). `cityId` is the city it
   // belongs to. Persists first, then updates state.
@@ -93,14 +142,29 @@ export function usePoiData() {
     setEdits((prev) => (prev ?? []).filter((r) => r.poiId !== poiId));
   }, []);
 
+  // Merge a changeset from someone else's device into the local overlay
+  // (last-write-wins by `updatedAt` per record - see editChangeset.ts).
+  // Persists only the records that actually changed, then replaces state
+  // with the full merged set.
+  const importEdits = useCallback(async (incoming: EditRecord[]) => {
+    const current = edits ?? [];
+    const { merged, applied, skipped } = mergeIncomingEdits(current, incoming);
+    await Promise.all(applied.map((record) => putEdit(record)));
+    setEdits(merged);
+    return { applied: applied.length, skipped: skipped.length };
+  }, [edits]);
+
   return {
     poisData,
+    edits: edits ?? [],
     editsReady: edits !== null,
     editCount: edits?.length ?? 0,
+    editSummaries,
     isBasePoi: (poiId: string) => BASE_POI_IDS.has(poiId),
     hasEdit: (poiId: string) => (edits ?? []).some((r) => r.poiId === poiId),
     savePoi,
     deletePoi,
-    resetPoi
+    resetPoi,
+    importEdits
   };
 }
