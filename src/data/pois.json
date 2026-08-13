@@ -1548,6 +1548,587 @@
           "visibility": "always"
         }
       ]
+    },
+    {
+      "id": "amsterdam",
+      "name": "Amsterdam (AMS)",
+      "country": "Netherlands",
+      "countryCode": "NL",
+      "centerCoordinates": [
+        4.9041,
+        52.3676
+      ],
+      "pois": [
+        {
+          "id": "amsterdam-college-hotel",
+          "name": "The College Hotel Amsterdam, Autograph Collection",
+          "coordinates": [
+            4.8836858,
+            52.3527763
+          ],
+          "category": "hotel",
+          "visibility": "always",
+          "description": "Boutique hotel in a converted 1895 school building near the Museum Quarter, staffed partly by hospitality students.",
+          "notes": "Aug 30 – Sep 4 · Address: Roelof Hartstraat 1, Amsterdam 1071 VE, Netherlands · Phone: +31-020-5711511 · Confirmation 74918356",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=The+College+Hotel+Amsterdam+Autograph+Collection+Amsterdam",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-albert-cuypmarkt",
+          "name": "Albert Cuypmarkt",
+          "coordinates": [
+            4.895361,
+            52.355972
+          ],
+          "category": "food",
+          "visibility": "always",
+          "description": "Amsterdam's largest street market, est. 1905 — ~260 stalls along ~1 km of Albert Cuypstraat in De Pijp. Cheese, Turkish delicacies, herring, Vietnamese spring rolls alongside the everyday market stalls.",
+          "notes": "Mon–Sat 9:00–17:00",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Albert+Cuyp+Markt+Amsterdam",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-sarphatipark",
+          "name": "Sarphatipark",
+          "coordinates": [
+            4.8967,
+            52.3542
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "English-landscape park (1881–1886) in De Pijp, named for Samuel Sarphati. A Sarphati memorial, a working heritage pumping station, duck ponds with little bridges, playgrounds and sport courts.",
+          "walkingTourNotes": "Briefly renamed Bollandpark during WWII (Sarphati was Jewish), restored to its original name in 1945.",
+          "notes": "",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sarphatipark+Amsterdam",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-de-dageraad",
+          "name": "De Dageraad - Amsterdam School",
+          "coordinates": [
+            4.8989827,
+            52.3498744
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Michel de Klerk & Piet Kramer's 1919–1923 housing complex — the Amsterdam School style \"in its purest form.\" Visitor centre with a guided tour included.",
+          "walkingTourNotes": "Part of Berlage's 1917 Plan Zuid expansion, built out 1921–1929.",
+          "notes": "Visitor centre at Burgemeester Tellegenstraat 128, open Thu–Sun 13:00–17:00 only. Guided tour included (13:30/14:30/15:30, last one in English).",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=De+Dageraad+Amsterdam",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-ndsm-wharf",
+          "name": "NDSM Wharf",
+          "coordinates": [
+            4.8915066,
+            52.4016036
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Former shipyard in Amsterdam-Noord turned artist quarter: studios, exhibition halls, street art, nightlife.",
+          "notes": "Reached by the F4 ferry (~14 min) from behind Centraal.",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=NDSM-werf+Amsterdam",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-adam-lookout",
+          "name": "A'DAM Lookout",
+          "coordinates": [
+            4.9021654,
+            52.383862
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Rooftop observation deck atop the A'DAM Tower, Overhoeksplein 5. The \"Over the Edge\" swing is Europe's highest, at 100 m.",
+          "notes": "€16.50 online / €18.50 onsite; swing +€7.50 online. Daily 10:00–22:00, last entry 21:00. Swing minimum height 1.20 m.",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=ADAM+Lookout+Amsterdam",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-sea-palace",
+          "name": "Sea Palace",
+          "coordinates": [
+            4.906286,
+            52.375758
+          ],
+          "category": "food",
+          "visibility": "always",
+          "description": "Europe's first fully floating Chinese restaurant (1984), Ming-palace styling, Michelin Bib Gourmand — the landmark pagoda visible from harbour cruises.",
+          "notes": "Oosterdokskade 8",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sea+Palace+Amsterdam",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-zaanse-schans",
+          "name": "Zaanse Schans",
+          "coordinates": [
+            4.822870216979339,
+            52.47298813595273
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Open-air village of preserved historic windmills and traditional Dutch houses on the Zaan river — a confirmed full-day outing on this trip.",
+          "notes": "Village and exteriors free, windmill interiors ~€4–6. ~17 min by train to Zaandijk Zaanse Schans (~€4.20), then a ~15 min walk.",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Zaanse+Schans+Zaandam",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-damrak",
+          "name": "Damrak",
+          "coordinates": [
+            4.897696272469773,
+            52.376238804498655
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Amsterdam's main harbor-front street, running from Centraal Station down to Dam Square — originally the mouth of the Amstel river before it was filled in. Historic canal houses line the water's edge.",
+          "notes": "Busy tourist corridor between Centraal and Dam Square; worth a slower walk along the canal-house side rather than just passing through.",
+          "googleMapsUrl": "https://maps.app.goo.gl/RP5uVixA5WLN3wDq7",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-rijksmuseum",
+          "name": "Rijksmuseum",
+          "coordinates": [
+            4.8852188,
+            52.3599976
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "The Golden Age flagship: Rembrandt's Night Watch and four Vermeers in the 2nd-floor Gallery of Honour.",
+          "notes": "€25 adult (free ≤18), open daily 9:00–17:00, every day of the year. All visitors must book a timed start slot online — only a very limited number sell at the door. Arrive 9:00–10:00 on a weekday (Tue/Wed best); 11:00–15:00 is the crush. Book: rijksmuseum.nl/en/tickets",
+          "googleMapsUrl": "https://maps.app.goo.gl/Cq66HEQMGmLo9VAYA",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-van-gogh-museum",
+          "name": "Van Gogh Museum",
+          "coordinates": [
+            4.8812053,
+            52.3580757
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Museumplein's other major draw — the world's largest Van Gogh collection.",
+          "notes": "€25 adult, free under 18 (a timed slot is still required for free entries). Every ticket is timed and sold online only; open daily from 09:00, Fridays to 21:00, 365 days a year. Book: vangoghmuseum.nl/en/tickets",
+          "googleMapsUrl": "https://maps.app.goo.gl/beh93QjE1yRxsikH9",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-stedelijk-museum",
+          "name": "Stedelijk Museum Amsterdam",
+          "coordinates": [
+            4.8797554,
+            52.3580111
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Modern/contemporary art museum on Museumplein, beside the Rijksmuseum.",
+          "notes": "€22.50 adult (+€10 surcharge on some exhibitions), daily 10:00–18:00.",
+          "googleMapsUrl": "https://maps.app.goo.gl/T2fm5KFpxc5oTTDN6",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-de-hallen",
+          "name": "De Hallen",
+          "coordinates": [
+            4.8687693,
+            52.3668448
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Converted 1900s tram depot in Oud-West, now a cultural/food complex — De Hallen Cinema (Filmhallen), boutique shops, a library, and the indoor Foodhallen food market.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/KmndL8cXoxVCxdS4A",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-concertgebouw",
+          "name": "The Concertgebouw",
+          "coordinates": [
+            4.8790296,
+            52.356325
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "World-famous 1888 concert hall on Museumplein, home to the Royal Concertgebouw Orchestra and renowned for its acoustics.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/3p4thjE4UvWPP1WT8",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-artisplein",
+          "name": "Artisplein",
+          "coordinates": [
+            4.91285,
+            52.3663541
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Public square just outside Artis Royal Zoo's entrance, in the Plantage district near the Hortus Botanicus.",
+          "notes": "DK found this and wants to go.",
+          "googleMapsUrl": "https://maps.app.goo.gl/Xy34k2NEpCeK6iiF8",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-heineken-experience",
+          "name": "Heineken Experience",
+          "coordinates": [
+            4.8918249,
+            52.3578313
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Self-guided tour through the former Heineken brewery — interactive exhibits, a 4D ride, drinks included. ~1.5–2 h visit.",
+          "notes": "Stadhouderskade 78, at the De Pijp/Museumkwartier border. Daily 10:30–19:30 (Mon–Thu) / 10:30–21:00 (Fri–Sun), daily 10:30–21:00 in Jul/Aug. Adult ticket ~€21–25 [unverified — sources disagree on the exact figure].",
+          "googleMapsUrl": "https://maps.app.goo.gl/rvNHn8wM4VeDhTEE6",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-reguliersdwarsstraat",
+          "name": "Reguliersdwarsstraat",
+          "coordinates": [
+            4.8924239,
+            52.3661757
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Amsterdam's main gay nightlife street, centred near Rembrandtplein — dense with LGBTQ+-friendly bars and clubs. Amsterdam's gay-friendly neighbourhood.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/peR64YmECw7FxyBQ6",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-royal-palace",
+          "name": "Royal Palace Amsterdam",
+          "coordinates": [
+            4.8913758,
+            52.3731835
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "17th-century former town hall on Dam Square, now the King's official reception palace — Amsterdam's grandest building.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/9wpknhGirRRqL1Qs5",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-i-amsterdam-store",
+          "name": "I Amsterdam Store",
+          "coordinates": [
+            4.900986,
+            52.3793515
+          ],
+          "category": "practical",
+          "visibility": "always",
+          "description": "I amsterdam-branded souvenir/gift shop near Centraal Station.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/9fsv6kECDMD1LgN77",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-w-amsterdam",
+          "name": "W Amsterdam",
+          "coordinates": [
+            4.8900059,
+            52.3727871
+          ],
+          "category": "hotel",
+          "visibility": "always",
+          "description": "Design hotel spanning a former telephone exchange and a 1920s bank building, near Dam Square.",
+          "notes": "From the April 2023 trip, not the current stay (that's The College Hotel Amsterdam).",
+          "googleMapsUrl": "https://maps.app.goo.gl/KBmm4aW4gPiM6BVE8",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-nieuwmarkt",
+          "name": "Nieuwmarkt",
+          "coordinates": [
+            4.8998645,
+            52.3725898
+          ],
+          "category": "food",
+          "visibility": "always",
+          "description": "Historic square bordering Amsterdam's small Chinatown (Zeedijk) — street food and market stalls, recommended by a local Uber driver.",
+          "notes": "Uber driver's tip, not yet independently verified — worth exploring on the ground.",
+          "googleMapsUrl": "https://maps.app.goo.gl/FXiYNisfKsezDeSB9",
+          "photos": []
+        }
+      ]
+    },
+    {
+      "id": "paris",
+      "name": "Paris (CDG)",
+      "country": "France",
+      "countryCode": "FR",
+      "centerCoordinates": [
+        2.3522,
+        48.8567
+      ],
+      "pois": [
+        {
+          "id": "paris-moxy-val-deurope",
+          "name": "Moxy Paris Val d'Europe",
+          "coordinates": [
+            2.767477,
+            48.8545349
+          ],
+          "category": "hotel",
+          "visibility": "always",
+          "description": "Hotel near Disneyland Paris / Val d'Europe.",
+          "notes": "Sep 6 – Sep 9 · Address: 2 Avenue de L'Europe, Montevrain 77144, France · Phone: +33-1-7308 9865 · Confirmation 79634221",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Moxy+Paris+Val+d%27Europe+Montevrain",
+          "photos": []
+        },
+        {
+          "id": "paris-courtyard-gare-de-lyon",
+          "name": "Courtyard by Marriott Paris Gare de Lyon",
+          "coordinates": [
+            2.3713759,
+            48.8450594
+          ],
+          "category": "hotel",
+          "visibility": "always",
+          "description": "Hotel steps from Gare de Lyon station, central Paris.",
+          "notes": "Sep 9 – Sep 11 · Address: 209-211 Rue de Bercy, Paris 75012, France · Phone: +33-1-80206300 · Confirmation 81117941",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Courtyard+by+Marriott+Paris+Gare+de+Lyon+Paris",
+          "photos": []
+        },
+        {
+          "id": "paris-residence-inn-cdg",
+          "name": "Residence Inn Paris Charles de Gaulle Central Airport",
+          "coordinates": [
+            2.5488606,
+            49.0083803
+          ],
+          "category": "hotel",
+          "visibility": "always",
+          "description": "Extended-stay hotel at Roissypôle, a short walk/CDGVAL ride from CDG terminals — the stay before the return flight.",
+          "notes": "Sep 11 – Sep 12 · Address: 10 Rue du Voyageur, Roissy-en-France 95700, France · Phone: +33-1-74371570 · Confirmation 79567065",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Residence+Inn+by+Marriott+Paris+Charles+de+Gaulle+Central+Airport+Roissy-en-France",
+          "photos": []
+        },
+        {
+          "id": "paris-eiffel-tower",
+          "name": "Eiffel Tower",
+          "coordinates": [
+            2.2945,
+            48.858222
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Paris's iconic 1889 iron lattice tower.",
+          "notes": "Book timed entry ahead, especially peak season.",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Eiffel+Tower+Paris",
+          "photos": []
+        },
+        {
+          "id": "paris-arc-de-triomphe",
+          "name": "Arc de Triomphe",
+          "coordinates": [
+            2.295028,
+            48.873778
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Monumental arch at the northern end of the Historical Axis, the 10 km line running from the Louvre out to La Défense.",
+          "notes": "",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Arc+de+Triomphe+Paris",
+          "photos": []
+        },
+        {
+          "id": "paris-champs-elysees",
+          "name": "Champs-Élysées",
+          "coordinates": [
+            2.3076,
+            48.8699
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Famous 2 km avenue running from the Arc de Triomphe toward Place de la Concorde — shopping, cafés, and the northern stretch of the Historical Axis.",
+          "notes": "",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Champs-Elysees+Paris",
+          "photos": []
+        },
+        {
+          "id": "paris-grande-arche-la-defense",
+          "name": "Grande Arche de la Défense",
+          "coordinates": [
+            2.23583,
+            48.89278
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Cube-shaped concrete/glass/Carrara-marble monument, inaugurated 1989 for the Revolution bicentennial — large enough to contain Notre-Dame. Houses a photojournalism gallery, an auditorium, and a restaurant.",
+          "walkingTourNotes": "The rooftop viewing deck (\"Le Toit de la Grande Arche\") closed to the public permanently on 28 April 2023 and is not reopening — the operator cited the cost of running a building that combines high-rise and public-venue safety regimes. The Parvis art walk, Cité de l'Histoire and Les 4 Temps are the ground-level substitutes.",
+          "notes": "Reachable directly on RER A, no transfer from Disneyland/Chessy or central Paris.",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Grande+Arche+de+la+Defense+Puteaux",
+          "photos": []
+        }
+      ]
+    },
+    {
+      "id": "ghent",
+      "name": "Ghent",
+      "country": "Belgium",
+      "countryCode": "BE",
+      "centerCoordinates": [
+        3.72528,
+        51.05361
+      ],
+      "pois": [
+        {
+          "id": "ghent-marriott-hotel",
+          "name": "Ghent Marriott Hotel",
+          "coordinates": [
+            3.7195449,
+            51.0551644
+          ],
+          "category": "hotel",
+          "visibility": "always",
+          "description": "Hotel built into a restored 16th-century merchant's house on the Korenlei, overlooking the Leie River.",
+          "notes": "Sep 4 – Sep 6 · Itinerary lists \"Drabstraat 37, 9000 Ghent\"; public listings (Marriott, Booking) give \"Korenlei 10, 9000 Ghent\" for the same hotel — coordinates here use Korenlei 10, worth confirming which address is current · Phone: +32-92-339393 · Confirmation 79509585",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ghent+Marriott+Hotel+Ghent",
+          "photos": []
+        },
+        {
+          "id": "ghent-gravensteen",
+          "name": "Gravensteen (Castle of the Counts)",
+          "coordinates": [
+            3.720556,
+            51.057222
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "12th-century moated stone castle in the city centre, built for the Counts of Flanders on the model of Crusader castles in the Holy Land; later a courthouse, prison and cotton mill before restoration.",
+          "notes": "Sint-Veerleplein 11. Daily 10:00–18:00, last admission 16:40, closed 24/25/31 Dec and 1 Jan. ~€13 adult, free under 13, audio guide included. Allow ~1–1.5 h.",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Gravensteen+Ghent",
+          "photos": []
+        },
+        {
+          "id": "ghent-belfry",
+          "name": "Belfry of Ghent",
+          "coordinates": [
+            3.72528,
+            51.05389
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "UNESCO-listed bell tower, one of the \"Three Towers\" skyline with St Bavo's and St Nicholas.",
+          "notes": "Hours and pricing unverified — official site is JS-rendered and could not be confirmed in advance.",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Belfry+of+Ghent+Ghent",
+          "photos": []
+        },
+        {
+          "id": "ghent-graslei-korenlei",
+          "name": "Graslei and Korenlei",
+          "coordinates": [
+            3.7214,
+            51.0547
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Twin medieval quays facing each other across the Leie River, lined with guild houses from the 12th–17th centuries — Ghent's signature postcard view and the historic heart of the old harbor.",
+          "notes": "Best at golden hour / after dark when lit. Canal boat tours depart from here.",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Graslei+and+Korenlei+Ghent",
+          "photos": []
+        }
+      ]
+    },
+    {
+      "id": "bruges",
+      "name": "Bruges",
+      "country": "Belgium",
+      "countryCode": "BE",
+      "centerCoordinates": [
+        3.22417,
+        51.20889
+      ],
+      "pois": [
+        {
+          "id": "bruges-markt",
+          "name": "Markt (Market Square)",
+          "coordinates": [
+            3.224106,
+            51.20866
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "The postcard square: colourful guild houses, the Belfry, and the covered halls.",
+          "notes": "Waffle/frites vendors line the edges — convenient but touristy; see the Bruges note's Eat & Drink section for better options.",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Markt+Square+Bruges",
+          "photos": []
+        },
+        {
+          "id": "bruges-belfry",
+          "name": "Belfry of Bruges",
+          "coordinates": [
+            3.22472,
+            51.20833
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "UNESCO World Heritage medieval bell tower on the Markt.",
+          "notes": "366-step climb; heavy logistics (advance booking, physical demands).",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Belfry+of+Bruges+Bruges",
+          "photos": []
+        },
+        {
+          "id": "bruges-burg-square",
+          "name": "Burg Square",
+          "coordinates": [
+            3.22694,
+            51.20861
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "One block from the Markt; City Hall (Stadhuis, one of the oldest in the Low Countries) and the Basilica of the Holy Blood (venerated relic).",
+          "notes": "Basilica of the Holy Blood entry is free/cheap.",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Burg+Square+Bruges",
+          "photos": []
+        }
+      ]
+    },
+    {
+      "id": "rotterdam",
+      "name": "Rotterdam (RTM)",
+      "country": "Netherlands",
+      "countryCode": "NL",
+      "centerCoordinates": [
+        4.48,
+        51.92
+      ],
+      "pois": [
+        {
+          "id": "rotterdam-cube-houses",
+          "name": "Cube Houses (Kijk-Kubus)",
+          "coordinates": [
+            4.49056,
+            51.92028
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Tilted-cube housing block by Piet Blom, 1984. Directly above Blaak station, adjacent to Markthal.",
+          "notes": "Overblaak 70. Open daily 10:00–18:00. €3.50 standard, €2.50 students & 65+, €1.50 children up to 12, free under 4. Walk-in, paid on the spot (cash or card).",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Cube+Houses+Rotterdam",
+          "photos": []
+        },
+        {
+          "id": "rotterdam-markthal",
+          "name": "Markthal",
+          "coordinates": [
+            4.48694,
+            51.92
+          ],
+          "category": "food",
+          "visibility": "always",
+          "description": "Indoor market hall with a huge ceiling mural and 100+ food spots. At Blaak station, adjacent to Cube Houses.",
+          "notes": "Free entry. Mon–Thu & Sat 10:00–20:00, Fri 10:00–21:00, Sun 12:00–18:00 (holidays vary; individual restaurants/supermarket keep their own longer hours).",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Markthal+Rotterdam",
+          "photos": []
+        }
+      ]
     }
   ],
   "walkingTours": {

@@ -11,11 +11,14 @@ import PoiEditorSheet, { type EditorSession } from './PoiEditorSheet';
 import BottomBar from './BottomBar';
 import SearchSheet from './SearchSheet';
 import { usePoiData } from '../hooks/usePoiData';
-import { exportMergedPois } from '../data/exportPois.js';
+import { exportMergedPois, exportEditsChangeset } from '../data/exportPois.js';
 import type { City, Poi, PoisData, WalkingTour } from '../data/types';
 import styles from './Map.module.css';
 
 const LAST_CITY_STORAGE_KEY = 'waypoints-last-city';
+// Remembered across exports so re-prompting isn't needed every time -
+// mirrors LAST_CITY_STORAGE_KEY's try/catch-guarded localStorage pattern.
+const EXPORT_AUTHOR_STORAGE_KEY = 'waypoints-export-author';
 
 // Same `unknown` bridge as usePoiData: the JSON import's inferred shape is
 // wider than PoisData (number[] vs [number, number] tuples); the validate
@@ -86,7 +89,18 @@ const Map = () => {
   const popupStateRef = useRef<PopupState | null>(null); // the open POI popup
   const lastFittedTourRef = useRef<string | null>(null);
   const pickingRef = useRef(false); // mirror of isPicking for the run-once map click handler
-  const { poisData, savePoi, deletePoi, resetPoi, isBasePoi, hasEdit, editCount } = usePoiData();
+  const {
+    poisData,
+    edits,
+    savePoi,
+    deletePoi,
+    resetPoi,
+    isBasePoi,
+    hasEdit,
+    editCount,
+    editSummaries,
+    importEdits
+  } = usePoiData();
   const [mapLoaded, setMapLoaded] = useState(false);
   // City selection is stored as an ID and the City object derived from the
   // live data, so runtime edits can never leave a stale object in state.
@@ -136,6 +150,33 @@ const Map = () => {
     const found = findPoiById(poisData, poi.id);
     setEditorSession({ poi, cityId: found?.city.id ?? null });
   }, [poisData]);
+
+  // From the ⋯ menu's pending-edits list (only has a poiId, not the Poi
+  // object handleEditPoi wants) - look the live POI up in the merged data
+  // and hand off to the same open-editor path a marker tap uses.
+  const handleEditPoiById = useCallback((poiId: string) => {
+    const found = findPoiById(poisData, poiId);
+    if (found) handleEditPoi(found.poi);
+  }, [poisData, handleEditPoi]);
+
+  // Prompt once for an attribution label, remembered in localStorage so
+  // repeat exports don't re-ask - same pattern as LAST_CITY_STORAGE_KEY.
+  const handleExportEdits = () => {
+    let lastAuthor = '';
+    try {
+      lastAuthor = localStorage.getItem(EXPORT_AUTHOR_STORAGE_KEY) ?? '';
+    } catch {
+      // localStorage unavailable (e.g. Safari private mode) - just skip the remembered default
+    }
+    const author = window.prompt('Your name? (shown to whoever you share this edits file with)', lastAuthor);
+    if (author === null) return; // cancelled
+    try {
+      if (author) localStorage.setItem(EXPORT_AUTHOR_STORAGE_KEY, author);
+    } catch {
+      // non-critical - export still proceeds without remembering it
+    }
+    exportEditsChangeset(edits, author || undefined);
+  };
 
   const handleAddPoi = () => {
     setPickedCoordinates(null);
@@ -695,10 +736,15 @@ const Map = () => {
           currentCity={currentCity}
           toursCount={toursCount}
           editCount={editCount}
+          editSummaries={editSummaries}
           onOpenSearch={() => setIsSearchOpen(true)}
           onShowTours={() => setIsBottomSheetOpen(true)}
           onAddPlace={handleAddPoi}
-          onExport={() => exportMergedPois(poisData)}
+          onEditPoi={handleEditPoiById}
+          onRestorePoi={resetPoi}
+          onExportEdits={handleExportEdits}
+          onExportFull={() => exportMergedPois(poisData)}
+          onImportEdits={importEdits}
         />
       )}
 

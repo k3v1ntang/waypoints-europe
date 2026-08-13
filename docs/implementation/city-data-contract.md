@@ -1,10 +1,10 @@
-# City Data Contract (Amsterdam + Paris Disneyland handoff)
+# City Data Contract (August 2026 trip handoff)
 
-This document defines the exact data shape this repo expects when Amsterdam and Paris Disneyland content is handed off from the **separate, external AI-assisted trip-research project** (outside this repo) that is doing the actual research for the August 2026 trip.
+This document defines the exact data shape this repo expects when trip content is handed off from the **separate, external AI-assisted trip-research project** (outside this repo) that is doing the actual research for the August 2026 trip.
 
 **Why this exists**: Phase 4 in `docs/planning/2026-07-02-trip-improvement-plan.md` originally assumed Amsterdam content would come from a Rick Steves guidebook via the existing 8-step walking-tour pipeline (`docs/implementation/walking-tour-implementation-guide.md`). That's no longer the case — the research is happening in a different project entirely. This contract exists so that whenever that project's output lands, ingesting it here is mechanical: validate the shape, drop it into `pois.json`, run the validator, done. No manual guidebook transcription, no lat/lng swap step, no reference-doc intermediate.
 
-**Status**: contract only — no Amsterdam/Paris data exists in this repo yet. Nothing here is populated until the external project delivers.
+**Status**: shipped (branch `feature/amsterdam-paris`, 2026-08-12). The trip itself grew from the original "Amsterdam + Paris Disneyland" framing into a 7-city loop, so delivered scope is wider than this doc originally described: `amsterdam`, `paris`, `ghent`, `bruges`, `rotterdam` — 5 cities, 24 POIs (5 hotels + 19 sights). Disneyland Paris did **not** get its own city or the logistics-shell scope originally planned below (see that section) — only its hotel shipped, filed under `paris`. No walking tours were added for any of the 5 cities. Kept below for reference since the field shape and ingestion steps are still exactly what was used.
 
 ---
 
@@ -47,13 +47,13 @@ Ask the external project to hand back JSON already matching this shape (same sha
 | `visibility` | yes | `always` (shown regardless of active tour) or `walkingTour` (shown only while that POI's tour is active) |
 | `description` | yes | user-facing summary |
 | `walkingTourNotes` | no | omit or empty string if there's no deeper historical context to show |
-| `notes` | no | omit or empty string if there's nothing practical to add (an empty string, not `undefined` — see `poiValidation.ts`) |
-| `googleMapsUrl` | no | direct link if available; must be an `https:` URL — `poiValidation.ts` rejects any other scheme |
+| `notes` | **yes** | the *key* must be present — `poiValidation.ts` fails the build if it's missing or not a string — but an empty string is fine if there's nothing practical to add |
+| `googleMapsUrl` | **yes** | `poiValidation.ts`'s `getGoogleMapsUrlErrors` fails the build on empty/missing; must also be an `https:` URL — any other scheme is rejected. (Corrected 2026-08-12: this table previously marked both fields optional, which doesn't match the validator.) |
 | `photos` | yes | always `[]` at handoff time — Phase 3's separate pipeline (`docs/implementation/photo-pipeline-guide.md`) populates this later, independently |
 
 ---
 
-## Walking tour object (Amsterdam only, if the research includes one)
+## Walking tour object (not used in what shipped — no walking tours were added for any of the 5 new cities)
 
 ```json
 {
@@ -74,16 +74,16 @@ Ask the external project to hand back JSON already matching this shape (same sha
 
 ---
 
-## Paris Disneyland: logistics-shell scope only
+## Paris Disneyland: logistics-shell scope only — planned, not what shipped
 
-Per plan decision D3: Paris Disneyland gets **pins only**, no walking tour, and no in-park content (the official Disneyland Paris app already covers live wait times and the park map — Waypoints doesn't compete there). The external project's Paris output should be limited to:
+Per plan decision D3, the original intent was for Paris Disneyland to get **pins only**, no walking tour, and no in-park content (the official Disneyland Paris app already covers live wait times and the park map — Waypoints doesn't compete there), limited to:
 
 - Hotel
 - Dining reservations
 - Marne-la-Vallée station
 - Pre/post-park stops (e.g. a meal before heading to the park, luggage storage, etc.)
 
-Same POI object shape as above; just a much shorter `pois` array and no `walkingTours` entry for this city.
+**What actually shipped (2026-08-12) is narrower still**: no separate `paris-disneyland` city at all. Only the Disneyland-adjacent hotel (Moxy Paris Val d'Europe) was added, filed as a regular hotel POI under the `paris` city alongside central Paris's hotels and sights — no dining reservations, no station pin, no pre/post-park stops. The traveler is using the official Disney app for in-resort logistics instead.
 
 ---
 

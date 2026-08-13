@@ -128,3 +128,18 @@ export const LocateIcon = (p: IconProps) => (
     <path d="m21 3-9 18-2-7-7-2 18-9Z" />
   </Svg>
 );
+
+export const TrashIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" />
+    <path d="M10 11v6M14 11v6" />
+  </Svg>
+);
+
+/** Inward arrow into a tray - ShareIcon's mirror image, for import. */
+export const ImportIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M12 3v10M8 9.5 12 13l4-3.5" />
+    <path d="M7 15H5.5v5h13v-5H17" />
+  </Svg>
+);

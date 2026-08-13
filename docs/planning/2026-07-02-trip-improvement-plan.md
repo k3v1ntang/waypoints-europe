@@ -167,13 +167,13 @@ Reviewed the plan for day-to-day usefulness (not just reliability) and confirmed
 
 ### Phase 4 — Trip content (low effort per city) — branch: `feature/amsterdam-paris`
 
-**Status: parked (July 3, 2026), blocked on an external dependency.** See D3's correction: actual Amsterdam + Paris Disneyland content is being produced by a separate AI-assisted research/trip-planning project outside this repo, not the Rick Steves 8-step pipeline. This repo's only prep work right now is the data contract that handoff will conform to — `docs/implementation/city-data-contract.md` — so ingestion is a known target and there's no rework risk if the external project's structure evolves before it's done. No `pois.json` changes yet; nothing here is independently scaffoldable ahead of that project's output.
+**Status: shipped (2026-08-12).** The external research project's output landed as a wider scope than this section originally described — the trip itself grew from "Amsterdam + Paris Disneyland" into a 7-city loop, so delivered content is `amsterdam`, `paris`, `ghent`, `bruges`, `rotterdam` (5 cities, 24 POIs: 5 hotels + 19 sights), per the (now also updated) `docs/implementation/city-data-contract.md`. No `paris-disneyland` city was created — per a decision made directly with the traveler during ingestion, only the Disneyland-adjacent hotel shipped, filed under `paris`; no walking tours were added for any of the 5 cities (a scope call made the same session, not carried over from this plan). `npm run validate:pois`, `lint`, `typecheck`, `test`, and `build` all pass; in-browser spot-check (city picker order, POI popups, marker colors) is still owed — no browser-automation tool was available in the session that produced this data, see `MEMORY.md`.
 
-Once the external research is delivered, ingestion is:
-1. Add `amsterdam` and `paris-disneyland` cities to `pois.json` per the data contract (`id`, `name (CODE)`, `country`, `countryCode`, `centerCoordinates`, `pois`)
-2. Amsterdam: pins + walking tour, from the delivered research
-3. Paris Disneyland: minimal logistics-shell pins only per D3 (hotel, dining reservations, station, pre/post-park stops) — no in-park content effort
-4. Validation script checks all new data; test offline on device (folded into the week-7 end-to-end rehearsal, alongside the parked Phase 3 photo offline check)
+What actually ran, for reference against the four steps originally planned below:
+1. ~~Add `amsterdam` and `paris-disneyland` cities~~ → added `amsterdam`, `paris`, `ghent`, `bruges`, `rotterdam` instead (wider scope, no separate Disneyland city — see above)
+2. Amsterdam: pins only, no walking tour (walking tours dropped from scope for this pass, all 5 cities)
+3. Paris Disneyland: reduced further than D3's logistics-shell — hotel pin only, no dining/station/pre-post-park pins (traveler is using the official Disney app for those)
+4. `npm run validate:pois` + full local CI gate (lint/typecheck/test/build) all pass; on-device offline test still deferred to the week-7 end-to-end rehearsal as planned, alongside the parked Phase 3 photo offline check
 
 ### Stretch — "Download city for offline" button — DROPPED (July 3, 2026)
 

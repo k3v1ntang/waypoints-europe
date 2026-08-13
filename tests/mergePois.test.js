@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { mergePois, generatePoiId } from '../src/data/mergePois.js';
+import { mergePois, generatePoiId, poiEquals } from '../src/data/mergePois.js';
 
 function baseData() {
   return {
@@ -108,5 +108,31 @@ describe('generatePoiId', () => {
     data.cities[0].pois.push({ id: 'amsterdam-poi-a-clone', name: 'existing' });
     // First candidate 'amsterdam-poi-a-clone' collides -> bump to -2
     expect(generatePoiId('POI A Clone', 'amsterdam', data)).toBe('amsterdam-poi-a-clone-2');
+  });
+});
+
+describe('poiEquals', () => {
+  it('is true for identical objects built with different key order', () => {
+    const a = { id: 'x', name: 'X', coordinates: [1, 2] };
+    const b = { coordinates: [1, 2], name: 'X', id: 'x' };
+    expect(poiEquals(a, b)).toBe(true);
+  });
+
+  it('is false when a field differs', () => {
+    const a = { id: 'x', name: 'X' };
+    const b = { id: 'x', name: 'Y' };
+    expect(poiEquals(a, b)).toBe(false);
+  });
+
+  it('is false when an array field differs', () => {
+    const a = { id: 'x', coordinates: [1, 2] };
+    const b = { id: 'x', coordinates: [1, 3] };
+    expect(poiEquals(a, b)).toBe(false);
+  });
+
+  it('is false when one side is missing a key the other has', () => {
+    const a = { id: 'x', notes: 'hi' };
+    const b = { id: 'x' };
+    expect(poiEquals(a, b)).toBe(false);
   });
 });

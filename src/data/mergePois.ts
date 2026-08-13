@@ -49,6 +49,31 @@ export function mergePois(baseData: PoisData, edits: EditRecord[] | null | undef
   return { ...baseData, cities };
 }
 
+// Structural equality for two POI objects, independent of key order.
+// Used to detect a since-become-redundant 'override' edit - one whose
+// stored `poi` now matches the bundled base POI exactly, because the repo
+// shipped the same change the on-device edit already made. `JSON.stringify`
+// comparison would false-negative on key order alone (a form-rebuilt object
+// vs. one parsed from pois.json), so this compares recursively by value.
+export function poiEquals(a: Poi, b: Poi): boolean {
+  return deepEqual(a, b);
+}
+
+function deepEqual(a: unknown, b: unknown): boolean {
+  if (a === b) return true;
+  if (typeof a !== 'object' || typeof b !== 'object' || a === null || b === null) return false;
+  if (Array.isArray(a) !== Array.isArray(b)) return false;
+  if (Array.isArray(a) && Array.isArray(b)) {
+    return a.length === b.length && a.every((item, i) => deepEqual(item, b[i]));
+  }
+  const aKeys = Object.keys(a as Record<string, unknown>);
+  const bKeys = Object.keys(b as Record<string, unknown>);
+  if (aKeys.length !== bKeys.length) return false;
+  return aKeys.every((key) =>
+    deepEqual((a as Record<string, unknown>)[key], (b as Record<string, unknown>)[key])
+  );
+}
+
 // Slug-based id for POIs created in-app, unique across the merged data set
 // (e.g. "amsterdam-cafe-de-klos", "-2" suffix on collision).
 export function generatePoiId(name: string, cityId: string, poisData: PoisData): string {
