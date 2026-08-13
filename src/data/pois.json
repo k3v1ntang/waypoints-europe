@@ -1584,7 +1584,7 @@
           "visibility": "always",
           "description": "Amsterdam's largest street market, est. 1905 — ~260 stalls along ~1 km of Albert Cuypstraat in De Pijp. Cheese, Turkish delicacies, herring, Vietnamese spring rolls alongside the everyday market stalls.",
           "notes": "Mon–Sat 9:00–17:00",
-          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Albert+Cuypmarkt+Amsterdam",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Albert+Cuyp+Markt+Amsterdam",
           "photos": []
         },
         {
@@ -1663,8 +1663,8 @@
           "id": "amsterdam-zaanse-schans",
           "name": "Zaanse Schans",
           "coordinates": [
-            4.81639,
-            52.47389
+            4.822870216979339,
+            52.47298813595273
           ],
           "category": "landmark",
           "visibility": "always",
@@ -1677,8 +1677,8 @@
           "id": "amsterdam-damrak",
           "name": "Damrak",
           "coordinates": [
-            4.897696,
-            52.376239
+            4.897696272469773,
+            52.376238804498655
           ],
           "category": "landmark",
           "visibility": "always",
