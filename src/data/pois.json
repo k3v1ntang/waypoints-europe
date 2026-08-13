@@ -1672,6 +1672,20 @@
           "notes": "Village and exteriors free, windmill interiors ~€4–6. ~17 min by train to Zaandijk Zaanse Schans (~€4.20), then a ~15 min walk.",
           "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Zaanse+Schans+Zaandam",
           "photos": []
+        },
+        {
+          "id": "amsterdam-damrak",
+          "name": "Damrak",
+          "coordinates": [
+            4.8959058,
+            52.3752071
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Amsterdam's main harbor-front street, running from Centraal Station down to Dam Square — originally the mouth of the Amstel river before it was filled in. Historic canal houses line the water's edge.",
+          "notes": "Busy tourist corridor between Centraal and Dam Square; worth a slower walk along the canal-house side rather than just passing through.",
+          "googleMapsUrl": "https://maps.app.goo.gl/RP5uVixA5WLN3wDq7",
+          "photos": []
         }
       ]
     },
