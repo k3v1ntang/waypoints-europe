@@ -1798,6 +1798,34 @@
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/peR64YmECw7FxyBQ6",
           "photos": []
+        },
+        {
+          "id": "amsterdam-royal-palace",
+          "name": "Royal Palace Amsterdam",
+          "coordinates": [
+            4.8913758,
+            52.3731835
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "17th-century former town hall on Dam Square, now the King's official reception palace — Amsterdam's grandest building.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/9wpknhGirRRqL1Qs5",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-i-amsterdam-store",
+          "name": "I Amsterdam Store",
+          "coordinates": [
+            4.900986,
+            52.3793515
+          ],
+          "category": "practical",
+          "visibility": "always",
+          "description": "I amsterdam-branded souvenir/gift shop near Centraal Station.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/9fsv6kECDMD1LgN77",
+          "photos": []
         }
       ]
     },
