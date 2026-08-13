@@ -1728,6 +1728,48 @@
           "notes": "€22.50 adult (+€10 surcharge on some exhibitions), daily 10:00–18:00.",
           "googleMapsUrl": "https://maps.app.goo.gl/T2fm5KFpxc5oTTDN6",
           "photos": []
+        },
+        {
+          "id": "amsterdam-de-hallen",
+          "name": "De Hallen",
+          "coordinates": [
+            4.8687693,
+            52.3668448
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Converted 1900s tram depot in Oud-West, now a cultural/food complex — De Hallen Cinema (Filmhallen), boutique shops, a library, and the indoor Foodhallen food market.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/KmndL8cXoxVCxdS4A",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-concertgebouw",
+          "name": "The Concertgebouw",
+          "coordinates": [
+            4.8790296,
+            52.356325
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "World-famous 1888 concert hall on Museumplein, home to the Royal Concertgebouw Orchestra and renowned for its acoustics.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/3p4thjE4UvWPP1WT8",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-artisplein",
+          "name": "Artisplein",
+          "coordinates": [
+            4.91285,
+            52.3663541
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Public square just outside Artis Royal Zoo's entrance, in the Plantage district near the Hortus Botanicus.",
+          "notes": "DK found this and wants to go.",
+          "googleMapsUrl": "https://maps.app.goo.gl/Xy34k2NEpCeK6iiF8",
+          "photos": []
         }
       ]
     },
