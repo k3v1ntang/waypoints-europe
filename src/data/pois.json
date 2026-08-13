@@ -1686,6 +1686,48 @@
           "notes": "Busy tourist corridor between Centraal and Dam Square; worth a slower walk along the canal-house side rather than just passing through.",
           "googleMapsUrl": "https://maps.app.goo.gl/RP5uVixA5WLN3wDq7",
           "photos": []
+        },
+        {
+          "id": "amsterdam-rijksmuseum",
+          "name": "Rijksmuseum",
+          "coordinates": [
+            4.8852188,
+            52.3599976
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "The Golden Age flagship: Rembrandt's Night Watch and four Vermeers in the 2nd-floor Gallery of Honour.",
+          "notes": "€25 adult (free ≤18), open daily 9:00–17:00, every day of the year. All visitors must book a timed start slot online — only a very limited number sell at the door. Arrive 9:00–10:00 on a weekday (Tue/Wed best); 11:00–15:00 is the crush. Book: rijksmuseum.nl/en/tickets",
+          "googleMapsUrl": "https://maps.app.goo.gl/Cq66HEQMGmLo9VAYA",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-van-gogh-museum",
+          "name": "Van Gogh Museum",
+          "coordinates": [
+            4.8812053,
+            52.3580757
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Museumplein's other major draw — the world's largest Van Gogh collection.",
+          "notes": "€25 adult, free under 18 (a timed slot is still required for free entries). Every ticket is timed and sold online only; open daily from 09:00, Fridays to 21:00, 365 days a year. Book: vangoghmuseum.nl/en/tickets",
+          "googleMapsUrl": "https://maps.app.goo.gl/beh93QjE1yRxsikH9",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-stedelijk-museum",
+          "name": "Stedelijk Museum Amsterdam",
+          "coordinates": [
+            4.8797554,
+            52.3580111
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Modern/contemporary art museum on Museumplein, beside the Rijksmuseum.",
+          "notes": "€22.50 adult (+€10 surcharge on some exhibitions), daily 10:00–18:00.",
+          "googleMapsUrl": "https://maps.app.goo.gl/T2fm5KFpxc5oTTDN6",
+          "photos": []
         }
       ]
     },
