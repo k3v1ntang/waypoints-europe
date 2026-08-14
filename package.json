@@ -12,6 +12,7 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "validate:pois": "tsx scripts/validate-pois.ts",
+    "detect-edit-conflicts": "tsx scripts/detect-edit-conflicts.ts",
     "process-photos": "node scripts/process-photos.js"
   },
   "dependencies": {
