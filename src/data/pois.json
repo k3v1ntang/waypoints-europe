@@ -1655,7 +1655,7 @@
           "category": "food",
           "visibility": "always",
           "description": "Europe's first fully floating Chinese restaurant (1984), Ming-palace styling, Michelin Bib Gourmand — the landmark pagoda visible from harbour cruises.",
-          "notes": "Oosterdokskade 8",
+          "notes": "",
           "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sea+Palace+Amsterdam",
           "photos": []
         },
@@ -1683,7 +1683,7 @@
           "category": "landmark",
           "visibility": "always",
           "description": "Amsterdam's main harbor-front street, running from Centraal Station down to Dam Square — originally the mouth of the Amstel river before it was filled in. Historic canal houses line the water's edge.",
-          "notes": "Busy tourist corridor between Centraal and Dam Square; worth a slower walk along the canal-house side rather than just passing through.",
+          "notes": "Worth a slower walk along the canal-house side.",
           "googleMapsUrl": "https://maps.app.goo.gl/RP5uVixA5WLN3wDq7",
           "photos": []
         },
@@ -1697,7 +1697,7 @@
           "category": "culture",
           "visibility": "always",
           "description": "The Golden Age flagship: Rembrandt's Night Watch and four Vermeers in the 2nd-floor Gallery of Honour.",
-          "notes": "€25 adult (free ≤18), open daily 9:00–17:00, every day of the year. All visitors must book a timed start slot online — only a very limited number sell at the door. Arrive 9:00–10:00 on a weekday (Tue/Wed best); 11:00–15:00 is the crush. Book: rijksmuseum.nl/en/tickets",
+          "notes": "€25 adult, open daily 9:00–17:00, every day of the year. All visitors must book a timed start slot online — only a very limited number sell at the door. Arrive 9:00–10:00 on a weekday (Tue/Wed best); 11:00–15:00 is the crush. Book: rijksmuseum.nl/en/tickets",
           "googleMapsUrl": "https://maps.app.goo.gl/Cq66HEQMGmLo9VAYA",
           "photos": []
         },
@@ -1711,7 +1711,7 @@
           "category": "culture",
           "visibility": "always",
           "description": "Museumplein's other major draw — the world's largest Van Gogh collection.",
-          "notes": "€25 adult, free under 18 (a timed slot is still required for free entries). Every ticket is timed and sold online only; open daily from 09:00, Fridays to 21:00, 365 days a year. Book: vangoghmuseum.nl/en/tickets",
+          "notes": "€25 adult (a timed slot is still required for free entries). Every ticket is timed and sold online only; open daily from 09:00, Fridays to 21:00, 365 days a year. Book: vangoghmuseum.nl/en/tickets",
           "googleMapsUrl": "https://maps.app.goo.gl/beh93QjE1yRxsikH9",
           "photos": []
         },
@@ -1761,13 +1761,13 @@
           "id": "amsterdam-artisplein",
           "name": "Artisplein",
           "coordinates": [
-            4.91285,
-            52.3663541
+            4.913341021889067,
+            52.36658936179555
           ],
           "category": "landmark",
           "visibility": "always",
           "description": "Public square just outside Artis Royal Zoo's entrance, in the Plantage district near the Hortus Botanicus.",
-          "notes": "DK found this and wants to go.",
+          "notes": "DK found this and an option to check out",
           "googleMapsUrl": "https://maps.app.goo.gl/Xy34k2NEpCeK6iiF8",
           "photos": []
         },
@@ -1781,7 +1781,7 @@
           "category": "culture",
           "visibility": "always",
           "description": "Self-guided tour through the former Heineken brewery — interactive exhibits, a 4D ride, drinks included. ~1.5–2 h visit.",
-          "notes": "Stadhouderskade 78, at the De Pijp/Museumkwartier border. Daily 10:30–19:30 (Mon–Thu) / 10:30–21:00 (Fri–Sun), daily 10:30–21:00 in Jul/Aug. Adult ticket ~€21–25 [unverified — sources disagree on the exact figure].",
+          "notes": "Daily 10:30–19:30 (Mon–Thu) / 10:30–21:00 (Fri–Sun). Adult ticket ~€21–25",
           "googleMapsUrl": "https://maps.app.goo.gl/rvNHn8wM4VeDhTEE6",
           "photos": []
         },
@@ -1837,7 +1837,7 @@
           "category": "hotel",
           "visibility": "always",
           "description": "Design hotel spanning a former telephone exchange and a 1920s bank building, near Dam Square.",
-          "notes": "From the April 2023 trip, not the current stay (that's The College Hotel Amsterdam).",
+          "notes": "Hotel for April 2023 trip",
           "googleMapsUrl": "https://maps.app.goo.gl/KBmm4aW4gPiM6BVE8",
           "photos": []
         },
@@ -1851,8 +1851,64 @@
           "category": "food",
           "visibility": "always",
           "description": "Historic square bordering Amsterdam's small Chinatown (Zeedijk) — street food and market stalls, recommended by a local Uber driver.",
-          "notes": "Uber driver's tip, not yet independently verified — worth exploring on the ground.",
+          "notes": "Uber driver's tip, option to explore on the ground.",
           "googleMapsUrl": "https://maps.app.goo.gl/FXiYNisfKsezDeSB9",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-zaansche-mill",
+          "name": "The Zaansche Mill",
+          "coordinates": [
+            4.8138194,
+            52.4787982
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Traditional Zaanse-region windmill.",
+          "notes": "Same excursion area, may be a specific mill within it rather than a fully separate stop.",
+          "googleMapsUrl": "https://maps.app.goo.gl/XZvsfpABw6kDVu4H8",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-inntel-zaandam",
+          "name": "Inntel Hotels Amsterdam Zaandam",
+          "coordinates": [
+            4.8159301,
+            52.4380719
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Hotel building stacked from traditional green Zaandam house facades, a well-known piece of local architecture.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/R2zk6uLhBFHTsNJy7",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-muiderslot",
+          "name": "Muiderslot",
+          "coordinates": [
+            5.0712141,
+            52.3344003
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Medieval moated castle at the mouth of the Vecht river in Muiden, ~15km east of central Amsterdam — restored interiors, armory, and gardens.",
+          "notes": "DK found this — castle worth seeing.",
+          "googleMapsUrl": "https://maps.app.goo.gl/veLaZEXSjcpRPfd79",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-keukenhof",
+          "name": "Keukenhof",
+          "coordinates": [
+            4.5469336,
+            52.2697087
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "One of the world's largest flower gardens, ~7 million tulips and other spring bulbs, near Lisse ~40km southwest of Amsterdam.",
+          "notes": "Seasonal — only open roughly mid/late March to mid-May each year. Confirm before relying on this for an Aug 2026 trip; it's likely closed for the season by then.",
+          "googleMapsUrl": "https://maps.app.goo.gl/UsPkN9bmKegVnoDE7",
           "photos": []
         }
       ]
@@ -1965,6 +2021,48 @@
           "notes": "Reachable directly on RER A, no transfer from Disneyland/Chessy or central Paris.",
           "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Grande+Arche+de+la+Defense+Puteaux",
           "photos": []
+        },
+        {
+          "id": "paris-sacre-coeur",
+          "name": "Basilique du Sacré-Cœur de Montmartre",
+          "coordinates": [
+            2.3431043,
+            48.8867046
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Domed Romano-Byzantine basilica at the top of Montmartre hill, one of Paris's highest points — sweeping city views from the steps and dome.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/UwJPZowr49cB4kjf9",
+          "photos": []
+        },
+        {
+          "id": "paris-moulin-rouge",
+          "name": "Moulin Rouge",
+          "coordinates": [
+            2.3322519,
+            48.8841232
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Cabaret venue at the foot of Montmartre, opened 1889, famous red windmill facade — birthplace of the modern can-can.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/zXYEUD9WmHY3EGPo9",
+          "photos": []
+        },
+        {
+          "id": "paris-place-de-la-bastille",
+          "name": "Place de la Bastille",
+          "coordinates": [
+            2.3688654,
+            48.8532379
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Square marking the site of the Bastille fortress-prison, stormed 14 July 1789 — the flashpoint of the French Revolution. The July Column now stands at its center.",
+          "notes": "French Revolution site.",
+          "googleMapsUrl": "https://maps.app.goo.gl/cbrpaukJFgHH27Wy6",
+          "photos": []
         }
       ]
     },
@@ -2002,7 +2100,7 @@
           "category": "landmark",
           "visibility": "always",
           "description": "12th-century moated stone castle in the city centre, built for the Counts of Flanders on the model of Crusader castles in the Holy Land; later a courthouse, prison and cotton mill before restoration.",
-          "notes": "Sint-Veerleplein 11. Daily 10:00–18:00, last admission 16:40, closed 24/25/31 Dec and 1 Jan. ~€13 adult, free under 13, audio guide included. Allow ~1–1.5 h.",
+          "notes": "Daily 10:00–18:00, last admission 16:40. ~€13 adult, audio guide included. Allow ~1–1.5 h.",
           "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Gravensteen+Ghent",
           "photos": []
         },
@@ -2056,7 +2154,7 @@
           "category": "landmark",
           "visibility": "always",
           "description": "The postcard square: colourful guild houses, the Belfry, and the covered halls.",
-          "notes": "Waffle/frites vendors line the edges — convenient but touristy; see the Bruges note's Eat & Drink section for better options.",
+          "notes": "Waffle/frites vendors line the edges — convenient but touristy",
           "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Markt+Square+Bruges",
           "photos": []
         },
@@ -2084,7 +2182,7 @@
           "category": "landmark",
           "visibility": "always",
           "description": "One block from the Markt; City Hall (Stadhuis, one of the oldest in the Low Countries) and the Basilica of the Holy Blood (venerated relic).",
-          "notes": "Basilica of the Holy Blood entry is free/cheap.",
+          "notes": "Basilica of the Holy Blood entry is free.",
           "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Burg+Square+Bruges",
           "photos": []
         }
@@ -2110,7 +2208,7 @@
           "category": "landmark",
           "visibility": "always",
           "description": "Tilted-cube housing block by Piet Blom, 1984. Directly above Blaak station, adjacent to Markthal.",
-          "notes": "Overblaak 70. Open daily 10:00–18:00. €3.50 standard, €2.50 students & 65+, €1.50 children up to 12, free under 4. Walk-in, paid on the spot (cash or card).",
+          "notes": "Open daily 10:00–18:00. €3.50 standard, €2.50 students & 65+, €1.50 children up to 12, free under 4. Walk-in, paid on the spot (cash or card).",
           "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Cube+Houses+Rotterdam",
           "photos": []
         },
@@ -2126,6 +2224,48 @@
           "description": "Indoor market hall with a huge ceiling mural and 100+ food spots. At Blaak station, adjacent to Cube Houses.",
           "notes": "Free entry. Mon–Thu & Sat 10:00–20:00, Fri 10:00–21:00, Sun 12:00–18:00 (holidays vary; individual restaurants/supermarket keep their own longer hours).",
           "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Markthal+Rotterdam",
+          "photos": []
+        },
+        {
+          "id": "rotterdam-erasmusbrug",
+          "name": "Erasmusbrug",
+          "coordinates": [
+            4.4871227,
+            51.909004
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Cable-stayed bridge over the Nieuwe Maas, nicknamed \"the Swan\" — connects the city centre to the Kop van Zuid district, lit up at night.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/BCpD6v9R8YiZ5A2m7",
+          "photos": []
+        },
+        {
+          "id": "rotterdam-nolet-distillery",
+          "name": "Nolet Distillery",
+          "coordinates": [
+            4.4079003,
+            51.9078144
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Ketel One distillery in Schiedam, just west of Rotterdam — tours through the working distillery and tasting.",
+          "notes": "Ketel One drink tour.",
+          "googleMapsUrl": "https://maps.app.goo.gl/1g39pwzaNEXFhHqE8",
+          "photos": []
+        },
+        {
+          "id": "rotterdam-dutch-photo-museum",
+          "name": "Dutch Photo Museum",
+          "coordinates": [
+            4.4951298,
+            51.9027988
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Nederlands Fotomuseum — photography museum on Wilhelminapier, exhibitions and archive of Dutch photographic work.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/4ZqMMoLZM56HDYQRA",
           "photos": []
         }
       ]
