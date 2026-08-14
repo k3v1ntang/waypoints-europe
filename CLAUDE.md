@@ -401,11 +401,11 @@ Add to walking tour poiSequence
 
 ### Best Practices
 
-1. **Always start with POI reference doc** - Don't skip to pois.json
+1. **Always start with POI reference doc** - for the walking-tour flow only. Tracks A/B/C (`docs/travel-workflow.md`) write `pois.json` directly; there is no reference doc for those.
 2. **Single source of truth** - Update reference doc, then sync to pois.json
 3. **Coordinate precision** - Use exact coordinates from Google Maps (7+ decimals)
 4. **Consistent structure** - Follow field mapping exactly
-5. **Verify data** - Check JSON validity with `node -e "JSON.parse(...)"`
+5. **Verify data** - Run `npm run validate:pois` (checks the `EUROPE_BOUNDS` coordinate-swap guard, enum values, and `googleMapsUrl`/`notes` requirements — plain `JSON.parse` catches none of that).
 6. **Test in app** - Verify POIs appear correctly on map and in popups
 
 ---
@@ -634,6 +634,7 @@ See complete guide: `/docs/implementation/walking-tour-implementation-guide.md`
 - **Walking Tour Implementation**: `/docs/implementation/walking-tour-implementation-guide.md`
 - **Photo Pipeline**: `/docs/implementation/photo-pipeline-guide.md`
 - **City Data Contract (Amsterdam/Paris handoff)**: `/docs/implementation/city-data-contract.md`
+- **Travel Content Workflow (Tracks A/B/C)**: `/docs/travel-workflow.md`
 - **POI Reference Docs**: `/docs/reference/` - Data source for all walking tours
 
 ---

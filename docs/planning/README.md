@@ -12,7 +12,7 @@ Describes the planning system for this repo. For **current status**, read [`/MEM
 
 - [2026-07-03-modernization-plan.md](2026-07-03-modernization-plan.md) — July 2026 modernization: security hardening, Mapbox→MapLibre, dependency majors + tests, TypeScript, Liquid Glass UX rebuild, Banff/PMTiles (Phase 6). Defines the orchestrator/worker session model in its §5.
 - [2026-07-02-trip-improvement-plan.md](2026-07-02-trip-improvement-plan.md) — trip content, POI editing, and photo pipeline improvements.
-- [2026-08-13-agent-workflow-tooling-plan.md](2026-08-13-agent-workflow-tooling-plan.md) — three Claude Code skills (`poi-add`, `poi-merge-edits`, `poi-new-trip`) making the `docs/travel-workflow.md` tracks trigger-able without command recall, plus a `git commit`/`push` permission fix. Planned and reviewed, not yet deployed.
+- [2026-08-13-agent-workflow-tooling-plan.md](2026-08-13-agent-workflow-tooling-plan.md) — three Claude Code skills (`poi-add`, `poi-merge-edits`, `poi-new-trip`) making the `docs/travel-workflow.md` tracks trigger-able without command recall, plus a `git commit`/`push` permission fix (Phase 1, deployed to working tree, pending commit). Phase 2 adds conflict-aware multi-file merging to `poi-merge-edits` (planned, not yet deployed).
 
 ## Conventions
 

@@ -1,6 +1,6 @@
 # Agent Workflow Tooling — Plan
 
-**Status: planned, reviewed, not yet deployed (2026-08-13).** One phase, ready for a fresh worker session.
+**Status (2026-08-13): Phase 1 deployed to the working tree, pending commit approval.** Phase 2 planned and Opus-stress-tested, not yet deployed — cold-start prompt ready below.
 
 ## Goals
 
@@ -21,6 +21,20 @@ Three review passes converged here. `.claude/settings.local.json` allowlisted `g
 Was a bare `.claude` line — any skill placed there would be invisible outside one machine, defeating the point. Narrowed to ignore only `.claude/settings.local.json` (genuinely machine-local permission state).
 
 Full rationale for all four, including what got corrected across the three review passes (coordinate-resolution priority, the `googleMapsUrl` format rule, the changeset-vs-snapshot discriminator, `Bash(node *)` staying allowlisted for the unrelated photo pipeline): see the Session Log entry below.
+
+**D5. Multi-file merging for `poi-merge-edits` gets a deterministic script, not freehand prompt diffing.**
+Both partners will independently export `waypoints-edits-*.json` and hand both to Claude. An `override` edit is a whole-POI snapshot, not a diff — hand-applying two such edits for the same POI means whichever is applied second silently wins in full, fields the other person touched included. Hand-diffing that across a 137+-POI file is exactly where an LLM drops something; a script classifies deterministically instead.
+
+**D6. Auto-merge only genuine non-overlap; flag genuine value disagreement — nothing in between.**
+Two files touching different POIs, or different fields of the same POI, apply automatically. Two files disagreeing on the same field's value stop for review. No third "maybe" bucket, no attempt to auto-synthesize a merged value in the script itself (that's a conversational judgment call for Claude to draft afterward, informed by the script's report — not deterministic code).
+
+**D7. Branch on base-POI presence first, not on edit `type` first.**
+An Opus stress-test pass against the real code (not just the plan's paraphrase) found that `usePoiData.ts` decides `override` vs `new` by checking the *bundled* `pois.json` at load time, and only `override` records self-heal once merged — so a device that added a POI keeps re-exporting a `type: 'new'` record for it *forever*, even after that POI lands in the repo. A first draft that branched on "all edits `new`" for the "no base counterpart" case mishandled this and would have written a duplicate id straight into `pois.json`. Branching on whether base has this `poiId` first, and treating any edit type but `delete` as mergeable once base exists, closes it.
+
+**D8. Optional fields (`photos`, `walkingTourNotes`) are normalized before comparison.**
+Same stress-test pass: absent-vs-empty is not equal under this codebase's `poiEquals`/`deepEqual`, so an edit that never touched `walkingTourNotes` could register as "changed it to nothing" and silently wipe curated tour text — on exactly the "editing notes" path this feature exists to serve. Normalize `photos ?? []` / `walkingTourNotes ?? ''` before diffing.
+
+Full rationale for D5–D8, including the two real bugs the Opus stress-test pass caught before any code was written and the more elaborate first draft (separate `src/data/` module, `--json`/`--out` flags, a 6-variant kind enum, dedicated photos-union logic, 13 test cases) that got scoped back down after the user flagged it as over-engineered for "partner mostly adds POIs and edits notes, no major changes": see the second 2026-08-13 Session Log entry below.
 
 ## Phase 1 — Deploy
 
@@ -157,9 +171,135 @@ is stale against the repo), stop and flag the mismatch rather than guessing how 
 
 **Suggested model: Sonnet-class (mid-tier), not a top-tier/reasoning model.** Every judgment call this work required (mechanism choice, safety-gap analysis, exact wording) was already resolved across three review passes before this plan was written — what's left is mechanical: create files with fully-specified content, edit five known lines, run verification commands. That's squarely "mechanical work (migrations, renames, config)" territory, not design work.
 
+## Phase 2 — Conflict-aware merge for `poi-merge-edits`
+
+**Scope**: `poi-merge-edits` (Phase 1) assumes one changeset file. In practice both partners each export their own `waypoints-edits-*.json`, and the deployed skill has no way to reconcile two files touching the same POI safely — whichever is applied second silently wins in full (D5). This phase adds one script that field-diffs each touched POI against current `pois.json`, auto-applies anything unambiguous, and flags only genuine value-level disagreements — no more (D6). Deliberately small: no CLI output modes, no internal "kind" taxonomy beyond the three conflict reasons the report actually needs to render differently, no dedicated `photos`-union logic (not in active use yet). This design was Opus-stress-tested against the real repo code (types, `mergePois`/`editChangeset`/`usePoiData`, existing tests, the deployed Phase-1 `SKILL.md`, current `docs/travel-workflow.md` Track C) before being finalized — see D7/D8 and the second Session Log entry for what that pass caught.
+
+### Design
+
+**One new file: `scripts/detect-edit-conflicts.ts`** — no separate `src/data/` module (this logic isn't shared with the app's own on-device merge path). Exports the pure function for testing; a `main()` CLI runs only when executed directly (guard: `process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href`), following `scripts/validate-pois.ts`'s shebang/import/path-resolution conventions otherwise.
+
+```ts
+import type { EditRecord, Poi, PoisData } from '../src/data/types.js';
+import { mergePois, poiEquals } from '../src/data/mergePois.js'; // reused, not reimplemented
+
+export interface SourceEdit { source: string; path: string; edit: EditRecord; }
+// source = changeset.author ?? basename(path); path always included too, so two
+// unnamed/same-author exports stay distinguishable in a conflict report.
+
+export type ConflictReason = 'value-conflict' | 'delete-vs-edit' | 'new-collision';
+// Fixed 3-way discriminant (not freeform text) - the report renders each
+// differently: field-by-field values / deleter-vs-editor / two full objects.
+
+export interface Conflict {
+  poiId: string;
+  cityId: string;
+  name: string;
+  reason: ConflictReason;
+  values: Array<{ source: string; type: EditRecord['type']; value: unknown; updatedAt: number }>;
+}
+
+export interface DetectResult {
+  data: PoisData;      // base, mutated only for non-conflicting poiIds
+  applied: string[];   // poiIds written, one-line log
+  conflicts: Conflict[];
+}
+
+export function detectAndMergeEdits(base: PoisData, sourceEdits: SourceEdit[]): DetectResult
+```
+
+**Normalization, before any comparison** (D8): for every edit's `poi` object, treat `photos` as `poi.photos ?? []` and `walkingTourNotes` as `poi.walkingTourNotes ?? ''` when diffing and when deciding equality — an edit that never touched an optional field must never look like it changed it to empty.
+
+**Fields diffed** (fixed list from `Poi`): `name`, `coordinates` (tuple equality), `category`, `visibility`, `description`, `walkingTourNotes` (normalized), `notes`, `googleMapsUrl`, `photos` (normalized, plain array content equality).
+
+**Per-`poiId` group logic** (group `sourceEdits` by `poiId` — genuinely N-way, every rule below stated set-wise not pairwise). **Branch on base presence first, not edit type** (D7):
+
+1. **Base exists for this `poiId`** (regardless of whether an edit says `override` or `new` — a `new` for an id that has since landed in base is the stale-forever-record case and is treated identically to `override`; `delete` is the only type never merged with the rest):
+   - All edits are `delete` → apply once.
+   - Some `delete`, some not → **conflict** (`reason: 'delete-vs-edit'`), leave untouched.
+   - No deletes: normalize each edit's `poi`, compare `poiEquals` against each other. All identical → apply once (stale re-export, both people made the same edit, or the forever-`new` case once the repo catches up). Otherwise → field-by-field diff against base: zero changers → untouched; one changer → take it; multiple agreeing → take the agreed value; multiple disagreeing → add to `Conflict.values` for that field. Any field disagreeing → the **whole POI** stays untouched (no partial apply), one `Conflict` (`reason: 'value-conflict'`) listing every disagreeing field.
+2. **No base for this `poiId`** (independently created on two devices; `delete` cannot legitimately appear here — `usePoiData.ts`'s `deletePoi` only calls `putEdit` with `type: 'delete'` for ids already in `BASE_POI_IDS`; an in-app-created POI's delete just removes the local record and exports nothing):
+   - A stray `override` with no base counterpart → skip with a console note, don't try to explain why.
+   - All `new`, normalized-`poiEquals`-identical → apply once.
+   - All `new`, differing → **conflict** (`reason: 'new-collision'`), both full objects in `values`.
+
+`updatedAt` is carried into `Conflict.values` for the human to see, never used to silently pick a winner.
+
+**Write step reuses `mergePois`**: resolve each touched `poiId` to a winning `EditRecord` (or leave it out for an unresolved conflict), build one `EditRecord[]`, call the existing `mergePois(base, resolved)` once — the same function the app itself uses, so city placement/array filtering can't drift from that behavior.
+
+**Not a three-way merge.** `EditChangeset` records no shared ancestor, so this diffs each file's edit against whatever `pois.json` currently is at run time. If the repo moved between a device's last sync and its export, an untouched field can still read as "one changer" and apply, reverting a newer repo value — bounded by the "any real disagreement leaves the whole POI alone" rule when both files touch a POI, but not eliminated for a single stale file touching a POI nobody else touched (same risk the single-file Phase-1 skill already has today, not a new one).
+
+**CLI**: `tsx scripts/detect-edit-conflicts.ts <file1.json> [<file2.json> ...] [--base <path>]` (`--base` defaults to `src/data/pois.json`, writes back in place; no `--out`, no `--json`). Parse each file with `parseChangeset` (reused as-is), read `--base`, call `detectAndMergeEdits`, write `JSON.stringify(result.data, null, 2) + '\n'` back only if `applied.length > 0` (matches `exportMergedPois`'s exact serialization, `exportPois.js:37`), print `applied: [...]` plus one block per conflict. Exit `0` if no conflicts, `1` otherwise (one non-zero signal is enough — nothing downstream needs "conflicts" distinguished from "usage error").
+
+### Files to edit
+
+- **`package.json`** — add `"detect-edit-conflicts": "tsx scripts/detect-edit-conflicts.ts"`.
+- **`.claude/settings.local.json`** — add `"Bash(npm run detect-edit-conflicts:*)"` to `allow`. Same trust boundary already accepted for `poi-add`/`poi-merge-edits` (D3): the real gate is `git commit`/`git push` staying in `ask`; a bad write is visible via `git diff` before any commit.
+- **`.claude/skills/poi-merge-edits/SKILL.md`** — `description`/`argument-hint` updated for "one or more" files; `allowed-tools` adds `Bash(npm run detect-edit-conflicts:*)`. Body: (1) confirm each file is a changeset not a snapshot (existing check, unchanged), (2) run `npm run detect-edit-conflicts -- <paths...>` — note exit `1` means "some applied, some flagged," not failure, (3) run `npm run validate:pois`, (4) report the diff, validator result, and any conflicts — draft a suggested combined value for a `notes`/`description`/`walkingTourNotes` conflict from both raw sources as part of the report (conversational, not scripted); present both sides and ask for anything else. If `validate:pois` fails on a `poiSequence` referencing a just-deleted POI, that's a manual walking-tour edit, not a re-run. If a changeset path lives outside the repo and the script can't read it, copy it into the repo/scratchpad first. Keep "do not commit/push, wait for confirmation," extended to say: apply whatever resolution is chosen for any remaining conflict by hand first.
+- **`docs/travel-workflow.md`** — Track C step 3 currently recommends on-device **Import edits** (silent last-write-wins by `updatedAt`) as an alternative for "merging a second person's changeset... first" — the opposite policy from this script for the two-person case. Rewrite step 3 to state one preference: hand both files to Claude, which runs `detect-edit-conflicts`; note that **Import edits' LWW should not be used to combine two people's edits before export** since it resolves a real conflict silently instead of surfacing it — it stays useful only for folding a second device's *non-overlapping* edits into one on-device overlay. Add one line: this only catches two files editing the *same* POI, not the separate, already-documented cross-id dedup gap in Track B step 2.
+
+No changes to `src/data/editChangeset.ts`, `src/data/poiValidation.ts`, `src/data/types.ts`, or `src/hooks/usePoiData.ts` — reused read-only or untouched. `src/data/mergePois.ts` is reused, not edited.
+
+### Tests — `tests/detect-edit-conflicts.test.js`
+
+Same inline-fixture style as `tests/mergePois.test.js`:
+
+1. Two files touch disjoint POIs → both applied, no conflicts.
+2. Two files edit the same field (`notes`) on the same POI to different values → conflict, POI untouched, both values present.
+3. Two files edit different fields on the same POI → auto-merged, no conflict.
+4. Two files edit the same field to the same value → merged silently, no conflict.
+5. A `new` POI in only one file, base absent → applied in the right city.
+6. Two `new` edits, same id, differing content, base absent → conflict.
+7. One file deletes a POI, another edits it (base present) → conflict.
+8. File A has a `new` POI, file B has an unrelated `override` — both applied in one run (the literal "adds a POI + edits a note" pattern).
+9. A `new` edit whose `poiId` already exists in base (the stale-forever-record case) → resolves via the override path, not a duplicate; no-op if `poiEquals` base. *(Regression test for D7's bug.)*
+10. `new` in file A + `override` in file B, same `poiId`, base present → resolves via the value-diff path, not a crash or a duplicate.
+11. Optional-field normalization: base has no `photos` and real `walkingTourNotes`; an edit has `photos: []` and omits `walkingTourNotes` → neither registers as a change. *(Regression test for D8's bug.)*
+12. Partial application: one conflicted POI + one clean POI in the same run → the clean one is written, the conflicted one stays untouched, and is still reported.
+
+### Verification
+
+1. `npm test` — new suite passes alongside the existing four test files.
+2. `npm run typecheck` and `npm run lint` — pass on the new file.
+3. Manual CLI pass in the scratchpad: copy `pois.json`, hand-write two small fixture changesets (one disjoint-POI pair including a `new` addition, one same-POI `notes` conflict), run the script against the scratch copy with `--base`, confirm exit code `1`, the conflict reports both values, and the disjoint POIs applied correctly.
+4. `npm run validate:pois` and `npm run build` against the real repo — unaffected, nothing above touches the real `pois.json`.
+5. No `git add`/`commit`/`push`. Report the full diff and verification results, then stop for review.
+
+### Cold-start prompt (worker session)
+
+```
+Deploy Phase 2 of the "Agent Workflow Tooling" plan for waypoints-europe.
+
+Read docs/planning/2026-08-13-agent-workflow-tooling-plan.md § "Phase 2 — Conflict-aware
+merge for poi-merge-edits" in full. Implement exactly what it specifies:
+- scripts/detect-edit-conflicts.ts (algorithm and CLI shape are fully specified — implement
+  the per-poiId group logic and field diff as described, don't redesign it)
+- tests/detect-edit-conflicts.test.js (the 12 listed cases)
+- the four "Files to edit" edits (package.json, .claude/settings.local.json,
+  .claude/skills/poi-merge-edits/SKILL.md, docs/travel-workflow.md)
+
+Every design decision is already made (D5-D8 above, or the "Design" section for detail) —
+no open questions, this is implementation of a fully-specified algorithm, not a redesign.
+
+After implementing, run everything under "Verification" and report the results.
+
+Do not run `git add`, `git commit`, or `git push` at any point — report the full diff
+(`git status`, `git diff`) and the verification results, then stop and wait for the user
+to review and explicitly approve before anything is committed.
+
+If any current file content doesn't match what the plan quotes as "current" (i.e. the plan
+is stale against the repo — e.g. if Phase 1 hasn't been committed yet and poi-merge-edits/
+SKILL.md differs from what's described), stop and flag the mismatch rather than guessing
+how to reconcile it.
+```
+
+**Suggested model: Sonnet-class (mid-tier).** The algorithm, types, CLI shape, file list, and test list are all fully specified above — including the two real bugs a fixed Opus stress-test pass already found and resolved. What's left is implementing a well-specified diff algorithm and wiring it up, not designing one.
+
 ## Execution map
 
-Single phase, single worker session, no gate cycle planned (doc/config-only change, no app code touched, `git diff --stat -- src/data/pois.json` empty by construction) — but the worker still stops short of committing, so the user's own review before approving the commit *is* the check.
+**Phase 1**: single worker session, no gate cycle (doc/config-only, no app code touched, `git diff --stat -- src/data/pois.json` empty by construction) — the worker stops short of committing, so the user's own review before approving the commit *is* the check. Deployed to the working tree 2026-08-13; commit still pending user approval as of this writing.
+
+**Phase 2**: single worker session, no gate cycle planned — same "stop before commit, user reviews the diff" check as Phase 1, even though this phase does touch app code (`scripts/`, `tests/`) for the first time in this plan. `npm test`/`typecheck`/`lint`/`validate:pois` passing is the objective bar; nothing here is subjective enough to warrant a separate gate review beyond the user's own diff read.
 
 ## Session Log
 
@@ -173,3 +313,15 @@ Three Opus review passes, each catching something the prior one(s) missed:
 3. Final verification pass against the concrete written plan: caught a direct contradiction (skill said "don't commit," Track B's doc text said "commit, push"), a wrong changeset-shape check (`author` isn't required), three points where the doc's actual text hadn't made it into the skill bodies (coordinate-resolution priority, the `googleMapsUrl` format rule, Track A's PR step), and that removing `allow` entries alone isn't durable against a future "don't ask again" click — needed explicit `ask` entries instead.
 
 Output: this plan file (Phase 1, fully specified, zero open decisions) plus the corrected [`docs/travel-workflow.md`](../travel-workflow.md) it points into. Not yet executed — queued for a fresh worker session, see the cold-start prompt above.
+
+### 2026-08-13 — Phase 1 deployed to working tree; Phase 2 designed and Opus-stress-tested
+
+Ran Phase 1's cold-start prompt in this session: all 5 changes applied (`.gitignore`, `.claude/settings.local.json`, the three `SKILL.md` files, the two `CLAUDE.md` fixes, the two `docs/travel-workflow.md` edits). Every "current" quote in the plan matched the repo exactly — no staleness. Verification passed (`validate:pois`: 137 POIs; `lint`: clean; all three skill files untracked-and-stageable; `.claude/settings.local.json` correctly still gitignored). Left uncommitted per the plan's own instruction — commit still pending user review as of this entry.
+
+Mid-session, the user asked a follow-up: for `poi-merge-edits`, what happens when both partners independently export edits and both files touch the same POI? Answer surfaced a real gap — `override` edits are whole-POI snapshots, and the deployed skill has no cross-file conflict awareness; whichever file gets applied second silently wins in full. The user wanted detection, flagging, and synthesis where the two edits don't actually disagree — "stress test this to recommend a solution."
+
+First pass (Plan-agent-drafted, not yet checked against real code): a `src/data/detectConflicts.ts` + `scripts/detect-edit-conflicts.ts` split, `--json`/`--out` CLI flags, a 6-variant `AutoMergeKind` enum, dedicated `photos`-array-union logic, 13 test cases covering every theoretical taxonomy branch. The user rejected this as over-engineered against actual usage — "most of the time my partner might add some new POIs, and edit some notes of existing POIs, there will be no major changes... keep it simple" — and it was cut down to one file, no output-mode flags, `photos` as a plain diffed field, 7 tests.
+
+An Opus subagent stress-test pass against the *simplified* plan (all referenced repo files — types, `mergePois`, `editChangeset`, `usePoiData`, `validate-pois.ts`, both existing test files, the deployed `SKILL.md`, current `docs/travel-workflow.md` Track C — inlined directly into the review prompt rather than letting the subagent re-read the repo, per the user's explicit instruction to conserve context) found two real bugs sitting on the exact "adds POIs, edits notes" path the scope was cut down to serve: (1) `usePoiData.ts` only self-heals `override` records against the bundled base, never `new` ones, so a device that added a POI keeps re-exporting `type: 'new'` for it forever after that POI lands in the repo — a "no base counterpart → must be new" branch would have written a duplicate id into `pois.json` with no explanation; (2) `photos`/`walkingTourNotes` are optional fields, and this codebase's `deepEqual` treats an absent key as unequal to an explicit empty one, so an edit that never touched `walkingTourNotes` could register as "deleted it." Both are fixed in the final design (D7, D8) — branch on base-POI presence before edit type, normalize optional fields before comparing — at the cost of ~5 more lines of algorithm and 3 more test cases (9-12 above), not a scope regression back toward the rejected first draft. The pass also caught a live contradiction: the planned `docs/travel-workflow.md` edit would have sat next to an existing sentence recommending on-device "Import edits" (silent last-write-wins) as an alternative for combining two people's changes — the opposite of what this feature exists to do — resolved by stating one policy instead of two.
+
+Output: Phase 2 above (fully specified, zero open decisions), queued for a fresh worker session via its own cold-start prompt. Phase 1's commit and Phase 2's implementation are both still open — see `/MEMORY.md`.

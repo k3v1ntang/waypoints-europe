@@ -36,7 +36,7 @@ Run whenever Kevin drops one or more `maps.app.goo.gl` links, with or without a 
 2. **Dedup check**: before adding, a quick look at the target city's existing POIs by name/rough location — Track A and Track B draw from different sources and can independently flag the same place. (Gap identified 2026-08-13, not yet automated — currently a manual glance.)
 3. Resolve coordinates + Maps links — see below.
 4. Pick a `category` — see the table below.
-5. Write the POI, `npm run validate:pois`, commit, push. A one-line note from Kevin (who flagged it, why, any caveat) goes straight into that POI's `notes` field.
+5. Write the POI, `npm run validate:pois`. A one-line note from Kevin (who flagged it, why, any caveat) goes straight into that POI's `notes` field.
 6. **Bulk variant**: Google's in-app "Share" only produces a *view* link, not an export. The actual bulk tool is Google Takeout (takeout.google.com, separate from the Maps app) — it exports each saved list as its own CSV, but only `name + Google Maps URL`, no coordinates, so it doesn't remove the per-place resolve step, just batches the link-collection part. **Not built as of this doc** — link-by-link (or pasting several links in one message, which is already handled as a batch) covers everything so far. Worth reconsidering only if a specific list is large enough that 40+ individual round-trips would be the alternative.
 
 ## Track C — Field correction (Waypoints → back into this repo)
@@ -44,7 +44,7 @@ Run whenever Kevin drops one or more `maps.app.goo.gl` links, with or without a 
 Run whenever Kevin's actually using the app and something needs fixing (wrong pin position, a note to add, a place to remove).
 
 1. On-device: reposition via tap-on-map, or edit description/notes in the POI editor sheet.
-2. **⋯ menu → Export my edits** — exports just the small changeset (not the whole `pois.json`), optionally labeled with a name.
+2. **⋯ menu → Export my edits** — exports just the small changeset (not the whole `pois.json`), optionally labeled with a name. Distinct from **⋯ menu → Export full data**, which produces `pois-<date>.json` — a full drop-in `pois.json` replacement (snapshot, not a changeset — different merge semantics; see `poi-merge-edits`).
 3. Hand the file to Claude; it's merged into `pois.json` directly (the app's own `mergeIncomingEdits` LWW-by-`updatedAt` logic is available via **Import edits** for merging a second person's changeset into the on-device overlay first, if that's the path being used instead).
 4. **Self-healing**: once the shipped `pois.json` matches an on-device edit exactly, that edit clears itself on next load — no manual "Reset to original" needed (only fires on an exact match; a full-precision on-device coordinate won't auto-clear against a manually-rounded value someone typed in by hand, so precision matters if you want this to fire).
 

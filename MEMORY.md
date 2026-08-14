@@ -6,8 +6,9 @@
 
 **Agent workflow tooling — [docs/planning/2026-08-13-agent-workflow-tooling-plan.md](docs/planning/2026-08-13-agent-workflow-tooling-plan.md)**
 
-- **State**: planned and reviewed (3 Opus passes), not yet deployed. Adds three Claude Code skills (`poi-add`, `poi-merge-edits`, `poi-new-trip` under `.claude/skills/`) so the three `docs/travel-workflow.md` tracks trigger without the user needing to recall a command name, plus a real permission fix — `git commit`/`git push` were auto-approved with zero prompts in `.claude/settings.local.json`; moved to `ask`. Also un-ignores `.claude/skills/` (was gitignored wholesale) and fixes two stale/wrong lines in `CLAUDE.md`.
-- **Next action**: run the plan's cold-start prompt in a fresh session (Sonnet-class model — the work is mechanical, no open design decisions) to apply the 5 changes, then review the diff before approving any commit.
+- **State**: **Phase 1 deployed to the working tree, not yet committed.** Adds three Claude Code skills (`poi-add`, `poi-merge-edits`, `poi-new-trip` under `.claude/skills/`) so the three `docs/travel-workflow.md` tracks trigger without the user needing to recall a command name, plus a real permission fix — `git commit`/`git push` were auto-approved with zero prompts in `.claude/settings.local.json`; moved to `ask`. Also un-ignores `.claude/skills/` (was gitignored wholesale) and fixes two stale/wrong lines in `CLAUDE.md`. Verification passed (`validate:pois`, `lint`, untracked-file checks); `git status`/`git diff` reported to the user, awaiting explicit commit approval.
+- **Phase 2 planned, Opus-stress-tested, not yet deployed**: `poi-merge-edits` currently assumes one changeset file; in practice both partners export their own, and two files touching the same POI silently last-write-wins today. Phase 2 adds `scripts/detect-edit-conflicts.ts` — a deterministic field-level diff that auto-merges non-overlapping edits and flags genuine value conflicts for review. A stress-test pass caught two real bugs before implementation (a device re-exporting a stale `new` record forever after its POI syncs; an optional-field wipeout on `walkingTourNotes`/`photos`) — both fixed in the plan.
+- **Next action**: (1) review Phase 1's diff and approve the commit; (2) run Phase 2's cold-start prompt (plan § "Phase 2") in a fresh session to implement `detect-edit-conflicts.ts`.
 
 ## Trip content — Phase 4 (previous active project)
 
@@ -20,5 +21,5 @@
 
 ## Next action
 
-1. Deploy the agent workflow tooling plan (above) — mechanical, worker session, no open decisions.
+1. Review and commit Phase 1 of the agent workflow tooling plan (already deployed to the working tree, above) — then run Phase 2's cold-start prompt in a fresh session.
 2. Do the trip-content in-browser spot-check and pre-departure tile-caching browse (feature freeze begins ~Aug 22, per D5 in the trip-improvement plan — data/content commits only after that).
