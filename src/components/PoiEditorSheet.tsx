@@ -55,6 +55,7 @@ interface Draft {
   category: Category;
   googleMapsUrl: string;
   coordinates: [number, number] | null;
+  visited: boolean;
 }
 
 const emptyDraft: Draft = {
@@ -63,7 +64,8 @@ const emptyDraft: Draft = {
   notes: '',
   category: 'food', // most likely category for POIs added mid-trip
   googleMapsUrl: '',
-  coordinates: null
+  coordinates: null,
+  visited: false
 };
 
 const draftFromPoi = (poi: Poi): Draft => ({
@@ -72,7 +74,8 @@ const draftFromPoi = (poi: Poi): Draft => ({
   notes: poi.notes ?? '',
   category: poi.category ?? 'landmark',
   googleMapsUrl: poi.googleMapsUrl ?? '',
-  coordinates: poi.coordinates ?? null
+  coordinates: poi.coordinates ?? null,
+  visited: poi.visited === true
 });
 
 // Inner form: mounted while an editing session is open, so per-session
@@ -169,7 +172,7 @@ const EditorBody = ({
   const buildPoi = (): Poi => {
     const trimmedName = draft.name.trim();
     const [lng, lat] = draft.coordinates ?? [];
-    return {
+    const poi: Poi = {
       // Preserve fields the form doesn't edit (walkingTourNotes, photos,
       // visibility) by building on top of the original POI.
       ...(editingPoi ?? { photos: [], visibility: 'always' as const }),
@@ -187,6 +190,15 @@ const EditorBody = ({
         // genuinely useful link. Google Maps URLs take "lat,lng" order.
         (draft.coordinates ? `https://www.google.com/maps/search/?api=1&query=${lat},${lng}` : '')
     };
+    // D5: never write `visited: false` - omit the key entirely so a
+    // not-visited POI can still compare equal to a base POI that never had
+    // the key (see types.ts's field comment).
+    if (draft.visited) {
+      poi.visited = true;
+    } else {
+      delete poi.visited;
+    }
+    return poi;
   };
 
   const handleSave = async () => {
@@ -225,7 +237,9 @@ const EditorBody = ({
 
   const handleDelete = async () => {
     if (!editingPoi || tourUsingPoi) return;
-    const verb = isBasePoi(editingPoi.id) ? 'Hide' : 'Delete';
+    // D12: "Hide" renamed to "Remove" - that word now belongs to the far
+    // less destructive "hide visited places" map toggle.
+    const verb = isBasePoi(editingPoi.id) ? 'Remove' : 'Delete';
     if (!window.confirm(`${verb} "${editingPoi.name}"? You can restore it later by exporting and re-editing, but not from the app.`)) return;
     try {
       await onDelete(editingPoi.id, cityId as string);
@@ -363,6 +377,19 @@ const EditorBody = ({
           placeholder="https://maps.app.goo.gl/…"
         />
 
+        {/* D11: secondary path to the same toggle the popup's one-tap
+            button drives - kept here for discoverability. */}
+        <label className={styles.checkboxRow} htmlFor="poi-visited">
+          <input
+            id="poi-visited"
+            type="checkbox"
+            className={styles.checkbox}
+            checked={draft.visited}
+            onChange={(e) => setDraft((prev) => ({ ...prev, visited: e.target.checked }))}
+          />
+          Visited
+        </label>
+
         {errors.length > 0 && (
           <div className={styles.errorBox}>
             {errors.map((error, i) => (
@@ -393,7 +420,7 @@ const EditorBody = ({
               </div>
             ) : (
               <button className={styles.textButtonDanger} onClick={handleDelete}>
-                {isBasePoi(editingPoi.id) ? 'Hide this place' : 'Delete this place'}
+                {isBasePoi(editingPoi.id) ? 'Remove this place' : 'Delete this place'}
               </button>
             )}
           </div>

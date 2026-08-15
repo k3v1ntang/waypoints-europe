@@ -19,6 +19,17 @@ const LAST_CITY_STORAGE_KEY = 'waypoints-last-city';
 // Remembered across exports so re-prompting isn't needed every time -
 // mirrors LAST_CITY_STORAGE_KEY's try/catch-guarded localStorage pattern.
 const EXPORT_AUTHOR_STORAGE_KEY = 'waypoints-export-author';
+// Persisted across launches, same guarded try/catch pattern as
+// LAST_CITY_STORAGE_KEY. Defaults ON (see the useState initializer below,
+// user decision Aug 2026 - overrides the plan's original D10 default-off
+// rationale, which was worried about silently blanking out a city offline;
+// accepted trade-off now that there's real visited data to hide).
+const HIDE_VISITED_STORAGE_KEY = 'waypoints-hide-visited';
+
+// D8: MapLibre paint expressions can't read the CSS `--color-success`
+// dark-mode override (src/styles/tokens.css), so this hex is fixed either
+// way - kept in sync with that token's light-mode value by hand.
+const VISITED_MARKER_COLOR = '#059669';
 
 // Same `unknown` bridge as usePoiData: the JSON import's inferred shape is
 // wider than PoisData (number[] vs [number, number] tuples); the validate
@@ -35,9 +46,15 @@ const findPoiById = (poisData: PoisData, poiId: string): { poi: Poi; city: City 
   return null;
 };
 
-const shouldShowPOI = (poi: Poi, showWalkingTourPOIs: boolean): boolean => {
+// D10: `hideVisited` defaults false everywhere shouldShowPOI is called
+// without it (none currently do - every call site threads the live toggle
+// state through), so a POI's own `visited` flag only ever hides it when the
+// user has actually turned the filter on.
+const shouldShowPOI = (poi: Poi, showWalkingTourPOIs: boolean, hideVisited: boolean): boolean => {
   const visibility = poi.visibility || 'always'; // Default to 'always' for POIs without visibility field
-  return visibility === 'walkingTour' ? showWalkingTourPOIs : true;
+  if (visibility === 'walkingTour' && !showWalkingTourPOIs) return false;
+  if (hideVisited && poi.visited === true) return false;
+  return true;
 };
 
 // ❓ CONCEPT: Deriving GeoJSON from state
@@ -47,19 +64,25 @@ const shouldShowPOI = (poi: Poi, showWalkingTourPOIs: boolean): boolean => {
 // runtime edits (Phase 2) appear on the map without re-initializing it.
 const buildGeojson = (
   poisData: PoisData,
-  showWalkingTourPOIs: boolean
+  showWalkingTourPOIs: boolean,
+  hideVisited: boolean
 ): FeatureCollection<Point> => ({
   type: 'FeatureCollection',
   features: poisData.cities.flatMap((city) =>
     city.pois
-      .filter((poi) => shouldShowPOI(poi, showWalkingTourPOIs))
+      .filter((poi) => shouldShowPOI(poi, showWalkingTourPOIs, hideVisited))
       .map((poi) => ({
         type: 'Feature' as const,
         properties: {
           id: poi.id,
           name: poi.name,
           cityName: city.name,
-          isHotel: poi.category === 'hotel'
+          isHotel: poi.category === 'hotel',
+          // D9: GeoJSON serialization drops `undefined` properties, and
+          // MapLibre's `case` throws at evaluation time on a null/undefined
+          // condition rather than falling through - mirror isHotel exactly
+          // rather than a bare `poi.visited`.
+          isVisited: poi.visited === true
         },
         geometry: {
           type: 'Point' as const,
@@ -116,6 +139,18 @@ const Map = () => {
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [showWalkingTourPOIs, setShowWalkingTourPOIs] = useState(false);
+  // Defaults ON, persisted to localStorage - same lazy-init +
+  // guarded-try/catch pattern as currentCityId above. `null` (key never
+  // written) means "no stored preference yet", not "explicitly off" - only
+  // an explicit 'false' from a prior toggle-off should turn this off.
+  const [hideVisited, setHideVisited] = useState<boolean>(() => {
+    try {
+      const stored = localStorage.getItem(HIDE_VISITED_STORAGE_KEY);
+      return stored === null ? true : stored === 'true';
+    } catch {
+      return true; // localStorage unavailable (e.g. Safari private mode)
+    }
+  });
   const [mapError, setMapError] = useState<string | null>(null);
   const [editorSession, setEditorSession] = useState<EditorSession | null>(null);
   const [isPicking, setIsPicking] = useState(false); // tap-on-map coordinate picking mode
@@ -193,6 +228,48 @@ const Map = () => {
   const handleSavePoi = async (poi: Poi, cityId: string) => {
     await savePoi(poi, cityId);
     setSelectedPoi({ id: poi.id });
+  };
+
+  // D11: primary one-tap toggle from the popup, bypassing the 4-step editor
+  // flow. D5: never persist `visited: false` - omit the key when toggling
+  // off rather than writing it explicitly. useCallback keeps this stable
+  // across renders so it doesn't churn the popup-lifecycle effect's deps.
+  const handleToggleVisited = useCallback(async (poi: Poi) => {
+    const found = findPoiById(poisData, poi.id);
+    if (!found) return;
+    const nextVisited = !poi.visited;
+    const updated: Poi = { ...poi };
+    if (nextVisited) {
+      updated.visited = true;
+    } else {
+      delete updated.visited;
+    }
+    await savePoi(updated, found.city.id);
+    // D11: the marker this popup points at just vanished from the filtered
+    // map source - close rather than leave the popup floating over nothing.
+    if (nextVisited && hideVisited) {
+      setSelectedPoi(null);
+    }
+  }, [poisData, hideVisited, savePoi]);
+
+  // D10: total visited count across every city - the toggle hides visited
+  // POIs everywhere, not just the current city, so the label counts the
+  // same scope it affects.
+  const visitedCount = useMemo(
+    () => poisData.cities.reduce((sum, city) => sum + city.pois.filter((p) => p.visited === true).length, 0),
+    [poisData]
+  );
+
+  const handleToggleHideVisited = () => {
+    setHideVisited((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem(HIDE_VISITED_STORAGE_KEY, String(next));
+      } catch {
+        // localStorage unavailable (e.g. Safari private mode) - non-critical
+      }
+      return next;
+    });
   };
 
   const handleTourSelect = (tour: WalkingTour | null) => {
@@ -277,8 +354,8 @@ const Map = () => {
     if (!mapLoaded) return;
     const source = mapRef.current?.getSource<maplibregl.GeoJSONSource>('pois');
     if (!source) return;
-    source.setData(buildGeojson(poisData, showWalkingTourPOIs));
-  }, [poisData, showWalkingTourPOIs, mapLoaded]);
+    source.setData(buildGeojson(poisData, showWalkingTourPOIs, hideVisited));
+  }, [poisData, showWalkingTourPOIs, hideVisited, mapLoaded]);
 
   // Keep the walking tour route line in sync with the selected tour.
   useEffect(() => {
@@ -293,7 +370,12 @@ const Map = () => {
         map.setLayerZoomRange('poi-labels', 14, 22);
       }
 
-      // Create direct lines between POIs in sequence
+      // Create direct lines between POIs in sequence. D7: deliberately reads
+      // straight from `poisData` via findPoiById rather than through
+      // shouldShowPOI/buildGeojson, so hide-visited (and the walking-tour
+      // visibility filter) never punches a gap in the route line - opening
+      // a tour is an explicit statement of intent that exempts its stops
+      // from both filters for as long as it's open.
       const coordinates = selectedTour.poiSequence
         .map((poiId) => findPoiById(poisData, poiId)?.poi.coordinates)
         .filter((coord): coord is [number, number] => Boolean(coord));
@@ -346,7 +428,9 @@ const Map = () => {
 
     const map = mapRef.current;
     const { poi } = found;
-    const content = <POIPopup poi={poi} tour={selectedTour} onEdit={handleEditPoi} />;
+    const content = (
+      <POIPopup poi={poi} tour={selectedTour} onEdit={handleEditPoi} onToggleVisited={handleToggleVisited} />
+    );
     const existing = popupStateRef.current;
 
     if (existing && existing.poiId === poi.id) {
@@ -395,7 +479,7 @@ const Map = () => {
     });
 
     popupStateRef.current = { popup, root, poiId: poi.id };
-  }, [selectedPoi, selectedTour, poisData, mapLoaded, closePopup, handleEditPoi]);
+  }, [selectedPoi, selectedTour, poisData, mapLoaded, closePopup, handleEditPoi, handleToggleVisited]);
 
   useEffect(() => {
     // ❓ CONCEPT: Prevent duplicate map initialization
@@ -542,8 +626,13 @@ const Map = () => {
         source: 'pois',
         filter: ['!', ['has', 'point_count']],
         paint: {
+          // D8: isVisited branch goes FIRST, ahead of the existing
+          // isHotel branch - once decluttering, "have I done this" is the
+          // dominant question, so it should win even for a visited hotel.
           'circle-color': [
             'case',
+            ['get', 'isVisited'],
+            VISITED_MARKER_COLOR, // Green for visited POIs
             ['get', 'isHotel'],
             '#dc2626', // Red for hotels
             '#2563eb' // Blue for POIs
@@ -737,6 +826,9 @@ const Map = () => {
           toursCount={toursCount}
           editCount={editCount}
           editSummaries={editSummaries}
+          hideVisited={hideVisited}
+          visitedCount={visitedCount}
+          onToggleHideVisited={handleToggleHideVisited}
           onOpenSearch={() => setIsSearchOpen(true)}
           onShowTours={() => setIsBottomSheetOpen(true)}
           onAddPlace={handleAddPoi}

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ImageLightbox from './ImageLightbox';
 import type { Poi, WalkingTour } from '../data/types';
-import { ExternalIcon, PencilIcon, PinIcon } from './icons';
+import { CheckIcon, ExternalIcon, PencilIcon, PinIcon } from './icons';
 import styles from './POIPopup.module.css';
 
 // ❓ CONCEPT: Popup content as a React component
@@ -15,11 +15,16 @@ interface POIPopupProps {
   poi: Poi;
   tour: WalkingTour | null;
   onEdit?: (poi: Poi) => void;
+  /** D11: primary one-tap "visited" toggle; D6: also the un-mark action, so
+   * a visited POI stays reachable and reversible whether or not hide-visited
+   * is on. */
+  onToggleVisited?: (poi: Poi) => void;
 }
 
-const POIPopup = ({ poi, tour, onEdit }: POIPopupProps) => {
+const POIPopup = ({ poi, tour, onEdit, onToggleVisited }: POIPopupProps) => {
   const [expanded, setExpanded] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const isVisited = poi.visited === true;
 
   const photos = Array.isArray(poi.photos) ? poi.photos : [];
   const description = poi.description || '';
@@ -101,10 +106,23 @@ const POIPopup = ({ poi, tour, onEdit }: POIPopupProps) => {
         </div>
       )}
 
-      <span className={styles.category}>
-        <PinIcon size={13} />
-        {poi.category}
-      </span>
+      <div className={styles.metaRow}>
+        <span className={styles.category}>
+          <PinIcon size={13} />
+          {poi.category}
+        </span>
+        {onToggleVisited && (
+          <button
+            className={isVisited ? styles.visitedToggleActive : styles.visitedToggle}
+            onClick={() => onToggleVisited(poi)}
+            aria-pressed={isVisited}
+            aria-label={isVisited ? `Mark ${poi.name} as not visited` : `Mark ${poi.name} as visited`}
+          >
+            <CheckIcon size={13} />
+            {isVisited ? 'Visited' : 'Mark visited'}
+          </button>
+        )}
+      </div>
       </div>
 
       {(poi.googleMapsUrl || onEdit) && (

@@ -212,7 +212,73 @@ describe('detectAndMergeEdits', () => {
     expect(poi.description).toBe('from b');
   });
 
-  it('12. applies the clean POI and leaves the conflicted POI untouched in the same run', () => {
+  it('12. auto-merges when one file toggles `visited` and another edits a different field (D4)', () => {
+    const base = baseData();
+    // base has no `visited` key at all (never marked visited).
+    const sourceEdits = [
+      edit('a', 'amsterdam-poi-a', 'amsterdam', 'override', { ...base.cities[0].pois[0], visited: true }),
+      edit('b', 'amsterdam-poi-a', 'amsterdam', 'override', { ...base.cities[0].pois[0], notes: 'from b' }),
+    ];
+    const result = detectAndMergeEdits(base, sourceEdits);
+    expect(result.conflicts).toHaveLength(0);
+    expect(result.applied).toEqual(['amsterdam-poi-a']);
+    const poi = result.data.cities.find((c) => c.id === 'amsterdam').pois.find((p) => p.id === 'amsterdam-poi-a');
+    expect(poi.visited).toBe(true);
+    expect(poi.notes).toBe('from b');
+  });
+
+  it('13. treats absent `visited` and explicit `visited: false` as equal under normalization (D5)', () => {
+    const base = baseData();
+    const sourceEdits = [
+      // omits `visited` entirely
+      edit('a', 'amsterdam-poi-a', 'amsterdam', 'override', { ...base.cities[0].pois[0], notes: 'agreed' }),
+      // explicit `visited: false`
+      edit('b', 'amsterdam-poi-a', 'amsterdam', 'override', { ...base.cities[0].pois[0], notes: 'agreed', visited: false }),
+    ];
+    const result = detectAndMergeEdits(base, sourceEdits);
+    expect(result.conflicts).toHaveLength(0);
+    expect(result.applied).toEqual(['amsterdam-poi-a']);
+  });
+
+  it('14. never writes `visited: false` into the merged data - omits the key instead (D5)', () => {
+    const base = baseData();
+    base.cities[0].pois[0].visited = true; // simulate a previously-merged visited POI
+    const sourceEdits = [
+      // device A un-marks visited. A real on-device toggle would omit the
+      // key entirely (D5) rather than writing `false`, but the merge
+      // script must defend against an explicit `false` too - e.g. a
+      // pre-fix export, or a hand-crafted changeset - so this exercises
+      // that directly: it must never leak `visited: false` into pois.json
+      // even when an input record does carry it.
+      edit('a', 'amsterdam-poi-a', 'amsterdam', 'override', { ...base.cities[0].pois[0], notes: 'from a', visited: false }),
+      // device B never touches `visited` at all - just a different field.
+      edit('b', 'amsterdam-poi-a', 'amsterdam', 'override', { ...base.cities[0].pois[0], description: 'from b' }),
+    ];
+    const result = detectAndMergeEdits(base, sourceEdits);
+    expect(result.conflicts).toHaveLength(0);
+    expect(result.applied).toEqual(['amsterdam-poi-a']);
+    const poi = result.data.cities.find((c) => c.id === 'amsterdam').pois.find((p) => p.id === 'amsterdam-poi-a');
+    expect(poi.notes).toBe('from a');
+    expect(poi.description).toBe('from b');
+    expect(poi.visited).toBeUndefined();
+    expect('visited' in poi).toBe(false);
+  });
+
+  it("15. keeps base's `visited` untouched when every edit omits the key, same as photos/walkingTourNotes (D5)", () => {
+    const base = baseData();
+    base.cities[0].pois[0].visited = true;
+    const sourceEdits = [
+      edit('a', 'amsterdam-poi-a', 'amsterdam', 'override', { ...base.cities[0].pois[0], notes: 'from a' }),
+      edit('b', 'amsterdam-poi-a', 'amsterdam', 'override', { ...base.cities[0].pois[0], description: 'from b' }),
+    ];
+    const result = detectAndMergeEdits(base, sourceEdits);
+    expect(result.conflicts).toHaveLength(0);
+    expect(result.applied).toEqual(['amsterdam-poi-a']);
+    const poi = result.data.cities.find((c) => c.id === 'amsterdam').pois.find((p) => p.id === 'amsterdam-poi-a');
+    expect(poi.visited).toBe(true);
+  });
+
+  it('16. applies the clean POI and leaves the conflicted POI untouched in the same run', () => {
     const base = baseData();
     const sourceEdits = [
       edit('a', 'amsterdam-poi-a', 'amsterdam', 'override', { ...base.cities[0].pois[0], notes: 'from a' }),

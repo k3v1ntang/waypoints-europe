@@ -200,7 +200,8 @@ waypoints-europe/
   "walkingTourNotes": "Historical context for tours",
   "notes": "Practical tips (hours, costs)",
   "googleMapsUrl": "https://maps.app.goo.gl/xyz",
-  "photos": []
+  "photos": [],
+  "visited": true  // optional, personal "seen it" status - omit the key entirely for false, never write `visited: false` (see docs/planning/2026-08-14-visited-poi-plan.md)
 }
 ```
 

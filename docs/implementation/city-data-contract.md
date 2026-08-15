@@ -50,6 +50,7 @@ Ask the external project to hand back JSON already matching this shape (same sha
 | `notes` | **yes** | the *key* must be present — `poiValidation.ts` fails the build if it's missing or not a string — but an empty string is fine if there's nothing practical to add |
 | `googleMapsUrl` | **yes** | `poiValidation.ts`'s `getGoogleMapsUrlErrors` fails the build on empty/missing; must also be an `https:` URL — any other scheme is rejected. (Corrected 2026-08-12: this table previously marked both fields optional, which doesn't match the validator.) |
 | `photos` | yes | always `[]` at handoff time — Phase 3's separate pipeline (`docs/implementation/photo-pipeline-guide.md`) populates this later, independently |
+| `visited` | no | personal "seen it" status (`docs/planning/2026-08-14-visited-poi-plan.md`) — never present at handoff time; omit for false, `true` only after the traveler marks it in-app |
 
 ---
 

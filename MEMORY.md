@@ -4,10 +4,11 @@
 
 ## Active project
 
-**Visited POI — [docs/planning/2026-08-14-visited-poi-plan.md](docs/planning/2026-08-14-visited-poi-plan.md)**
+None. The next standing task is the trip-content pre-departure checklist under "Next action" below.
 
-- **State**: Designed and Opus-stress-tested against the real code (merge script, MapLibre rendering/filtering, on-device edit machinery). Zero open decisions. **Not yet implemented.**
-- **Next action**: run the plan's cold-start prompt in a fresh worker session; the plan's own "Design" section fixes two real bugs (D4/D5) in the already-shipped `scripts/detect-edit-conflicts.ts` that must land alongside the new feature, not as a follow-up.
+## Visited POI (previous active project)
+
+[docs/planning/2026-08-14-visited-poi-plan.md](docs/planning/2026-08-14-visited-poi-plan.md) — **implemented and merged to `main`.** Personal `visited` field on the POI object (`pois.json`), toggled from the POI popup or the editor sheet, merged through the existing edit-overlay/multi-device-merge machinery (also fixed two real bugs in `scripts/detect-edit-conflicts.ts`, D4/D5, that would otherwise have silently dropped or reverted the flag on a two-device merge). A "Hide visited places" toggle in the ⋯ menu **defaults ON** (flipped from the plan's original default-OFF during review, for trip-usage convenience across a phone/iPad/occasional-reinstall workflow — see the plan's Session Log for the full trade-off). Visited markers are color-only (green) on the map; the plan's original opacity/size secondary signal was dropped after on-device review (MapLibre's `circle-opacity` let map labels show through the marker). 3 real POIs currently marked visited (`paris-palace-of-versailles`, `amsterdam-w-amsterdam`, `paris-citadines-les-halles`).
 
 ## Agent workflow tooling (previous active project)
 

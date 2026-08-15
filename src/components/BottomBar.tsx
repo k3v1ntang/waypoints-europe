@@ -7,6 +7,7 @@ import { cityDisplayName } from '../utils/text';
 import { parseChangeset } from '../data/editChangeset';
 import {
   ChevronRightIcon,
+  EyeIcon,
   ImportIcon,
   PencilIcon,
   PlusIcon,
@@ -42,6 +43,11 @@ interface BottomBarProps {
   /** Pending on-device edits - badge on ⋯ and the edits list. */
   editCount: number;
   editSummaries: EditSummary[];
+  /** "Hide visited places" toggle - persisted, defaults on (see Map.tsx). */
+  hideVisited: boolean;
+  /** Total visited POIs across every city - shown in the toggle's label. */
+  visitedCount: number;
+  onToggleHideVisited: () => void;
   onOpenSearch: () => void;
   onShowTours: () => void;
   onAddPlace: () => void;
@@ -59,6 +65,9 @@ const BottomBar = ({
   toursCount,
   editCount,
   editSummaries,
+  hideVisited,
+  visitedCount,
+  onToggleHideVisited,
   onOpenSearch,
   onShowTours,
   onAddPlace,
@@ -188,6 +197,36 @@ const BottomBar = ({
               </>
             )}
 
+            {/* D10: its own "Map" group, separate from Pending edits above
+                and Data below - a settings-style toggle reads as a stray
+                row when it isn't visually grouped with anything. Defaults
+                on (Map.tsx), persisted, labeled with a live count so the
+                toggle's effect stays legible - a filter that hides data
+                should never look silent about what it's doing. */}
+            <div className={styles.sectionLabel}>Map</div>
+            <button
+              role="menuitemcheckbox"
+              aria-checked={hideVisited}
+              className={styles.menuItem}
+              onClick={onToggleHideVisited}
+            >
+              <span className={styles.menuItemIcon} aria-hidden="true"><EyeIcon size={18} /></span>
+              <span className={styles.menuItemText}>
+                <span className={styles.menuItemTitle}>Hide visited places ({visitedCount})</span>
+                <span className={styles.menuItemSubtitle}>
+                  {/* Kept no longer than the "Off" copy - a longer "On"
+                      string wrapped to a second line, growing the popover
+                      taller on every toggle (same jarring resize as the
+                      earlier width bug, just on the other axis). */}
+                  {hideVisited ? 'On - visited pins hidden' : 'Off - all pins shown'}
+                </span>
+              </span>
+              <span className={styles.toggleSwitch} data-on={hideVisited} aria-hidden="true">
+                <span className={styles.toggleKnob} />
+              </span>
+            </button>
+
+            <div className={styles.sectionLabel}>Data</div>
             <button
               role="menuitem"
               className={styles.menuItem}
@@ -197,7 +236,7 @@ const BottomBar = ({
               }}
             >
               <span className={styles.menuItemIcon} aria-hidden="true"><ShareIcon size={18} /></span>
-              <span>
+              <span className={styles.menuItemText}>
                 <span className={styles.menuItemTitle}>Export my edits</span>
                 <span className={styles.menuItemSubtitle}>
                   {editCount > 0
@@ -217,7 +256,7 @@ const BottomBar = ({
               }}
             >
               <span className={styles.menuItemIcon} aria-hidden="true"><ShareIcon size={18} /></span>
-              <span>
+              <span className={styles.menuItemText}>
                 <span className={styles.menuItemTitle}>Export full data</span>
                 <span className={styles.menuItemSubtitle}>Complete pois.json snapshot</span>
               </span>
@@ -229,7 +268,7 @@ const BottomBar = ({
               onClick={() => fileInputRef.current?.click()}
             >
               <span className={styles.menuItemIcon} aria-hidden="true"><ImportIcon size={18} /></span>
-              <span>
+              <span className={styles.menuItemText}>
                 <span className={styles.menuItemTitle}>Import edits</span>
                 <span className={styles.menuItemSubtitle}>
                   {importStatus ?? "Merge someone else's shared edits file"}

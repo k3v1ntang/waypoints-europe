@@ -160,11 +160,19 @@
   border-top: 0.5px solid var(--separator);
 }
 
+/* D11: category tag + the primary one-tap "visited" toggle share a row. */
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+}
+
 .category {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  margin-top: 10px;
   font-size: 12px;
   color: var(--text-secondary);
   text-transform: capitalize;
@@ -172,6 +180,38 @@
 
 .category svg {
   display: block;
+}
+
+/* D8: same green used for visited markers on the map. */
+.visitedToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  background-color: var(--fill-well);
+  border: none;
+  border-radius: var(--radius-capsule);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.visitedToggle:active {
+  background-color: var(--fill-well-pressed);
+}
+
+.visitedToggle svg {
+  display: block;
+}
+
+.visitedToggleActive {
+  composes: visitedToggle;
+  color: var(--color-success);
+  background-color: color-mix(in srgb, var(--color-success) 16%, transparent);
 }
 
 .editButton {

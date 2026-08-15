@@ -126,6 +126,22 @@
   gap: 8px;
 }
 
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-success);
+}
+
 /* ---- Buttons -------------------------------------------------------------- */
 
 .secondaryButton {

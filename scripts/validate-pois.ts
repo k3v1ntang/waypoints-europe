@@ -125,6 +125,12 @@ function main(): void {
   validateWalkingTours(data.walkingTours, citiesById);
 
   const poiCount = data.cities.reduce((sum, c) => sum + (c.pois?.length ?? 0), 0);
+  // Cheap post-merge sanity check (D13): a two-device merge that silently
+  // dropped `visited` would show up here as a count lower than expected.
+  const visitedCount = data.cities.reduce(
+    (sum, c) => sum + (c.pois?.filter((p) => p.visited === true).length ?? 0),
+    0
+  );
 
   if (errors.length > 0) {
     console.error(`✖ pois.json validation failed with ${errors.length} error(s):`);
@@ -132,7 +138,7 @@ function main(): void {
     process.exit(1);
   }
 
-  console.log(`✓ pois.json valid: ${data.cities.length} cities, ${poiCount} POIs, ${Object.keys(data.walkingTours ?? {}).length} cities with walking tours`);
+  console.log(`✓ pois.json valid: ${data.cities.length} cities, ${poiCount} POIs (${visitedCount} visited), ${Object.keys(data.walkingTours ?? {}).length} cities with walking tours`);
 }
 
 main();

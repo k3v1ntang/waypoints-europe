@@ -29,6 +29,14 @@ export interface Poi {
   notes: string;
   googleMapsUrl: string;
   photos?: string[];
+  // Personal "seen it" status (visited-poi-plan, Aug 2026). Optional so all
+  // existing POIs stay valid untouched: absent means false. Never write
+  // `false` explicitly - omit the key instead (D5) - so a stored override
+  // that un-visits a POI can still compare equal to a base POI that never
+  // had the key, letting the pending-edit badge self-clear once the repo
+  // catches up (see usePoiData.ts's stale-edit check and mergePois.ts's
+  // deepEqual, which also compares key counts).
+  visited?: boolean;
 }
 
 export interface City {

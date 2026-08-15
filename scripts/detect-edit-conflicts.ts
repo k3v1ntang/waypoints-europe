@@ -54,7 +54,8 @@ type DiffField =
   | 'walkingTourNotes'
   | 'notes'
   | 'googleMapsUrl'
-  | 'photos';
+  | 'photos'
+  | 'visited';
 
 const DIFF_FIELDS: DiffField[] = [
   'name',
@@ -65,7 +66,8 @@ const DIFF_FIELDS: DiffField[] = [
   'walkingTourNotes',
   'notes',
   'googleMapsUrl',
-  'photos'
+  'photos',
+  'visited'
 ];
 
 function getField(poi: Poi, field: DiffField): unknown {
@@ -83,14 +85,29 @@ function setField(poi: Poi, field: DiffField, value: unknown): void {
     case 'notes': poi.notes = value as string; break;
     case 'googleMapsUrl': poi.googleMapsUrl = value as string; break;
     case 'photos': poi.photos = value as string[]; break;
+    // D5: never write `visited: false` - the winning value here is always
+    // already normalized to a boolean (see the `firstValue` computation
+    // below), so `false` means "the agreeing edits turned it off", which
+    // must land as an omitted key, not an explicit `false`.
+    case 'visited':
+      if (value === true) poi.visited = true;
+      else delete poi.visited;
+      break;
   }
 }
 
-// D8: absent-vs-empty is not equal under mergePois's deepEqual, so an edit
-// that never touched an optional field must never look like it changed it.
-// Applied before any comparison, both edit-vs-edit and edit-vs-base.
+// D8/D5: absent-vs-empty is not equal under mergePois's deepEqual, so an
+// edit that never touched an optional field must never look like it
+// changed it. Applied before any comparison, both edit-vs-edit and
+// edit-vs-base. `visited` gets the same default-value treatment as
+// `photos`/`walkingTourNotes` here (D5): absent normalizes to `false`.
 function normalizePoi(poi: Poi): Poi {
-  return { ...poi, photos: poi.photos ?? [], walkingTourNotes: poi.walkingTourNotes ?? '' };
+  return {
+    ...poi,
+    photos: poi.photos ?? [],
+    walkingTourNotes: poi.walkingTourNotes ?? '',
+    visited: poi.visited ?? false
+  };
 }
 
 function valuesEqual(a: unknown, b: unknown): boolean {
@@ -106,7 +123,10 @@ function valuesEqual(a: unknown, b: unknown): boolean {
 // the specific D8 case (curated walkingTourNotes surviving an edit that
 // only ever meant to touch other fields).
 function isChanger(field: DiffField, editPoi: Poi, basePoi: Poi): boolean {
-  if ((field === 'photos' || field === 'walkingTourNotes') && editPoi[field] === undefined) {
+  if (
+    (field === 'photos' || field === 'walkingTourNotes' || field === 'visited') &&
+    editPoi[field] === undefined
+  ) {
     return false;
   }
   return !valuesEqual(getField(normalizePoi(editPoi), field), getField(normalizePoi(basePoi), field));

@@ -182,7 +182,12 @@
   position: absolute;
   right: 0;
   bottom: calc(100% + 8px); /* open upward, above the bar */
-  min-width: 240px;
+  /* Fixed, not min - row subtitles change length at runtime (the hide-
+     visited toggle's on/off copy, the edit-count export subtitle), and
+     with only a min-width the whole popover visibly resized to fit
+     whichever line was currently longest. A fixed width makes text wrap
+     instead, so the box itself never jumps. */
+  width: min(280px, calc(100vw - 2 * var(--bar-inset)));
   border-radius: var(--radius-menu);
   overflow: hidden;
   transform-origin: bottom right;
@@ -213,6 +218,16 @@
   color: var(--text-primary);
 }
 
+/* Flex items default to min-width:auto, which floors them at their
+   content's natural (unwrapped) width - without this, the fixed .menu
+   width above wouldn't actually make long subtitles wrap, they'd just
+   overflow the box instead. flex:1 also lets this column claim the
+   leftover space next to the icon and trailing accessory. */
+.menuItemText {
+  flex: 1;
+  min-width: 0;
+}
+
 .menuItemTitle {
   display: block;
   font-size: 15px;
@@ -241,8 +256,8 @@
   flex-shrink: 0;
 }
 
-/* ---- Pending-edits list (short, scrollable "recent items" set inside the
-        menu - Files' recents / Settings' notification list treatment) --- */
+/* ---- Section grouping (iOS Settings treatment: an uppercase label per
+        group, a rule between groups, no rule above the first one) -------- */
 
 .sectionLabel {
   padding: 10px 16px 4px;
@@ -253,13 +268,21 @@
   color: var(--text-secondary);
 }
 
+/* Every section label after the first draws the separator between it and
+   the group above - so "Pending edits" (when present), "Map", and "Data"
+   each read as their own group instead of one flat list of rows. */
+.sectionLabel:not(:first-child) {
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 0.5px solid var(--separator);
+}
+
 .editsList {
   /* Caps at ~4 rows before scrolling - a menu popover reads as a menu, not
      a full list screen, so long lists scroll in place instead of pushing
      the export/import rows below off-screen. */
   max-height: 208px;
   overflow-y: auto;
-  border-bottom: 0.5px solid var(--separator);
 }
 
 .editRow {
@@ -316,6 +339,41 @@
 
 .hiddenFileInput {
   display: none;
+}
+
+/* ---- "Hide visited places" toggle switch (D10) -------------------------- */
+
+.toggleSwitch {
+  /* Same trailing-accessory alignment as .menuBadge below - every row's
+     accessory (chevron, badge, switch) lands on the same right edge. */
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 40px;
+  height: 24px;
+  border-radius: var(--radius-capsule);
+  background-color: var(--separator-strong);
+  padding: 2px;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease;
+}
+
+.toggleSwitch[data-on='true'] {
+  /* D8: same green as visited markers/popup badge - one color meaning
+     "visited" everywhere it shows up. */
+  background-color: var(--color-success);
+}
+
+.toggleKnob {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--text-on-accent);
+  transition: transform 0.15s ease;
+}
+
+.toggleSwitch[data-on='true'] .toggleKnob {
+  transform: translateX(16px);
 }
 
 .buildStamp {

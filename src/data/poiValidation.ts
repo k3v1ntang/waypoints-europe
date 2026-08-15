@@ -105,6 +105,11 @@ export function getPoiErrors(poi: Partial<Poi>): string[] {
       errors.push('"photos" entries must all be non-empty strings');
     }
   }
+  // D13: optional, validated only when present - absent means false, so no
+  // migration is needed for POIs that predate this field.
+  if (poi.visited !== undefined && typeof poi.visited !== 'boolean') {
+    errors.push('"visited" must be a boolean if present');
+  }
 
   return errors;
 }

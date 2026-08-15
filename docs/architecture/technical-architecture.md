@@ -124,7 +124,8 @@ waypoints-europe/
   "walkingTourNotes": "Historical context for tours",
   "notes": "Practical tips (hours, costs, recommendations)",
   "googleMapsUrl": "https://maps.app.goo.gl/xyz",  // validated as an https: URL
-  "photos": []
+  "photos": [],
+  "visited": true  // optional; personal "seen it" status, omit the key for false (docs/planning/2026-08-14-visited-poi-plan.md)
 }
 ```
 

@@ -143,3 +143,18 @@ export const ImportIcon = (p: IconProps) => (
     <path d="M7 15H5.5v5h13v-5H17" />
   </Svg>
 );
+
+/** Checkmark - "visited" toggle (POIPopup, PoiEditorSheet). */
+export const CheckIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="m5 13 4 4 10-10" />
+  </Svg>
+);
+
+/** Eye - map-visibility row category glyph (BottomBar's "Hide visited places"). */
+export const EyeIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z" />
+    <circle cx="12" cy="12" r="3" />
+  </Svg>
+);

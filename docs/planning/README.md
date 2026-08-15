@@ -13,7 +13,7 @@ Describes the planning system for this repo. For **current status**, read [`/MEM
 - [2026-07-03-modernization-plan.md](2026-07-03-modernization-plan.md) — July 2026 modernization: security hardening, Mapbox→MapLibre, dependency majors + tests, TypeScript, Liquid Glass UX rebuild, Banff/PMTiles (Phase 6). Defines the orchestrator/worker session model in its §5.
 - [2026-07-02-trip-improvement-plan.md](2026-07-02-trip-improvement-plan.md) — trip content, POI editing, and photo pipeline improvements.
 - [2026-08-13-agent-workflow-tooling-plan.md](2026-08-13-agent-workflow-tooling-plan.md) — three Claude Code skills (`poi-add`, `poi-merge-edits`, `poi-new-trip`) making the `docs/travel-workflow.md` tracks trigger-able without command recall, plus a `git commit`/`push` permission fix and conflict-aware multi-file merging for `poi-merge-edits`. Both phases deployed and committed.
-- [2026-08-14-visited-poi-plan.md](2026-08-14-visited-poi-plan.md) — mark already-visited POIs (Paris/Amsterdam repeat trips) and optionally hide them from the map, via a `visited` field on the POI object merged through the existing edit-overlay machinery. Designed and Opus-stress-tested, not yet implemented.
+- [2026-08-14-visited-poi-plan.md](2026-08-14-visited-poi-plan.md) — mark already-visited POIs (Paris/Amsterdam repeat trips) and optionally hide them from the map, via a `visited` field on the POI object merged through the existing edit-overlay machinery. Implemented and merged to `main`; also fixed two real bugs in `scripts/detect-edit-conflicts.ts` (D4/D5).
 
 ## Conventions
 
