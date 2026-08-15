@@ -1,13 +1,17 @@
 # Repo Memory — Current State
 
-> Mutable snapshot of project status, replaced on update — **any session that changes project status must update this file in the same commit** (see CLAUDE.md). Last updated: **2026-08-13**. History: see the active plan's Session Log. How the planning system works: [docs/planning/README.md](docs/planning/README.md).
+> Mutable snapshot of project status, replaced on update — **any session that changes project status must update this file in the same commit** (see CLAUDE.md). Last updated: **2026-08-14**. History: see the active plan's Session Log. How the planning system works: [docs/planning/README.md](docs/planning/README.md).
 
 ## Active project
 
-**Agent workflow tooling — [docs/planning/2026-08-13-agent-workflow-tooling-plan.md](docs/planning/2026-08-13-agent-workflow-tooling-plan.md)**
+**Visited POI — [docs/planning/2026-08-14-visited-poi-plan.md](docs/planning/2026-08-14-visited-poi-plan.md)**
 
-- **State**: **Phase 1 and Phase 2 both deployed and committed.** Phase 1 (`6e2337b`) added three Claude Code skills (`poi-add`, `poi-merge-edits`, `poi-new-trip` under `.claude/skills/`) so the three `docs/travel-workflow.md` tracks trigger without the user needing to recall a command name, plus a real permission fix — `git commit`/`git push` were auto-approved with zero prompts in `.claude/settings.local.json`; moved to `ask`. Phase 2 adds `scripts/detect-edit-conflicts.ts` — a deterministic field-level diff/merge for two partners' independently-exported `waypoints-edits-*.json` changesets touching the same POI, wired into the `poi-merge-edits` skill and `docs/travel-workflow.md` Track C. 12/12 new tests pass alongside the existing suite (63 total); `typecheck`/`lint`/`validate:pois`/`build` all clean; a manual scratchpad CLI pass confirmed disjoint auto-apply + same-POI conflict detection before commit.
-- **Next action**: none open on this plan — both phases shipped. Revisit only if usage surfaces a real gap (e.g. the accepted "not a three-way merge" residual risk noted in the plan's Design section, or the deferred `photos`-union logic).
+- **State**: Designed and Opus-stress-tested against the real code (merge script, MapLibre rendering/filtering, on-device edit machinery). Zero open decisions. **Not yet implemented.**
+- **Next action**: run the plan's cold-start prompt in a fresh worker session; the plan's own "Design" section fixes two real bugs (D4/D5) in the already-shipped `scripts/detect-edit-conflicts.ts` that must land alongside the new feature, not as a follow-up.
+
+## Agent workflow tooling (previous active project)
+
+[docs/planning/2026-08-13-agent-workflow-tooling-plan.md](docs/planning/2026-08-13-agent-workflow-tooling-plan.md) — **both phases deployed and committed.** Phase 1 (`6e2337b`) added three Claude Code skills (`poi-add`, `poi-merge-edits`, `poi-new-trip` under `.claude/skills/`) so the three `docs/travel-workflow.md` tracks trigger without the user needing to recall a command name, plus a real permission fix — `git commit`/`git push` were auto-approved with zero prompts in `.claude/settings.local.json`; moved to `ask`. Phase 2 adds `scripts/detect-edit-conflicts.ts` — a deterministic field-level diff/merge for two partners' independently-exported `waypoints-edits-*.json` changesets touching the same POI, wired into the `poi-merge-edits` skill and `docs/travel-workflow.md` Track C. Nothing open on this plan; revisit only if usage surfaces a real gap (e.g. the accepted "not a three-way merge" residual risk, or the deferred `photos`-union logic).
 
 ## Trip content — Phase 4 (previous active project)
 
