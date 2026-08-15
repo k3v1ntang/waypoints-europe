@@ -2063,6 +2063,146 @@
           "notes": "French Revolution site.",
           "googleMapsUrl": "https://maps.app.goo.gl/cbrpaukJFgHH27Wy6",
           "photos": []
+        },
+        {
+          "id": "paris-disneyland",
+          "name": "Disneyland Paris",
+          "coordinates": [
+            2.783593,
+            48.8673858
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Disney theme park resort in Marne-la-Vallée, ~32 km east of central Paris — Disneyland Park and Walt Disney Studios Park.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/MgzPzqLyd25mVNCR6",
+          "photos": []
+        },
+        {
+          "id": "paris-louvre",
+          "name": "Louvre Museum",
+          "coordinates": [
+            2.337644,
+            48.8606111
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "World's largest art museum, housed in the former royal palace on the Right Bank — home to the Mona Lisa and the glass Pyramid entrance.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/v5qRYhHLejgZdxGZ7",
+          "photos": []
+        },
+        {
+          "id": "paris-palace-of-versailles",
+          "name": "Palace of Versailles",
+          "coordinates": [
+            2.1203554,
+            48.8048649
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Opulent royal palace and gardens west of Paris, seat of the French monarchy from Louis XIV until the Revolution — the Hall of Mirrors and formal gardens are the highlights.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/Rf2ELyQ9chxiQan16",
+          "photos": []
+        },
+        {
+          "id": "paris-centre-pompidou",
+          "name": "Centre Pompidou",
+          "coordinates": [
+            2.352245,
+            48.860642
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Modern and contemporary art museum known for its inside-out architecture — color-coded pipes, ducts, and escalators on the exterior.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/WCBW4WfmJg5BkpWo9",
+          "photos": []
+        },
+        {
+          "id": "paris-tuileries-garden",
+          "name": "Tuileries Garden",
+          "coordinates": [
+            2.3274943,
+            48.8634916
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Formal public garden connecting the Louvre to Place de la Concorde, laid out in the 17th century by André Le Nôtre.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/iQ81zzFfGNbC7WuL8",
+          "photos": []
+        },
+        {
+          "id": "paris-palais-garnier",
+          "name": "Palais Garnier",
+          "coordinates": [
+            2.3317666,
+            48.8719343
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Opulent 1875 opera house designed by Charles Garnier — home of the Paris Opera Ballet and the setting for The Phantom of the Opera.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/tGUdecZqnMs1zXy99",
+          "photos": []
+        },
+        {
+          "id": "paris-pont-neuf",
+          "name": "Pont Neuf",
+          "coordinates": [
+            2.3408412,
+            48.8566969
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Oldest standing bridge across the Seine in Paris, completed 1607 — spans both branches of the river at the western tip of Île de la Cité.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/e63BJ9odXezrbPt28",
+          "photos": []
+        },
+        {
+          "id": "paris-pantheon",
+          "name": "Panthéon",
+          "coordinates": [
+            2.3464138,
+            48.8462218
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Neoclassical monument in the Latin Quarter, mausoleum to French luminaries including Voltaire, Rousseau, Curie, and Hugo.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/W3F9wboNAZ3WJ9Mt7",
+          "photos": []
+        },
+        {
+          "id": "paris-musee-dorsay",
+          "name": "Musée d'Orsay",
+          "coordinates": [
+            2.3265614,
+            48.8599614
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Impressionist and Post-Impressionist art museum in a converted Beaux-Arts railway station on the Left Bank — Monet, Renoir, Van Gogh, Degas.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/fAVnoz62CCMyxZrT9",
+          "photos": []
+        },
+        {
+          "id": "paris-notre-dame",
+          "name": "Notre-Dame Cathedral",
+          "coordinates": [
+            2.3499021,
+            48.8529682
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Medieval Gothic cathedral on Île de la Cité, begun 1163 — reopened December 2024 after the 2019 fire and restoration.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/eCSJCkGJxghRKwBy9",
+          "photos": []
         }
       ]
     },
@@ -2119,6 +2259,48 @@
           "photos": []
         },
         {
+          "id": "ghent-graffiti-street",
+          "name": "Werregarenstraat (Graffiti Street)",
+          "coordinates": [
+            3.7246336,
+            51.0554872
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Narrow alley near Graslei that's been a legal, ever-changing street-art canvas since the 1990s — new pieces painted over daily.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/4Xgbt91fPQUcuV2t8",
+          "photos": []
+        },
+        {
+          "id": "ghent-tierenteyn-verlent",
+          "name": "Tierenteyn-Verlent",
+          "coordinates": [
+            3.7224163,
+            51.0556585
+          ],
+          "category": "practical",
+          "visibility": "always",
+          "description": "Historic mustard shop founded 1790, still hand-scooping mustard from wooden barrels into stoneware jars.",
+          "notes": "Buy mustard here.",
+          "googleMapsUrl": "https://maps.app.goo.gl/3q44kyW4VuSrDqEt6",
+          "photos": []
+        },
+        {
+          "id": "ghent-museum-fine-arts",
+          "name": "Museum voor Schone Kunsten (Museum of Fine Arts)",
+          "coordinates": [
+            3.7240782,
+            51.0381661
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Belgium's oldest museum, in Citadelpark south of the center — Flemish Primitives through early 20th-century works, including Bosch and Rubens.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/adnYvgdwSYbBp8LPA",
+          "photos": []
+        },
+        {
           "id": "ghent-graslei-korenlei",
           "name": "Graslei and Korenlei",
           "coordinates": [
@@ -2170,6 +2352,62 @@
           "description": "UNESCO World Heritage medieval bell tower on the Markt.",
           "notes": "366-step climb; heavy logistics (advance booking, physical demands).",
           "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Belfry+of+Bruges+Bruges",
+          "photos": []
+        },
+        {
+          "id": "bruges-basilica-holy-blood",
+          "name": "Basilica of the Holy Blood",
+          "coordinates": [
+            3.2265448,
+            51.2081343
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Twelfth-century basilica on Burg Square, in two tiers — a plain Romanesque lower chapel and an ornate upper chapel said to house a relic of Christ's blood.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/SW1os1QpcxQHcBU36",
+          "photos": []
+        },
+        {
+          "id": "bruges-rozenhoedkaai",
+          "name": "Rozenhoedkaai (Rosary Quay)",
+          "coordinates": [
+            3.2278679,
+            51.2073745
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Canal quay where the Dijver and Groenerei meet — Bruges's most photographed viewpoint, with the Belfry rising over the water.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/1fw2BoRPFSJeLPaWA",
+          "photos": []
+        },
+        {
+          "id": "bruges-minnewater-park",
+          "name": "Minnewater Park (Lake of Love)",
+          "coordinates": [
+            3.225273,
+            51.1995291
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Tree-lined park around the Minnewater lake at Bruges's southern edge, next to the Begijnhof — a quiet, swan-filled counterpoint to the busy center.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/gikRCEciWikkNUry6",
+          "photos": []
+        },
+        {
+          "id": "bruges-begijnhof",
+          "name": "Begijnhof \"Ten Wijngaerde\"",
+          "coordinates": [
+            3.2227093,
+            51.2013447
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Princely Beguinage founded 1245, next to Minnewater — whitewashed houses around a tree-lined courtyard, now home to Benedictine nuns. UNESCO World Heritage.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/ySDZ1zghohDnGq718",
           "photos": []
         },
         {
@@ -2266,6 +2504,46 @@
           "description": "Nederlands Fotomuseum — photography museum on Wilhelminapier, exhibitions and archive of Dutch photographic work.",
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/4ZqMMoLZM56HDYQRA",
+          "photos": []
+        }
+      ]
+    },
+    {
+      "id": "the-hague",
+      "name": "The Hague",
+      "country": "Netherlands",
+      "countryCode": "NL",
+      "centerCoordinates": [
+        4.3007,
+        52.0705
+      ],
+      "pois": [
+        {
+          "id": "the-hague-mauritshuis",
+          "name": "Mauritshuis",
+          "coordinates": [
+            4.3143148,
+            52.0804322
+          ],
+          "category": "culture",
+          "visibility": "always",
+          "description": "Royal art museum in a 17th-century mansion overlooking the Hofvijver, home to Vermeer's \"Girl with a Pearl Earring\" and works by Rembrandt.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/2q7Liy9qP4ATQwVx6",
+          "photos": []
+        },
+        {
+          "id": "the-hague-binnenhof",
+          "name": "Binnenhof",
+          "coordinates": [
+            4.313273,
+            52.0795985
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Historic complex housing the Dutch parliament (States General) and Prime Minister's office, centered on the 13th-century Ridderzaal.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/yy7DfJSGCLyEDf9s6",
           "photos": []
         }
       ]
