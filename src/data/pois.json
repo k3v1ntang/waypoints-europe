@@ -2330,6 +2330,34 @@
           "notes": "Best at golden hour / after dark when lit. Canal boat tours depart from here.",
           "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Graslei+and+Korenlei+Ghent",
           "photos": []
+        },
+        {
+          "id": "ghent-leonidas",
+          "name": "Leonidas",
+          "coordinates": [
+            3.7211162,
+            51.0555031
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Belgian chocolate house and café founded in Ghent in 1913, known for handcrafted pralines and its signature \"manon\" truffle — this location's café also serves waffles.",
+          "notes": "For Belgian waffles.",
+          "googleMapsUrl": "https://maps.app.goo.gl/oaDPFrd72zyS1EfS8",
+          "photos": []
+        },
+        {
+          "id": "ghent-de-rechters",
+          "name": "De Rechters",
+          "coordinates": [
+            3.7262793,
+            51.0534525
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Traditional Belgian restaurant near Sint-Baafsplein and Saint Bavo Cathedral, named after the missing panel of the Ghent Altarpiece — known for classic Flemish dishes like stoofvlees (beef stew) and mussels.",
+          "notes": "For the chicken stew (waterzooi) and Flemish beef stew (stoofvlees).",
+          "googleMapsUrl": "https://maps.app.goo.gl/3yCQvL9VBKkVxUvb8",
+          "photos": []
         }
       ]
     },
