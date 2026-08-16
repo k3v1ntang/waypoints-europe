@@ -31,6 +31,14 @@ const HIDE_VISITED_STORAGE_KEY = 'waypoints-hide-visited';
 // way - kept in sync with that token's light-mode value by hand.
 const VISITED_MARKER_COLOR = '#059669';
 
+// D2/D10 (restaurant-poi-plan): no CSS token exists for this color and none
+// should be added - Map.tsx's paint expression is the only reader, the same
+// reason VISITED_MARKER_COLOR above is a hand-synced hex rather than a
+// `var()` reference. Chosen after CVD simulation (Viénot 1999) over the
+// plan's original `#7c3aed`, which scored functionally indistinguishable
+// from the default blue under deuteranopia.
+const RESTAURANT_MARKER_COLOR = '#8b5cf6';
+
 // Same `unknown` bridge as usePoiData: the JSON import's inferred shape is
 // wider than PoisData (number[] vs [number, number] tuples); the validate
 // script enforces the real shape at build time.
@@ -78,6 +86,8 @@ const buildGeojson = (
           name: poi.name,
           cityName: city.name,
           isHotel: poi.category === 'hotel',
+          // restaurant-poi-plan D3: mirrors isHotel exactly.
+          isRestaurant: poi.category === 'restaurant',
           // D9: GeoJSON serialization drops `undefined` properties, and
           // MapLibre's `case` throws at evaluation time on a null/undefined
           // condition rather than falling through - mirror isHotel exactly
@@ -629,12 +639,18 @@ const Map = () => {
           // D8: isVisited branch goes FIRST, ahead of the existing
           // isHotel branch - once decluttering, "have I done this" is the
           // dominant question, so it should win even for a visited hotel.
+          // restaurant-poi-plan D3: isRestaurant added as a third branch,
+          // after isVisited (which must keep winning - a visited restaurant
+          // reads as visited, same as a visited hotel already does).
+          // Position relative to isHotel doesn't matter - no POI is both.
           'circle-color': [
             'case',
             ['get', 'isVisited'],
             VISITED_MARKER_COLOR, // Green for visited POIs
             ['get', 'isHotel'],
             '#dc2626', // Red for hotels
+            ['get', 'isRestaurant'],
+            RESTAURANT_MARKER_COLOR, // Purple for priority restaurants
             '#2563eb' // Blue for POIs
           ],
           'circle-radius': 9,

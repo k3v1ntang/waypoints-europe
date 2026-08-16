@@ -10,7 +10,7 @@
 // including unions ("one of these strings/shapes") - used below for the
 // enum-like fields and for EditRecord's three variants.
 
-export type Category = 'landmark' | 'culture' | 'food' | 'practical' | 'hotel';
+export type Category = 'landmark' | 'culture' | 'food' | 'practical' | 'hotel' | 'restaurant';
 export type Visibility = 'always' | 'walkingTour';
 export type Difficulty = 'easy' | 'moderate' | 'challenging';
 

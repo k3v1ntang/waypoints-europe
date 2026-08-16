@@ -45,7 +45,8 @@ const CATEGORY_LABELS: Record<Category, string> = {
   culture: 'Culture',
   food: 'Food',
   practical: 'Practical',
-  hotel: 'Hotel'
+  hotel: 'Hotel',
+  restaurant: 'Restaurant'
 };
 
 interface Draft {

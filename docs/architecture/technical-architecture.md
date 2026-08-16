@@ -118,7 +118,7 @@ waypoints-europe/
   "id": "city-poi-slug",
   "name": "POI Name",
   "coordinates": [longitude, latitude],  // MapLibre format
-  "category": "landmark|culture|food|practical|hotel",
+  "category": "landmark|culture|food|practical|hotel|restaurant",
   "visibility": "always|walkingTour",
   "description": "Main description",
   "walkingTourNotes": "Historical context for tours",
