@@ -14,7 +14,7 @@ Three tools cover travel planning end to end. Each has one job; content flows on
 
 **Waypoints does not write back into MOSAIC.** A POI added via Track B lives in Waypoints only — MOSAIC stays the record of what was *researched*; Waypoints becomes the record of everything that ended up worth remembering, researched or not (decision, 2026-08-13, open to revisiting if it stops making sense).
 
-**Restaurants mostly stay Google-Maps-only** — see the durability test below for the actual line, which is sharper than "no restaurants."
+**Restaurants mostly stay Google-Maps-only** — see the durability test below for the actual line, which is sharper than "no restaurants." **Deliberate exception**: a short, hand-picked list of restaurants Kevin is actively prioritizing for the trip *does* go into Waypoints, via a separate manual-only path (`/poi-add-restaurant`, `category: "restaurant"`) that doesn't loosen the durability test — see Track B step 1.
 
 ## Track A — Bootstrap (MOSAIC → Waypoints, once per trip)
 
@@ -30,9 +30,11 @@ Run once, when a trip's MOSAIC notes are mature enough to draw from.
 
 Run whenever Kevin drops one or more `maps.app.goo.gl` links, with or without a note.
 
-1. **Durability test** (replaces a flat "no restaurants" rule): does this stay worth knowing about *after* the trip? If yes → Waypoints. If its only value is current hours/reviews/availability → stays in Google Maps.
-   - Crosses over: a destination-grade place that happens to serve food (Sea Palace — floating restaurant landmark, Bib Gourmand; Markthal — architectural market hall; Nieuwmarkt — a square, not a specific eatery).
-   - Stays in Google Maps: a specific dinner reservation pick, anything whose relevance is "is it open/good this month."
+1. Two inclusion paths, both ending in a `category` assignment — pick whichever applies:
+   - **Durability test** (replaces a flat "no restaurants" rule): does this stay worth knowing about *after* the trip? If yes → Waypoints (`category: "food"`). If its only value is current hours/reviews/availability → stays in Google Maps.
+     - Crosses over: a destination-grade place that happens to serve food (Sea Palace — floating restaurant landmark, Bib Gourmand; Markthal — architectural market hall; Nieuwmarkt — a square, not a specific eatery).
+     - Stays in Google Maps: a specific dinner reservation pick, anything whose relevance is "is it open/good this month."
+   - **Priority-restaurant path**: did we deliberately decide, in advance, to prioritize this restaurant for the trip — independent of whether it'd pass the durability test above? If yes → Waypoints via `/poi-add-restaurant <link>` (`category: "restaurant"`, `visibility: "always"` unconditionally — see `.claude/skills/poi-add-restaurant/SKILL.md`). This is a deliberate second door, not a loosening of the durability test: an ordinary dinner reservation still fails the test above and still stays in Google Maps unless it's added through this explicit, manual-only command.
 2. **Dedup check**: before adding, a quick look at the target city's existing POIs by name/rough location — Track A and Track B draw from different sources and can independently flag the same place. (Gap identified 2026-08-13, not yet automated — currently a manual glance.)
 3. Resolve coordinates + Maps links — see below.
 4. Pick a `category` — see the table below.
@@ -47,15 +49,17 @@ Run whenever Kevin's actually using the app and something needs fixing (wrong pi
 2. **⋯ menu → Export my edits** — exports just the small changeset (not the whole `pois.json`), optionally labeled with a name. Distinct from **⋯ menu → Export full data**, which produces `pois-<date>.json` — a full drop-in `pois.json` replacement (snapshot, not a changeset — different merge semantics; see `poi-merge-edits`).
 3. Hand the file(s) to Claude — when both partners have exported a changeset, hand both over together. Claude runs `detect-edit-conflicts` (`poi-merge-edits` skill), which field-diffs each touched POI against current `pois.json`, auto-applies anything unambiguous, and flags only genuine value-level disagreements for review. **Don't use the app's own Import edits (LWW-by-`updatedAt`) to combine two people's changesets before export** — it resolves a same-POI conflict silently instead of surfacing it, the opposite of what this step needs. Import edits stays useful only for folding a second *device's* non-overlapping edits into one on-device overlay before that device's own export. (This only catches two files editing the same POI — not the separate, already-documented cross-source dedup gap in Track B step 2, where Track A and Track B independently flag the same place under different ids.)
 4. **Self-healing**: once the shipped `pois.json` matches an on-device edit exactly, that edit clears itself on next load — no manual "Reset to original" needed (only fires on an exact match; a full-precision on-device coordinate won't auto-clear against a manually-rounded value someone typed in by hand, so precision matters if you want this to fire).
+5. **Recategorizing an existing POI** (e.g. `food`/`landmark` → `restaurant`, restaurant-poi-plan D11) is a repo-side field change to a POI that may already have a pending on-device edit — a stale on-device override touching that same POI can silently revert the recategorization on next merge, with no conflict raised. Export and merge any pending changesets for that POI *first*, then recategorize.
 
 ## Category mapping
 
-The `Poi.category` enum (`landmark | culture | food | practical | hotel`) as actually applied so far — informal until now, written down for consistency across sessions:
+The `Poi.category` enum (`landmark | culture | food | practical | hotel | restaurant`) as actually applied so far — informal until now, written down for consistency across sessions:
 
 | Category | Use for |
 |---|---|
 | `hotel` | Any accommodation |
-| `food` | A place whose primary value is a food/drink experience *and* passes the durability test above (market halls, a landmark restaurant) — not a plain dinner reservation |
+| `food` | A place whose primary value is a food/drink experience *and* passes the durability test above (market halls, a landmark restaurant) — not a plain dinner reservation; see `restaurant` below for the deliberate second door that *is* for a hand-picked reservation-style pick |
+| `restaurant` | A hand-picked priority restaurant, added only via `/poi-add-restaurant` — never inferred, never set by the durability test above (restaurant-poi-plan D1/D7) |
 | `culture` | Museums, concert halls, arts/nightlife districts, artist quarters |
 | `practical` | Errand-type stops — shops, transit-adjacent utility |
 | `landmark` | Everything else — monuments, squares, streets, viewpoints, parks |

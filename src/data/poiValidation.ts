@@ -10,7 +10,7 @@ import type { Category, Poi, Visibility } from './types.js';
 // swapped coordinate pair lands outside this box for every city in the app.
 export const EUROPE_BOUNDS = { minLng: -25, maxLng: 45, minLat: 34, maxLat: 71 };
 
-export const VALID_CATEGORIES: Category[] = ['landmark', 'culture', 'food', 'practical', 'hotel'];
+export const VALID_CATEGORIES: Category[] = ['landmark', 'culture', 'food', 'practical', 'hotel', 'restaurant'];
 export const VALID_VISIBILITY: Visibility[] = ['always', 'walkingTour'];
 
 // ❓ CONCEPT: Type predicate (`value is string`) - a function whose return

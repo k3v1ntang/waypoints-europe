@@ -34,7 +34,8 @@ const CATEGORY_ICONS: Record<Poi['category'], string> = {
   culture: '🎭',
   food: '🍽️',
   practical: '🧭',
-  hotel: '🏨'
+  hotel: '🏨',
+  restaurant: '🍷'
 };
 
 const MAX_RESULTS = 30;

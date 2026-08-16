@@ -194,3 +194,25 @@ Full adversarial review against the live codebase (not just the plan's own claim
 The review also confirmed several claims as accurate against the real code with no changes needed: `category` genuinely is already in `detect-edit-conflicts.ts`'s diff machinery for the add case (D4); `CATEGORY_LABELS`/`CATEGORY_ICONS` being `Record<Category, ...>`-typed means a missing entry is a compile error, not silent (D9); no exhaustive switch, hardcoded category-length assumption, or other closed-enum dependency exists anywhere else in `src/` or `scripts/`; `exportPois.js`, `poi-merge-edits`, and `poi-new-trip` are all category-agnostic and need no changes.
 
 Output: this plan, revised. Ready for a worker session.
+
+### 2026-08-16 — Implemented, awaiting review
+
+Implemented via the cold-start prompt in a worker session. Every file's actual current content was read before editing and matched what the plan described — no mismatches surfaced, nothing to reconcile.
+
+All five implementation steps landed in the specified order:
+
+1. **Data model** — `src/data/types.ts`'s `Category` union and `src/data/poiValidation.ts`'s `VALID_CATEGORIES` both widened with `'restaurant'`.
+2. **Rendering** (`src/components/Map.tsx`) — `RESTAURANT_MARKER_COLOR = '#8b5cf6'` added next to `VISITED_MARKER_COLOR` with a matching token-sync comment (D2/D10); `isRestaurant: poi.category === 'restaurant'` added to `buildGeojson`, mirroring `isHotel`; a third `circle-color` `case` branch added after `isVisited`/before the blue default (D3).
+3. **Editor/search** — `PoiEditorSheet.tsx`'s `CATEGORY_LABELS.restaurant = 'Restaurant'`, `SearchSheet.tsx`'s `CATEGORY_ICONS.restaurant = '🍷'` (D9). Confirmed `PoiEditorSheet`'s mid-trip default category (`'food'`) needed no change (D5).
+4. **New skill** — `.claude/skills/poi-add-restaurant/SKILL.md`, a delegating stub (`disable-model-invocation: true`, same precedent as `poi-new-trip`) that references `poi-add`'s dedup-check/coordinate-resolution/write/validate/report steps rather than repeating them, and states only the D6/D11/D12 deltas: no durability test, unconditional `category`/`visibility`, the D11 recategorize path with its worked field-preservation example and required report line, one restaurant per invocation. `poi-add/SKILL.md` itself: zero edits, confirming D6's claim.
+5. **Docs** — `docs/travel-workflow.md` (overview exception line, Track B split into the two D7 inclusion paths naming `/poi-add-restaurant` directly, the category table's new `restaurant` row plus the `food` row's updated cross-reference, the previously-missed inline `Poi.category` enum line, and a new Track C line naming D11's stale-override risk class), plus the enum lists in `docs/implementation/city-data-contract.md`, `docs/architecture/technical-architecture.md`, and `CLAUDE.md`.
+
+`MEMORY.md` was deliberately **not** touched — the plan names it orchestrator-owned, and this repo's own rule (`CLAUDE.md`: "implementation sessions report instead of editing plans") applied here since nothing was committed this session for it to land alongside.
+
+**Verification**: `npm test` (67/67), `npm run typecheck`, `npm run lint`, `npm run validate:pois`, `npm run build` all clean, both before and after the manual pass below. `git diff --stat -- src/data/pois.json` empty throughout — confirmed no data migration occurred.
+
+**Manual checks, done live** rather than deferred to Kevin's own pass: installed Playwright + Chromium into the scratchpad (not a project dependency), started the dev server, and inserted one throwaway `category: "restaurant"` POI (Munich) directly into `pois.json` to drive the running app — reverted with `git checkout` immediately after, confirmed clean via `git diff --stat` a second time. Confirmed by screenshot: the search sheet renders the 🍷 icon for the restaurant-category result; the map marker renders `#8b5cf6` purple at street zoom, clearly distinct from the default blue and hotel red; the editor's category `<select>` lists "Restaurant" as a sixth option; toggling the popup's Visited checkbox and saving flips the marker to green once "Hide visited places" (default-on) is switched off — confirming D3's precedence (visited wins over restaurant purple) holds in the running app, not just in the expression's written order. No console errors at any step.
+
+**Not performed** (require the real skill flow with a live Google Maps link, or physical hardware, so left as genuinely manual, operator-side checks rather than simulated): actually invoking `/poi-add-restaurant` and a plain `/poi-add` end-to-end to compare behavior, the recategorize-via-stub report-line check against a real existing POI, and the post-deploy iPhone/iPad on-device pass.
+
+**Not committed.** Full diff and verification results were reported in-session; waiting on explicit approval before `git add`/`commit`/`push`.

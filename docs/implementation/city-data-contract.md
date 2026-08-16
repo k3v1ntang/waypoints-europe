@@ -43,7 +43,7 @@ Ask the external project to hand back JSON already matching this shape (same sha
 | `id` | yes | `{city}-{slug}`, kebab-case, unique across the whole file |
 | `name` | yes | `"City Name (CODE)"` — matches the existing convention (e.g. `"Helsinki (HEL)"`) |
 | `coordinates` | yes | `[longitude, latitude]` — **not** `[lat, lng]` |
-| `category` | yes | one of `landmark \| culture \| food \| practical \| hotel` |
+| `category` | yes | one of `landmark \| culture \| food \| practical \| hotel \| restaurant` |
 | `visibility` | yes | `always` (shown regardless of active tour) or `walkingTour` (shown only while that POI's tour is active) |
 | `description` | yes | user-facing summary |
 | `walkingTourNotes` | no | omit or empty string if there's no deeper historical context to show |
