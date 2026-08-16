@@ -14,6 +14,7 @@ Describes the planning system for this repo. For **current status**, read [`/MEM
 - [2026-07-02-trip-improvement-plan.md](2026-07-02-trip-improvement-plan.md) — trip content, POI editing, and photo pipeline improvements.
 - [2026-08-13-agent-workflow-tooling-plan.md](2026-08-13-agent-workflow-tooling-plan.md) — three Claude Code skills (`poi-add`, `poi-merge-edits`, `poi-new-trip`) making the `docs/travel-workflow.md` tracks trigger-able without command recall, plus a `git commit`/`push` permission fix and conflict-aware multi-file merging for `poi-merge-edits`. Both phases deployed and committed.
 - [2026-08-14-visited-poi-plan.md](2026-08-14-visited-poi-plan.md) — mark already-visited POIs (Paris/Amsterdam repeat trips) and optionally hide them from the map, via a `visited` field on the POI object merged through the existing edit-overlay machinery. Implemented and merged to `main`; also fixed two real bugs in `scripts/detect-edit-conflicts.ts` (D4/D5).
+- [2026-08-16-restaurant-poi-plan.md](2026-08-16-restaurant-poi-plan.md) — new `restaurant` category for a short, hand-picked list of trip-priority restaurants, with its own purple (`#8b5cf6`) marker color, added deterministically via a new manual-only `poi-add-restaurant` skill (never inferred, never auto-triggered). Design drafted and Opus-stress-tested (findings folded in — D6's mechanism reversed, D2's color revised, two new decisions D11/D12 added); ready for implementation.
 
 ## Conventions
 

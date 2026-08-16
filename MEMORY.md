@@ -4,7 +4,7 @@
 
 ## Active project
 
-None. The next standing task is the trip-content pre-departure checklist under "Next action" below.
+[docs/planning/2026-08-16-restaurant-poi-plan.md](docs/planning/2026-08-16-restaurant-poi-plan.md) — new `restaurant` POI category (own purple `#8b5cf6` marker color, no new filter UI) for a short, hand-picked list of trip-priority restaurants. Added deterministically via a new manual-only `poi-add-restaurant` skill (`disable-model-invocation`, delegates to `poi-add`'s shared steps rather than duplicating them — reversed from an initial `--restaurant`-flag design after an Opus stress-test found the flag could be silently dropped since `poi-add` auto-triggers from a pasted link). Design fully drafted, interactively discussed, and Opus-stress-tested 2026-08-16 (also caught a real color-vision-deficiency issue with the original marker color, and a stale-override/merge risk on recategorizing an existing POI to `restaurant` — both resolved in the plan, D2/D11). **Ready for a worker session; not yet implemented.** No content added yet (capability-first) — restaurant POIs get added afterward via `/poi-add-restaurant <link>`. Code portion should land before the ~Aug 22 feature freeze (D13).
 
 ## Visited POI (previous active project)
 
