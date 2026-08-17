@@ -1911,6 +1911,118 @@
           "notes": "Seasonal — only open roughly mid/late March to mid-May each year. Confirm before relying on this for an Aug 2026 trip; it's likely closed for the season by then.",
           "googleMapsUrl": "https://maps.app.goo.gl/UsPkN9bmKegVnoDE7",
           "photos": []
+        },
+        {
+          "id": "amsterdam-de-koffieschenkerij",
+          "name": "De Koffieschenkerij",
+          "coordinates": [
+            4.8983467,
+            52.3741148
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Café tucked inside a 1517 sacristy of the Oude Kerk, with a quiet monastery-garden terrace overlooking the Oudezijds Voorburgwal canal — coffee, tea, and simple pastries.",
+          "notes": "Coffee.",
+          "googleMapsUrl": "https://maps.app.goo.gl/h1qGdWnZ8JPyEjxx9",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-fabel-friet-nieuwendijk",
+          "name": "Fabel Friet Nieuwendijk",
+          "coordinates": [
+            4.8948003,
+            52.3786627
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Gourmet fries spot near Dam Square — twice-fried Agria potatoes for a crispy-outside, soft-inside result, with toppings like truffle mayo and shaved Parmesan.",
+          "notes": "Fries.",
+          "googleMapsUrl": "https://maps.app.goo.gl/7NcWtcsggtXdUQn78",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-la-perla-pizzeria",
+          "name": "La Perla Pizzeria",
+          "coordinates": [
+            4.8820145,
+            52.3770342
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Thin-and-crispy, wood-fired Roman-style pizza in the Jordaan's \"Little Italy,\" with imported ingredients like Campanian buffalo mozzarella.",
+          "notes": "Wood-fired pizza.",
+          "googleMapsUrl": "https://maps.app.goo.gl/7uwkYFEsA2mtgxEo6",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-scandinavian-embassy-bakery-shop",
+          "name": "Scandinavian Embassy Bakery & Shop",
+          "coordinates": [
+            4.893257,
+            52.3421212
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Nordic-style bakery and specialty coffee bar in De Pijp, credited with popularizing the cardamom bun in Amsterdam; also roasts/serves Nordic specialty coffee.",
+          "notes": "Cardamom bun.",
+          "googleMapsUrl": "https://maps.app.goo.gl/4foJwLV2RPdSebyF7",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-foodhallen",
+          "name": "Foodhallen",
+          "coordinates": [
+            4.8679147,
+            52.36679
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Indoor food market inside the former tram depot of De Hallen (Oud-West) — 20+ independent stalls spanning Greek, Vietnamese, American BBQ, and wood-fired pizza, with shared seating.",
+          "notes": "Food hall.",
+          "googleMapsUrl": "https://maps.app.goo.gl/sFfN8eiVrMrpVdSS9",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-gifu-ramen-bar",
+          "name": "Gifu Ramen Bar",
+          "coordinates": [
+            4.881822,
+            52.3702553
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Izakaya-style ramen bar in the Jordaan on Elandsgracht — rich broths (tonkotsu, wagyu-topped bowls) and counter seating to watch the chefs work.",
+          "notes": "Ramen.",
+          "googleMapsUrl": "https://maps.app.goo.gl/LUfyij1PunbJoE9p7",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-sango-specialty-coffee-roasters",
+          "name": "Sango Specialty Coffee Roasters",
+          "coordinates": [
+            4.8945098,
+            52.3785368
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Micro-roastery and coffee bar in a 1670 building near Centraal — small-batch roasting visible through a glass floor panel, pour-over and other specialty brew methods.",
+          "notes": "Pour-over coffee.",
+          "googleMapsUrl": "https://maps.app.goo.gl/XhhrBCi3sPzJb5Vr7",
+          "photos": []
+        },
+        {
+          "id": "amsterdam-cafe-papeneiland",
+          "name": "Café Papeneiland",
+          "coordinates": [
+            4.8879704,
+            52.3804627
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Historic \"brown café\" on the Prinsengracht dating to 1642 — one of Amsterdam's oldest pubs, famous for its Dutch apple pie, plus bitterballen and local beers.",
+          "notes": "Brown cafe - best bitterballen and apple pie.",
+          "googleMapsUrl": "https://maps.app.goo.gl/NRH6tMNm9yTj91yv6",
+          "photos": []
         }
       ]
     },
@@ -2220,6 +2332,34 @@
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/eCSJCkGJxghRKwBy9",
           "photos": []
+        },
+        {
+          "id": "paris-la-fusee",
+          "name": "La Fusée",
+          "coordinates": [
+            2.3521069,
+            48.8622661
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Cozy café-bar in Beaubourg near Centre Pompidou, known for bistro classics like tartare, tartines, and croque monsieur/madame, plus live gypsy jazz on Sundays.",
+          "notes": "Relaxed escape cafe.",
+          "googleMapsUrl": "https://maps.app.goo.gl/oz9CFZdzwpuWHX3M8",
+          "photos": []
+        },
+        {
+          "id": "paris-tata-burger",
+          "name": "Tata Burger",
+          "coordinates": [
+            2.3539963,
+            48.8590039
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Playful burger joint in Le Marais's LGBTQ+ district, known for unusually named signature burgers, mirror-ball party décor, and a rotating burger of the day.",
+          "notes": "In the gay-friendly Marais area.",
+          "googleMapsUrl": "https://maps.app.goo.gl/XMS1BFQ4vBck5Q9T8",
+          "photos": []
         }
       ]
     },
@@ -2467,6 +2607,20 @@
           "description": "One block from the Markt; City Hall (Stadhuis, one of the oldest in the Low Countries) and the Basilica of the Holy Blood (venerated relic).",
           "notes": "Basilica of the Holy Blood entry is free.",
           "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Burg+Square+Bruges",
+          "photos": []
+        },
+        {
+          "id": "bruges-chez-albert",
+          "name": "Chez Albert",
+          "coordinates": [
+            3.2258368,
+            51.2085112
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Popular waffle shop between Markt and Burg Square, known for fresh Liège-style waffles with a caramelized-sugar crust, served warm with toppings like chocolate, whipped cream, and fruit.",
+          "notes": "Waffle chain.",
+          "googleMapsUrl": "https://maps.app.goo.gl/Yvckhrx3U3sKj6zy7",
           "photos": []
         }
       ]
