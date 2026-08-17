@@ -2568,6 +2568,48 @@
           "notes": "Single Rider",
           "googleMapsUrl": "https://maps.app.goo.gl/Mr3Cc5G9MaEqWGR2A",
           "photos": []
+        },
+        {
+          "id": "disneyland-paris-nordic-crowns-tavern",
+          "name": "Nordic Crowns Tavern",
+          "coordinates": [
+            2.7739713,
+            48.8641132
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Quick-service Scandinavian tavern in the World of Frozen area of Disney Adventure World — salmon and meatball dishes, wood-panelled Bergen-inspired décor.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/QUyLnKGUV6r5avxt8",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-bistrot-chez-remy",
+          "name": "Bistrot Chez Rémy",
+          "coordinates": [
+            2.7760068,
+            48.8673786
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Table-service French bistro on La Place de Rémy in Disney Adventure World, themed to Pixar's Ratatouille — guests dine shrunk to rat-size among oversized kitchen props.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/BfiueyWgB2kqSQTg7",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-walts-an-american-restaurant",
+          "name": "Walt's - an American Restaurant",
+          "coordinates": [
+            2.7778402,
+            48.8716483
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Table-service Victorian-themed restaurant on Main Street, U.S.A. in Disneyland Park, honoring Walt Disney with contemporary American cuisine across six themed dining rooms.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/wKTypzvFenZiQf7Q8",
+          "photos": []
         }
       ]
     },
