@@ -2037,20 +2037,6 @@
       ],
       "pois": [
         {
-          "id": "paris-moxy-val-deurope",
-          "name": "Moxy Paris Val d'Europe",
-          "coordinates": [
-            2.767477,
-            48.8545349
-          ],
-          "category": "hotel",
-          "visibility": "always",
-          "description": "Hotel near Disneyland Paris / Val d'Europe.",
-          "notes": "Sep 6 – Sep 9 · Address: 2 Avenue de L'Europe, Montevrain 77144, France · Phone: +33-1-7308 9865 · Confirmation 79634221",
-          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Moxy+Paris+Val+d%27Europe+Montevrain",
-          "photos": []
-        },
-        {
           "id": "paris-courtyard-gare-de-lyon",
           "name": "Courtyard by Marriott Paris Gare de Lyon",
           "coordinates": [
@@ -2190,20 +2176,6 @@
           "description": "Square marking the site of the Bastille fortress-prison, stormed 14 July 1789 — the flashpoint of the French Revolution. The July Column now stands at its center.",
           "notes": "French Revolution site.",
           "googleMapsUrl": "https://maps.app.goo.gl/cbrpaukJFgHH27Wy6",
-          "photos": []
-        },
-        {
-          "id": "paris-disneyland",
-          "name": "Disneyland Paris",
-          "coordinates": [
-            2.783593,
-            48.8673858
-          ],
-          "category": "landmark",
-          "visibility": "always",
-          "description": "Disney theme park resort in Marne-la-Vallée, ~32 km east of central Paris — Disneyland Park and Walt Disney Studios Park.",
-          "notes": "",
-          "googleMapsUrl": "https://maps.app.goo.gl/MgzPzqLyd25mVNCR6",
           "photos": []
         },
         {
@@ -2359,6 +2331,284 @@
           "description": "Playful burger joint in Le Marais's LGBTQ+ district, known for unusually named signature burgers, mirror-ball party décor, and a rotating burger of the day.",
           "notes": "In the gay-friendly Marais area.",
           "googleMapsUrl": "https://maps.app.goo.gl/XMS1BFQ4vBck5Q9T8",
+          "photos": []
+        }
+      ]
+    },
+    {
+      "id": "disneyland-paris",
+      "name": "Disneyland Paris",
+      "country": "France",
+      "countryCode": "FR",
+      "centerCoordinates": [
+        2.783593,
+        48.8673858
+      ],
+      "pois": [
+        {
+          "id": "paris-moxy-val-deurope",
+          "name": "Moxy Paris Val d'Europe",
+          "coordinates": [
+            2.767477,
+            48.8545349
+          ],
+          "category": "hotel",
+          "visibility": "always",
+          "description": "Hotel near Disneyland Paris / Val d'Europe.",
+          "notes": "Sep 6 – Sep 9 · Address: 2 Avenue de L'Europe, Montevrain 77144, France · Phone: +33-1-7308 9865 · Confirmation 79634221",
+          "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Moxy+Paris+Val+d%27Europe+Montevrain",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-la-taniere-du-dragon",
+          "name": "La Tanière du Dragon",
+          "coordinates": [
+            2.7759671,
+            48.8728867
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Walk-through grotto beneath Sleeping Beauty Castle in Disneyland Park, home to a huge animatronic dragon.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/bmrbGKowus6y5PUg8",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-its-a-small-world",
+          "name": "It's a Small World",
+          "coordinates": [
+            2.7760585,
+            48.8746045
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Boat ride through animated scenes of children singing in different languages around the world, in Fantasyland.",
+          "notes": "Disney Premier Access",
+          "googleMapsUrl": "https://maps.app.goo.gl/Vs41txgqoLiHhVr19",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-indiana-jones-temple-of-peril",
+          "name": "Indiana Jones and the Temple of Peril",
+          "coordinates": [
+            2.7721101,
+            48.8724169
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Runaway mine-cart roller coaster through Indiana Jones-themed ruins in Adventureland.",
+          "notes": "Disney Premier Access · Single Rider",
+          "googleMapsUrl": "https://maps.app.goo.gl/BwjPqpVsYaiLdty1A",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-pirates-of-the-caribbean",
+          "name": "Pirates of the Caribbean",
+          "coordinates": [
+            2.7733834,
+            48.8734963
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Boat ride through pirate-infested scenes — a sacked town, cannon battles, buried treasure — in Adventureland.",
+          "notes": "Disney Premier Access",
+          "googleMapsUrl": "https://maps.app.goo.gl/j5ZUxcSfN8CGnxNH8",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-peter-pans-flight",
+          "name": "Peter Pan's Flight",
+          "coordinates": [
+            2.7740731,
+            48.8738461
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Flying pirate-ship ride soaring over a miniature nighttime London and Neverland, in Fantasyland.",
+          "notes": "Disney Premier Access",
+          "googleMapsUrl": "https://maps.app.goo.gl/jmQjicZhrAHsxPAt6",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-avengers-assemble-flight-force",
+          "name": "Avengers Assemble: Flight Force",
+          "coordinates": [
+            2.779662,
+            48.8653195
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Launch coaster racing alongside the Guardians of the Galaxy through an Iron Man-tech course, in Disney Adventure World.",
+          "notes": "Disney Premier Access",
+          "googleMapsUrl": "https://maps.app.goo.gl/Wqxw8XqWLspQiS9F7",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-ratatouille-aventure-totalement-toquee-de-remy",
+          "name": "Ratatouille : L'Aventure Totalement Toquée de Rémy",
+          "coordinates": [
+            2.7762442,
+            48.8675673
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Trackless rat's-eye-view ride through a Parisian kitchen, based on Pixar's Ratatouille, in Disney Adventure World.",
+          "notes": "Disney Premier Access · Single Rider",
+          "googleMapsUrl": "https://maps.app.goo.gl/AoeR6mVEjJF9hPNu8",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-raiponce-tangled-spin",
+          "name": "Raiponce Tangled Spin",
+          "coordinates": [
+            2.7764283,
+            48.8661973
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Spinning lantern-boat ride themed to Disney's Tangled, in Disney Adventure World.",
+          "notes": "Disney Premier Access",
+          "googleMapsUrl": "https://maps.app.goo.gl/Ug379seY4XkkBNiPA",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-frozen-ever-after",
+          "name": "Frozen Ever After",
+          "coordinates": [
+            2.7734564,
+            48.864061
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Boat ride through Arendelle scenes and songs from Frozen, in Disney Adventure World.",
+          "notes": "Disney Premier Access",
+          "googleMapsUrl": "https://maps.app.goo.gl/bbk6o3Fbvrp1Dqo6A",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-phantom-manor",
+          "name": "Phantom Manor",
+          "coordinates": [
+            2.7768153,
+            48.8709749
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Haunted-house dark ride through a ghost-filled Old West mansion, in Frontierland.",
+          "notes": "Disney Premier Access",
+          "googleMapsUrl": "https://maps.app.goo.gl/V49eadf4LSX7PP5d8",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-big-thunder-mountain",
+          "name": "Big Thunder Mountain",
+          "coordinates": [
+            2.7747023,
+            48.8715357
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Runaway mine-train roller coaster through a haunted Wild West mountain, in Frontierland.",
+          "notes": "Disney Premier Access",
+          "googleMapsUrl": "https://maps.app.goo.gl/9tc8FYPmZoTtGvTJ8",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-star-wars-hyperspace-mountain",
+          "name": "Star Wars Hyperspace Mountain",
+          "coordinates": [
+            2.7792799,
+            48.874126
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Indoor launched coaster reimagining Space Mountain with a Star Wars space-battle overlay, in Discoveryland.",
+          "notes": "Disney Premier Access",
+          "googleMapsUrl": "https://maps.app.goo.gl/RtEvyyLq3cLnRSUr7",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-crushs-coaster",
+          "name": "Crush's Coaster",
+          "coordinates": [
+            2.7781835,
+            48.8680718
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Spinning coaster riding the East Australian Current with Crush from Finding Nemo, in Disney Adventure World.",
+          "notes": "Disney Premier Access · Single Rider",
+          "googleMapsUrl": "https://maps.app.goo.gl/85ouevYeK3qhfuYw5",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-spider-man-web-adventure",
+          "name": "Spider-Man W.E.B. Adventure",
+          "coordinates": [
+            2.7790665,
+            48.8659071
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Trackless ride slinging webs and battling Spider-Bots alongside Spider-Man, in Disney Adventure World.",
+          "notes": "Disney Premier Access · Single Rider",
+          "googleMapsUrl": "https://maps.app.goo.gl/dfbCuXcb4FLfyJcm7",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-toy-soldiers-parachute-drop",
+          "name": "Toy Soldiers Parachute Drop",
+          "coordinates": [
+            2.7774423,
+            48.8671523
+          ],
+          "category": "landmark",
+          "visibility": "always",
+          "description": "Parachute tower drop ride themed to Toy Story's army men, in Disney Adventure World.",
+          "notes": "Single Rider",
+          "googleMapsUrl": "https://maps.app.goo.gl/Mr3Cc5G9MaEqWGR2A",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-nordic-crowns-tavern",
+          "name": "Nordic Crowns Tavern",
+          "coordinates": [
+            2.7739713,
+            48.8641132
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Quick-service Scandinavian tavern in the World of Frozen area of Disney Adventure World — salmon and meatball dishes, wood-panelled Bergen-inspired décor.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/QUyLnKGUV6r5avxt8",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-bistrot-chez-remy",
+          "name": "Bistrot Chez Rémy",
+          "coordinates": [
+            2.7760068,
+            48.8673786
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Table-service French bistro on La Place de Rémy in Disney Adventure World, themed to Pixar's Ratatouille — guests dine shrunk to rat-size among oversized kitchen props.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/BfiueyWgB2kqSQTg7",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-walts-an-american-restaurant",
+          "name": "Walt's - an American Restaurant",
+          "coordinates": [
+            2.7778402,
+            48.8716483
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Table-service Victorian-themed restaurant on Main Street, U.S.A. in Disneyland Park, honoring Walt Disney with contemporary American cuisine across six themed dining rooms.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/wKTypzvFenZiQf7Q8",
           "photos": []
         }
       ]
