@@ -175,6 +175,8 @@ What actually ran, for reference against the four steps originally planned below
 3. Paris Disneyland: reduced further than D3's logistics-shell — hotel pin only, no dining/station/pre-post-park pins (traveler is using the official Disney app for those)
 4. `npm run validate:pois` + full local CI gate (lint/typecheck/test/build) all pass; on-device offline test still deferred to the week-7 end-to-end rehearsal as planned, alongside the parked Phase 3 photo offline check
 
+**Reversed (2026-08-17)**: a separate `disneyland-paris` city was created after all, once in-park use (not just logistics) became the goal — see `MEMORY.md`'s "Trip content — Disneyland Paris" entry and `docs/implementation/city-data-contract.md`. The Moxy hotel POI moved into it from `paris`; 15 rides and 3 restaurants were added alongside it, sourced from the Disneyland Paris app and Google Maps rather than this phase's MOSAIC pipeline.
+
 ### Stretch — "Download city for offline" button — DROPPED (July 3, 2026)
 
 **Status: dropped, see D4.** Was: compute tile grid for city bounds at z11–16 (a few hundred vector tiles, tens of MB), fetch each so the (now fixed) CacheFirst cache stores them; progress UI. Decided against building on top of an unofficial, unsupported Mapbox GL JS pattern for a feature that only closes the last ~10% gap over the already-working cache fix. No `feature/city-download` branch was created.

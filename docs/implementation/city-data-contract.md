@@ -86,6 +86,8 @@ Per plan decision D3, the original intent was for Paris Disneyland to get **pins
 
 **What actually shipped (2026-08-12) is narrower still**: no separate `paris-disneyland` city at all. Only the Disneyland-adjacent hotel (Moxy Paris Val d'Europe) was added, filed as a regular hotel POI under the `paris` city alongside central Paris's hotels and sights — no dining reservations, no station pin, no pre/post-park stops. The traveler is using the official Disney app for in-resort logistics instead.
 
+**Reversed (2026-08-17)**: a separate `disneyland-paris` city group was created after all, for in-park use once at the resort — see `MEMORY.md`'s "Trip content — Disneyland Paris" entry. The Moxy hotel moved into it (same id, unchanged fields); the group also carries 15 ride POIs and 3 restaurant POIs, sourced from the Disneyland Paris app and Google Maps rather than the original MOSAIC research pipeline. Still no dining reservations, station pin, or pre/post-park-stop pins — this reversal only concerns the "no separate city" call, not the original narrower-scope decision above.
+
 ---
 
 ## Ingestion steps once the external project delivers

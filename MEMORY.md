@@ -1,10 +1,18 @@
 # Repo Memory — Current State
 
-> Mutable snapshot of project status, replaced on update — **any session that changes project status must update this file in the same commit** (see CLAUDE.md). Last updated: **2026-08-14**. History: see the active plan's Session Log. How the planning system works: [docs/planning/README.md](docs/planning/README.md).
+> Mutable snapshot of project status, replaced on update — **any session that changes project status must update this file in the same commit** (see CLAUDE.md). Last updated: **2026-08-17**. History: see the active plan's Session Log. How the planning system works: [docs/planning/README.md](docs/planning/README.md).
 
 ## Active project
 
-[docs/planning/2026-08-16-restaurant-poi-plan.md](docs/planning/2026-08-16-restaurant-poi-plan.md) — new `restaurant` POI category (own purple `#8b5cf6` marker color, no new filter UI) for a short, hand-picked list of trip-priority restaurants. Added deterministically via a new manual-only `poi-add-restaurant` skill (`disable-model-invocation`, delegates to `poi-add`'s shared steps rather than duplicating them — reversed from an initial `--restaurant`-flag design after an Opus stress-test found the flag could be silently dropped since `poi-add` auto-triggers from a pasted link). Design fully drafted, interactively discussed, and Opus-stress-tested 2026-08-16 (also caught a real color-vision-deficiency issue with the original marker color, and a stale-override/merge risk on recategorizing an existing POI to `restaurant` — both resolved in the plan, D2/D11). **Ready for a worker session; not yet implemented.** No content added yet (capability-first) — restaurant POIs get added afterward via `/poi-add-restaurant <link>`. Code portion should land before the ~Aug 22 feature freeze (D13).
+None currently — the most recent work (below) was ad-hoc trip-content addition, not a formal plan. See "Next action" for what's outstanding.
+
+## Restaurant POI (previous active project)
+
+[docs/planning/2026-08-16-restaurant-poi-plan.md](docs/planning/2026-08-16-restaurant-poi-plan.md) — **implemented and merged to `main`** (`11a6202`/`0bce5b1`). New `restaurant` POI category (purple `#8b5cf6` marker, no new filter UI), added deterministically via a manual-only `poi-add-restaurant` skill (`disable-model-invocation`, delegates to `poi-add`'s shared steps rather than duplicating them). Content additions followed in four batches, 16 restaurant POIs total: 2 in Ghent, 11 in Bruges/Paris/Amsterdam, 3 in Disneyland Paris (2026-08-17, alongside the new `disneyland-paris` city group below).
+
+## Trip content — Disneyland Paris (previous active project)
+
+New `disneyland-paris` city group added 2026-08-17 (`249f474`), split out of `paris`: the old `paris-disneyland` landmark POI removed (redundant now that the city group represents the park itself), the Moxy Val d'Europe hotel POI moved in unchanged. 15 ride POIs added from Disneyland Paris app screenshots + user-supplied Google Maps links (coordinates from each link's resolved place pin), plus the 3 restaurant POIs noted above. This reverses an explicit 2026-08-12 decision, recorded in `docs/planning/2026-07-02-trip-improvement-plan.md` and `docs/implementation/city-data-contract.md`, not to create a separate Disneyland city — both docs updated the same session to reflect the reversal.
 
 ## Visited POI (previous active project)
 
@@ -25,4 +33,4 @@
 
 ## Next action
 
-1. Do the trip-content in-browser spot-check and pre-departure tile-caching browse (feature freeze begins ~Aug 22, per D5 in the trip-improvement plan — data/content commits only after that).
+1. Do the trip-content in-browser spot-check and pre-departure tile-caching browse — now also covering the `disneyland-paris` city group (feature freeze begins ~Aug 22, per D5 in the trip-improvement plan — data/content commits only after that).
