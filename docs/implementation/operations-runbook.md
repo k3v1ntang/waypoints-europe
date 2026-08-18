@@ -23,7 +23,7 @@ Before merging anything risky (a UX rebuild, a dependency major, anything touchi
 git tag pre-my-change-stable <commit-sha>
 ```
 
-Existing tags in this repo (`git tag -l`): `pre-A-stable`, `pre-B-stable`, `pre-E-stable`, `pre-session-a-stable` — one per risky session in the July 2026 modernization. If a merge goes bad, `git revert` back to the tagged commit (works even months later) rather than force-pushing or hard-resetting `main`.
+If a merge goes bad, `git revert` back to the tagged commit (works even months later) rather than force-pushing or hard-resetting `main`. Run `git tag -l` to see what's currently live — the July 2026 modernization's four tags (`pre-A-stable`, `pre-B-stable`, `pre-E-stable`, `pre-session-a-stable`) were deleted 2026-08-17 once that work was long since stable in production; treat the list as disposable once a tagged commit is old enough that nobody would actually revert to it, not as a permanent audit trail.
 
 ### 2. Netlify deploy restore
 
