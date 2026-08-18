@@ -2610,6 +2610,90 @@
           "notes": "",
           "googleMapsUrl": "https://maps.app.goo.gl/wKTypzvFenZiQf7Q8",
           "photos": []
+        },
+        {
+          "id": "disneyland-paris-casa-de-coco-restaurante-de-familia",
+          "name": "Casa de Coco – Restaurante de Familia",
+          "coordinates": [
+            2.7746095,
+            48.8717562
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Quick-service Mexican restaurant in Disney Adventure World themed to Pixar's Coco, with colorful papel picado décor and mariachi-inspired music — burritos, tacos, and churros.",
+          "notes": "Burritos + churros",
+          "googleMapsUrl": "https://maps.app.goo.gl/iqx4soqTnYcS8Fkw7",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-restaurant-hakuna-matata",
+          "name": "Restaurant Hakuna Matata",
+          "coordinates": [
+            2.774505,
+            48.872097
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Counter-service restaurant in Adventureland themed to The Lion King, set in an African trading-post building with jungle artifacts — spiced meats, salads, and Middle Eastern-inspired dishes.",
+          "notes": "",
+          "googleMapsUrl": "https://maps.app.goo.gl/cz1LgvixD9WBb2hJ6",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-colonel-hathis-pizza-outpost",
+          "name": "Colonel Hathi's Pizza Outpost",
+          "coordinates": [
+            2.7733764,
+            48.8716501
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Counter-service Italian restaurant in Adventureland themed to The Jungle Book, in a colonial explorer's-club building — pizza, pasta, and desserts.",
+          "notes": "Micky pizza",
+          "googleMapsUrl": "https://maps.app.goo.gl/nq1ovKqc7reqovBU7",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-laughn-go",
+          "name": "Laugh'n Go",
+          "coordinates": [
+            2.775229,
+            48.866616
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Food truck at the exit of Cars: Road Trip in Disney Adventure World, serving snacks made with La Vache qui rit (Laughing Cow) cheese.",
+          "notes": "Croque McQUEEN",
+          "googleMapsUrl": "https://maps.app.goo.gl/MmaceXRfUotByn3b7",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-market-house-deli",
+          "name": "Market House Deli",
+          "coordinates": [
+            2.7780189,
+            48.8718059
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Counter-service deli on Main Street, U.S.A., styled as an early-20th-century New York general store with pressed-tin ceilings — hot and cold sandwiches, croque monsieur, quiche, and salads.",
+          "notes": "Croque Mobsieur",
+          "googleMapsUrl": "https://maps.app.goo.gl/X79zYecCoXoZzd6JA",
+          "photos": []
+        },
+        {
+          "id": "disneyland-paris-caseys-corner",
+          "name": "Casey's Corner",
+          "coordinates": [
+            2.7774311,
+            48.8719961
+          ],
+          "category": "restaurant",
+          "visibility": "always",
+          "description": "Counter-service hot dog stand on Main Street, U.S.A., themed to \"Casey at the Bat\" with baseball-inspired Victorian décor — classic and designer hot dogs, corn dog nuggets, and ballpark nachos.",
+          "notes": "Hot dogs",
+          "googleMapsUrl": "https://maps.app.goo.gl/y323cZRtiMFYYBEy8",
+          "photos": []
         }
       ]
     },
